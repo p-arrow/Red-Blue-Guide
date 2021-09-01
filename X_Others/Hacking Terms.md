@@ -121,3 +121,27 @@
 - Reservation of similar domain names (compared to target victim domain) at low cost
 - The actual rights holder (victim) gets extorted to buy the "similar domain names" at high cost
 
+**CIA Triad**
+- Confidentiality
+- Integrity
+- Availability
+- optional: Authenticity / non repudiation /Accountability
+
+**AAA**
+- Authentication: process of verifying the ID of a person/device
+- Authorisation: function of specifiying access rights to resources
+- Accountability: function of assigning responsibility
+
+**Types of Hackers**
+- White: hired/contracted directly by company
+- Black
+- Grey
+- Blue: BugBounty, Pentesters
+- Elite: Zeroday Exploit developer etc
+- Script Kiddies
+
+**Threat Types**
+- Script Kiddies (low level)
+- Hacktivists
+- Organized Crime
+- Advanced Persistent Threats (High level)
