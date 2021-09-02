@@ -32,3 +32,21 @@
 - Created by Server during Authen
 - Handed over to Client (w/o saving @Server)
 - Server maintains Integrity of JWT through digital signature
+
+**SOAP (Simple Object Access Protocol)**
+
+*XML-based web service protocol*
+
+- Used for:
+    - Exchange asynchronous messages
+    - Authentication
+    - Transport security
+    - Built-in error handling
+    - Often used with SAML for ID management
+
+- Existing Vulns of SOAP:
+    - Probing: Enumeration against the web service
+    - Coercive Parsing: modifies SOAP requests -> malicious XML parsing
+    - External References
+    - Malware: Consider input validation!
+    - SQL Injection: Avoid transmitting SQL statements over SOAP
