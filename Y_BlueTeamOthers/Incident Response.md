@@ -2,14 +2,14 @@
 
 *NIST Incident Handling Guide 800-61*
 
-## Preparation
+## 1. Preparation
 
 *Hardening, writing policies, set up confidential lines of communication, conduct training*
 
-## Detection & Analysis
+## 2. Detection & Analysis
 *Determine if an incident has taken place, triage it and notify relevant stakeholders*
 
-## Containment
+## 3. Containment
 
 *Limit the scope and magnitude of incident*
 
@@ -22,7 +22,7 @@
 4. Avoid alerting discovery of attacker (avoid "burn the house down")
 5. Preserve forensic evidence
 
-## Eradication & Recovery
+## 4. Eradication & Recovery
 
 *Remove the cause of incident and bring the system back to secure state*
 
@@ -48,7 +48,7 @@
 3. Logging: Ensure that logging after incident will continue
 4. System Hardening: Most effective preventative measure
 
-## Post-incident Activity
+## 5. Post-incident Activity
 
 *Analyze the incident and identify improvements in procedures*
 
