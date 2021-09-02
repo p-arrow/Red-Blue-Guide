@@ -35,7 +35,12 @@
 
 ## Electrical Disturbance Prevention
 
-- Exp: Power spike, electrical surge, blackout
-   - UPS (uninterruptable power supply)
-   - Backup generators
-   - Line conditioners
+1. Surge: unexpected increase of voltage provided
+2. Spike: short transient in voltage due to short circuit/power outage
+3. Sag: opposite of Surge
+4. Brownout: opposite of Spike (causes lights to dim )
+5. Blackout: total loss of power
+
+**BackUp Power Supply**
+1. UPS (Uninterruptible Power Supply): Surge protecter & battery backup
+2. Backup Generator: In case of power outage
