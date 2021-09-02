@@ -26,6 +26,8 @@
 
 *Remove the cause of incident and bring the system back to secure state*
 
+*[--> Y_BlueTeamOthers/Sanitization.md](https://github.com/p-arrow/Red-Blue-Guide/tree/main/Y_BlueTeamOthers/Sanitization.md)*
+
 1. Reconstruction
    - Restoring a system after sanitization using scripted install-routines
 2. Reimaging
