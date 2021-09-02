@@ -44,3 +44,30 @@
 - Exact Data Match (EDM): Structured database with hashes
 - Document Matching: Based on entire/partial document hash
 - Statistical/Lexicon: Refinement of partial doc matching with Machine Learning
+
+## Typical Data Exfiltration Channels
+
+**1) HTTP(S)**
+- Using commercial file sharing services (Dropbox etc)
+
+**2) HTTP Request to Database**
+- Attacker uses SQL injection to copy records from database
+- Easy to detect as IOC:
+   - spikes in PHP requests
+   - unusually large HTTP response packets
+
+**3) DNS**
+- Easy to detect as IOC:
+   - atypical query e.g. TXT,MX,CNAME,NULL and big size response
+
+**4) Overt Channel**
+- Use of FTP
+- Instant messaging
+- Email
+- P2P
+- or other obvious file sharing tools
+
+**5) Explicit Tunnel**
+- SSH or VPN
+   - Easy to detect: atypical enpoints due to their geographical location
+   - Prevention via strong encryption of data in rest and data in transit
