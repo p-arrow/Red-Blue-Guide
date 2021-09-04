@@ -2,6 +2,8 @@
 
 *Eventvwr > App and Service logs > Microsoft > Windows > Sysmon*
 
+*--> [SwiftOnSecurity/sysmon-config](https://github.com/SwiftOnSecurity/sysmon-config)*
+
 ## Event IDs
 
 - Event ID 1: Process creation
