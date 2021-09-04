@@ -17,3 +17,20 @@
 
 ![grafik](https://user-images.githubusercontent.com/84674087/131898234-23a3a52e-9609-4721-b141-12944d56232d.png)
 
+## Tape Rotation
+
+**1. 10 Tape Rotation**
+- Each tape used once per day for two weeks
+- Then entire set reused
+
+**2. Grandfather-Father-Son (GFS)**
+- Son (Daily)
+- Father (weekly)
+- Grandfather (monthly)
+
+**3. Towers of Hanoi**
+- Like GFS but more complex
+
+**4. 3-2-1 Rule**
+
+![grafik](https://user-images.githubusercontent.com/84674087/132099357-afbdcabb-8331-4400-9d7c-cd314c136d30.png)
