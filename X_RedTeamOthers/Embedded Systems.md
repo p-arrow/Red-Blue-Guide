@@ -25,3 +25,10 @@
 ## FPGA (Field Programmable Gate Array)
 
 - Processor can be programmed for specific function by customer (i/o manufacturer)
+
+## CAN (Controller Area Network)
+
+- To connect subsystems
+- CAN concept originates from 80s/90s
+- No security included back these days (!)
+- No source addressing / message authen in CAN (!)
