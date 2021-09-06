@@ -37,3 +37,10 @@
 ## Key Management
 - Key Escrow: Holds a secure copy of the private key
 - Key Recovery Agent: Backup SW for lost/corrupted keys
+- CRL (Certificate Revocation List): Online list about all revoked certificates of the respective CA
+- CSR (Certificate Signing Request): Send to CA to request a new digital certificate (in case the certificate is about to expire)
+- OCSP (Online Certificate Status Protocol): 
+    - Alternative to CRL
+    - Quicker and more efficient
+    - Doesn't use encryption (!)
+      - Solution is OCSP Stapling: OCSP + integrated as part of TLS handshake (more secure)
