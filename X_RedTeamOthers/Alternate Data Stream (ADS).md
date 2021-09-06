@@ -1,9 +1,10 @@
 *Alternate Data Streams: Meta data attached to another medium (text, picture etc.)*
 
 ## Charakteristic
-- Both GUI and CLI don't show ADS
+- Both GUI and CLI don't show ADS by default
 - Size of carrier medium is not affected by ADS 
 - Can be used to transport stealthy malicious code 
+- Only available under Windows
 
 ## How To (text file)
 1. Create text file: test.txt and fill in arbitrary data, save 
