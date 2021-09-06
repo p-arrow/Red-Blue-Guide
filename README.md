@@ -23,6 +23,8 @@ The focus of this guideline are the well known phases of penetration testing:
 - NW: Network
 - Vuln: Vulnerability
 - IPv4: IP Address v4
+- PW: Password
+- FW: Firewall
 
 # Support
 
