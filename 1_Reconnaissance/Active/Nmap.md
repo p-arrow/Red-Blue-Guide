@@ -20,8 +20,8 @@
 - nmap -sU (UDP scan)
 - nmap -sT  (TCP scan) --> when -sS no option due to missing raw socket access
 - nmap -O: OS identification 
-- nmap -oX: Output .xml; add "--webxml" as stylesheet reference
-- nmap -T: Scan time T0(paranoid) - T5(insane))
+- nmap -oX (Output .xml; add "--webxml" as stylesheet reference)
+- nmap -T (Scan time T0 [paranoid] - T5[insane])
     - **> Fast Speed can cause fragile devices to reboot/print random data (!)**
 
 
@@ -34,6 +34,7 @@
 5) Scripts are stored here: `/usr/share/nmap/scripts`
 
 **Examples:**
+```
 - nmap -sC [IPv4] (-sC = --script=default)
 - nmap --script [script1],[script2],... [IPv4] (explicit script selection)
 - nmap --script http-waf-detect [IPv4]
@@ -42,15 +43,16 @@
 - nmap -sV --script=vuln [IPv4]
 - nmap -sV -p 22 --script ssh2-enum-algos [IPv4]
 - nmap --script-help "*ms* and *sql*"
+```
 
 ## Quick Scans
-1. nmap -F: 100 Ports
-2. nmap --top-ports 10: 10 top Ports scannen
-3. nmap --exclude-ports [Portnr, Portnr, ...]
-4. nmap -sS -sU -p T:22,25,80,U:53,161 [IPv4]
+1. `nmap -F`: 100 Ports
+2. `nmap --top-ports 10`: 10 top Ports scannen
+3. `nmap --exclude-ports [Portnr, Portnr, ...]`
+4. `nmap -sS -sU -p T:22,25,80,U:53,161 [IPv4]`
 
 ## Scanflags
-- nmap --scanflags [your own flag]: 
+- `nmap --scanflags [your own flag]`: 
     - sN: TCP Null (no flag)
     - sF: FIN
     - sX: Xmas (FIN, PSH, URG)
