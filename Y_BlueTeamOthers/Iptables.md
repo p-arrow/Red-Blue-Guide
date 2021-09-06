@@ -66,3 +66,23 @@ Import Rules | sudo iptables-restore < ~/iptables.txt
 - `iptables -A OUTPUT -o eth0 -p udp -m udp --dport 53 -j ACCEPT`
 - `iptables -A OUTPUT -o eth0 -p tcp -m tcp --dport 80 -m state --state NEW -j ACCEPT`
 - `iptables -A OUTPUT -o eth0 -p tcp -m tcp --dport 443 -m state --state NEW -j ACCEPT`
+
+## Recommended Firewall Logs
+
+1. Permitted/Denied/Failed connections
+2. Ports and protocols in use
+3. Bandwidth utilization
+4. NAT/PAT log
+
+## Others
+
+**Abbreviations**
+- SPT = Source Port
+- DPT = Destination Port
+- TTL = Time to Live
+- TOS = Type of Service
+
+**Drop vs Reject**
+- Drop: sending ICMP unreachable
+- Reject: sending TCP RST
+
