@@ -1,20 +1,14 @@
 ## Table Types
 
-#### 1. Filter Table (most common)
-- Filtering inbound/outbound traffic
+**1. Filter Table (most common)**: Filtering inbound/outbound traffic
 
-#### 2. NAT Table
-- Defining NAT in the network
+**2. NAT Table**: Defining NAT in the network
 
-#### 3. Mangle Table
-- For specialized packet alteration (QoS Bits in TCP Header)
+**3. Mangle Table**: For specialized packet alteration (QoS Bits in TCP Header)
 
-#### 4. Raw Table
-- Modify packets before Kernel starts tracking its state (?)
+**4. Raw Table**: Modify packets before Kernel starts tracking its state (?)
 
-#### 5. Security Table
-- Used for Mandatory (MAC) networking rules
-- Called after the Filter Table
+**5. Security Table**: Used for Mandatory (MAC) networking rules and called after Filter Table
 
 ## Chains
 - INPUT
