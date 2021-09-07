@@ -55,3 +55,13 @@
 - Forensic Drive Duplicator: Copies drive and validates it matches the original drive
 - Hardware Write Blocker: Ensure that Forensic Tools cannot change HDD/SSD
 - Software Write Blocker
+
+## Network Forensic Tools
+- SPAN (Switched Port Analyzer): Copy NW traffic to another port
+- Packet Sniffer: 
+    - Record data from frames using mirrored port or tap device
+    - Use Sniffer inside FW or close to an important server
+- Wireshark (GUI)
+- Tcpdump
+- FPC (Full Packet Capture): Payload + Header (High Consumption!)
+- Flow Collector: Record metadata/statistics about NW traffic 
