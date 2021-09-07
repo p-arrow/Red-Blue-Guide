@@ -12,6 +12,37 @@
 
 ![grafik](https://user-images.githubusercontent.com/84674087/132402041-2ab40025-5335-4d19-9788-ce49e695dddb.png)
 
+## Fiber Optic Cables
+
+
+#### SC (Subscriber Connector)
+- Reminder: stick&click
+
+![grafik](https://user-images.githubusercontent.com/84674087/132404553-e742a59e-38c4-4598-a9de-e538cb6d992a.png)
+
+
+#### ST (Straight Tip Connector)
+- Reminder: stick & twist
+
+![grafik](https://user-images.githubusercontent.com/84674087/132404446-8e583d73-3408-4bfa-89fd-8990d4e1821b.png)
+
+
+#### LC (Lucent Connector)
+- Reminder: 2x SC
+
+![grafik](https://user-images.githubusercontent.com/84674087/132404365-f22e9491-c857-4fdd-8ac5-ce390ad755fa.png)
+
+#### MTRJ (Mechanical Transfer-Registered Jack)
+- Reminder: Much smaller than other connectors
+
+![grafik](https://user-images.githubusercontent.com/84674087/132404271-e4a4f6dd-4257-4139-be24-502248d10cb8.png)
+
+
+## Fiber/Copper Standards
+
+![grafik](https://user-images.githubusercontent.com/84674087/132404130-ede856e6-4e56-463a-b1a5-2cca0e19b3fd.png)
+
+
 ## Other Endings
 
 #### RJ45 (LAN)
