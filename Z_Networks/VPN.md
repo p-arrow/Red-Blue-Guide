@@ -5,7 +5,7 @@
 4. Get certificates from the VPN provider directly
    - VPN client only works with correct public key from VPNserver
 
-## Contra
+## Con
 1. Lower speed (but faster than Tor)
 2. Just a piece of hidding your identity
 3. It's obivous to an observer
@@ -25,3 +25,38 @@
    - Confirmation of VPN Providers that no secret data queries from third parties exist
 2. Data Retention Law
    - How long VPN Providers keep user data stored 
+
+## Protocols
+
+#### 1) PPTP/1723
+- Point-to-Point Tunneling Protocol
+- Developed by Microsoft, proprietary
+- Uses CHAP-authentication, which makes it vulnerable
+- Uses GRE to encapsulate PPP packets 
+
+#### 2) L2TP/1701
+- No encryption
+- Uses fixed ports. Easy to block by NAT Firewall
+- Easy to setup
+- Usually paired with IPSec for security reasons
+
+#### 3) SSTP (Secure Socket Tunneling Protocol)
+- Developed by Microsoft, proprietary
+- Not recommended, bad security
+
+#### 4) IKEv2 (Internet Key Exchange)
+- Developed by Microsoft and Cisco
+- Good for mobile platforms
+- Secure and fast
+
+#### 5) IPSec
+
+#### 6) OpenVPN
+- User friendly
+- TCP/UDP based
+- Not natively supported, 3rd party sofware necessary
+- Maybe not easy to configure for non-technical people
+- Best Practice:
+    - 2048 bit or 4096 bit RSA certificates
+    - DHE-RSA-AES256-SHA for exchange of OpenVPN key
+    - AES-256-CBC-SHA for data
