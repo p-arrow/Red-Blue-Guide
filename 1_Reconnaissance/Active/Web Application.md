@@ -32,6 +32,28 @@ space | %20
 ; | %3B
 = | %3D
 
+<br />
+
+## URI (Uniform Ressource Identifier)
+
+*URL is like URI, but for resources on the web*
+
+#### Syntax
+1. URI scheme: http, https, file, mailto, data ...
+2. Hostname: en.wikipedia.org
+3. Path: /wiki/Fish
+- `:` --> goes always after URI scheme
+- `//` --> goes always before hostname
+- `#` --> Fragment
+- Same Origin: If scheme, hostname and port are identical
+
+#### Examples
+- mailto:spam@example.net
+- https://www.google.com
+- https://en.wikipedia.org/wiki/Oxygen#Discovery
+
+<br />
+
 ## Cookie Flags
 
 #### Security Attribute
