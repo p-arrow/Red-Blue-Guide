@@ -10,7 +10,7 @@
 
 - Start by preparing a "notebook" to keep track of all your findings (to not forget any findings and keeping an overview!)
    - [Cherrytree](https://github.com/giuspen/cherrytree)
-   - Mind Map
+   - [Mind Map](https://www.xmind.net/)
    - Simple Notepad
    - Excel
    - etc. 
