@@ -28,3 +28,25 @@ PATCH | Relatively new addition to HTTP / patching resource in some well-defined
 HEAD | Works like GET, except the server doesn't return any content — just headers
 OPTIONS | Can be used to find out what features the server supports
 TRACE | Echoes back what the server received from the client / is often disabled for security reasons
+
+## Status Codes
+- Status Code 200 OK
+- Status Code 201 Created
+- Status Code 202 Accepted
+- Status Code 301 Moved Permanently
+- Status Code 302 Not Found (Moved Temporarily)
+- Status Code 304 Not Modified
+
+#### Client
+- Status Code 400 Bad Request
+- Status Code 401 Unauthorized 
+- Status Code 403 Forbidden
+- Status Code 404 Not Found
+- Status Code 410 Gone
+- Status Code 415 Unsupported Media Type
+
+#### Server
+- Status Code 500 Internal Server Error
+- Status Code 501 Not Implemented
+- Status Code 502 Bad Gateway
+- Status Code 503 Service Unavailable
