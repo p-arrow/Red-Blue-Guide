@@ -1,4 +1,6 @@
-**>> General Information: [Z_Networks/Web Application.md](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Z_Networks/Web%20Application.md)**
+**>> General Information: [Z_Networks/Web Application](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Z_Networks/Web%20Application.md)**
+
+**>> Check out: [3_Exploitation/Web Application](https://github.com/p-arrow/Red-Blue-Guide/blob/main/3_Exploitation/Web%20Application.md)**
 
 ## Methodology 
 
