@@ -11,6 +11,7 @@
 - Start by preparing a "notebook" to keep track of all your findings (to not forget any findings and keeping an overview!)
    - [Cherrytree](https://github.com/giuspen/cherrytree)
    - [Mind Map](https://www.xmind.net/)
+   - [Maltego](https://www.maltego.com/)
    - Simple Notepad
    - Excel
    - etc. 
