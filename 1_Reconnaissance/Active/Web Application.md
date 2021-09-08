@@ -33,3 +33,69 @@
 - Look out for backups of discovered files appending common backup extensions
 
 **>> Once you have identified all the possible endpoints accepting user input, check for all kind of vulnerabilities related to it!**
+
+<br />
+
+## Tools
+
+#### curl
+```
+curl example.com
+curl --head example.com
+curl -X GET example.com 
+curl -X DELETE example.com/include/config.db
+curl -X OPTIONS example.com --head (show available HTTP Methods)
+curl -T file example.com 
+curl -O example.com/file 
+```
+- `-X` = --request
+- `-T` = upload file
+- `-O` = write output to file named like remote file
+
+#### dirb: Web Content Scanner
+- old and slow!
+- `dirb http://example.com/`
+
+#### dirbuster
+- ...
+
+#### dig
+```
+dig @server example.com [DNS record type]
+dig example.com mx
+dig axfr @NS example.com (Exp: @NS = @ns1112.ui-dns.org)
+dig axfr @nsztm1.digi.ninja zonetransfer.me (for educational purpose)
+```
+
+*Checkout: [Z_Networks/DNS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Z_Networks/DNS.md)*
+
+#### ffuf
+- fast fuzzing U fool
+- `ffuf -c -w /usr/share/wordlists/dirb/big.txt -u http://10.10.10.10/FUZZ`
+
+#### gobuster
+```
+- gobuster dir -u http://192.168.0.155/ -w /usr/share/wordlists/dirb/common.txt
+- gobuster -m dns -t 100 -u google.com -w /usr/share/wordlists/metasploit/namelist.txt
+```
+- t = number of concurrent threads
+- m = method
+- q = quit
+- o = output
+
+
+#### nikto
+- `nikto -host example.com`
+
+#### whatweb
+- ...
+
+#### wpscan
+```
+wpscan –url http://example.com –enumerate u (users)
+wpscan --usernames 'wpusers' --passwords 'pass' --url http://sbva.local/blog/
+```
+
+#### red_hawk
+- All in one web scan tool
+- `git clone https://github.com/Tuhinshubhra/RED_HAWK.git`
