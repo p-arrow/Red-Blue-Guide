@@ -21,7 +21,7 @@
 - Any **specialized scanner** to run like wpscan?
 - Any **general purpose scanner** to run? 
 - Initial checks:
-   - robots
+   - robots (www.example.com/robots.txt): allow/disallow search of web crawlers
    - sitemap
    - 404 error
    - SSL/TLS scan (if HTTPS)
