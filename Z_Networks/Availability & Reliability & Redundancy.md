@@ -9,8 +9,8 @@
 - **MTTR** (Mean Time to Repair): Average time to repair NW device
 - **MTBF** (Mean Time between Failures)
 - **HSRP** (Hot Standby Router Protocol): Cisco Proprietary
-- **CARP** (Common Address Redundancy Protocol): Open Std. HSRP
-- **VRRP** (VirtualRouterRedundancyProtocol): IETF Open Std. HSRP
+- **CARP** (Common Address Redundancy Protocol): Open Standard HSRP
+- **VRRP** (VirtualRouterRedundancyProtocol): IETF Open Standard HSRP
 - **GLBP** (Gateway Load Balancing Protocol): Cisco proprietary
 
 #### Performance
