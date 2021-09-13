@@ -5,7 +5,11 @@
 - Windows-key + r & `runas /user:administrator cmd`: Open CMD as admin
 - Windows-key + r & `winver`: Windows VVersion Information
 
-> When run dialog box is open
+<br />
+
+**When run dialog box is open**
+
+<br />
 
 Command | Explanation
 ------- | -----------
@@ -36,6 +40,7 @@ tpm.msc | TPM Management Console
 - Windows/System32/drivers/etc: host file
 - Windows/System32/config/SAM: user credentials (SAM = Security Account Manager)
 - Windows/System32/winevt/Logs: event protocol
+
 
 ## GodMode
 
