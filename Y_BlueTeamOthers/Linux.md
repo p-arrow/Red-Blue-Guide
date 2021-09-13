@@ -19,7 +19,21 @@
 
 ## Directories
 
-**System**
+#### Overview
+- bin/sbin (binary/system binary): Programme
+- cdrom: Zum mounten von CDs/DVDs
+- etc: Konfigurationen
+- media (mount by OS): floppy disk, USB, ext. hard drive etc.
+- mnt (mount manually)
+- opt (optional): Data from vendors, self created stuff
+- proc (process): Sudo proc files + kernel export data to user space
+- run: For temporary data run in RAM
+- srv (service): Data storage when OS is used as server
+- tmp (temporary): Running applications store data here 
+- usr (unix system resource): Non essential user data
+- var (variable): for growing data (log files, crash reports)
+
+**System Paths**
 - /usr/share/man/man1: manuals
 - /etc/apt/sources.list: Packet sources 
 - etc/shells: valid login shells
@@ -28,8 +42,55 @@
 - /etc/pam.d/common-password (check enabled PW hash algorithm)
 - grep -r -i [exploit_name] /usr/share/exploitdb/exploits/ (check available exploits on Kali)
 
-**Network**
+**Network Paths**
 - /etc/network/interfaces: Config of eth0, eth1 etc.
 - /var/www/html/: Web server path (index.html etc.)
 - /etc/apache2/mods-available: Modules for Apache Server
 - /etc/ssh/sshd_config 
+
+## APT Package Tool
+
+```
+apt update
+apt upgrade
+apt full-upgrade --> upgrade + rm obsolete packages + install new dependencies
+apt remove
+apt purge --> remove package, config, user data
+apt cache search [packet] --> check if packet is available
+apt cache showpkg [packet] --> show packet information
+apt cache -v --> show apt version
+apt cache stats --> show statistics
+apt cache unmet --> show unmet dependencies
+apt cache depends [packet] --> show dependencies
+apt cache policy --> show installed repository files
+apt reinstall
+apt clean --> empties directory /var/cache/apt/archives/
+apt autoclean --> only removes packages that can no longer be downloaded, i.e. disappeared from mirror
+apt list --upgradable
+apt list --installed --> show all installed packages
+apt policy --> show installed version
+```
+
+## dpkg (Debian Package) vs APT (Advanced Package Tool)
+
+#### dpkg Features
+- dpkg do installation/analysis of .deb packages and their contents
+- dpkg will fail if a dependency is not met (APT fix this limitation)
+- dpkg installs a package located on your local system
+- dpkg does not automatically resolve dependencies
+
+#### APT Features
+- APT relies on dpkg but differs from it
+- APT installs package from online source
+- APT works to resolve dependencies
+- APT was developed later to overcome design flaws of apt-get
+- APT can be used as GUI via aptitude / synaptic
+
+#### dpkg CMD
+```
+dpkg --listfiles package (or -L)
+dpkg --search file (or -S)
+dpkg --list (or -l)
+dpkg --contents file.deb (or -c)
+dpkg --info file.deb (or -I)
+```
