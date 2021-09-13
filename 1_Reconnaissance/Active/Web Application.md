@@ -18,9 +18,11 @@
    - Excel
    - etc. 
 - Identifying the **technologies** used by the web server
+   - Check out main page with different extensions: home.html / home.asp / home.aspx / home.php
 - Any **known vulnerability** of the version of the technology?
 - Any **well known tech**?
 - Any **useful trick** to extract more information?
+   - Check out metadata of pictures with exiftool
 - Any **specialized scanner** to run like wpscan?
 - Any **general purpose scanner** to run? 
 - Initial checks:
