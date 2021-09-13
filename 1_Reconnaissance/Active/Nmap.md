@@ -79,9 +79,12 @@
 
 
 ## TTL Reply
-The output of an successful ping contains information of TTL (Time to Live)
+The output of a successful ping contains information of TTL (Time to Live)
 - TTL 128: Normally Windows machine
 - TTL 64: Normally Linux machine
+
+![grafik](https://user-images.githubusercontent.com/84674087/133131598-45427a85-9b92-4221-af39-0e95bbcab638.png)
+
 
 <br />
 
