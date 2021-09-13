@@ -26,14 +26,13 @@
 
 
 ## NSE (Nmap Script Engine)
-0) Written in LUA script language
-1) Extended analysis of traget system 
-2) Testing for vulns of certain exploits 
-3) NSE-Skripte prüfen Host+Dienst vor Ausführung (effektiv!)
-4) Only suitable scripts are executed, subject to host
-5) Scripts are stored here: `/usr/share/nmap/scripts`
+- Written in LUA script language
+- Extended analysis of target system 
+- Testing for vulns of certain exploits 
+- NSE-Scripts verify host & service before execution (efficient) --> only suitable scripts are executed
+- Scripts are stored here: `/usr/share/nmap/scripts`
 
-**Examples:**
+**NSE Examples:**
 ```
 - nmap -sC [IPv4] (-sC = --script=default)
 - nmap --script [script1],[script2],... [IPv4] (explicit script selection)
@@ -77,6 +76,12 @@
 3. Usage of alternative sender address: `nmap -S [fakeIPv4]`
    - Only deception (at the expense of missing scan results)
 4. SYN-Stealth-Scanning: Not stealthy anymore (!)
+
+
+## TTL Reply
+The output of an successful ping contains information of TTL (Time to Live)
+- TTL 128: Normally Windows machine
+- TTL 64: Normally Linux machine
 
 <br />
 
