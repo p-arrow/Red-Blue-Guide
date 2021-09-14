@@ -93,6 +93,7 @@ dpkg --search file (or -S)
 dpkg --list (or -l)
 dpkg --contents file.deb (or -c)
 dpkg --info file.deb (or -I)
+dpkg --verify (display modified system files)
 ```
 
 ## etc/shadow
