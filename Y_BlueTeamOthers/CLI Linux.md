@@ -193,3 +193,56 @@
    - `gpg --encrypt file`: encrypt file with generated key + user ID
    - `gpg --decrypt file`: alternatively: gpg file.gpg
 
+## User and Groups
+
+- id [user]
+- **passwd**: Neues Passwort erstellen (bezogen auf aktiven User)
+- **whoami**: Current User
+- **users/who/w/finger**: Show Logged-In Users
+- **su**: switch user account
+    - `su [username]` 
+- **chown**: change owner
+    - `chown alice:alice document.docx`: user and group is "alice"
+- **chgrp**: change group
+- **chmod**: user (u), group (g) and others (o)
+    - `chmod u=rw,g=rw,o=r [file name]`
+    - `chmod o+w [file name]`
+    - `chmod g-w [file name]`
+    - `chmod 750 [file name]` (-rwx r-x ---)
+    - `chmod 777 .` 
+    - `chmod a=r [file name]` (set read-permission for "all")
+    - `chmod 4755/u+s file` (set setuid)
+    - `chmod 2755/g+s file` (set setguid)
+        r/w/x | binary | octal
+         ---  |  000   |   0
+         --x  |  001   |   1
+         -w-  |  010   |   2
+         -wx  |  011   |   3
+         r--  |  100   |   4
+         r-x  |  101   |   5
+         rw-  |  110   |   6
+         rwx  |  111   |   7
+- **useradd**: Adds accounts to the system
+    - `useradd -d homedir -g groupname -m -s shell -u userid accountname`
+    - `-m` = Creates the home directory if it doesn't exist
+    - `-s /bin/false` = the new user would not be able to login via SSH
+    - `useradd -d /home/mcmohd -g developers -s /bin/ksh mcmohd`
+    -  The useradd command modifies /etc/passwd, /etc/shadow, and /etc/group (!)
+- **usermod**: Modifies account attributes
+    - `usermod -a -G sudo user` (appends user to group sudo)
+- **userdel**: Deletes accounts from the system
+    - `deluser user group` (deletes user from group)
+- **groups**: list all groups of current user
+- **groupadd**: Adds groups to the system
+    - `groupadd [-g gid [-o]] [-r] [-f] groupname`
+    - `-o` = with non-unique GID
+    - `-r` =  add a system account
+    - `-f` = exit if group already exists
+- **groupmod**: Modifies group attributes
+- **groupdel**: Removes groups from the system
+- **chfn**: change user information
+    - `chfn [user]`
+    - `finger [user]`: Einträge von chfn anzeigen
+- **history**: show command history of user
+- **getent**: get entries from Name Service Libs
+    - `getent group sudo`
