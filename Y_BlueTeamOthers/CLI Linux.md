@@ -3,26 +3,27 @@
 - `[command1] && [command2]`: command2 gets executed when command1 finished successfully 
 - `Alt + print-key`: Screenshot
 - `Alt + "+"`: zoom in 
-- `pwd`: print working directory
-- `pwdx [pid]`: print workig directory of process pid  
-- `echo`: print function
-- `man [command]`: show manual
+- **pwd**: print working directory
+   - `pwdx [pid]`: print workig directory of process pid  
+- **echo**: print function
+- **man**: show manual   
+   - `man [command]`
    - `/` = search within manual
    - jump through search result: `N` (forward)/`Shift+N` (backward)
-- `ls`: show content of directory 
+- **ls**: show content of directory 
     - `ls -a` ("all")
     - `ls -l` ("long", more detailed)
-- `cd`: change directory
+- **cd**: change directory
     - `cd ..` (parent directory)
     - `cd ~` (Home directory)
     - `cd /` (root directory)
 - `Strg + C`: abort process
-- `exit`: finish terminal
+- **exit**: finish terminal
 - `mkfifo [Option] [Name]`: create named pipe (e.g. from terminal1 to terminal2)
-- `date`: show date and time 
+- **date**: show date and time 
    - datum = $(date +%d.%m.%Y)
    - touch $(date +`hostname`-%d-%m-%y-%H%M.log)
-- `cal`: calendar
+- **cal**: calendar
 - `java -version`: check openJDK version
 - `python --version`: check python version
 - `[command] &`: perform [command] in background 
@@ -30,20 +31,20 @@
 ## Configuration
 
 - `nano ~/.bashrc`: configure bash profile
-- `$PS1`: (Primary) Prompt Shell Variable
+- **$PS1**: (Primary) Prompt Shell Variable
    - Exp: PS1="[\u@\h \w]$"
-- `$RANDOM`: Generates random integer between 0 and 32,767 each time it is referenced
+- **$RANDOM**: Generates random integer between 0 and 32,767 each time it is referenced
    - `echo $(($RANDOM % 100))`: random number between 0 and 99
-- `$PATH`: Indicates the search path for commands
-- `$LANG`: Display Language
-- `chsh`: change shell
+- **$PATH**: Indicates the search path for commands
+- **$LANG**: Display Language
+- **chsh**: change shell
    - (1) `cat /etc/shells` (check existing shells) 2) `chsh -s $(which zsh)` (switch shell)
    - `chsh -s /bin/rbash [username]` (apply restricted shell to user)
-- `timedatectl`: show time settings 
+- **timedatectl**: show time settings 
    - `timedatectl list-timezones`
    - `timedatectl set-timezone`
    - `timedatectl set-local-RTC 0`
-- `DEBIAN_FRONTEND`: environment variable for adjusting debconf (Debian package configuration system)
+- **DEBIAN_FRONTEND**: environment variable for adjusting debconf (Debian package configuration system)
    - `DEBIAN_FRONTEND=noninteractive apt-get -y update`
    - `DEBIAN_FRONTEND=noninteractive apt-get -y upgrade`
    - `DEBIAN_FRONTEND=dialog` (default frontend for apt/apt-get )
@@ -51,29 +52,144 @@
 
 ## Network
 
-- `ifconfig`: show interface details
-- `ip`:
+- **ifconfig**: show interface details
+- **ip**:
    - `ip addr show`
    - `ip addr sh eth0`
    - `ip -br link show` (br=brief)
-- `netstat`: print network connections
+- **netstat**: print network connections
    - `netstat -tulpn`
 - `ping [IPv4]`
-- `host [IPv4]`: Identify host
-- openssl:
+- **host**: Identify host
+   - `host [IPv4]`   
+- **openssl**:
    - `openssl [command] -help`
    - `openssl s_client -connect host:port`
-- scp (OpenSSH secure file copy):
+- **scp** (OpenSSH secure file copy):
    - `scp option source user@host:/tmp`
-- fuser: find out process that opened specific port
+- **fuser**: find out process that opened specific port
    - `fuser 22/tcp`: SSH pid will be shown
-- ufw (uncomplicated FW): managing netfilter FW
+- **ufw** (uncomplicated FW): managing netfilter FW
    - `ufw status`: show FW status
-- ipv6toolkit:
+- **ipv6toolkit**:
    - `sudo scan6 -i [interface] -L -P local --print-unique -e`: get IPv6 + MAC
-- traceroute: UDP probe by default (often ignored by FW though)
+- **traceroute**: UDP probe by default (often ignored by FW though)
    - `traceroute -I example.com` (-I = send ICMP probe)
    - `traceroute -w 10 example.com` (-w = wait for response in seconds)
-- iperf: check bandwidth between two \*nix machines
-- nmblookup: netBIOS enumeration
-   - `nmblookup -A [IPv4]`
+- **iperf**: check bandwidth between two \*nix machines
+
+## Data/File
+
+- `./[binary or script]`: execute binary/script
+- **STDIN: 0 / STDOUT: 1 / STDERR: 2**
+    - `2>&1`: redirect STDERR to STDOUT (">&" means "redirect file descriptor")
+    - `&>/dev/null`: redirects all output to /dev/null
+- **cp**: copy from to
+    - `cp example.txt /var/www/html/`
+- **less**: display data page by page
+    - `q`: quit
+- **head**: show first lines of file
+- **tail**: show last lines of file
+- **mv**: 1) Rename file 2) move file from to
+    - `mv example1 example2`
+    - `mv example1 /tmp`
+- **rm**: remove file 
+    - `rm *`: remove all data 
+    - `rm -rf`: remove non-empty directory (-r=recursively, -f=no prompt)
+- **mkdir**: create directory 
+    - `mkdir -p lib/x86_64_so`: create directory including parent directory
+    - `mkdir /home/newuser/{downloads,uploads}`: create several files at once
+- **mktemp**: create file/directory with random name
+    - `mktemp -d dir.XXXX` (-d = directory)
+- **rmdir**: remove directory 
+- **wc**: word count (lines / words / bytes / filename)
+- **grep**: search for text file 
+    - `-i`: ignore uppercase/lowercase 
+    - `-v`: invers 
+    - `-w`: treat serach term as word 
+    - `-c`: return count of matching strings
+    - `-l`: return name of files with matching lines
+    - `-o`: print only matched parts (-o "s" ; -o "Word")
+    - `ls | grep .pdf`
+    - `grep 'word1\|word2'`: search two terms 
+    - `grep "10\.1\.0\.10\," firewall.log | grep "23$"`
+    - `grep -r -i "voldemort" /tmp/*.sh`
+- **cat**: concatenate/read the file and output content
+    - `cat -b dictionary.txt`
+- **which** [data]: Returns path of linux file if existing in PATH
+- **locate** [string]: Returns all paths that contain [string]
+- **whereis** [data]: Returns all paths
+- **find**:
+    - `find ./dir1/dir2 -name *.txt`
+    - `find . -readable -and -size 1033c`
+    - `find ./dir -perm 664`
+    - `find . -empty`
+    - `find -name '*.php' -mtime -1 -ls`
+- **file**: display data-type info
+- **zip/unzip**: for packages
+- **tar**: Archive program for files and directories 
+     - `tar -xvf [file]`: extract file verbosly
+     - `tar -cvf [file] /etc`: create file verbosly 
+     - `tar -cf archiv.tar test.txt test2.txt`: create archiv with files "test" and "test2"
+     - `tar -xzvf archiv.tar.gz`: extract zipped file verbosly
+- **sleep**: invoke delay (indicate in seconds)
+- **wget**: non-interactive download of files from the Web
+- **dd**: convert and copy a file (dd if=file_in of=file_out bs=1 skip=40)
+- **pr** (print): Does formatting of files on the terminal screen or for a printer
+- **touch**: 
+    - touch -a [filename]: change access timestamp of file (-a access/-m modification time)
+    - touch -m [filename]: change modification timestamp
+    - touch [filename1] -r [filename2]: apply timestamp from f1 upon f2
+    - touch -h [filename]: change timestamp of symbolic link (i/o original file)
+    - touch [filename]: create file 
+    - touch /tmp/'dir;bash -p': create file/dir + start bash 
+- **ln**: create soft links
+    - `ln -s [file] [name]`: soft link with self-created name (-s = soft link ; hard links by default)
+- **sort**: Returns sorted text file 
+    - `-r` = sorted reverse
+    - `-n` = sorted in numerical order
+    - `-k 2` = sorted acc. to second column
+    - `-t ","` = delimited by ","
+    - `sort -t "," -k 2 syslog.txt`
+- **uniq**: retrieve unique elements from file
+    - `uniq -u [word]`: -u = unique 
+- **tr**: translate/squeeze/delete characters from stdin
+    - `cat linux.txt | tr [a-z] [A-Z]`: Change text from lowercase to uppercase
+    - `echo "TEXT" | tr a-zA-Z n-za-mN-ZA-M` (ROT13/Cäsar-Encryption)
+    - `tr -s ' ' '\n'`: replace space with newline
+- **nano**:
+    - `Ctrl+Shift+6`: Mark block, then move cursor, then Strg+K to delete
+    - `nano -l [file]`: show line number
+- **vi**:
+    - `i`: start insert Mode
+    - `ESC`: exit insert Mode
+    - In Normal mode: `y/y^/y$` (copy), `d/d$` (delete), `p` (paste)
+    - `:wq` (write and quit)
+    - `:wq!` (write, quit and override)
+- **tee**: read from standard input and write to standard output and files
+- **sed**: Stream Editor, useful with regex
+    - `cat [file] | sed /regex-pattern/action`
+    - action: d(elete), s(ubstitute), -n p(rint)
+    - `cat /etc/passwd | sed '1,5s/sh/quiet/g'`
+    - `cat /etc/passwd | sed -n '1,3p'`
+    - `cat testing | sed '/^daemon/d'`
+    - [Tutorialspoint](https://www.tutorialspoint.com/unix/unix-regular-expressions.htm)
+- **cut**: Remove specific part of results
+    - `cut -c5-5 syslog.txt`: returns 5th - 10th char. in each line
+    - `cut -d " " -f1-4 syslog.txt`: returns first four entries of each line, delimited by " "
+- **unshadow**:
+    1. `sudo unshadow /etc/passwd /etc/shadow > password.txt`
+    2. `john password.txt`
+
+## Security/Encryption
+
+- **md5sum**
+- **sha256sum**
+- **sha384sum**
+- **sha512sum**
+- **gpg**: built-in encryption/decryption tool (e.g. password vault, signature)
+   - `gpg --gen-key: generate keys + user ID
+   - `gpg -c file`: encrypt with password (based on AES128 algorithm)
+   - `gpg --encrypt file`: encrypt file with generated key + user ID
+   - `gpg --decrypt file`: alternatively: gpg file.gpg
+
