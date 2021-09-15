@@ -213,16 +213,16 @@
     - `chmod a=r [file name]` (set read-permission for "all")
     - `chmod 4755/u+s file` (set setuid)
     - `chmod 2755/g+s file` (set setguid)
-       - r/w/x | binary | octal
-         ----- | ------ | -----
-          ---  |  000   |   0
-          --x  |  001   |   1
-          -w-  |  010   |   2
-          -wx  |  011   |   3
-          r--  |  100   |   4
-          r-x  |  101   |   5
-          rw-  |  110   |   6
-          rwx  |  111   |   7
+    -  r/w/x | binary | octal
+       ----- | ------ | -----
+        ---  |  000   |   0
+        --x  |  001   |   1
+        -w-  |  010   |   2
+        -wx  |  011   |   3
+        r--  |  100   |   4
+        r-x  |  101   |   5
+        rw-  |  110   |   6
+        rwx  |  111   |   7
 - **useradd**: Adds accounts to the system
     - `useradd -d homedir -g groupname -m -s shell -u userid accountname`
     - `-m` = Creates the home directory if it doesn't exist
@@ -247,3 +247,86 @@
 - **history**: show command history of user
 - **getent**: get entries from Name Service Libs
     - `getent group sudo`
+
+## System
+
+- **shutdown**
+    - `shutdown -h now`: Instant shutdown
+    - `shutdown -r now`: reboot
+- **reboot**
+- `apt-cdrom add /media/cdrom`: Read-in CD 
+- **service**:
+    - `service [program] restart`: restart service (after config change)
+    - `service [program] status`: show status 
+    - `systemctl status [program]` 
+- **nohup** (no hangup): continue command even user logs out or exit shell
+- **journalctl**: query the systemd journal
+    - `journalctl -xe`
+- **lsusb**: display usb devices
+- **lsmod**: display modules in the linux kernel
+- **udevadm**: u(ser)dev(ice)adm(inistration) tool
+    - `udevadm info -a -p /sys/bus/usb/devices/1-1`: -p = path, 1-1 = bus1 & port1
+- **uname**: print system information (kernel etc.)
+    - `uname -r`: distribution version
+- **uptime**: show uptime
+- **lsb_release**: print distribution specific information (lsb=Linux Standard Base)
+    - `lsb_release -a`
+- **df**: show disk space of complete file system
+    - `df -ah`
+- **du**: show disk usage of files in a directory
+    - `du -ah /etc`
+- **ps**: display information of active processes
+    - VSZ (Virtual MemSize) / RSS (Physical MemSize) / TTY (?=none) / STAT (S=sleeping,R=running)
+    - `ps -fp [pid]`: show corresponding CLI command 
+    - `ps axu | grep [pid/program]`
+    - `ps aux --sort=-%mem | less`
+- **dmidecode**: displays the S(ystem)M(anagement)BIOS/DMI in a human-readable way
+- **export**: show environment variables 
+- **modprobe**: remove/add modules
+- **dmesg**: show Kernel-Ringpuffer
+    - `dmesg -H` 
+- **lspci**: Show PCI Devices
+     - `lspci -vnn | grep [x]`: -vnn = verbose + PCI Vendor name & numbers
+- **lsof**: Anzeige von belegten Ressourcen
+    - `lsof -i :22` (SSH-Ressourcen)
+    - `lsof -p [pid]`
+    - `lsof -u [uid]`
+    - `lsof -R [pid]` (show PPID)
+- **free**: Memory Consumption
+- **top**: Memory Consumption
+- **kill**: send signal to process
+    - `kill -l`: show all available signals
+    - `kill -9 [PID]`
+    - `sudo killall sshd`: kick out unauthorized user
+- **htop**: GUI top
+- **systemd**
+- **pstree**: Show parent/child relation of processes
+- **fsck**: file system check
+- **cron**:
+    - `* * * * * /usr/bin/echo.sh >> /dev/pts/0`: redirect output from echo.sh
+    - `*/2 * * * * command`: execute command every two minutes
+- **crontab**: 
+    - `crontab -l`: display cron jobs
+    - `crontab -u root -l`: user specific)
+    - `grep -r [cronjob] /etc/cron.* /etc/crontab`
+- **write**: send a message to another user on the host
+- **mesg**: display (or do not display) messages from other users
+- **jobs**: 	Lists all jobs
+    - `bg %n`: 	Places job in background, where n is the job ID
+    - `fg %n`: 	Brings job into foreground, where n is the job ID
+    - `Control-Z`: Stops foreground job, places it in the background as stopped job
+    - `[command] &`: "&" puts job in background
+- **screen**: terminal multiplexer
+    - `screen -S [name]`: start screen session with specified name
+    - start task in window 0
+    - `Ctrl+A, c`: create new window 1 (create another task)
+    - `Ctrl+A, 0 or 1`: switch windows
+    - `Ctrl+A,Shift+S`: split window horizontally
+    - `Ctrl+A, Tab`: switch between split windows
+    - `Ctrl+A, (|)`: split vertically
+    - `Ctrl+A, Q`: Close all regions except the current one.
+    - `Ctrl+A, X`: Close the current region.
+- **grub**: boot loader
+    - `grub-mkpasswd-pbkdf2`: protect GRUB from anyone who boots your computer
+    - `cat /var/log/boot.log`: review boot log
+    - `nano /etc/default/grub`: change grub settings (timeout etc.)
