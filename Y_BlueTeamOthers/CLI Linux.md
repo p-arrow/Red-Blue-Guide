@@ -137,12 +137,12 @@
 - **dd**: convert and copy a file (dd if=file_in of=file_out bs=1 skip=40)
 - **pr** (print): Does formatting of files on the terminal screen or for a printer
 - **touch**: 
-    - touch -a [filename]: change access timestamp of file (-a access/-m modification time)
-    - touch -m [filename]: change modification timestamp
-    - touch [filename1] -r [filename2]: apply timestamp from f1 upon f2
-    - touch -h [filename]: change timestamp of symbolic link (i/o original file)
-    - touch [filename]: create file 
-    - touch /tmp/'dir;bash -p': create file/dir + start bash 
+    - `touch -a [filename]`: change access timestamp of file (-a access/-m modification time)
+    - `touch -m [filename]`: change modification timestamp
+    - `touch [filename1] -r [filename2]`: apply timestamp from f1 upon f2
+    - `touch -h [filename]`: change timestamp of symbolic link (i/o original file)
+    - `touch [filename]`: create file 
+    - `touch /tmp/'dir;bash -p'`: create file/dir + start bash 
 - **ln**: create soft links
     - `ln -s [file] [name]`: soft link with self-created name (-s = soft link ; hard links by default)
 - **sort**: Returns sorted text file 
@@ -213,15 +213,16 @@
     - `chmod a=r [file name]` (set read-permission for "all")
     - `chmod 4755/u+s file` (set setuid)
     - `chmod 2755/g+s file` (set setguid)
-        r/w/x | binary | octal
-         ---  |  000   |   0
-         --x  |  001   |   1
-         -w-  |  010   |   2
-         -wx  |  011   |   3
-         r--  |  100   |   4
-         r-x  |  101   |   5
-         rw-  |  110   |   6
-         rwx  |  111   |   7
+       - r/w/x | binary | octal
+         ----- | ------ | -----
+          ---  |  000   |   0
+          --x  |  001   |   1
+          -w-  |  010   |   2
+          -wx  |  011   |   3
+          r--  |  100   |   4
+          r-x  |  101   |   5
+          rw-  |  110   |   6
+          rwx  |  111   |   7
 - **useradd**: Adds accounts to the system
     - `useradd -d homedir -g groupname -m -s shell -u userid accountname`
     - `-m` = Creates the home directory if it doesn't exist
