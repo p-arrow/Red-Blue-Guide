@@ -196,7 +196,10 @@
 ## User and Groups
 
 - id [user]
-- **passwd**: Neues Passwort erstellen (bezogen auf aktiven User)
+- **passwd**: Create new password for current user
+- **smbpasswd**: Create new Samba password for current user
+    - `smbpasswd -a [user]` (-a = add)
+    - Ensure synchronization of Samba DB: smb.conf --> global setting --> `unix password sync` 
 - **whoami**: Current User
 - **users/who/w/finger**: Show Logged-In Users
 - **su**: switch user account
