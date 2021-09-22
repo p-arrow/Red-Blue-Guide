@@ -43,7 +43,7 @@ space | %20
 3. Path: /wiki/Fish
 - `:` --> goes always after URI scheme
 - `//` --> goes always before hostname
-- `#` --> Fragment
+- `#` --> Fragment (all text with prepended # is NOT sent to servers. Often used for DOM XSS Attacks !)
 - Same Origin: If scheme, hostname and port are identical
 
 #### Examples
