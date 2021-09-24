@@ -1,27 +1,28 @@
 # RedTeam
 
 ## Common Commands
-- nmap -sn / -sP  (only Host Discovery)
-- nmap -Pn (no Host Discovery, only port scan)
-- nmap -p21,23,80 (explicit port selection)
-- nmap -p- (all 65k ports)
-- nmap -v (verbose)
-- nmap -6 (IPv6)
-- nmap -reason (short explanation of host answer)
-- nmap -sI (TCP-IDLE Scan via Zombie Host) --> investigate via IP-ID if port is open/closed
-- nmap -Pn -p- -sI [IPv4 Zombie] [IPv4 dest.]
-- nmap -PU80,443 (UDP-Scan + explicit port selection)
-- nmap -PE (ICMP type 8 = echo request)
-- nmap -PP (ICMP type 14 = timestamp 
-- nmap -PM (ICMP type 18 = address mask)
-- nmap -sA  (ACK Paket (FW Walking possible!))
-- nmap -sV  (Version identification)
-- nmap -sS (SYN scan)
-- nmap -sU (UDP scan)
-- nmap -sT  (TCP scan) --> when -sS no option due to missing raw socket access
-- nmap -O: OS identification 
-- nmap -oX (Output .xml; add "--webxml" as stylesheet reference)
-- nmap -T (Scan time T0 [paranoid] - T5[insane])
+- `nmap` (scans 1,000 TCP ports on the target)
+- `nmap -sn / -sP`  (only Host Discovery)
+- `nmap -Pn` (no Host Discovery, only port scan)
+- `nmap -p21,23,80` (explicit port selection)
+- `nmap -p-` (all 65k ports)
+- `nmap -v` (verbose)
+- `nmap -6` (IPv6)
+- `nmap -reason` (short explanation of host answer)
+- `nmap -sI` (TCP-IDLE Scan via Zombie Host) --> investigate via IP-ID if port is open/closed
+- `nmap -Pn -p- -sI` [IPv4 Zombie] [IPv4 dest.]
+- `nmap -PU80,443` (UDP-Scan + explicit port selection)
+- `nmap -PE` (ICMP type 8 = echo request)
+- `nmap -PP` (ICMP type 14 = timestamp 
+- `nmap -PM` (ICMP type 18 = address mask)
+- `nmap -sA`  (ACK Paket (FW Walking possible!))
+- `nmap -sV`  (Version identification)
+- `nmap -sS` (SYN scan)
+- `nmap -sU` (UDP scan)
+- `nmap -sT`  (TCP scan) --> when -sS no option due to missing raw socket access
+- `nmap -O` (OS identification )
+- `nmap -oX` (Output .xml; add "--webxml" as stylesheet reference)
+- `nmap -T` (Scan time T0 [paranoid] - T5[insane])
     - **> Fast Speed can cause fragile devices to reboot/print random data (!)**
 
 
