@@ -3,7 +3,7 @@
 ## Common Commands
 - `nmap` (scans 1,000 TCP ports on the target)
 - `nmap -sn / -sP`  (only Host Discovery)
-- `nmap -Pn` (no Host Discovery, only port scan)
+- `nmap -Pn` (no Host Discovery/Ping, only port scan)
 - `nmap -p21,23,80` (explicit port selection)
 - `nmap -p-` (all 65k ports)
 - `nmap -v` (verbose)
