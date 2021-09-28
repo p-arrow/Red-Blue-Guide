@@ -10,7 +10,7 @@
 - `nmap -6` (IPv6)
 - `nmap -reason` (short explanation of host answer)
 - `nmap -sI` (TCP-IDLE Scan via Zombie Host) --> investigate via IP-ID if port is open/closed
-- `nmap -Pn -p- -sI` [IPv4 Zombie] [IPv4 dest.]
+- `nmap -Pn -p- -sI [IPv4 Zombie] [IPv4 target]`
 - `nmap -PU80,443` (UDP-Scan + explicit port selection)
 - `nmap -PE` (ICMP type 8 = echo request)
 - `nmap -PP` (ICMP type 14 = timestamp 
@@ -19,7 +19,7 @@
 - `nmap -sV`  (Version identification)
 - `nmap -sS` (SYN scan)
 - `nmap -sU` (UDP scan)
-- `nmap -sT`  (TCP scan) --> when -sS no option due to missing raw socket access
+- `nmap -sT`  (TCP scan) --> when -sS is no option due to missing raw socket access, i.e. no root access
 - `nmap -O` (OS identification )
 - `nmap -oX` (Output .xml; add "--webxml" as stylesheet reference)
 - `nmap -T` (Scan time T0 [paranoid] - T5[insane])
