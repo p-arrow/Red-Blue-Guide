@@ -1,3 +1,5 @@
+**>> Check out: [https://nmap.org/book/man-briefoptions.html](https://nmap.org/book/man-briefoptions.html)**
+
 # RedTeam
 
 ## Common Commands
