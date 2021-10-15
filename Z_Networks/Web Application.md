@@ -156,4 +156,19 @@ space | %20
    - http://foo.com/api/v2.0/customer/1234
    - http://foo.com/api/v2.2/customer/1234
 
+#### Same Origin Policy (SOP)
+
+Imagine that you opened Website A and Website B in your browser. SOP prevents Website A from reading content of Website B and vice versa.
+
+- Open any website, open WebDev Tool, go to Console and enter: `var fee = window.open('https://www.google.com', 'right')`
+    - This opens google.com in another tab 
+- Then enter on website A: `fee.document.body.innerHTML='hello'
+    - This code works only when website A has same origin as google.com
+    - If not, the execution is prevented (SOP) 
+- The opened tab with google.com has a reference to your webiste A, so called "window opener"
+- You cannot change the content of website A, but: window.opener.location='www.google.de'
+    - You can change the location of website A (in this example to www.google.de)
+
+
+![grafik](https://user-images.githubusercontent.com/84674087/137503278-1decbb67-ae8f-4c75-8e22-bff3f978aa22.png)
 
