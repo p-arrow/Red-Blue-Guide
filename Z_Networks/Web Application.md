@@ -158,17 +158,37 @@ space | %20
 
 #### Same Origin Policy (SOP)
 
-> Imagine that you opened Website A and Website B in your browser. SOP prevents Website A from reading content of Website B and vice versa.
+> Imagine that you open Website A and Website B in your browser. SOP prevents Website A from reading content of Website B and vice versa.
 
-- Open any website, open WebDev Tool, go to Console and enter: `var fee = window.open('https://www.google.com', 'right')`
-    - This opens google.com in another tab 
-- Then enter on website A: `fee.document.body.innerHTML='hello'`
-    - This code works only when website A has same origin as google.com
-    - If not, the execution is prevented (SOP) 
-- The opened tab with google.com has a reference to your webiste A, so called "window opener"
-- You cannot change the content of website A, but: `window.opener.location='www.google.de'`
-    - You can change the location of website A (in this example to www.google.de)
-
+- SOP is enforced by your browser, and influenced by server
+    - If you use an API which is accessed directly (w/o browser) you need other defense layers: Authentication, Rate-limiting, Captchas etc. 
+- Open any website (e.g. websitea.com), open WebDev Tool, go to Console and enter:
+    - `var fee = window.open('https://www.websitea.com', 'right')`
+    - This opens websitea.com in another tab 
+    - Then enter on current website A: `fee.document.body.innerHTML='hello'`
+    - This code works only when website A has same origin as website A (which is obviously the case) 
+    - If not, SOP prevents execution
+    - The second tab with websitea.com has a reference to your current webiste A, so called "window opener"
+    - You cannot change the content of website A, but the location: `window.opener.location='www.google.de'`
+- **Local Storage** is accessible from sites with same origin, e.g. open website A in several tabs and they all have access to the same local storage
+- Contrary to SOP, **Cookies** are identified by name / domain / path
+    - name = value; domain = example.com; path = /  
+    - This means cookies don't compare URI scheme or port (!)
+    - Cookies can be shared among subdomains
+- **Frames** can only access content of frames with same origin  +navigate other frames
+    - Parent frame: `window.frames[0].location` 
+    - Child frame: `window.parent`, `window.top`
+    - Windows: `window.opener`, `var x = window.open(...)`
+- **XHR**: One can send requests to other sites (from website A) but SOP prevents to see the response (from website B)
+    - `var xhr = new XMLHttpRequest()`
+    - `xhr.open("GET", "https://www.websitea", "false")` 
+    - `xhr.send()` --> this works 
+    - `xhr.open("GET", "https://www.websiteb", "false")` 
+    - `xhr.send()` --> this don't work thus you don't have access to the response
+- **CORS** (Cross-Origin Resource Sharing) allows a site to "opt-in" to weakening SOP and allow other sites to read data
+    - If website A requests data from website B, then website B must enforce an exception
+    - Sender: uses XHR
+    - Receiver: uses CORS --> Access-Control-Allow-Origin: http://websitea.com
 
 ![grafik](https://user-images.githubusercontent.com/84674087/137503278-1decbb67-ae8f-4c75-8e22-bff3f978aa22.png)
 
