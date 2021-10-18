@@ -69,6 +69,7 @@ apt autoclean --> only removes packages that can no longer be downloaded, i.e. d
 apt list --upgradable
 apt list --installed --> show all installed packages
 apt policy --> show installed version
+apt-file search [package] --> APT package searching utility
 ```
 
 ## dpkg (Debian Package) vs APT (Advanced Package Tool)
