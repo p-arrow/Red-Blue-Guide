@@ -252,7 +252,10 @@
     - `getent group sudo`
 
 ## System
-
+- **apt**
+    - `apt update`
+    - `apt upgrade`
+    - More details: [BlueTeamOthers/Linux](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Y_BlueTeamOthers/Linux.md#apt-package-tool) 
 - **shutdown**
     - `shutdown -h now`: Instant shutdown
     - `shutdown -r now`: reboot
