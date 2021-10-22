@@ -43,6 +43,9 @@
 - Framework for ensuring proper application of SPF and DKIM
 - Based on policy published as DNS record
 
+**OpenPGP**
+- Common Standard for email encryption
+- Best Practices: [riseup.net/OpenPGP](https://riseup.net/en/security/message-security/openpgp/best-practices#use-the-sks-keyserver-pool-instead-of-one-specific-server-with-secure-connections)
 
 ## DMARC
 
