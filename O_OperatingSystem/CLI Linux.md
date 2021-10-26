@@ -180,6 +180,9 @@
 - **unshadow**:
     1. `sudo unshadow /etc/passwd /etc/shadow > password.txt`
     2. `john password.txt`
+- **eog**: GNOME image viewer
+    - `eog *` show all photos 
+
 
 ## Security/Encryption
 
