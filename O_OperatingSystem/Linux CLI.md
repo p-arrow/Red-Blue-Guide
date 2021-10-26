@@ -30,6 +30,8 @@
 - **background**
    - `[command] &`: perform [command] in background 
 
+<br />
+
 ## Configuration
 
 - **bashrc** (bash resource): script file that’s executed when a user logs in
@@ -52,6 +54,12 @@
    - `DEBIAN_FRONTEND=noninteractive apt-get -y upgrade`
    - `DEBIAN_FRONTEND=dialog` (default frontend for apt/apt-get )
    - `DEBIAN_FRONTEND=readline` (most traditional; for slow remote connections; entirely CLI)
+- **tasksel**: a user interface for installing tasks
+- **update-alternatives**: creates, removes, maintains and displays information about the symbolic links comprising the Debian alternatives system
+   - `update-alternatives --query editor` to check the installed editors on the system
+   - `update-alternatives --config x-session-manager` to choose a particular implementation of x-session-manager (e.g. GNOME, XFCE, Cinnamon etc.)
+
+<br />
 
 ## Network
 
@@ -80,6 +88,8 @@
    - `traceroute -I example.com` (-I = send ICMP probe)
    - `traceroute -w 10 example.com` (-w = wait for response in seconds)
 - **iperf**: check bandwidth between two \*nix machines
+
+<br />
 
 ## Data/File
 
@@ -186,6 +196,7 @@
 - **eog**: GNOME image viewer
     - `eog *` show all photos 
 
+<br />
 
 ## Security/Encryption
 
@@ -198,6 +209,8 @@
    - `gpg -c file`: encrypt with password (based on AES128 algorithm)
    - `gpg --encrypt file`: encrypt file with generated key + user ID
    - `gpg --decrypt file`: alternatively: gpg file.gpg
+
+<br />
 
 ## User and Groups
 
