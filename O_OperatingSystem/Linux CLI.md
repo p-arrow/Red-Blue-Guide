@@ -292,6 +292,7 @@
     - `ps aux --sort=-%mem | less`
 - **dmidecode**: displays the S(ystem)M(anagement)BIOS/DMI in a human-readable way
 - **export**: show environment variables 
+    - export PS1='$ ' 
 - **modprobe**: remove/add modules
 - **dmesg**: show Kernel-Ringpuffer
     - `dmesg -H` 
