@@ -30,9 +30,10 @@
 
 ## Configuration
 
-- `nano ~/.bashrc`: configure bash profile
+- **bashrc** (bash resource): script file that’s executed when a user logs in
+   - `nano ~/.bashrc`: configure bashrc
 - **$PS1**: (Primary) Prompt Shell Variable
-   - Exp: PS1="[\u@\h \w]$"
+   - Example: PS1="[\u@\h \w]$" --> [user@host working directory]$
 - **$RANDOM**: Generates random integer between 0 and 32,767 each time it is referenced
    - `echo $(($RANDOM % 100))`: random number between 0 and 99
 - **$PATH**: Indicates the search path for commands
