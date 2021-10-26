@@ -6,6 +6,9 @@
 - **pwd**: print working directory
    - `pwdx [pid]`: print workig directory of process pid  
 - **echo**: print function
+- **xargs**: build and execute command lines from standard input
+   - `find | xargs 2>/dev/null | base64 -d | strings -n 8`
+   - `ls | while read line; do xargs $line; done`
 - **man**: show manual   
    - `man [command]`
    - `/` = search within manual
@@ -24,9 +27,8 @@
    - datum = $(date +%d.%m.%Y)
    - touch $(date +`hostname`-%d-%m-%y-%H%M.log)
 - **cal**: calendar
-- `java -version`: check openJDK version
-- `python --version`: check python version
-- `[command] &`: perform [command] in background 
+- **background**
+   - `[command] &`: perform [command] in background 
 
 ## Configuration
 
