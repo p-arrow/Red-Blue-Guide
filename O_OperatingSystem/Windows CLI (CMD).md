@@ -89,6 +89,17 @@
    - `icacls testfile.txt /grant student:R`: R = read permission
 - **attrib**: show and modify file attributes
 - **fc**: file compare
+- **icacls**: Displays or modifies discretionary access control lists
+   - Details: (Win Docs)[https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls]
+   - F - Full access
+   - M - Modify access
+   - RX - Read and execute access
+   - R - Read-only access
+   - W - Write-only access
+   - Examples:
+      - `icacls [file] /grant User1:(D,WDAC)`: Grant the User1 Delete and Write DAC permissions to [file]
+      - `icacls [file] /grant *S-1-1-0:(D,WDAC)`: Grant the User defined by SID S-1-1-0 Delete and Write DAC permissions to [file]
+
 
 ## System
 
