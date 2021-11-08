@@ -90,7 +90,7 @@
 - **attrib**: show and modify file attributes
 - **fc**: file compare
 - **icacls**: Displays or modifies discretionary access control lists
-   - Details: (Win Docs)[https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls]
+   - Details: [Win Docs](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls)
    - F - Full access
    - M - Modify access
    - RX - Read and execute access
