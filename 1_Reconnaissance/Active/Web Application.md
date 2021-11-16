@@ -52,10 +52,12 @@ curl -X DELETE example.com/include/config.db
 curl -X OPTIONS example.com --head (show available HTTP Methods)
 curl -T file example.com 
 curl -O example.com/file 
+curl -u username:password http://
 ```
 - `-X` = --request
 - `-T` = upload file
 - `-O` = write output to file named like remote file
+- `-u` = --user
 
 #### dirb: Web Content Scanner
 - old and slow!
@@ -104,3 +106,20 @@ wpscan --usernames 'wpusers' --passwords 'pass' --url http://sbva.local/blog/
 #### red_hawk
 - All in one web scan tool
 - `git clone https://github.com/Tuhinshubhra/RED_HAWK.git`
+
+<br />
+
+## WebApplication Features
+
+#### Cache-Control
+- **no-cache**:
+   - It does not prevent data being cached locally
+   - Forces validation of the cached content
+   - Browser must check for new versions when the page is requested again
+- **private**:
+   - private does not prevent any caching by web browsers
+- **no-store**
+   - strongest and preferred directive for secure applications
+   - no-store instructs browsers not to store the content locally
+- **Pragma**: "his header serves for backwards compatibility with the HTTP/1.0 caches that do not have a Cache-Control HTTP/1.1 header" [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Pragma)
+- View cache on Firefox: `about:cache`
