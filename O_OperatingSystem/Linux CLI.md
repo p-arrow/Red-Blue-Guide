@@ -155,9 +155,12 @@
     - `touch [filename1] -r [filename2]`: apply timestamp from f1 upon f2
     - `touch -h [filename]`: change timestamp of symbolic link (i/o original file)
     - `touch [filename]`: create file 
+    - `touch -c [filename]`: do not create file if file does not exist yet (but only change timestamp)
     - `touch /tmp/'dir;bash -p'`: create file/dir + start bash 
 - **ln**: create soft links
-    - `ln -s [file] [name]`: soft link with self-created name (-s = soft link ; hard links by default)
+    - `ln -s [file] [name]`: soft link with self-created name
+      - `-s` = soft link
+      - hard links by default
 - **sort**: Returns sorted text file 
     - `-r` = sorted reverse
     - `-n` = sorted in numerical order
@@ -214,7 +217,8 @@
 
 ## User and Groups
 
-- id [user]
+- **id**: show ID of user
+    - `id [user]`
 - **passwd**: Create new password for current user
 - **smbpasswd**: Create new Samba password for current user
     - `smbpasswd -a [user]` (-a = add)
@@ -279,7 +283,8 @@
     - `shutdown -h now`: Instant shutdown
     - `shutdown -r now`: reboot
 - **reboot**
-- `apt-cdrom add /media/cdrom`: Read-in CD 
+- **Read-in CD**
+    - `apt-cdrom add /media/cdrom`
 - **service**:
     - `service [program] restart`: restart service (after config change)
     - `service [program] status`: show status 
@@ -307,7 +312,7 @@
     - `ps aux --sort=-%mem | less`
 - **dmidecode**: displays the S(ystem)M(anagement)BIOS/DMI in a human-readable way
 - **export**: show environment variables 
-    - export PS1='$ ' 
+    - `export PS1='$ '` set PS1 to '$ '
 - **modprobe**: remove/add modules
 - **dmesg**: show Kernel-Ringpuffer
     - `dmesg -H` 
