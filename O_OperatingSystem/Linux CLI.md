@@ -115,6 +115,8 @@
 - **mktemp**: create file/directory with random name
     - `mktemp -d dir.XXXX` (-d = directory)
 - **rmdir**: remove directory 
+- **unlink**: to remove the specified file
+    - `unlink [file]`
 - **wc**: word count (lines / words / bytes / filename)
 - **grep**: search for text file 
     - `-i`: ignore uppercase/lowercase 
