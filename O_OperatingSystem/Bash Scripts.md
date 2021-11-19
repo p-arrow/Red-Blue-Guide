@@ -1,3 +1,12 @@
+## Batch
+- `@echo off`
+   - `echo off`:  no print out of command, but result only 
+   - `@`:  no output "echo off"
+- `rem`: comment 
+- `pause`: script stop ("Press any button...")
+
+<br />
+
 ## Basics I
 
 ### Variables
@@ -59,8 +68,6 @@ grep "^$USER" /etc/passwd
    - `((a++))` --> a + 1
    - `((variable = 28))`
 
-<br />
-
 ### Operators
 ```
 a=10
@@ -73,8 +80,6 @@ echo "Mod : `expr $b % $a`"  // 0
 echo "Equ :"[ $a == $b ]   // False
 echo "Une :"[ $a != $b ]   // True
 ```
-
-<br />
 
 ### If-Statement
 ```
@@ -95,8 +100,6 @@ else
 fi
 ```
 
-<br />
-
 ### Loops
 ```
 for/while/until [ condition ]
@@ -104,8 +107,6 @@ do
     command
 done
 ```
-
-<br />
 
 ### Functions 
 ```
@@ -126,7 +127,7 @@ function_name () {
 
 ## Script Examples
 
-### Clickbait (Windows)(Batch)
+#### Clickbait (Windows)(Batch)
 ```
 # Open the browser continuously
 # Attention, may lead to DoS !
@@ -139,7 +140,7 @@ start www.google.com
 goto :LoopStart
 ```
 
-### Get Credentials 
+#### Get Credentials 
 ```
 #! /bin/bash
 
@@ -150,7 +151,7 @@ read -sp 'Password: ' passvar
 echo Thank you $uservar we now have your login details
 ```
 
-### Get MD5 of Name
+#### Get MD5 of Name
 ```
 #! /bin/bash
 
@@ -159,7 +160,7 @@ mytarget=$(echo $myname | md5sum | cut -d ' ' -f 1)
 # output for user "root" --> 74cc1c60799e0a786ac7094b532f01b1
 ```
 
-### Hand over parameter(s) to netcat with while loop
+#### Hand over parameter(s) to netcat with while loop
 ```
 i=1
 while [ $i -le 1000 ]
@@ -170,7 +171,7 @@ echo "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ, $i" | nc localhost 30002 >> /tmp/file.tx
 done
 ```
 
-### Backup Automisation
+#### Backup Automisation
 ```
 #! /bin/bash
 
@@ -202,7 +203,7 @@ sleep 60
 done
 ```
 
-### Check Remote Server Status
+#### Check Remote Server Status
 ```
 #!/bin/bash
 
@@ -228,7 +229,7 @@ ssh -T $user@$remote <<'EOL'
 EOL
 ```
 
-### Check Available Hosts
+#### Check Available Hosts
 ```
 #! /bin/bash
 
