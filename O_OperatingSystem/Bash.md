@@ -7,7 +7,7 @@
 
 <br />
 
-## Basics I
+## Bash Basics I
 
 ### Variables
 - `readonly VARIABLE=value`: set variable read-only
@@ -64,8 +64,8 @@ grep "^$USER" /etc/passwd
    - `echo {00..8..2}` --> 00 02 04 06 08
    - `echo {D..T..4}` --> D H L P T
 - **Curly Brace ( )**:
-   - `echo $((14 * 2))` --> Arithmetic Operation
-   - `((a++))` --> a + 1
+   - `echo $((14 * 2))` --> 28 
+   - `echo $((a++))` --> a + 1
    - `((variable = 28))`
 
 ### Operators
