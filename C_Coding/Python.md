@@ -373,7 +373,7 @@ elements["oxygen"] = oxygen  #add oxygen to dictionary
 
 ## Control Flow
 
-#### IF/ELIF/ELSE
+#### IF / ELIF / ELSE
 ```
 if "condition1" and "condition2":
    "code"
@@ -389,13 +389,13 @@ for i in range(3):
   print("Hello!")
   
 # print output in one line (w/o newline)
-for c in passw:
-    print(chr(c), end="")
+for list in lists:
+    print(list, end="")
 ```
 
 #### WHILE LOOP
-- "break" terminates a loop
-- "continue" skips one iteration of a Loop
+- **break** terminates a loop
+- **continue** skips one iteration of a Loop
 ```
 card_deck = [4, 11, 8, 5, 13, 2, 8, 10]
 hand = []
@@ -412,22 +412,56 @@ squares = [x**2 if x % 2 == 0 else x + 3 for x in range(9)]
 <br />
 
 ## Functions
-- Function names follow the same naming conventions as variables!
+- Function names follow the same naming conventions as variables !
 - We can add default arguments in a function to have default parameters
 - Given parameters will overwrite default parameters
-- If a variable is created inside a function, it can only be used within that function!
-- **Examples**
+- If a variable is created inside a function, it can only be used within that function !
 
 ```
+# Examples
+
 def cylinder_volume(height, radius=5):
    pi = 3.14159
    return height * pi * radius ** 2
 
 egg_count = 0
   def buy_eggs():
-    egg_count += 12  --> Error: changing the global variable "egg_count"
-  buy_eggs()  --> Error 
+    egg_count += 12     # Error: changing the global variable "egg_count"
+  buy_eggs()            # Error will occur
 ```
+
+#### LAMBDA FUNCTION
+- creates quickly anonymous functions (w/o function name)
+- not ideal for complex functions
+
+```
+- def multiply(x, y):
+    return x * y
+# can be reduced to:
+multiply = lambda x, y: x * y
+```
+
+#### GENERATOR FUNCTION
+- return keyword: **yield**
+- **yield** keyword is difference between generator and typical function
+```
+def my_range(x):
+    i = 0
+    while i < x:
+        yield i
+        i += 1
+```
+- Why Generators i/o lists?
+   - Generators are a lazy way to build iterables
+   - They are useful when fully realized list would not fit in memory
+   - Or when the cost to calculate each list element is high 
+   - But generators can only be iterated over once (!)
+
+#### GENERATOR EXPRESSION
+- combines generators and list comprehensions
+- The only difference: You use square brackets (i/o parentheses)
+- `sq_list = [x**2 for x in range(10)]`:     list of squares
+- `sq_iterator = (x**2 for x in range(10))`: iterator of squares
 
 
 #### BUILT-IN FUNCTION: range
@@ -435,121 +469,123 @@ egg_count = 0
     a) range(4) returns 0, 1, 2, 3  #stop
     b) range(2, 6) returns 2, 3, 4, 5   #start, stop
     c) range(1, 10, 2) returns 1, 3, 5, 7, 9    #start,stop,step
-- names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
-  usernames = []
-  for index in range(len(names)):
+```
+# Example 1
+names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+usernames = []
+for index in range(len(names)):
     usernames.append(names[index].lower().replace(' ','_')
-  print(usernames)
-- items = ['first string', 'second string']
-  html_str = "<ul>\n"  
-  for index in range(len(items)):
+print(usernames)
+
+# Example 2
+items = ['first string', 'second string']
+html_str = "<ul>\n"  
+for index in range(len(items)):
     html_str += '<li>'+items[index]+'</li>\n'
-  html_str += '</ul>'
+html_str += '</ul>'
+```
 
-
-#### BUILT-IN FUNCTION: zip (Matrix transponieren)
-- letters = ['a', 'b', 'c']
-  nums = [1, 2, 3]
-  for letter, num in zip(letters, nums):
+#### BUILT-IN FUNCTION: zip (Matrix transpose)
+```
+# Example 1
+letters = ['a', 'b', 'c']
+nums = [1, 2, 3]
+for letter, num in zip(letters, nums):
     print("{}: {}".format(letter, num))
-  --> [('a', 1), ('b', 2), ('c', 3)]
+#Output: [('a', 1), ('b', 2), ('c', 3)]
 
-- unzip (via asterisk): 
-  some_list = [('a', 1), ('b', 2), ('c', 3)]
-  letters, nums = zip(*some_list)
-- Transpose a 4x3 matrix to 3x4 matrix
-  data = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 11))
-  data_transpose = tuple(zip(*data))
+# Example 2
+unzip (via asterisk): 
+some_list = [('a', 1), ('b', 2), ('c', 3)]
+letters, nums = zip(*some_list)
 
+# Example 3
+# Transpose 4x3 matrix to 3x4 matrix
+data = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 11))
+data_transpose = tuple(zip(*data))
+```
 
 #### BUILT-IN FUNCTION: enumerate
-- letters = ['a', 'b', 'c', 'd', 'e']
-  for i, letter in enumerate(letters):
+```
+# Example 1
+letters = ['a', 'b', 'c', 'd', 'e']
+for i, letter in enumerate(letters):
     print(i, letter)
-    -->
+
+# Output
     0 a
     1 b
     2 c
     3 d
     4 e
-- for i, letter in enumerate(letters,2):
+
+# Example 2
+for i, letter in enumerate(letters,2):
     print(i, letter)
+
+# Output
     2 a
     3 b
     4 c
     5 d
     6 e
-- for i, letter in enumerate(letters):
+
+# Example 3
+for i, letter in enumerate(letters):
     letters[i] += ' ' + str(99)
-
-#### LAMBDA FUNCTION
-- creates quickly anonymous functions (w/o function name)
-- not ideal for complex functions
-- def multiply(x, y):
-    return x * y
---> can be reduced to: multiply = lambda x, y: x * y
-
-#### GENERATOR FUNCTION
-- return keyword: yield
-- "yield" keyword is difference between generator and typical function
-def my_range(x):
-    i = 0
-    while i < x:
-     yield i
-     i += 1
-- Why Generators i/o lists?
-    *Generators are a lazy way to build iterables
-    *They are useful when fully realized list would not fit in memory
-    *Or when the cost to calculate each list element is high 
-    !But generators can only be iterated over once
-
-#### GENERATOR EXPRESSION
-    *combines generators and list comprehensions
-    *Only idfference is you use square brackets (i/o parentheses)
-    sq_list = [x**2 for x in range(10)]      --> list of squares
-    sq_iterator = (x**2 for x in range(10))  --> iterator of squares
+```
 
 #### BUILT-IN FUNCTION: map
 - takes function and iterable as inputs
 - returns an iterator that applies the function to each element of the iterable
-- Calculate average number in each row:
-  numbers = [
+```
+# Calculate average number in each row:
+numbers = [
               [34, 63, 88, 71, 29],
               [90, 78, 51, 27, 45],
               [63, 37, 85, 46, 22],
               [51, 22, 34, 11, 18]
            ]
-  def mean(num_list):
+def mean(num_list):
     return sum(num_list) / len(num_list)
-  averages = list(map(mean, numbers))
-- Same as Lambda function:
-  averages = list(map(lambda nl: sum(nl)/len(nl), numbers))
-  print(averages)
+averages = list(map(mean, numbers))
 
+# Same as Lambda function:
+averages = list(map(lambda nl: sum(nl)/len(nl), numbers))
+print(averages)
+```
 
 #### BUILT-IN FUNCTION: filter
 - takes a function and iterable as inputs
 - returns an iterator with iterable-elements where function returns "True"
-- cities = ["New York City", "Los Angeles", "Chicago", "Mountain View", "Denver", "Boston"]
-  def is_short(name):
+```
+cities = ["New York City", "Los Angeles", "Chicago", "Mountain View", "Denver", "Boston"]
+def is_short(name):
     return len(name) < 10
-  short_cities = list(filter(is_short, cities))
-  print(short_cities)
-  
+short_cities = list(filter(is_short, cities))
+print(short_cities)
+```
+
 #### BUILT-IN FUNCTION: input
 - utilize raw input from user
 - you can use optional string argument to specify a message
-  name = input("Enter your name: ")
-  print("Hello there, {}!".format(name.title()))
-  num = int(input("Enter an integer"))
+```
+# String
+name = input("Enter your name: ")
+print("Hello there, {}!".format(name.title()))
 
+# Integer
+num = int(input("Enter an integer"))
+```
 
 #### BUILT-IN FUNCTION: eval
 - interpret user input as a Python expression
 - this function evaluates a string as a line of Python
-  result = eval(input("Enter an expression: "))
-  print(result)
-  Bsp: Enter an expression: 67*45 --> output:3015
+```
+result = eval(input("Enter an expression: "))
+print(result)
+# Output Example: Enter an expression: 67*45 --> output:3015
+```
 
 <br />
 
