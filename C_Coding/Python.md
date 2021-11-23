@@ -593,52 +593,55 @@ print(result)
 
 #### ERRORS
 - Syntax errors:
-    *occur when Python can’t interpret our code,
-    *These are errors you’re likely to get when you make a typo, or starting to learn Python
+    - Occur when Python can’t interpret our code
+    - These are errors you’re likely to get when you make a typo, or starting to learn Python
 - Exceptions:
-    *occur when unexpected things happen during execution of a program (even syntactically correct)     
-    *Different types of built-in exceptions available 
-    a)ValueError:
-        *An object of the correct type but inappropriate value 
-    b)AssertionError:
-        *An assert statement fails
-    c)IndexError:
-        *A sequence subscript is out of range
-    d)KeyError:
-        *A key can't be found in a dictionary
-    e)TypeError:
-        *An object of an unsupported type is passed as input to an operation or function.
-    f)ZeroDivisionError
-    g)FileNotFoundError
+    - Occur when unexpected things happen during execution of a program (even syntactically correct)     
+    - Different types of built-in exceptions available 
+    - **ValueError**
+        - An object of the correct type but inappropriate value 
+    - **AssertionError**
+        - An assert statement fails
+    - **IndexError**
+        - A sequence subscript is out of range
+    - **KeyError**
+        - A key can't be found in a dictionary
+    - **TypeError**
+        - An object of an unsupported type is passed as input to an operation or function.
+    - **ZeroDivisionError**
+    - **FileNotFoundError**
 
-##EIGENE EXCEPTION AUFRUFEN
-#Die Klasse Exception mit eigenem "InvalidEmailError" ergänzen dank Vererbung "(Exception)"
+#### EIGENE EXCEPTION AUFRUFEN
+```
+#Extend class Exception with own error message "InvalidEmailError" via Inheritance
 class InvalidEmailError(Exception):
     pass
 
-#Beispielfkt. mit individueller raise-Meldung
+# Example with individual raise-notification
 def send_mail(email, subject, content):
     if not "@" in email:
         raise InvalidEmailError("email does not contain an @")
 try:     
-    send_mail("hallo", "Betreff", "Inhalt")
+    send_mail("hello", "subject", "content")
 except InvalidEmailError:
-    print("Bitte gebe eine gültige E-Mail ein")
-
+    print("Please enter a valid email address")
+```
 
 #### TRY STATEMENT
 - use try statements to handle exceptions
 - four clauses can be used:
-a)try:
-This is the only mandatory clause in a try statement
-The code in this block is the first thing that Python runs in a try statement
-b)except:
-Switch to "except statement" when an exception occurs while running try block
-c)else:
-If Python runs into no exceptions while running the try block
-Then it will run the else block 
-d)finally:
-Before Python leaves try block, it will run the code in finally block under any condition, even if it's ending the program if Python runs into error while running except or else block, this finally block will still be executed before stopping the program
+    - **try**
+        - This is the only mandatory clause in a try statement
+        - The code in this block is the first thing that Python runs in a try statement
+    - **except**
+        - Switch to "except statement" when an exception occurs while running try block
+    - **else:**
+        - If Python runs into no exceptions while running the try block
+        - Then it will run the else block 
+    - **finally**
+        - Before Python leaves try block, it will run the code in finally block under any condition
+        - Even if it's ending the program if Python runs into error while running except or else block
+        - This finally block will still be executed before stopping the program
 ```
 # Example
 while True: 
@@ -653,8 +656,8 @@ while True:
    finally:
       print('\n Attempted Input\n')
 
-# while-Schleife lohnt sich nur bei Input-Aufforderung mit "try"
-# ansonsten Dauerausführung von "except" möglich
+# while-loop works best when input-prompt is within try block
+# Otherwise continous loop possible (!) 
 ```
 
 #### ACCESSING ERROR MESSAGE
@@ -719,8 +722,8 @@ pip install -r requirements.txt
 
 #### DECLARE ENCODING
 - At top of file.py:
-- `#!/usr/bin/env python`
-- `# -*- coding: utf-8 -*-`
+    - `#!/usr/bin/env python`
+    - `# -*- coding: utf-8 -*-`
 
 <br />
 
