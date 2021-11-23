@@ -25,14 +25,14 @@ print(4/2 + 7*7)
 - Don't compare a boolean variable with `== True` or `== False`, e.g. `if is_cold == True`
 
 
-#### DIFFERENCE BETWEEN
-- "iterables" are objects that can return one of their elements at a time (e.g. list)
-- "iterator" is an object that represents a stream of data
-- "Generators" are a simple way to create iterators using functions
+#### ITERABLES VS. ITERATOR VS. GENERATOR
+- **iterables** are objects that can return one of their elements at a time (e.g. list)
+- **iterator** is an object that represents a stream of data
+- **Generators** are a simple way to create iterators using functions
 
 
 #### BUILT-IN OBJECTS THAT ARE CONSIDERED "FALSE" 
-- Constants defined to be false: None and False
+- Constants defined to be false: `None, False`
 - Zero of any numeric type: `0, 0.0, 0j, Decimal(0), Fraction(0, 1)`
 - Empty sequences and collections: `'"", (), [], {}, set(), range(0)`
 
@@ -72,13 +72,14 @@ def square_root(n):
 - **json**: good for reading and writing json files (good for web work)
 
 #### IMPORT TECHNIQUES
-- from "module_name" import "object_name"
-- from "module_name" import "first_object", "second_object"
-- import "module_name" as "new_name" 
-- from "module_name" import "object_name" as "new_name" 
-- import "module_name.submodule_name"
-- from . import "object_name" as "new_name"
- 
+```
+1) from "module_name" import "object_name"
+2) from "module_name" import "first_object", "second_object"
+3) import "module_name" as "new_name" 
+4) from "module_name" import "object_name" as "new_name" 
+5) import "module_name.submodule_name"
+6) from . import "object_name" as "new_name"
+```
 
 #### THIRD PARTY LIBRARIES
 - Big projects often depend on dozens of third party packages
