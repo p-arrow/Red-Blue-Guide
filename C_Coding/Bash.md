@@ -1,4 +1,12 @@
-## Batch
+## TABLE OF CONTENT
+1) [BATCH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Bash.md#batch)
+2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#basics)
+3) [OPTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#options)
+4) [SCRIPT EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#script-examples)
+
+<br />
+
+## BATCH
 - `@echo off`
    - `echo off`:  no print out of command, but result only 
    - `@`:  no output "echo off"
@@ -7,9 +15,9 @@
 
 <br />
 
-## Bash Basics I
+## BASICS
 
-### Variables
+#### Variables
 - `readonly VARIABLE=value`: set variable read-only
 - `unset VARIABLE`: remove assigned value from variable
 - Conversion: "shell variable" -> "environment variable"
@@ -21,7 +29,7 @@
    - `nano ~/.bashrc`
    - `export VARIABLE=value` Enter this line inside of bashrc
 
-### Arrays
+#### Arrays
 - `array_name[index]= "value_0 ... value_n"`: Shell Writing Style !
 - `array_name[index]=(value_0...value_n)`: Bash Writing Style !
 - `${array_name[index]}`: Accessing Array Values with { } !
@@ -35,7 +43,7 @@
    - `command1 && command2`
    - `-a`
 
-### Quotes & Execution
+#### Quotes & Execution
 - Single Quote `' '`: All special characters between these quotes lose their special meaning
 - Double Quote `" "`: Most special characters between these quotes lose their special meaning      
 - Back Quote `` ``: Anything in between would be treated as command and would be executed
@@ -44,7 +52,7 @@
 - Create subshell with `( )`
    - Exp: `(cd /tmp; pwd)` --> subshell does not affect current shell
 
-### Special Characters
+#### Special Characters
 ```
 #Check Current Shell
 echo $0
@@ -56,7 +64,7 @@ ps -p $$
 grep "^$USER" /etc/passwd
 ```
 
-### Brackets
+#### Brackets
 - **Curly Bracket {}**:
    - `echo f{oo,ee,a}d` --> food feed fad
    - `mv error.log{,.OLD}` --> error.log.OLD
@@ -68,7 +76,7 @@ grep "^$USER" /etc/passwd
    - `echo $((a++))` --> a + 1
    - `((variable = 28))`
 
-### Operators
+#### Operators
 ```
 a=10
 b=20
@@ -81,7 +89,7 @@ echo "Equ :"[ $a == $b ]   // False
 echo "Une :"[ $a != $b ]   // True
 ```
 
-### If-Statement
+#### If-Statement
 ```
 # Basic
 if [ condition ]    // pay attention to the spaces around the condition !
@@ -118,14 +126,14 @@ function_name () {
 
 <br />
 
-## Options
+## OPTIONS
 
 - `bash -p`: If supplied at invocation, the effective user id (EUID) is not reset to RUID
 - `bash -xv [script]`: debugging
 
 <br />
 
-## Script Examples
+## SCRIPT EXAMPLES
 
 #### Clickbait (Windows)(Batch)
 ```
