@@ -466,9 +466,9 @@ def my_range(x):
 
 #### BUILT-IN FUNCTION: range
 - range(start=0, stop, step=1)
-    a) range(4) returns 0, 1, 2, 3  #stop
-    b) range(2, 6) returns 2, 3, 4, 5   #start, stop
-    c) range(1, 10, 2) returns 1, 3, 5, 7, 9    #start,stop,step
+    - `range(4)` returns `0, 1, 2, 3`  #stop
+    - `range(2, 6)` returns `2, 3, 4, 5`   #start, stop
+    - `range(1, 10, 2)` returns `1, 3, 5, 7, 9`    #start,stop,step
 ```
 # Example 1
 names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
@@ -611,7 +611,7 @@ print(result)
     - **ZeroDivisionError**
     - **FileNotFoundError**
 
-#### EIGENE EXCEPTION AUFRUFEN
+#### CREATE INDIVIDUAL EXCEPTION
 ```
 #Extend class Exception with own error message "InvalidEmailError" via Inheritance
 class InvalidEmailError(Exception):
