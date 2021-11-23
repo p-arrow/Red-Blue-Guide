@@ -1,11 +1,113 @@
 ## Table of Content
-1) BEST PRACTICES
+1) [BEST PRACTICES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#best-practices)
 2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#basics)
 3) [DATA STRUCTURES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#data-structures)
 4) [CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#control-flow)
 5) [FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#functions)
-6) SCRIPTING
-7) EXAMPLES
+6) [SCRIPTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#scripting)
+7) [EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#examples)
+
+<br />
+
+## Best Practices
+
+#### READABILITY IS IMPORTANT
+```
+# Good Examples
+
+print((1 + 2 + 4)/13)
+print(4/2 + 7*7)
+```
+
+#### BAD EXAMPLES OF BOOLEAN EXPRESSIONS 
+- Don't use True or False as conditions, e.g. `if True`
+- Be careful writing expressions that use logical operators
+- Don't compare a boolean variable with `== True` or `== False`, e.g. `if is_cold == True`
+
+
+#### DIFFERENCE BETWEEN
+- "iterables" are objects that can return one of their elements at a time (e.g. list)
+- "iterator" is an object that represents a stream of data
+- "Generators" are a simple way to create iterators using functions
+
+
+#### BUILT-IN OBJECTS THAT ARE CONSIDERED "FALSE" 
+- Constants defined to be false: None and False
+- Zero of any numeric type: `0, 0.0, 0j, Decimal(0), Fraction(0, 1)`
+- Empty sequences and collections: `'"", (), [], {}, set(), range(0)`
+
+
+#### DOCSTRING
+```
+def square_root(n):
+"""
+    Calculate the square root of a number.
+
+    Args:
+        n(int): the number to get the square root of.
+    Returns:
+        the square root of n.
+    Raises:
+        TypeError: if n is not a number.
+        ValueError: if n is negative.
+"""
+```
+
+#### AVOID EXECUTABLE RUNNING WHEN IT'S IMPORTED
+- `if __name__ == "__main__":`
+   - Ensure that variables that are created, functions that are called, operations that are done
+   - ONLY executed when you directly run the file**, not when you import it into another
+   - Example: modules like random, string, math etc.
+
+#### FAVORITE MODULES
+- **csv**: very convenient for reading and writing csv files
+- **collections**: useful extensions of usual data types incl. OrderedDict, defaultdict, namedtuple
+- **random**: generates pseudo-random numbers, shuffles sequences randomly and chooses random items
+- **string**: more functions on string e.g. string.digits 
+- **re**: pattern-matching in strings via regular expressions
+- **math**: some standard mathematical functions
+- **os**: interacting with operating systems
+- **os.path**: submodule of os for manipulating path names
+- **sys**: work directly with the Python interpreter
+- **json**: good for reading and writing json files (good for web work)
+
+#### IMPORT TECHNIQUES
+- from "module_name" import "object_name"
+- from "module_name" import "first_object", "second_object"
+- import "module_name" as "new_name" 
+- from "module_name" import "object_name" as "new_name" 
+- import "module_name.submodule_name"
+- from . import "object_name" as "new_name"
+ 
+
+#### THIRD PARTY LIBRARIES
+- Big projects often depend on dozens of third party packages
+- Dependencies are summarized in requirements.txt:
+   - beautifulsoup4==4.5.1
+   - bs4==0.0.1
+   - pytz==2016.7
+   - requests==2.11.1
+- `pip install -r requirements.txt`: Get all needed packages indicated in requirements.txt
+
+
+#### USEFUL THIRD PARTY LIBRARIES 
+- **Python/Jupyter**: A better interactive Python interpreter
+- **Requests**: Provides easy to use methods to make web requests. Useful for accessing web APIs.
+- **Flask**: A lightweight framework for making web applications and APIs.
+- **Django**: A more featureful framework for making web applications. Django is particularly good for designing complex, content heavy, web applications.
+- **Beautiful Soup**: Used to parse HTML and extract information from it (web scraping)
+- **pytest**: extends Python's builtin assertions and unittest module.
+- **PyYAML**: For reading and writing YAML files.
+- **NumPy**: The fundamental package for scientific computing with Python. It contains among other things a powerful N-dimensional array object and useful linear algebra capabilities.
+- **pandas**: A library containing high-performance, data structures and data analysis tools
+- **matplotlib**: a 2D plotting library which produces publication quality figures
+- **ggplot**: Another 2D plotting library, based on R's ggplot2 library.
+- **Pillow**: The Python Imaging Library adds image processing capabilities to your interpreter.
+- **pyglet**: A cross-platform application framework intended for game development.
+- **Pygame**: A set of Python modules designed for writing games.
+- **pytz**: World Timezone Definitions for Python
+
+<br />
 
 ## Basics
 
@@ -23,7 +125,6 @@
 \n new line
 print(" ",end=" ") --> without newline
 ```
-
 
 #### OPERATION MEANING
 ```
@@ -100,6 +201,17 @@ print(a is c) --> False
 # List c is equal to a (and b for that matter) since they have the same contents
 # But a and c (and b for that matter, again) point to two different objects, i.e., they aren't identical objects.
 ```
+
+#### EVERYTHING IS A OBJECT
+```
+a = 12.5
+a.__add__(5)    --> 17.5
+a.__sub__(7)    --> 5.5
+s = "Hallo Welt"
+s.__len__()     --> 10
+```
+
+<br />
 
 ## Data Structures
 
@@ -256,6 +368,8 @@ oxygen = {"number":8,"weight":15.999,"symbol":"O"}  #create oxygen
 elements["oxygen"] = oxygen  #add oxygen to dictionary
 ```
 
+<br />
+
 ## Control Flow
 
 #### IF/ELIF/ELSE
@@ -272,6 +386,10 @@ else:
 ```
 for i in range(3):
   print("Hello!")
+  
+# print output in one line (w/o newline)
+for c in passw:
+    print(chr(c), end="")
 ```
 
 #### WHILE LOOP
@@ -283,7 +401,6 @@ hand = []
 while sum(hand)  < 17:
     hand.append(card_deck.pop())
 ```
-
 
 #### LIST COMPREHENSION
 ```
@@ -329,7 +446,6 @@ egg_count = 0
   html_str += '</ul>'
 
 
-
 #### BUILT-IN FUNCTION: zip (Matrix transponieren)
 - letters = ['a', 'b', 'c']
   nums = [1, 2, 3]
@@ -365,7 +481,6 @@ egg_count = 0
 - for i, letter in enumerate(letters):
     letters[i] += ' ' + str(99)
 
-
 #### LAMBDA FUNCTION
 - creates quickly anonymous functions (w/o function name)
 - not ideal for complex functions
@@ -373,7 +488,25 @@ egg_count = 0
     return x * y
 --> can be reduced to: multiply = lambda x, y: x * y
 
+#### GENERATOR FUNCTION
+- return keyword: yield
+- "yield" keyword is difference between generator and typical function
+def my_range(x):
+    i = 0
+    while i < x:
+     yield i
+     i += 1
+- Why Generators i/o lists?
+    *Generators are a lazy way to build iterables
+    *They are useful when fully realized list would not fit in memory
+    *Or when the cost to calculate each list element is high 
+    !But generators can only be iterated over once
 
+#### GENERATOR EXPRESSION
+    *combines generators and list comprehensions
+    *Only idfference is you use square brackets (i/o parentheses)
+    sq_list = [x**2 for x in range(10)]      --> list of squares
+    sq_iterator = (x**2 for x in range(10))  --> iterator of squares
 
 #### BUILT-IN FUNCTION: map
 - takes function and iterable as inputs
@@ -393,7 +526,6 @@ egg_count = 0
   print(averages)
 
 
-
 #### BUILT-IN FUNCTION: filter
 - takes a function and iterable as inputs
 - returns an iterator with iterable-elements where function returns "True"
@@ -402,30 +534,7 @@ egg_count = 0
     return len(name) < 10
   short_cities = list(filter(is_short, cities))
   print(short_cities)
-
-
-#### GENERATOR FUNCTION
-- return keyword: yield
-- "yield" keyword is difference between generator and typical function
-def my_range(x):
-    i = 0
-    while i < x:
-     yield i
-     i += 1
-- Why Generators i/o lists?
-    *Generators are a lazy way to build iterables
-    *They are useful when fully realized list would not fit in memory
-    *Or when the cost to calculate each list element is high 
-    !But generators can only be iterated over once
-
-
-#### GENERATOR EXPRESSION
-    *combines generators and list comprehensions
-    *Only idfference is you use square brackets (i/o parentheses)
-    sq_list = [x**2 for x in range(10)]      --> list of squares
-    sq_iterator = (x**2 for x in range(10))  --> iterator of squares
-
-
+  
 #### BUILT-IN FUNCTION: input
 - utilize raw input from user
 - you can use optional string argument to specify a message
@@ -440,3 +549,395 @@ def my_range(x):
   result = eval(input("Enter an expression: "))
   print(result)
   Bsp: Enter an expression: 67*45 --> output:3015
+
+<br />
+
+## Scripting
+
+#### ERRORS
+- Syntax errors:
+    *occur when Python can’t interpret our code,
+    *These are errors you’re likely to get when you make a typo, or starting to learn Python
+- Exceptions:
+    *occur when unexpected things happen during execution of a program (even syntactically correct)     
+    *Different types of built-in exceptions available 
+    a)ValueError:
+        *An object of the correct type but inappropriate value 
+    b)AssertionError:
+        *An assert statement fails
+    c)IndexError:
+        *A sequence subscript is out of range
+    d)KeyError:
+        *A key can't be found in a dictionary
+    e)TypeError:
+        *An object of an unsupported type is passed as input to an operation or function.
+    f)ZeroDivisionError
+    g)FileNotFoundError
+
+##EIGENE EXCEPTION AUFRUFEN
+#Die Klasse Exception mit eigenem "InvalidEmailError" ergänzen dank Vererbung "(Exception)"
+class InvalidEmailError(Exception):
+    pass
+
+#Beispielfkt. mit individueller raise-Meldung
+def send_mail(email, subject, content):
+    if not "@" in email:
+        raise InvalidEmailError("email does not contain an @")
+try:     
+    send_mail("hallo", "Betreff", "Inhalt")
+except InvalidEmailError:
+    print("Bitte gebe eine gültige E-Mail ein")
+
+
+#### TRY STATEMENT
+- use try statements to handle exceptions
+- four clauses can be used:
+a)try:
+This is the only mandatory clause in a try statement
+The code in this block is the first thing that Python runs in a try statement
+b)except:
+Switch to "except statement" when an exception occurs while running try block
+c)else:
+If Python runs into no exceptions while running the try block
+Then it will run the else block 
+d)finally:
+Before Python leaves try block, it will run the code in finally block under any condition, even if it's ending the program if Python runs into error while running except or else block, this finally block will still be executed before stopping the program
+```
+# Example
+while True: 
+   try:
+    x = int(input('Enter a number:  '))
+      break
+   except ValueError: 
+      print('That\'s not a valid number!')
+   except KeyboardInterrupt:
+      print('\n No input taken')
+      break 
+   finally:
+      print('\n Attempted Input\n')
+
+# while-Schleife lohnt sich nur bei Input-Aufforderung mit "try"
+# ansonsten Dauerausführung von "except" möglich
+```
+
+#### ACCESSING ERROR MESSAGE
+```
+try:
+ #some code
+except ZeroDivisionError as y:
+ #some code
+print("ZeroDivisionError occurred: {}".format(y))
+
+# Output: "ZeroDivisionError occurred: integer division or modulo by zero"
+#If you don't have specific error, you can still access the message like this:
+
+try:
+ #some code
+except Exception as y:
+ #some code
+print("Exception occurred: {}".format(y))
+```
+
+#### READING FILES
+```
+f = open('my_path/my_file.txt', 'r')
+  file_data = f.read()
+  f.close()
+with open('my_path/my_file.txt', 'r', encoding='utf8') as f:
+    file_data = f.read()
+with open("camelot.txt") as f:
+    camelot_lines = []
+    for line in f:
+        camelot_lines.append(line.strip())
+```
+
+#### WRITING FILES
+- Overwrite existing content with `'w'` (!)
+- Adding content is done in append mode `'a'` (!) 
+```
+f = open('my_path/my_file.txt', 'w')
+  f.write("Hello there!")
+  f.close()
+```
+
+
+#### YOUR OWN PROJECT
+```
+# create project file xyz
+# create virtual environment
+python -m venv [source/repos/projects/xyz]
+
+# choose corresponding Interpreter in VS Code
+xyz/scripts/python.exe
+
+# install needed packages
+.projects/xyz pip install [package]
+
+# create requirements.txt
+pip freeze > requirements.txt
+
+# Finally, install all the dependencies listed in this file
+pip install -r requirements.txt
+```
+
+#### DECLARE ENCODING
+- At top of file.py:
+- `#!/usr/bin/env python`
+- `# -*- coding: utf-8 -*-`
+
+<br />
+
+## Examples
+
+#### GRAPHICS WITH MATPLOT
+```
+import matplotlib.pyplot as plt
+xs = [1, 2, 5]
+ys = [4, 7, 5]
+plt.plot(xs, ys)
+plt.show()
+```
+
+#### OBJECT ORIENTATION AND INHERITANCE
+#Klasse FileReader besitzt einen Kosntruktor und eine Funktion
+class FileReader():
+    #Der Konstruktor legt nur ein Attribut "filename" fest
+    def __init__(self, filename):
+        self.filename = filename
+    
+    def lines(self):
+        lines = []
+        with open(self.filename, "r") as file:
+            for line in file:
+                lines.append(line.strip())
+        return lines
+#Die Klasse CsvReader erbt von der "Mutter" FileReader
+class CsvReader(FileReader):
+    #Der Konstrukor legt kein eigenes Attibut fest sondern erbt via "super()" das Attribut
+    def __init__(self, filename):
+        super().__init__(filename)
+    #Auch die Funktion "lines" wird von FileReader geerbt
+    def lines(self):
+        lines = super().lines()
+
+
+#### WEB CRAWLER
+```
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+import time
+import csv
+class CrawledArticle():
+    def __init__(self, title, emoji, content, image):
+        self.title = title
+        self.emoji = emoji
+        self.content = content
+        self.image = image
+class ArticleFetcher():
+    def fetch(self):
+        url = "http://python.beispiel.programmierenlernen.io/index.php"
+        while url != "":
+            time.sleep(1)        //Verzögere Ausführung um 1s
+            r = requests.get(url)
+            doc = BeautifulSoup(r.text, "html.parser")
+            
+            for card in doc.select(".card"):
+                emoji = card.select_one(".emoji").text
+                content = card.select_one(".card-text").text
+                title = card.select(".card-title span")[1].text
+                image = urljoin(url, card.select_one("img").attrs["src"])
+
+                #Erstelle Generator mit allen gecrawlten Attributen
+                yield CrawledArticle(title, emoji, content, image)
+               
+            #Falls es "next button" gibt dann ändere url und gehe zur nächsten Seite
+            next_button = doc.select_one(".navigation .btn")
+            if next_button:
+                next_href = next_button.attrs["href"]
+                next_href = urljoin(url, next_href)            
+                url = next_href
+            else:
+                url = ""
+        return articles
+
+#Öffne leere Datei zum beschreiben 
+with open('datei.csv', 'w', newline='') as csvfile:
+    articlewriter = csv.writer(csvfile, delimiter=';', quotechar='"')
+    #Schreibe die gecrawlten Daten via writerow-Methode in articlewriter, Zeile für Zeile
+    for article in ArticleFetcher().fetch():
+        articlewriter.writerow([article.emoji, article.title, article.image, article.content])
+```
+
+
+
+#### CALL MODULE FROM OTHER PROJECT FILES
+```
+# Option A 
+# No extra configuration necessary
+from "project_file" import "file"`
+
+
+# Option B
+from "project_file" import *
+file.f()
+# additionally you have to write "__all__ = ["file"]" under "__init__"
+
+# Option C
+import "project_file"
+project_file.file.f()
+# Additionally you have to write: "from . import datei" under "__init__" 
+```
+
+#### TRANSFER VARIABLE FUNCTION PARAMETER
+```
+# mithilfe von * werden Parameter in einer Tupel übergeben
+def calculate_max(*params):
+    print(params)
+    current_max = params[0]
+    for item in params:
+        if item > current_max:
+            current_max = item
+    return current_max
+calculate_max(1, 2, 3)
+
+#mithilfe von ** werden Parameter in einem Dictionary übergeben
+def f(**args):
+    print(args)
+f(key="value", key2="Value 2")
+
+#Beispiel mit matplot, wo plot-parameter variabel übergeben werden
+import matplotlib.pyplot as plt
+def create_plot(**plot_params):
+    print(plot_params)   
+    plt.plot([1, 2, 3], [5, 6, 5], **plot_params)
+    plt.show()
+create_plot(color="r", linewidth=10, linestyle="dashed")
+```
+
+
+#### DATE AND TIME 
+```
+import datetime
+now = datetime.now()
+print(now)
+print(now.strftime("%d.%m.%Y"))  # 18.07.2017
+print(now.strftime("%Y-%m-%d"))  # 2017-07-18
+print(now.strftime("%Y%m%d"))    # 20170718
+
+# extract data from string 
+d = "18.07.2017"
+print(datetime.strptime(d, "%d.%m.%Y"))
+```
+
+
+#### DEFAULTDICT MODULE
+```
+# Dictionary get initialized automatically with values 
+p = defaultdict(int)
+words = ["Hello", "Hello", "World"]
+for word in words:
+    p[word] = p[word] + 1        //p[word] startet mit 0
+```
+
+
+#### REGEXP
+```
+import re
+sentence = "I have 30 dogs, and all consume 4 liter water and 2 kg food respectively."
+re.findall("[0-9]+", sentence)
+#output: ['30', '4', '2']
+
+re.search("[0-9]+", sentence)
+#output: <_sre.SRE_Match object; span=(9, 11), match='30'>
+```
+
+
+#### CSV MODULE
+```
+import csv    
+with open('../data/names.csv', newline='') as csvfile:
+    namereader = csv.reader(csvfile, delimiter=',', quotechar='"')
+```
+
+
+#### PROXY SERVER 
+```
+from http.server import HTTPServer, BaseHTTPRequestHandler
+from socketserver import ThreadingMixIn
+import urllib
+import requests
+import random
+
+class MyRequestHandler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        print(self.path)           #Vom Browser gesendeter Path
+        print(self.headers)        #Vom Browser gesendeter Header
+        if self.headers["content-type"] == "application/x-www-form-urlencoded":
+            length = int(self.headers["content-length"])      #Hole Eingabevariable aus Header
+            form = str(self.rfile.read(length), "utf-8")      #Lese Eingabevariable
+            data = urllib.parse.parse_qs(form)                #Zerlege Eingabevariable 
+        
+            #Leite Daten an Server weiter
+            with requests.post(self.path, data = data, stream=True) as res:      
+                #ResponseCode an Browser, sonst kann Browser nicht richtig interpretieren
+                self.send_response(res.status_code)     
+                for key,value in res.headers.items():
+                    self.send_header(key, value)        #Headerinfo an Browser übergeben
+                self.end_headers()                      #Proxy Header beenden
+                self.wfile.write(res.raw.read())        #Übergebe von res.raw an Browser
+
+    def do_GET(self):
+        #Bildmanipulation ausführen
+        if self.path[-4:] == ".jpg":
+            images = ["./cats/1.jpg", "./cats/2.jpg"]
+            self.send_response(200)                         
+            self.send_header("Content-Type", "image/jpg")   
+            self.end_headers()                              
+            with open(random.choice(images), "rb") as file:     #"rb" = read binary
+                self.wfile.write(file.read())                   #wfile erwartet byte-input 
+        else: 
+            with requests.get(self.path, stream=True) as r: 
+                self.send_response(r.status_code) 
+                #Textmanipulation ausführen
+                if "text/html" in r.headers["content-type"]:
+                    self.send_header("Content-Type", "text/html")   
+                    self.end_headers()
+                    content = str(r.content, "utf-8")
+                    content = content.replace("Bilder", "Wazzup?")
+                    content = content.replace("Lorem", "FUCK YOU!")
+                    self.wfile.write(content.encode())
+                else:
+                    #Keine Manipulation, sondern normale Datenübermittlung
+                    self.send_response(r.status_code)
+                    for key,value in r.headers.items():
+                        self.send_header(key, value)
+                    self.end_headers()
+                    self.wfile.write(r.raw.read())        
+
+#Sequentiell arbeitenden HTTPServer mittels Vererbung mit Threadingfunktionalität ausstatten
+class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
+    pass
+
+address = ("127.0.0.1", 10080)                            #Proxy eine IP und Port zuweisen
+server = ThreadingHTTPServer(address, MyRequestHandler)   #Serverinstanz erstellen
+server.serve_forever()                                    #Server laufen lassen
+```
+
+
+#### XOR OPERATION
+```
+# chr() = convert int to Unicode letter
+# ord() = convert Unicode letter to int
+# ^ = Bitwise Exclusive XOR
+
+def xor(str1, str2):
+  result = []
+  for i, j in zip(str1, str2):
+    result.append(chr(ord(i) ^ ord(j))
+  return ''.join(result)
+```
+
+#### HTTP SERVER
+- py2: `python -m SimpleHTTPServer`
+- py3: `python -m http.server`
