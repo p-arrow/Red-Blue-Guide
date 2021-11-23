@@ -1,9 +1,9 @@
 ## Table of Content
 1) BEST PRACTICES
-2) BASICS
-3) DATA STRUCTURES
-4) CONTROL FLOW
-5) FUNCTIONS
+2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#basics)
+3) [DATA STRUCTURES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#data-structures)
+4) [CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#control-flow)
+5) [FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#functions)
 6) SCRIPTING
 7) EXAMPLES
 
