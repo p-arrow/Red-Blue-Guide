@@ -138,6 +138,7 @@
     - `find ./dir1/dir2 -name *.txt`
     - `find . -readable -and -size 1033c`
     - `find ./dir -perm 664`
+    - `find /usr/bin/ -perm 4000` Find files with suid functionality
     - `find . -empty`
     - `find -name '*.php' -mtime -1 -ls`
 - **file**: display data-type info
