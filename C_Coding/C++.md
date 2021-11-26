@@ -4,6 +4,7 @@
 3. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-control-flow)
 4. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#common-functions)
 5. [OBJECT ORIENTATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#object-orientation)
+6. [EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#examples)
 
 <br />
 
@@ -146,7 +147,7 @@ protected: Nur innerhalb der Klasse und Klassen, die daraus erben, zugreifbar
 --> private Variablen werden per Konvention mit _ geschrieben
 --> player1 --> player1_
 
-### CONSTRUCTOR
+### Constructor
 - The Constructor has normally the same name like the corresponding class 
 ```
 class Animal {
@@ -234,7 +235,7 @@ Car a;
 a.ps = 123;
 ```
 
-### Destructor
+### Deconstructor
 - The Deconstructor is the opposite of the Constructor
 - The Deconstructor gets marked with it "~"
 - The Deconstructor terminates a class after the program has finished
