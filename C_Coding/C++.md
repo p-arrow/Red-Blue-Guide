@@ -1,5 +1,8 @@
 ## TABLE OF CONTENT
-1. BASICS
+1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++#basics.md)
+2. [DATA TYPES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++#data-types.md)
+3. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++#data-control-flow.md)
+4. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++#common-functions.md)
 
 <br />
 
@@ -91,7 +94,7 @@ printf("Hello World:  %s", name.c_str()); --> works because ".c_str()" implement
 
 <br />
 
-## DATATYPES
+## DATA TYPES
 - **unsigned int**: only positive numbers
 - **signed int**: positive/negative numbers
 - **integer**: 4 byte, whole number
@@ -106,6 +109,30 @@ printf("Hello World:  %s", name.c_str()); --> works because ".c_str()" implement
    - Useful when object has limited amount of properties
    - Useful if you temporarily want to bundle data inside a function
 
+
+<br />
+
+## DATA CONTROL FLOW
+```
+for (int i = 0; i < 20; i++){}
+
+# Loop through "names" but use dereferenced/original data &name (i/o making copy of "names" and process copied data)
+for (string &name : names) { }
+
+# const = no change of &name
+# auto = C++ identifies automatically the correct data type of "names"
+for (const auto &name : names) { }
+
+while () {}
+
+while (!cin.eof()){}
+
+if () {}
+```
+
+<br />
+
+## COMMON FUNCTIONS
 
 <br />
 
