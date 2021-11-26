@@ -1,8 +1,8 @@
 ## TABLE OF CONTENT
-1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++#basics.md)
-2. [DATA TYPES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++#data-types.md)
-3. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++#data-control-flow.md)
-4. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++#common-functions.md)
+1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#basics)
+2. [DATA TYPES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-types)
+3. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-control-flow)
+4. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#common-functions)
 
 <br />
 
