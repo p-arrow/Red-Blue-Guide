@@ -3,6 +3,7 @@
 2. [DATA TYPES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-types)
 3. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-control-flow)
 4. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#common-functions)
+5. [OBJECT ORIENTATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#object-orientation)
 
 <br />
 
