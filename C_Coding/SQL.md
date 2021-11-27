@@ -1,8 +1,8 @@
 ## TABLE OF CONTENTS
-1. [BASICS]
-2. [STATEMENTS]
-3. [METHODS]
-4. [SQL EXAMPLES]
+1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/SQL.md#basics)
+2. [STATEMENTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/SQL.md#statements)
+3. [METHODS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/SQL.md#methods)
+4. [SQL EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/SQL.md#sql-examples)
 
 ## BASICS
 
