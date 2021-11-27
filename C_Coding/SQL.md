@@ -315,7 +315,7 @@ ON table1.account_id = table2.id;
 ```
 
 ```
->>Solution #1<<
+# Solution 1
 SELECT category, COUNT(*)
 FROM(SELECT CASE WHEN letter IN ('A','E','I','O','U') THEN 'vowel'
             ELSE 'consonant' END AS category
@@ -324,14 +324,16 @@ FROM(SELECT CASE WHEN letter IN ('A','E','I','O','U') THEN 'vowel'
     )sub2
 GROUP BY 1
 
->>Solution #2<<
+
+# Solution 2
 SELECT category, COUNT(*)
 FROM (SELECT CASE WHEN LEFT(UPPER(name), 1) IN ('A','E','I','O','U') THEN 'vowel'
              ELSE 'consonant' END AS category
              FROM accounts) sub
 GROUP BY 1
 
->>Solution #3<<
+
+# Solution 3
 SELECT CASE WHEN LEFT(UPPER(name), 1) IN ('A','E','I','O','U') THEN 'vowel'
        ELSE 'consonant' END AS category,
        COUNT(*)
