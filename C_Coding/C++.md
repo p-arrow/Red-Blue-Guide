@@ -114,7 +114,7 @@ printf("Hello World:  %s", name.c_str()); --> works because ".c_str()" implement
 
 ## DATA TYPES II
 
-### ARRAY (C-Relikt)
+### Array (C-relict)
 ```
 array.size()                  --> arraygröße anzeigen
 array[i]                      --> show element i; without error warning if "out of range" memory access happens 
