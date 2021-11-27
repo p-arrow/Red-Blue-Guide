@@ -1,10 +1,11 @@
 ## TABLE OF CONTENT
 1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#basics)
-2. [DATA TYPES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-types)
-3. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-control-flow)
-4. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#common-functions)
-5. [OBJECT ORIENTATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#object-orientation)
-6. [EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#examples)
+2. [DATA TYPES I](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-types-I)
+3. [DATA TYPES II](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-types-II)
+4. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-control-flow)
+5. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#common-functions)
+6. [OBJECT ORIENTATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#object-orientation)
+7. [EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#examples)
 
 <br />
 
@@ -96,7 +97,7 @@ printf("Hello World:  %s", name.c_str()); --> works because ".c_str()" implement
 
 <br />
 
-## DATA TYPES
+## DATA TYPES I
 - **unsigned int**: only positive numbers
 - **signed int**: positive/negative numbers
 - **integer**: 4 byte, whole number
@@ -111,41 +112,238 @@ printf("Hello World:  %s", name.c_str()); --> works because ".c_str()" implement
    - Useful when object has limited amount of properties
    - Useful if you temporarily want to bundle data inside a function
 
+## DATA TYPES II
+
+### ARRAY (C-Relikt)
+```
+array.size()                  --> arraygröße anzeigen
+array[i]                      --> show element i; without error warning if "out of range" memory access happens 
+array.at()                    --> show element i; with error warning 
+array<int, 3> = {1, 3, 5};    --> C++ convention
+int a[3] = {1, 2, 3};         --> C convention
+cout << a;                    --> Print first element of array a
+cout << a + 1;                --> Print memory address of second element of array a
+cout << a + 2;                --> Print memory address of third element of array a
+cout << *(a + 2);             --> 3
+```
+
+```
+# Pass array to function incl. array pointer and array size
+
+int a[3] = {1, 2, 3};
+void doSomething(int *a, int size){
+    for(int i = 0; i < size; i++){
+    cout << a[i] << endl;
+    }
+}
+```
+
+```
+# Pass Array as reference
+void doSomething(const array<int> &a){ }
+
+# const: array "a" stays constant 
+# "&": array "a" is passed as reference (= original data) 
+# without "&": C++ pass array-copy to function (less efficient)
+```
+```
+# Multi-dimensional Array
+array<array<int, 2>, 3> a = {{ }}
+```
+
+#### Disadvantages of Arrays
+- Arrays allow buffer overflow
+- No memory border check (more efficient though, but security critical 
+- Arrays have fixed size (no automatic adjustment like vectors)
+
+
+### Vector (C++ Feature)
+```
+vector<int/string> names = { };        --> Vector resides in heap! Deletes itself after call 
+vector.push_back()                     --> add element
+vector.pop_back()                      --> remove element 
+vector.front()                         --> choose first element
+vector.back()                          --> choose last element 
+vector.splice(vector.end(), b)         --> joint vector-end "a" with vector-beginning "b"
+sort(vector.begin(), vector.end());    --> you need "#include <algorithm>" at top of file
+```
+
+
+### Pointer
+```
+int a = 123;
+cout << a;   --> 123
+cout << &a;  --> memory address like 0x2c3c64f6
+cout << *&a; --> 123
+
+# "*" = Pointer, which calls data from specific memory address 
+```
+
+
+### Iterator
+- An iterator is an abstraction of a pointer 
+   - Dereferencing possible 
+   - Can be increased by 1 (points to next memory address; iterator can "jump" too)
+   - Can be passed to function 
+   - Can be used for high level functions like vectors or lists 
+   - Can delete, sort and add data in/from vectors 
+
+```
+vector<int> a = {1, 2, 3, 4};
+a.insert(a.begin() + 2, 123);                --> a = 1, 2, 123, 4
+a.erase(a.begin() + 2);                      --> a = 1, 2, 4
+a.erase(a.begin(), a.end() - 2);             --> a = 3, 4    (a.end() points AFTER last element)
+
+# for loop with iterator must not contain "const" input parameter (!)
+# counter inside for loop often "++it" instead of "it++" (more efficient)
+int doSomething(vector<int> &vec){
+    for (vector<int>::iterator it = vec.begin(); it != vec.end(); ++it){}
+}
+```
 
 <br />
 
 ## DATA CONTROL FLOW
 ```
-for (int i = 0; i < 20; i++){}
+# Standard for loop
+for (int i = 0; i < 20; i++){
+   command;
+};
+
 
 # Loop through "names" but use dereferenced/original data &name (i/o making copy of "names" and process copied data)
-for (string &name : names) { }
+for (string &name : names) {
+   command;
+};
+
 
 # const = no change of &name
 # auto = C++ identifies automatically the correct data type of "names"
-for (const auto &name : names) { }
+for (const auto &name : names) {
+   command;
+};
+```
+```
+while ( condition ) {
+   command;
+};
 
-while () {}
-
-while (!cin.eof()){}
-
-if () {}
+while (!cin.eof()){
+   command;
+};
+```
+```
+if ( condition ) {
+   command;
+};
 ```
 
 <br />
 
 ## COMMON FUNCTIONS
 
+### Function STRING
+```
+" "                                 --> means C-String 
+string.length()                     --> C++ String functionality
+string.size()                       --> C++ String functionality
+strlen()                            --> C String functionality
+string[4]
+string.at(4)                        --> slower than [], but including error message if char does not exist 
+string.substr(0, 4)                 --> access part of string 
+string.find(" ")                    --> search char in string; output numbers if char does not exist
+                                    --> same like "string::npos" (no position)
+string.append(" ")
+string.insert(4, ",")               --> insert "," at position 4 
+string.erase(5, 3)                  --> remove 3 chars starting from location 5th 
+string.count()
+stringstream.str()                  --> Print saved strings from stringstream 
+```
+
+### Function ENUM
+- Different states can be saved in one variable 
+- C++ handles internally the state as numbers
+```
+# Example 1
+enum Status {offline, online, away, busy};
+Status status = Status::busy;
+if (status == Status::busy){
+cout << "Der Benutzer ist gerade beschäftigt." << endl;
+cout << status << endl; --> 3
+```
+```
+# Example 2
+enum Status {offline, online, away, busy};
+Status status = Status::busy;
+switch (status) {
+    case offline:
+            cout << "Der Benutzer ist gerade offline." << endl;
+            break;
+    case online: 
+    case away:
+    case busy:
+            cout << "Der Benutzer ist gerade online." << endl;
+            break;
+    default:
+            cout << "Ich bin Default Case." << endl;
+}
+```
+
+
+### Function PAIR
+- Useful for small code snippets 
+- Not useful when different functions are used at different places (then struct/class better)
+```
+pair<string, int> p("Hallo Welt", 42);
+cout << p.first << endl;
+cout << p.second << endl;
+```
+
+### Function MAP
+- Like "dictionary" in Python
+```
+map<string, int> m = {"test", 123};
+m.insert(pair<string, int>("test", 123);
+m.size()                                     --> 1
+m.at("test")                                 --> 123 (mit Fehlermeldung, falls Element nicht in m vorhanden)
+m.["test"]                                   --> 123 (ohne Fehlmerldung, nur Null-Ausgabe)
+```
+```
+# Standard call of for loop 
+for (map<string, int>::iterator it = m.begin(); it != m.end(); ++it){
+    cout << (*it).first << endl;             --> Dereferencing with "*"
+    cout << it->second << endl;              --> Dereferencing with "->"
+
+# Shorter for loop (possible form C++ Version 11 )
+for (const auto &it : m)
+{   cout << it.first << ":" << it.second << endl; }
+```
+
+
+### Function PRIORITY QUEUE
+```
+priority_queue<int> pq;
+priority_queue<pair<int, string>> pq;
+pq.push(123);
+pq.push(321);
+cout << pq.top()                             --> 321 (values automatically sorted in pq, thus biggest element is print out first 
+pq.pop()                                     --> removes top-element 
+
+pq.push(pair<int, string>(555, "Hallo"));
+cout << pq.top().first << ":" << pq.top().second    --> 555 : Hallo
+```
+
+
 <br />
 
 ## OBJECT ORIENTATION
 
 ### Public / Private / Protected 
-public: Von überall aus zugreifbar (innerhalb/außerhalb der Klasse)
-private: Nur innerhalb der Klasse, in der private erstellt wurde, zugreifbar
-protected: Nur innerhalb der Klasse und Klassen, die daraus erben, zugreifbar
---> private Variablen werden per Konvention mit _ geschrieben
---> player1 --> player1_
+- **public**: Accessible from inside and outside of class 
+- **private**: Accessible only from inside the class where the private instance was created 
+   - private variables are normally written with underscore: `player1 --> player1_`
+- **protected**: Accessible only from inside the class and classes that inherit from it
+
 
 ### Constructor
 - The Constructor has normally the same name like the corresponding class 
