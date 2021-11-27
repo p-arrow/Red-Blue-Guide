@@ -12,6 +12,10 @@
 ## BASICS
 
 ### Common Headers 
+- A header file is a file with extension .h
+- It contains C function declarations and macro definitions to be shared between several source files
+- There are two types of header files: the files that the programmer writes and the files that comes with your compiler
+
 ```
 #include <stdio.h> --> standard input/output
 #include <iostream> --> input/output stream: cin, cout
@@ -36,6 +40,12 @@
 - `sizeof()`: returns size of file in byte
 - `system("pause")`: pause output terminal
 
+### Common Keywords
+- **auto**
+- **const**
+- **volatile**:
+   - tells the compiler that the value of the variable may change at any time
+   - without any action being taken by the code the compiler finds nearby
 
 
 ### Interactive Input/Output
@@ -241,6 +251,34 @@ if ( condition ) {
 <br />
 
 ## COMMON FUNCTIONS
+
+### Function GETS
+- `gets()`: 
+   - Reads characters from the standard input (stdin) and stores them as a C string into
+   - Until a newline character or the end-of-file is reached 
+   - It does not allow to specify a maximum size for str - which can lead to buffer overflows !
+   - Better alternative: `fgets()`
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+  volatile int modified;
+  char buffer[64];
+
+  modified = 0;
+  gets(buffer);                       <-- gets()
+
+  if(modified != 0) {
+      printf("you have changed the 'modified' variable\n");
+  } else {
+      printf("Try again?\n");
+  }
+}
+```
 
 ### Function STRING
 ```
