@@ -1,5 +1,11 @@
 ## Table of Contents
-1. [BASICS]()
+1. [Basics](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#basics)
+2. [Configuration](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#configuration)
+3. [Network](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#network)
+4. [Data / File](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#data-/-file)
+5. [Security / Encryption](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#security-/-Encryption)
+6. [User / Groups]((https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#user-/-groups)
+7. [System](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#system)
 
 ## Basics
 
@@ -94,7 +100,7 @@
 
 <br />
 
-## Data/File
+## Data / File
 
 - `./[binary or script]`: execute binary/script
 - **STDIN: 0 / STDOUT: 1 / STDERR: 2**
@@ -207,7 +213,7 @@
 
 <br />
 
-## Security/Encryption
+## Security / Encryption
 - **md5sum**
 - **sha256sum**
 - **sha384sum**
@@ -228,7 +234,7 @@
 
 <br />
 
-## User and Groups
+## User / Groups
 - **id**: show ID of user
     - `id [user]`
 - **passwd**: Create new password for current user
