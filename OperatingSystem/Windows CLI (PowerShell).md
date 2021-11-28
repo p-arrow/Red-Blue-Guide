@@ -47,7 +47,7 @@
 
 ## USEFUL COMMANDS
 
-## Update Package (Exp: Powershellget)
+#### Update Package (Exp: Powershellget)
 1. `Install-PackageProvider -Name NuGet -Force`
 2. `Install-Module -Name PowerShellGet -Force`
 3. `Update-Module -Name PowerShellGet`
