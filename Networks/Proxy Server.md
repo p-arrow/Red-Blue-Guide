@@ -1,5 +1,4 @@
 ## Functions
-
 1. IP Proxy (hiding original IP)
 2. Caching Proxy
 3. Content filter
@@ -8,11 +7,9 @@
 ## Types
 
 ### Nontransparent
-
 - Redirects requests/responses for clients 
 
 ### Transparent
-
 - Redirects requests/responses w/o client being explicitely configured to use it
 - ISPs can use transparent proxies to log user data (!)
 
