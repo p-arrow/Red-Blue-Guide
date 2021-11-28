@@ -52,17 +52,21 @@
 - Create subshell with `( )`
    - Exp: `(cd /tmp; pwd)` --> subshell does not affect current shell
 
-#### Special Characters
-```
-#Check Current Shell
-echo $0
-#Check Current Shell
-echo $SHELL
-#Check Current Shell process ID
-ps -p $$
-#Check Current User of Shell
-grep "^$USER" /etc/passwd
-```
+#### Special Characters (During Script Execution)
+Command | Meaning
+`echo $0` | The filename of the current script
+`echo $#` | The number of arguments supplied to a script
+`echo $$` | The process number of the current shell
+`echo $?` | The exit status of the last command executed
+`echo $!` | The process number of the last background command
+`echo $*` | All the arguments are double quoted
+`echo $@` | All the arguments are individually double quoted
+
+#### Special Characters (Without Script Execution)
+Command | Meaning
+`echo $SHELL` | Check Current Shell
+`ps -p $$` | Check Current Shell process ID
+`grep "^$USER" /etc/passwd` | Check Current User of Shell
 
 #### Brackets
 - **Curly Bracket {}**:
