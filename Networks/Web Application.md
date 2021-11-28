@@ -1,6 +1,5 @@
 
 ## URL Encoding
-
 - Encodes 8bit characters that have specific meaning for URLs
 - URL contains **reserved characters** `: / ? # @ % $ & ! ' ( ) , ; =`
 - URL contains **unreserved characters** `a-z, A-Z, 0-9`
