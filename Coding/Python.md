@@ -1,17 +1,17 @@
-## Table of Content
-1) [BEST PRACTICES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#best-practices)
-2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#basics)
-3) [DATA STRUCTURES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#data-structures)
-4) [CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#control-flow)
-5) [FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#functions)
-6) [SCRIPTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#scripting)
-7) [EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Python.md#examples)
+## TABLE OF CONTENTS
+1) [BEST PRACTICES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#best-practices)
+2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#basics)
+3) [DATA STRUCTURES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#data-structures)
+4) [CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#control-flow)
+5) [FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#functions)
+6) [SCRIPTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#scripting)
+7) [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#code-examples)
 
 <br />
 
-## Best Practices
+## BEST PRACTICES
 
-#### READABILITY IS IMPORTANT
+#### Readability 
 ```
 # Good Examples
 
@@ -25,19 +25,19 @@ print(4/2 + 7*7)
 - Don't compare a boolean variable with `== True` or `== False`, e.g. `if is_cold == True`
 
 
-#### ITERABLES VS. ITERATOR VS. GENERATOR
+#### Iterables vs. Iterator vs Generator 
 - **iterables** are objects that can return one of their elements at a time (e.g. list)
 - **iterator** is an object that represents a stream of data
 - **Generators** are a simple way to create iterators using functions
 
 
-#### BUILT-IN OBJECTS THAT ARE CONSIDERED "FALSE" 
+#### Built-in Objects (considered "False") 
 - Constants defined to be false: `None, False`
 - Zero of any numeric type: `0, 0.0, 0j, Decimal(0), Fraction(0, 1)`
 - Empty sequences and collections: `'"", (), [], {}, set(), range(0)`
 
 
-#### DOCSTRING
+#### Docstring
 ```
 def square_root(n):
 """
@@ -59,7 +59,7 @@ def square_root(n):
    - ONLY executed when you directly run the file**, not when you import it into another
    - Example: modules like random, string, math etc.
 
-#### FAVORITE MODULES
+#### Common Modules
 - **csv**: very convenient for reading and writing csv files
 - **collections**: useful extensions of usual data types incl. OrderedDict, defaultdict, namedtuple
 - **random**: generates pseudo-random numbers, shuffles sequences randomly and chooses random items
@@ -71,7 +71,7 @@ def square_root(n):
 - **sys**: work directly with the Python interpreter
 - **json**: good for reading and writing json files (good for web work)
 
-#### IMPORT TECHNIQUES
+#### Import Techniques
 ```
 1) from "module_name" import "object_name"
 2) from "module_name" import "first_object", "second_object"
@@ -81,7 +81,7 @@ def square_root(n):
 6) from . import "object_name" as "new_name"
 ```
 
-#### THIRD PARTY LIBRARIES
+#### Third Party Libraries
 - Big projects often depend on dozens of third party packages
 - Dependencies are summarized in requirements.txt:
    - beautifulsoup4==4.5.1
@@ -91,7 +91,7 @@ def square_root(n):
 - `pip install -r requirements.txt`: Get all needed packages indicated in requirements.txt
 
 
-#### USEFUL THIRD PARTY LIBRARIES 
+#### Useful Third Party Libraries
 - **Python/Jupyter**: A better interactive Python interpreter
 - **Requests**: Provides easy to use methods to make web requests. Useful for accessing web APIs.
 - **Flask**: A lightweight framework for making web applications and APIs.
@@ -110,9 +110,9 @@ def square_root(n):
 
 <br />
 
-## Basics
+## BASICS
 
-#### ARITHMETIC OPERATORS
+#### Arithmetic Operators
 ```
  + Addition
  - Subtraction
@@ -127,7 +127,7 @@ def square_root(n):
 print(" ",end=" ") --> without newline
 ```
 
-#### OPERATION MEANING
+#### Operation Meaning 
 ```
 < 	strictly less than
 <= 	less than or equal
@@ -141,7 +141,7 @@ is not 	negated object identity
 >>	Binary Right Shift operator (Exp: x = 1010>>1 = 101 = 5 (2^2 + 2^0)
 ```
 
-#### ASSIGNMENT OPERATORS
+#### Assignment Operators 
 ```
 x+=2 --> x=x+2
 x-=2 --> x=x-2
@@ -149,7 +149,7 @@ x*=2 --> x=x*2
 x,y,z = 1,2,3 (simultaneous assignment)
 ```
 
-#### RESERVED WORDS
+#### Reserved Words 
 ```
 false   class    finally  is       return
 none    continue for      lambda   try
@@ -167,13 +167,12 @@ not 	or 	pass 	print 	raise
 return 	try 	while 	
 ```
 
-#### INTEGER VS. FLOAT
+#### Interger vs Float
 - Integer: 4, 10100
 - Float: 4.0, 5.383647, 0.5, .1
 
-#### IN / NOT IN
-- **return bool value (false, true)**
-
+#### in / not in
+- **Function**: return bool value (false, true)
 ```
 Namen = ['kai', 'roy','bernd']
 print('klaus' in Namen) 
@@ -181,13 +180,13 @@ print('klaus' in Namen)
 #output: false
 ```
 
-#### IS / NOT IS
+#### is / not is
 - **identity operator**
 - "is" evaluates if both sides have the same identity
 - "is not" evaluates if both sides have different identities
 
 
-#### == VS. IS (Equality vs Identity)
+#### == vs is (Equality vs Identity)
 ```
 a = [1, 2, 3]
 b = a
@@ -203,7 +202,7 @@ print(a is c) --> False
 # But a and c (and b for that matter, again) point to two different objects, i.e., they aren't identical objects.
 ```
 
-#### EVERYTHING IS A OBJECT
+#### Everything is a object 
 ```
 a = 12.5
 a.__add__(5)    --> 17.5
@@ -214,9 +213,9 @@ s.__len__()     --> 10
 
 <br />
 
-## Data Structures
+## DATA STRUCTURES
 
-#### STRING METHODS
+#### String Methods
 ```
 a = "meinefiesefresseausderschnauze"
     a.islower() --> True (all letters are small)
@@ -249,7 +248,7 @@ def create_flowerdict(filename):
    return flower_dict
 ```
 
-#### LISTS
+#### Lists
 - mutable sequence
 - ordered sequence (zero index basing)
 - `[ ]` or list()
@@ -261,7 +260,7 @@ def create_flowerdict(filename):
     - `print("Hallo Welt"[-4:])`: "Welt"
 
 
-#### LIST METHODS
+#### Lists Methods
 - `max(list)`: returns greatest element
 - `min(list)`: returns smallest element
 - `sorted(list, reverse=true)`: 
@@ -279,8 +278,14 @@ def create_flowerdict(filename):
     - `print(maria_string.format("math","statistics"))`: Maria loves math and statistics
 - `del list[3]`: Delete the 4th element of list
 
+#### List Comprehension
+```
+capitalized_cities = [city.title() for city in cities]
+squares = [x**2 for x in range(9) if x % 2 == 0]
+squares = [x**2 if x % 2 == 0 else x + 3 for x in range(9)]
+```
 
-#### TUPLES
+#### Tuples
 - immutable: you can't add, remove, sort items
 - ordered sequence (zero index basing)
 - ( ) or tuple()
@@ -298,7 +303,7 @@ for name,age in students:
     print(age)
 ```
 
-#### SETS
+#### Sets
 - mutable sequence 
 - unordered (i.e. there is no last element, no index)
 - set have only unique elements (no item twice!, quickly remove duplicates)
@@ -311,7 +316,7 @@ unique_nums.add(5)   # the "append" method is called "add" for sets
 unique_nums.pop()    # remove last element
 ```
 
-#### QUEUE/PRIORITYQUEUE
+#### Queue / Priority Queue 
 - Create queue filled with "value" and "priority"
 - `pq.get()` returns values in ascending order 
 - Use "priority" with "-" (Minus) for descending order 
@@ -324,7 +329,7 @@ for i in range(0, 50):
     print(pq.get())
 ```
 
-#### DICTIONARY 
+#### Dictionary 
 - mutable data type that stores mappings of unique keys to values
 - unordered: cannot be sorted
 - Dictionary keys must be immutable (!)
@@ -358,7 +363,7 @@ for word in book_title:
     word_counter[word] = word_counter.get(word, 0) + 1  # if word_counter.get does not find "word" in book_title then return 0 (new entry). Otherwise +1 (increase counter)
 ```
 
-#### COMPOUND STRUCTURES
+#### Compound Structures
 - include containers in other containers, e.g. dictionary in a dictionary
 ```
 elements = {"hydrogen": {"number": 1,
@@ -371,9 +376,9 @@ elements["oxygen"] = oxygen  #add oxygen to dictionary
 
 <br />
 
-## Control Flow
+## CONTROL FLOW
 
-#### IF / ELIF / ELSE
+#### if / elif / else
 ```
 if "condition1" and "condition2":
    "code"
@@ -383,7 +388,7 @@ else:
    "code"
 ```
 
-#### FOR LOOP
+#### For Loop
 ```
 for i in range(3):
   print("Hello!")
@@ -393,7 +398,7 @@ for list in lists:
     print(list, end="")
 ```
 
-#### WHILE LOOP
+#### While Loop 
 - **break** terminates a loop
 - **continue** skips one iteration of a Loop
 ```
@@ -403,15 +408,10 @@ while sum(hand)  < 17:
     hand.append(card_deck.pop())
 ```
 
-#### LIST COMPREHENSION
-```
-capitalized_cities = [city.title() for city in cities]
-squares = [x**2 for x in range(9) if x % 2 == 0]
-squares = [x**2 if x % 2 == 0 else x + 3 for x in range(9)]
-```
+
 <br />
 
-## Functions
+## FUNCTIONS
 - Function names follow the same naming conventions as variables !
 - We can add default arguments in a function to have default parameters
 - Given parameters will overwrite default parameters
@@ -589,7 +589,7 @@ print(result)
 
 <br />
 
-## Scripting
+## SCRIPTING
 
 #### ERRORS
 - Syntax errors:
@@ -727,7 +727,7 @@ pip install -r requirements.txt
 
 <br />
 
-## Examples
+## CODE EXAMPLES
 
 #### GRAPHICS WITH MATPLOT
 ```
