@@ -1,3 +1,6 @@
+## Table of Contents
+1. [BASICS]()
+
 ## Basics
 
 - `[command1] && [command2]`: command2 gets executed when command1 finished successfully 
