@@ -205,21 +205,27 @@
 <br />
 
 ## Security/Encryption
-
 - **md5sum**
 - **sha256sum**
 - **sha384sum**
 - **sha512sum**
 - **gpg**: built-in encryption/decryption tool (e.g. password vault, signature)
-   - `gpg --gen-key: generate keys + user ID
+   - `gpg --full-gen-key`: generate keys + user ID
    - `gpg -c file`: encrypt with password (based on AES128 algorithm)
    - `gpg --encrypt file`: encrypt file with generated key + user ID
    - `gpg --decrypt file`: alternatively: gpg file.gpg
+   - `gpg --keyserver pgp.mit.edu --search-keys example@email.com`: Search for public key online
+   - `gpg --keyserver pgp.mit.edu --receive-keys 48BF6357AB80EB5E`: Get public key via key ID
+   - `gpg --recipient example@email.net --armor --encrypt plain.txt`
+      - `--armor` = for base64 encoded output
+      - `--recipient` = to specify the public key
+   - `gpg --keyserver pgp.mit.edu --send-keys [your fingerprint]`: Push your public key to keyserver 
+   - `gpg --keyserver pgp.mit.edu --refresh-keys`: To check if your key has been successfully sent
+
 
 <br />
 
 ## User and Groups
-
 - **id**: show ID of user
     - `id [user]`
 - **passwd**: Create new password for current user
