@@ -8,6 +8,7 @@
 7. [C-APPLICATION ALLOCATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#c-application-allocation)
 8. [FUNCTION CALL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#function-call)
 9. [CALLING CONVENTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#calling-conventions)
+10. [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#code-examples)
 
 <br />
 
@@ -163,3 +164,72 @@ text | compiled code
     - How: The called function pops its own arguments from the stack
     - Stack Cleanup: Callee
     - Compiler Option: /Gz
+
+<br />
+
+### CODE EXAMPLES
+
+#### Hello World (written in assembler)
+- `sudo apt install nasm`: The Netwide Assembler, a portable 80x86 assembler
+- `nano ex2.asm`: write the code below
+- `nasm -f elf32 ex2.asm -o ex2.o`: transform assembler code into object
+- `ld -m elf_i386 ex2.o -o ex2`: build executable from object file with GNU linker ld
+- `./ex2`
+
+```
+global _start
+
+section .data
+        msg db "Hello, world!", 0x0a    ; 0x0a = 10 = newline
+        len equ $ - msg                 ; determine len_of_string by "sub string_end - string"
+
+section .text
+_start:                                 ; start label = entry point
+        mov eax, 4                      ; sys_write system call 
+        mov ebx, 1                      ; stdout file descriptor
+        mov ecx, msg                    ; bytes to write
+        mov edx, len                    ; number of bytes to write
+        int 0x80                        ; int = interrupt | 0x80 = system call = interrupt and perform sys_call, i.e. write string to stdout
+        mov eax, 1                      ; sys_exit system call
+        mov ebx, 0                      ; exit status is 0
+        int 0x80                        ; perform system call, i.e. exit program successfully
+```
+
+#### Hello World (written in C++)
+- `nano hello.c`: write code
+- `gcc -Wall -g hello.c -o hello`: build binary hello from hello.c
+- `gdb hello` + `set disassembly intel` + `disass main`: debug hello binary and analyze assembly code
+
+```
+## CODE A ##
+
+#include <stdio.h>
+int main(){
+        printf("Hello World!\n");
+}
+
+## CODE B ##
+
+#include <iostream>
+using namespace std;
+int main(){
+        cout << "Hello World!" << endl;
+        return 0;
+}
+```
+```
+# gdb output CODE A
+
+Dump of assembler code for function main:
+   0x0000000000001139 <+0>:     push   rbp
+   0x000000000000113a <+1>:     mov    rbp,rsp
+   0x000000000000113d <+4>:     lea    rax,[rip+0xec0]        # 0x2004
+   0x0000000000001144 <+11>:    mov    rdi,rax
+   0x0000000000001147 <+14>:    call   0x1030 <puts@plt>
+   0x000000000000114c <+19>:    mov    eax,0x0
+   0x0000000000001151 <+24>:    pop    rbp
+   0x0000000000001152 <+25>:    ret    
+End of assembler dump.
+
+# gdb output CODE B
+```
