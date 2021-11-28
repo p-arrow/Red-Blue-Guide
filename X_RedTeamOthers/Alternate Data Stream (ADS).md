@@ -1,6 +1,10 @@
+# Red Team
+
 *Alternate Data Streams: Meta data attached to another medium (text, picture etc.)*
 
-## Charakteristic
+<br />
+
+## Characteristic
 - Both GUI and CLI don't show ADS by default
 - Size of carrier medium is not affected by ADS 
 - Can be used to transport stealthy malicious code 
