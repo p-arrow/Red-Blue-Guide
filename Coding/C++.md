@@ -1,11 +1,11 @@
 ## TABLE OF CONTENTS
-1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#basics)
-2. [DATA TYPES I](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-types-I)
-3. [DATA TYPES II](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-types-II)
-4. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-control-flow)
-5. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#common-functions)
-6. [OBJECT ORIENTATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#object-orientation)
-7. [EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#examples)
+1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#basics)
+2. [DATA TYPES I](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#data-types-I)
+3. [DATA TYPES II](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#data-types-II)
+4. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#data-control-flow)
+5. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#common-functions)
+6. [OBJECT ORIENTATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#object-orientation)
+7. [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#code-examples)
 
 <br />
 
