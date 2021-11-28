@@ -54,6 +54,7 @@
 
 #### Special Characters (During Script Execution)
 Command | Meaning
+------- | -------
 `echo $0` | The filename of the current script
 `echo $#` | The number of arguments supplied to a script
 `echo $$` | The process number of the current shell
@@ -64,6 +65,7 @@ Command | Meaning
 
 #### Special Characters (Without Script Execution)
 Command | Meaning
+------- | -------
 `echo $SHELL` | Check Current Shell
 `ps -p $$` | Check Current Shell process ID
 `grep "^$USER" /etc/passwd` | Check Current User of Shell
