@@ -1,8 +1,15 @@
-## Basics
+## TABLE OF CONTENTS
+1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/PHP.md#basics)
+2. [COMMANDS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/PHP.md#commands)
+3. [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/PHP.md#code-examples)
+
+<br />
+
+## BASICS
 - `echo "\n";`: newline 
 - `echo $array[index];`: show value of index
 
-## Commands
+## COMMANDS
 - **Executing Commands (previous InputVali important!)**
    - `exec`
    - `passthru`
@@ -26,7 +33,7 @@
    - `$matches[1]` contains text that matches first partial pattern
 
 
-## PHP Examples
+## CODE EXAMPLES
 
 #### preg_patterns
 ```
