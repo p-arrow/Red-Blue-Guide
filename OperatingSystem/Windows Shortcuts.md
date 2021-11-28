@@ -1,5 +1,11 @@
-## Shortcuts
+## TABLE OF CONTENTS
+1. [SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows%20Shortcuts.md#shortcuts)
+2. [WHEN RUN DIALOG BOX IS OPEN](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows%20Shortcuts.md#when-run-dialog-is-open)
+3. [IMPORTANT DIRECTORIES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows%20Shortcuts.md#important-directories)
+4. [GOD MODE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows%20Shortcuts.md#god-mode)
 
+
+## SHORTCUTS
 - Windows-key + r: open run dialog box
 - Windows-key + r & `cmd + Ctrl+Shift+Enter`: Open CMD as admin
 - Windows-key + r & `runas /user:administrator cmd`: Open CMD as admin
@@ -7,9 +13,7 @@
 
 <br />
 
-**When run dialog box is open**
-
-<br />
+## WHEN RUN DIALOG BOX IS OPEN 
 
 Command | Explanation
 ------- | -----------
@@ -34,14 +38,10 @@ appwiz.cpl | Programm overview
 devmgmt.msc | Device Manager
 tpm.msc | TPM Management Console
 
-
-## Directories
-
+## IMPORTANT DIRECTORIES
 - Windows/System32/drivers/etc: host file
 - Windows/System32/config/SAM: user credentials (SAM = Security Account Manager)
 - Windows/System32/winevt/Logs: event protocol
 
-
-## GodMode
-
-- Create new file on Desktop: file_name.{ED7BA470-8E54-465E-825C-99712043E01C}
+## GOD MODE
+- Create new file on Desktop: `file_name.{ED7BA470-8E54-465E-825C-99712043E01C}`
