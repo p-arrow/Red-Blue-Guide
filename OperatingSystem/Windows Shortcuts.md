@@ -39,9 +39,9 @@ devmgmt.msc | Device Manager
 tpm.msc | TPM Management Console
 
 ## IMPORTANT DIRECTORIES
-- Windows/System32/drivers/etc: host file
-- Windows/System32/config/SAM: user credentials (SAM = Security Account Manager)
-- Windows/System32/winevt/Logs: event protocol
+- **Windows/System32/drivers/etc**: host file
+- **Windows/System32/config/SAM**: user credentials (SAM = Security Account Manager)
+- **Windows/System32/winevt/Logs**: event protocol
 
 ## GOD MODE
 - Create new file on Desktop: `file_name.{ED7BA470-8E54-465E-825C-99712043E01C}`
