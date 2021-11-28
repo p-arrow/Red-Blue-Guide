@@ -4,7 +4,8 @@
 3. [REGISTER AND FLAGS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#register-and-flags)
 4. [COMMANDS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#commands)
 5. [TERMS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#terms)
-6. [CALLING CONVENTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#calling-conventions)
+6. [ADDRESSING METHODS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#addressing-methods)
+7. [CALLING CONVENTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md#calling-conventions)
 
 <br />
 
