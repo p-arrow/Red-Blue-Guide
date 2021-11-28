@@ -195,20 +195,21 @@ _start:                                 ; start label = entry point
         int 0x80                        ; perform system call, i.e. exit program successfully
 ```
 
-#### Hello World (written in C++)
+#### Hello World (written in C/C++)
 - `nano hello.c`: write code
-- `gcc -Wall -g hello.c -o hello`: build binary hello from hello.c
-- `gdb hello` + `set disassembly intel` + `disass main`: debug hello binary and analyze assembly code
+- `gcc -Wall -g hello.c -o hello` / `g++ -Wall hello.cpp -o hello`: build binary "hello" from hello.c/hello.cpp
+- `gdb hello` + `set disassembly intel` + `disass main`: debug binary "hello" and analyse assembly code
 
 ```
-## CODE A ##
+## CODE A (C)##
 
 #include <stdio.h>
 int main(){
         printf("Hello World!\n");
+        return 0;
 }
 
-## CODE B ##
+## CODE B (C++)##
 
 #include <iostream>
 using namespace std;
@@ -219,7 +220,6 @@ int main(){
 ```
 ```
 # gdb output CODE A
-
 Dump of assembler code for function main:
    0x0000000000001139 <+0>:     push   rbp
    0x000000000000113a <+1>:     mov    rbp,rsp
@@ -231,5 +231,22 @@ Dump of assembler code for function main:
    0x0000000000001152 <+25>:    ret    
 End of assembler dump.
 
+
 # gdb output CODE B
+Dump of assembler code for function main:
+   0x0000000000001169 <+0>:     push   rbp
+   0x000000000000116a <+1>:     mov    rbp,rsp
+   0x000000000000116d <+4>:     lea    rax,[rip+0xe90]        # 0x2004
+   0x0000000000001174 <+11>:    mov    rsi,rax
+   0x0000000000001177 <+14>:    lea    rax,[rip+0x2f02]        # 0x4080 <_ZSt4cout@GLIBCXX_3.4>
+   0x000000000000117e <+21>:    mov    rdi,rax
+   0x0000000000001181 <+24>:    call   0x1040 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>
+   0x0000000000001186 <+29>:    mov    rdx,QWORD PTR [rip+0x2e43]        # 0x3fd0
+   0x000000000000118d <+36>:    mov    rsi,rdx
+   0x0000000000001190 <+39>:    mov    rdi,rax
+   0x0000000000001193 <+42>:    call   0x1050 <_ZNSolsEPFRSoS_E@plt>
+   0x0000000000001198 <+47>:    mov    eax,0x0
+   0x000000000000119d <+52>:    pop    rbp
+   0x000000000000119e <+53>:    ret    
+End of assembler dump.
 ```
