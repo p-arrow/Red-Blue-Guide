@@ -4,8 +4,10 @@
 3. [Network](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#network)
 4. [Data / File](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#data-/-file)
 5. [Security / Encryption](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#security-/-Encryption)
-6. [User / Groups]((https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#user-/-groups)
+6. [User / Groups](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#user-/-groups)
 7. [System](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#system)
+
+<br />
 
 ## Basics
 
