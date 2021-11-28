@@ -2,12 +2,14 @@
 
 ## TABLE OF CONTENTS
 1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows%20CLI%20(CMD).md#basics)
-2. 
+2. [DISPLAY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows%20CLI%20(CMD).md#display)
+3. [NETWORK](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows%20CLI%20(CMD).md#network)
+4. [DATA / FILE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows%20CLI%20(CMD).md#data--file)
+5. [SYSTEM](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows%20CLI%20(CMD).md#system)
 
 <br />
 
-## Basics
-
+## BASICS
 - **d:** : change to volume D
 - **cd**: change directory
    - `cd %userprofile%`
@@ -30,15 +32,18 @@
 - `timeout [s]`: window is closed after [s] seconds 
 - `set PATH=C:\path\to\app\directory;%PATH%`: add app to system path 
 
-## Display
+<br />
+
+## DISPLAY
 - **color**:
    - `color xy`: x = background color, y = foreground color
 - **mode con**: change console window size
    - `mode con: cols=18 lines=1`: con = console, cols = columns
 - **title**: change title of CMD-Window
 
-## Network
+<br />
 
+## NETWORK
 - **ipconfig**
 - **netstat**: check network connections 
    - `netstat -nabp tcp`
@@ -65,8 +70,9 @@
    - `wmic computersystem get domain`
    - `systeminfo | findstr /I Domain`
 
-## Data/File
+<br />
 
+## DATA / FILE
 - **echo**: print function
    - `echo [...] > xyz.txt`
    - `echo [...] >> xyz.txt`
@@ -106,10 +112,9 @@
       - `icacls [file] /grant User1:(D,WDAC)`: Grant the User1 Delete and Write DAC permissions to [file]
       - `icacls [file] /grant *S-1-1-0:(D,WDAC)`: Grant the User defined by SID S-1-1-0 Delete and Write DAC permissions to [file]
 
+<br />
 
-## System
-
-
+## SYSTEM
 - **diskpart**: disk management
 - **chkdsk**: check disk and show status report 
 - **ver**: show Windows Version
