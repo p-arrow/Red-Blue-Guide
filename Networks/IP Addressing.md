@@ -1,5 +1,4 @@
 ## Basics
-
 - IPv4 Address: 32bit
 - IPv6 Address: 128bit
 - MAC Adresse: 48bit (Media Access Control)
