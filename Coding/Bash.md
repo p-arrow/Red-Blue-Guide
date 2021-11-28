@@ -1,8 +1,8 @@
 ## TABLE OF CONTENTS
-1) [BATCH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Bash.md#batch)
-2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Bash.md#basics)
-3) [OPTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Bash.md#options)
-4) [SCRIPT EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Bash.md#script-examples)
+1) [BATCH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#batch)
+2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#basics)
+3) [OPTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#options)
+4) [SCRIPT EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#script-examples)
 
 <br />
 
