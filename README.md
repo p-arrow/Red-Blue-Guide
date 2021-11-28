@@ -10,8 +10,8 @@ The focus of this guideline are the well known phases of penetration testing:
 - Each Section contains related information which I gathered on my IT Sec journey
 - Both RedTeam and BlueTeam information can be found in one article, if any.
 - Topics that are not directly linked to a pentesting phase are covered in:
-   - RedTeamOthers
-   - BlueTeamOthers
+   - Coding
+   - Operating System
    - Networks
    
 # Glossary
