@@ -1,4 +1,4 @@
-## TABLE OF CONTENT
+## TABLE OF CONTENTS
 1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#basics)
 2. [DATA TYPES I](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-types-I)
 3. [DATA TYPES II](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/C++.md#data-types-II)
