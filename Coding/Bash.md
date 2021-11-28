@@ -1,4 +1,4 @@
-## TABLE OF CONTENT
+## TABLE OF CONTENTS
 1) [BATCH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Bash.md#batch)
 2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Bash.md#basics)
 3) [OPTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/Bash.md#options)
