@@ -1,7 +1,7 @@
 ## TABLE OF CONTENTS
-1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/PHP.md#basics)
-2. [COMMANDS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/PHP.md#commands)
-3. [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/C_Coding/PHP.md#code-examples)
+1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/PHP.md#basics)
+2. [COMMANDS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/PHP.md#commands)
+3. [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/PHP.md#code-examples)
 
 <br />
 
