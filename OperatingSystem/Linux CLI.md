@@ -1,11 +1,11 @@
 ## Table of Contents
-1. [Basics](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#basics)
-2. [Configuration](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#configuration)
-3. [Network](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#network)
-4. [Data / File](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#data--file)
-5. [Security / Encryption](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#security--encryption)
-6. [User / Groups](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#user--groups)
-7. [System](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/Linux%20CLI.md#system)
+1. [Basics](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux%20CLI.md#basics)
+2. [Configuration](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux%20CLI.md#configuration)
+3. [Network](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux%20CLI.md#network)
+4. [Data / File](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux%20CLI.md#data--file)
+5. [Security / Encryption](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux%20CLI.md#security--encryption)
+6. [User / Groups](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux%20CLI.md#user--groups)
+7. [System](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux%20CLI.md#system)
 
 <br />
 
