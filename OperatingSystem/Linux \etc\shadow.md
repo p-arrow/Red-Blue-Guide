@@ -1,9 +1,7 @@
 
 ## etc/shadow
-
-*/etc/passwd --> 644 / rw-r--r--*
-
-*/etc/shadow --> 640 / rw-r-----*
+- **/etc/passwd --> 644 / rw-r--r--**
+- **/etc/shadow --> 640 / rw-r-----**
 
 #### Format /etc/shadow
 1. User
