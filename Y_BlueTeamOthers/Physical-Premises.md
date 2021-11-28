@@ -1,5 +1,8 @@
-## Premise System
+# Blue Team
 
+<br />
+
+## Premise System
 - Used for building automation (BAS) 
 - Exp: Door lock, CCTV, Elevator, HVAC
    - Consider process/memory vulns in PLC (!)
@@ -30,11 +33,9 @@
        - Equal error rate (EER) where FAR and FRR are equal
 
 ## Mantrap
-
 - Area between two doorways that holds people until they are identified/authenticated
 
 ## Electrical Disturbance Prevention
-
 1. Surge: unexpected increase of voltage provided
 2. Spike: short transient in voltage due to short circuit/power outage
 3. Sag: opposite of Surge
