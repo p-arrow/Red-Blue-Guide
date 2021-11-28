@@ -111,31 +111,31 @@ ld | Linux Loader; `/usr/bin/ld`: link c++ file/libraries manually together (nor
 Field | Meaning
 ----- | -------
 environment variables | command line parameter
-stack | flexible size
-heap | flexible size (storage of locale function variables)
-bss | block started by symbol, fixed size, non-initialised variables
-data | fixed size, initialised variables
+stack | flexible size, storage of locale function variables, 
+heap | flexible size 
+bss | block started by symbol, fixed size, **uinitialised variables**
+data | fixed size, **initialised variables**
 text | compiled code
 
 ![grafik](https://user-images.githubusercontent.com/84674087/143775019-530c8b4f-7996-42e7-b6fe-129053491c46.png)
+
 [Image Source](https://berbagidatapenting.blogspot.com/2020/02/data-structure-in-c-stack.html)
 
 <br />
 
 ### FUNCTION CALL 
+1. **x86 Architecture**
+    - A) Function Prolog
+        - Aktuelle Wert des ebp am Stack gesichert (Backup)
+        - Aktuelle Wert des esp in ebp kopiert
+        - Aktuelle Wert des esp wird verringert, damit lok. Var. Platz haben
+    - B) Function Body
+    - C) Function Epilog (Ergebnis in eax gespeichert)
+        - leave: esp wird mit Wert des ebp geladen (akt. S-Frame verworfen)
+        - ret: gesp. Rücksprungadresse vom Stack in eip geladen
+        - Programmcode nach call-Befehl fortgesetzt
 
-x86 Architektur
-1) Function Prolog
---> Aktuelle Wert des ebp am Stack gesichert (Backup)
---> Aktuelle Wert des esp in ebp kopiert
---> Aktuelle Wert des esp wird verringert, damit lok. Var. Platz haben
-2) Function Body
-3) Function Epilog (Ergebnis in eax gespeichert)
---> leave: esp wird mit Wert des ebp geladen (akt. S-Frame verworfen)
---> ret: gesp. Rücksprungadresse vom Stack in eip geladen
---> Programmcode nach call-Befehl fortgesetzt
-
-x86-64 Architektur
+2. **x86-64 Architecture**
 --> Ersten sechs Param d. Fkt in rdi/rsi/rdx/rcx/r8/r9 geladen
 --> Erst ab siebten Param werden Werte auf Stack gelegt
 --> eip wird auf Stack gespeichert (Rücksprungadresse)
