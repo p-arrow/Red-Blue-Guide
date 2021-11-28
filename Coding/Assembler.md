@@ -126,25 +126,25 @@ text | compiled code
 ### FUNCTION CALL 
 1. **x86 Architecture**
     - A) Function Prolog
-        - Aktuelle Wert des ebp am Stack gesichert (Backup)
-        - Aktuelle Wert des esp in ebp kopiert
-        - Aktuelle Wert des esp wird verringert, damit lok. Var. Platz haben
+        - Current value of `ebp` saved at stack (kind of Backup)
+        - Current value of `esp` copied into `ebp`
+        - Current value of `esp` gets reduced to ensure enough space for local variables 
     - B) Function Body
-    - C) Function Epilog (Ergebnis in eax gespeichert)
-        - leave: esp wird mit Wert des ebp geladen (akt. S-Frame verworfen)
-        - ret: gesp. Rücksprungadresse vom Stack in eip geladen
-        - Programmcode nach call-Befehl fortgesetzt
+    - C) Function Epilog (result saved in eax)
+        - leave: `esp` gets loaded with value from `ebp` (function stack frame gets discarded)
+        - ret: saved return address is taken from stack and loaded into `eip` 
+        - Main program code continues after call-command 
 
 2. **x86-64 Architecture**
---> Ersten sechs Param d. Fkt in rdi/rsi/rdx/rcx/r8/r9 geladen
---> Erst ab siebten Param werden Werte auf Stack gelegt
---> eip wird auf Stack gespeichert (Rücksprungadresse)
---> Call-Befehl Ausführung, Adr der gewünschten Fkt in eip geladen
---> 128 Byte-Bereich unterhalb v. rsp ist reserviert (Red Zone)
---> Fkt kann Red Zone für temp. Daten verwenden
-1) Function Prolog 
-2) Function Body
-3) Function Epilog (Ergebnis in rax gespeichert)
+    - First six parameters of function get loaded: `rdi` / `rsi` / `rdx` / `rcx` / `r8` / `r9`
+    - From 7th parameter onwards values are pushed onto stack 
+    - `eip` is saved on stack (return address)
+    - The call command is executed and thus the function address gets loaded into `eip` 
+    - 128 Byte area below `rsp` gets reserved (**Red Zone**)
+    - The called function can use Red Zone for temporary data 
+    - A) Function Prolog (like x86 Architecture)
+    - B) Function Body (like x86 Architecture)
+    - C) Function Epilog (like x86 Architecture, result saved in rax)
 
 <br />
 
@@ -152,13 +152,12 @@ text | compiled code
 > Set rules on how arguments are passed to function and how values are returned from function. Herein "Caller" calls a function and "Callee"is called by a function.
 
 #### Windows C-Applications
-1. cdecl (default for C/C++ programms)
+1. **cdecl** (default for C/C++ programms)
     - Passing order: Right to left
     - How: The calling function pops the arguments from the stack
     - Stack Cleanup: Caller
     - Compiler Option: /Gd
-
-2. stdcall (default for Win32 API)
+2. **stdcall** (default for Win32 API)
     - Passing order: Right to left
     - How: The called function pops its own arguments from the stack
     - Stack Cleanup: Callee
