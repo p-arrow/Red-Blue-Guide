@@ -126,7 +126,7 @@ text | compiled code
 ### FUNCTION CALL 
 1. **x86 Architecture**
     - A) Function Prolog
-        - Current value of `ebp` saved at stack (kind of Backup)
+        - Current value of `ebp` saved on stack (kind of backup)
         - Current value of `esp` copied into `ebp`
         - Current value of `esp` gets reduced to ensure enough space for local variables 
     - B) Function Body
@@ -136,12 +136,13 @@ text | compiled code
         - Main program code continues after call-command 
 
 2. **x86-64 Architecture**
-    - First six parameters of function get loaded: `rdi` / `rsi` / `rdx` / `rcx` / `r8` / `r9`
-    - From 7th parameter onwards values are pushed onto stack 
-    - `eip` is saved on stack (return address)
-    - The call command is executed and thus the function address gets loaded into `eip` 
-    - 128 Byte area below `rsp` gets reserved (**Red Zone**)
-    - The called function can use Red Zone for temporary data 
+    - Pre-Steps:
+        - First six parameters of function get loaded: `rdi` / `rsi` / `rdx` / `rcx` / `r8` / `r9`
+        - From 7th parameter onwards values are pushed onto stack 
+        - `eip` is saved on stack (return address)
+        - The call command is executed and thus the function address gets loaded into `eip` 
+        - 128 Byte area below `rsp` gets reserved (**Red Zone**)
+        - The called function can use Red Zone for temporary data 
     - A) Function Prolog (like x86 Architecture)
     - B) Function Body (like x86 Architecture)
     - C) Function Epilog (like x86 Architecture, result saved in rax)
