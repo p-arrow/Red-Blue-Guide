@@ -75,6 +75,14 @@ cmp (dest, source) | compare source with dest and set flags
 inc (dest) | increase dest by 1
 dec (dest) | reduce dest by 1
 lea | load effective address (performs register arithmetic)
+jmp | jump
+je A, B | jump if equal
+jne A, B | jump if not equal
+jg A, B | jump if greater than
+jge A, B | jump if greater or equal
+jl A, B | jump if less than
+jle A, B | jump if less or equal
+
 
 <br />
 
@@ -127,13 +135,15 @@ text | compiled code
 ### FUNCTION CALL 
 1. **x86 Architecture**
     - A) Function Prolog
-        - Current value of `ebp` saved on stack (kind of backup)
-        - Current value of `esp` copied into `ebp`
-        - Current value of `esp` gets reduced to ensure enough space for local variables 
+        - Current value of `ebp` saved on stack (backup ebp)
+        - Current value of `esp` copied into `ebp` (backup esp)
+        - `esp` gets freed to allocate space for local variables
     - B) Function Body
     - C) Function Epilog (result saved in eax)
-        - leave: `esp` gets loaded with value from `ebp` (function stack frame gets discarded)
+        - leave: `esp` gets loaded with value from `ebp` (recover esp from backup)
         - ret: saved return address is taken from stack and loaded into `eip` 
+            - `pop eax`
+            - `jmp eax` 
         - Main program code continues after call-command 
 
 2. **x86-64 Architecture**
@@ -147,6 +157,23 @@ text | compiled code
     - A) Function Prolog (like x86 Architecture)
     - B) Function Body (like x86 Architecture)
     - C) Function Epilog (like x86 Architecture, result saved in rax)
+
+```
+func:
+    push ebp                ; PROLOGUE backup ebp
+    mov ebp, esp            ; PROLOGUE backup esp
+    sub esp, 2              ; PROLOGUE allocate space for variables
+    mov [esp], byte 'H'
+    mov [esp+1], byte 'i'
+    mov eax, 4              ; sys_write system call
+    mov ebx, 1              ; stdout file descriptor
+    mov ecx, esp            ; pointer to bytes to write
+    mov edx, 2              ; number of bytes to write
+    int 0x80                ; perform system call
+    mov esp, ebp            ; EPILOGUE recover esp 
+    pop ebp                 ; EPILOGUE recover ebp 
+    ret                     ; EPILOGUE terminate func and return to main stack
+```
 
 <br />
 
@@ -187,7 +214,7 @@ section .text
 _start:                                 ; start label = entry point
         mov eax, 4                      ; sys_write system call 
         mov ebx, 1                      ; stdout file descriptor
-        mov ecx, msg                    ; bytes to write
+        mov ecx, msg                    ; bytes to write (value)
         mov edx, len                    ; number of bytes to write
         int 0x80                        ; int = interrupt | 0x80 = system call = interrupt and perform sys_call, i.e. write string to stdout
         mov eax, 1                      ; sys_exit system call
@@ -249,4 +276,59 @@ Dump of assembler code for function main:
    0x000000000000119d <+52>:    pop    rbp
    0x000000000000119e <+53>:    ret    
 End of assembler dump.
+```
+#### Initialize Data
+```
+section .data
+    ; db is 1 byte
+    name1 db "string"
+    name2 db 0xf6
+    name3 db 100
+    ; dw is 2 bytes
+    name4 dw 1000
+    ; dd is 4 bytes
+    name5 is 10000
+```
+
+#### Jump Operation
+- Assemble and link the code (ex4.asm) below
+- `./ex4`
+- `echo $?`: To verify the result saved in ebx
+- Output: 16 (2^4)
+```
+global _start
+
+section .text
+_start:
+        mov ebx, 1      ; start ebx at 1
+        mov ecx, 4      ; number of iterations
+label:
+        add ebx, ebx    ; ebx += ebx
+        dec ecx         ; ecx -= 1
+        cmp ecx, 0      ; compare ecx with 0
+        jg label        ; jump to label if greater
+        mov eax, 1      ; sys_exit system call
+        int 0x80
+```
+
+#### Fill ESP manually, then stdout
+
+```
+global _start
+
+_start:
+        sub esp, 5
+        mov [esp], byte 'H'
+        mov [esp+1], byte 'e'
+        mov [esp+2], byte 'y'
+        mov [esp+3], byte '!'
+        mov [esp+4], byte 0x0a  ; 0x0a = newline
+        mov eax, 4              ; sys_write system call
+        mov ebx, 1              ; stdout file descriptor
+        mov ecx, esp            ; pointer to bytes to write
+        mov edx, 5              ; number of bytes to write
+        int 0x80                ; perform system call
+        mov eax, 1              ; sys_exit system call
+        mov ebx, 0              ; exit status 0
+        int 0x80
 ```
