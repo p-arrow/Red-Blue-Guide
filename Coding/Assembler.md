@@ -195,6 +195,7 @@ func:
 <br />
 
 ### CODE EXAMPLES
+- Credits to [Davy Wybiral](https://yewtu.be/watch?v=wLXIWKUWpSs&list=PLmxT2pVYo5LB5EzTPZGfFN0c2GDiSXgQe&index=0) for the examples
 
 #### Hello World (written in assembler)
 - `sudo apt install nasm`: The Netwide Assembler, a portable 80x86 assembler
@@ -341,7 +342,7 @@ _start:
 - `./ex10`
 - Output: Testing 123...
 ```
-global main 
+global main                             ; "global" allows external programs to call "main"
 extern printf                           ; mark "printf" as external 
 
 section .data 
@@ -358,4 +359,42 @@ main:
     mov esp, ebp                        ; epilogue
     pop ebp                             ; epilogue
     ret    
+```
+
+#### Call Assembly function from C
+- `nano add42.asm` see code below
+- `nano main.c`: see code below
+- `nasm -f elf32 add42.asm -o add42.o && gcc -m add42.o main.c -o ex11`
+- `./ex11`
+- Output: "Result: 72"
+
+```
+## add42.asm ##
+
+global add42                ; make "add42" accessible for main.c with flag "global"
+add42:
+    push ebp
+    mov ebp, esp
+    mov eax, [ebp+8]        ; move argument (from function add42) into eax ("+8" because of previous 2x push operation with 4 byte respectively)
+    add eax, 42             ; add 42 to eax (function purpose)
+    mov esp, ebp            ; epilogue
+    pop ebp                 ; epilogue (grab return address)
+    ret                     ; terminate function and return
+
+
+## add42.h ##
+int add42(int x);           ; Define type and quantity of function paramters to make it known to gcc
+
+
+## main.c ##
+
+#include <stdio.h>
+#include "add42.h"
+
+int main() {
+    int result;
+    result = add42(30);
+    printf("Result: %i\n", result);
+    return 0;
+}
 ```
