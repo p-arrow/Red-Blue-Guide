@@ -332,3 +332,29 @@ _start:
         mov ebx, 0              ; exit status 0
         int 0x80
 ```
+
+#### Calling C functions with x86 assembly
+- `nano ex10.asm`: write code (as below)
+- `sudo apt install gcc-multilib`: You may have to install multilib package in the first place to run 32bit executable on your 64bit machine
+- `nasm -f elf32 ex10.asm -o ex10.o && gcc -m32 ex10.o -o ex10`: assemble and build ex10
+- `./ex10`
+- Output: Testing 123...
+```
+global main 
+extern printf                           ; mark "printf" as external 
+
+section .data 
+    msg db "Testing %i...", 0x0a, 0x00  ; 0x0a = newline | 0x00 string termination
+
+section .text
+main:
+    push ebp                            ; prologue
+    mov ebp, esp                        ; prologue
+    push 123                            ; function paramter (pass in reverse order: %i msg printf())
+    push msg
+    call printf
+    mov eax, 0                          ; exit status 0
+    mov esp, ebp                        ; epilogue
+    pop ebp                             ; epilogue
+    ret    
+```
