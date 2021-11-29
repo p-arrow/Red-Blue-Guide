@@ -291,9 +291,10 @@ section .data
 ```
 
 #### Jump Operation
-- Assemble and link the code (ex4.asm) below
+- `nano ex4.asm`: write code as below
+- `nasm -f elf32 ex4.asm -o ex4.o && ld -m elf_i386 ex4.o -o ex4`: Assemble and link the code
 - `./ex4`
-- `echo $?`: To verify the result saved in ebx
+- `echo $?`: To verify the result, which is saved in ebx
 - Output: 16 (2^4)
 ```
 global _start
