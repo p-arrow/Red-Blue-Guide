@@ -317,10 +317,13 @@
 - **udevadm**: u(ser)dev(ice)adm(inistration) tool
     - `udevadm info -a -p /sys/bus/usb/devices/1-1`: -p = path, 1-1 = bus1 & port1
 - **uname**: print system information (kernel etc.)
-    - `uname -r`: distribution version
+    - `uname -r`: show distribution version
+    - `uname -a`: show all
 - **uptime**: show uptime
 - **lsb_release**: print distribution specific information (lsb=Linux Standard Base)
-    - `lsb_release -a`
+    - `lsb_release -a`: show all
+    - `lsb_release -c`: show codename of distribution
+    - `lsb_release -s`: show information without header
 - **df**: show disk space of complete file system
     - `df -ah`
 - **du**: show disk usage of files in a directory
