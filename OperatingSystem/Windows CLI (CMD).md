@@ -148,3 +148,8 @@
    - Kali: `impacket-secretsdump LOCAL -sam SAM`
 - **bootsect**: repair master boot record
    - `bootsect /nt60 c: /mbr`
+- **bcdedit**: configure the boot behavior
+   - `bcdedit /default {40e2e288-0252-11eb-81b7-4ce173422c3c}`: select default booting disk by UUID
+   - `bcdedit /set {bootmgr} path \EFI\Microsoft\Boot\bootmgfw.efi`: Make windows default boot partition
+   - `bcdedit /set {bootmgr} path \EFI\debian\grubx64.efi`: Make Linux default boot partition
+   - `bcdedit /deletevalue {bootmgr} path \EFI\debian\grubx64.efi`: Delecte boot value
