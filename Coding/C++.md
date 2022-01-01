@@ -79,30 +79,27 @@ int main(int argc, char *argv[]) {  }
    - This resolves the dependencies, thus a.cpp and b.cpp get compiled correctly
 
 ### Stack vs Heap 
-- C manages the stack automatically 
+- C manages the **stack** automatically 
 - Stack grows from top to bottom
 - Not needed functions/variables get deleted after call 
 - Stack has limited size 
 - Example Array: `int a[3] = {1, 2, 3};`
-
-<br />
-
-- The coder manages the heap manually
+- The coder manages the **heap** manually
 - Heap grows from bottom to top
 - Heap is bigger than stack (good for big and growing data sets)
 - Example:
 ```
-#Pointer in stack, but array in heap with Keyword "new"
-#Array is only reserved, but not filled 
-#Array must be closed manually, but only with keyword "new"!
+# The pointer resides in the stack, but the array inside the heap - with Keyword "new"
+# The array is only reserved, but not filled 
+# The array must be closed manually, but only in conjunction with keyword "new" !
 
 int *a = new int[3]; 
 delete [] a;
 ```
 
-### C-String vs C++-String
+### C-String vs C++ String
 - Back then, C had no comfortable data type "string"
-- Instead C used char-Arrays
+- Instead, C used char-Arrays
 - Problem: 
    - No simple passing of char-array to functions
    - That's why they used pointers (referring to array-beginning and array-end)
@@ -110,8 +107,6 @@ delete [] a;
    - This made C vulnerable for string-exploits by implementing `\0` maliciously (DoS, Buffer Overflow etc.)
 - With C++ the string functionality (as we know it today) was implemented (std::string)
 - C++ String does not need `\0` 
-
-
 
 ### Pointer (C-Relict) vs References (C++)
 - Both hand over data to functions (copy/original data possible) 
