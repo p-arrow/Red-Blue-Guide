@@ -305,13 +305,13 @@ for (const auto &name : names) {
 };
 ```
                        
-- Attention: Using "append" within for-loop
+- **Attention**: Using "append" within for-loop
    - If append is used, C++ will check if there are enough memory addresses to allocate
    - If not, existing list/vector must be moved within RAM
    - This costs time and ressources (less efficient !)
-   - Example (no allocation): "existingData123456"
-   - Example (enough space): "myData" "existingData123456"
-   - Example (not enough space): "myData" "notEnoughSpace" "existingData123456"                   
+   - Example (no allocation):`"existingData123456"`
+   - Example (enough space): `"myData" "existingData123456"`
+   - Example (not enough space): `"myData" "notEnoughSpace" "existingData123456"`
 
 ```
 while ( condition ) {
