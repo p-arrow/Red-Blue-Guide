@@ -6,7 +6,6 @@
 5. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#common-functions)
 6. [OBJECT ORIENTATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#object-orientation)
 7. [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#code-examples)
-8. [BLUE](http://example.com)
 
 <br />
 
