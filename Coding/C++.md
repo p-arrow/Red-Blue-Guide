@@ -174,7 +174,7 @@ a[]              // Vector style
 int c = 5;
 cout << c++; --> 5 (output old value, increase by 1)
 cout << ++c; --> 6 (increase by 1, output new value)
-``
+```
 
 <br />
 
