@@ -14,3 +14,8 @@
 - `git remote -v`: show existing URLs
 - `git remote set-url "remote-name" "remote-url"`
    - `git remote set-url heroku https://git.heroku.com/example.git`
+
+## Make Local Repo-Backup
+- `cd /your/desired/dir`: move to your backup folder
+- `git clone https://github.com/user/project.git`: download your repo
+- `cd repoDir` and `git pull`: update your local repo
