@@ -42,11 +42,44 @@
 - `system("pause")`: pause output terminal
 
 ### Common Keywords
-- **auto**
-- **const**
+- **auto**: C automatically detects the correct data type
+- **const**: keep a variable constant
+```
+void doSomething(const &a) {
+    cout << a.getSomething() << endl;
+    }
+# In this example you may get an error message on line 2 
+# The method a.getSomething seems to change the value of a 
+# However, "a" is passed "const" to function doSomething
+# Solution:
+a) Declare the method getSomething as const
+--> int getSomething() const {}
+b) Pass the parameter "a" as non-const to function doSomething
+--> void doSomething(&a) {}
+```
 - **volatile**:
    - tells the compiler that the value of the variable may change at any time
    - without any action being taken by the code the compiler finds nearby
+- **explicit**: avoid the implicit data type conversion within C++
+```
+class Car {
+public:
+    string name;
+    explicit Car(string name){
+        this->name = name;
+    }
+};
+void doSomething(c){
+    cout << c.name << endl;
+}
+int main(){
+    string c = "BMW";        --> "string" instead of "Car"
+    doSomething(c);          --> output "BMW", even though c is passed to doSomething as string type
+}
+
+# without "explicit", C++ can initialize string c as instance in class Car. doSomething works despite the fact that c is handed over as instance of class Car 
+# with "explicit", the constructor requires explicitly "Car c" and nothing else. Then, instance c cannot be initialized and doSomething cannot be called 
+``
 
 ### Arithmetic Operators
 - && : and
@@ -136,6 +169,12 @@ a[]              // Vector style
 - Ensures that #include-calls only appear once in compiled object (after compilation) 
 - Even if several .cpp files have same call (e.g. #include <iostream>)
 
+### ++C vs C++
+```
+int c = 5;
+cout << c++; --> 5 (output old value, increase by 1)
+cout << ++c; --> 6 (increase by 1, output new value)
+``
 
 <br />
 
@@ -247,7 +286,7 @@ int doSomething(vector<int> &vec){
 
 ## DATA CONTROL FLOW
 ```
-# Standard for loop
+# Standard for-loop
 for (int i = 0; i < 20; i++){
    command;
 };
@@ -265,6 +304,15 @@ for (const auto &name : names) {
    command;
 };
 ```
+                       
+- Attention: Using "append" within for-loop
+   - If append is used, C++ will check if there are enough memory addresses to allocate
+   - If not, existing list/vector must be moved within RAM
+   - This costs time and ressources (less efficient !)
+   - Example (no allocation): "existingData123456"
+   - Example (enough space): "myData" "existingData123456"
+   - Example (not enough space): "myData" "notEnoughSpace" "existingData123456"                   
+
 ```
 while ( condition ) {
    command;
