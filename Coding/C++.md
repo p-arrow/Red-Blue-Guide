@@ -47,63 +47,99 @@
    - tells the compiler that the value of the variable may change at any time
    - without any action being taken by the code the compiler finds nearby
 
-
-### Interactive Input/Output
-```
-#include <iostream>
-cin >> x;
-cout << y;
-
-# newline with "endl"
-cout << "hello" << endl;
-
-# read line by line
-getline (cin, string x);
-```
-
-```
-# WITHOUT "using namespace std"
-std::cout << "hello world";
-
-# WITH "using namespace std"
-cout << "hello world";
-```
-
-```
-# Escape Characters
-"Hello\" \\World"
-
-# Output: Hello" \World
-```
-
-```
-# read from file 
-ofstream file ("path/to/file"); 
-
-# write to file
-ifstream file ("path/to/file"); 
-
-# if file is open then do ...
-if(file.is_open()){} 
-
-# close file
-file.close()
-
-# use file until you reach EOL
-while(!file.eof()){}
-
-# printf (relict from C); can provide more data type info than cout
-printf("Hello World:  %.2f", age);
-printf("Hello World:  %s", name); --> does not work because "name" is C++ string
-printf("Hello World:  %s", name.c_str()); --> works because ".c_str()" implements C++ string functionality 
-```
-
 ### Arithmetic Operators
 - && : and
 - || : or
 - == :  equal
 - ! : Negation (e.g. !a && !b)
 - 5 % 2 = 1 (Modulo)
+
+<br />
+
+## ADVANCED
+
+### Structure of Main
+```
+int main(int argc, char *argv[]) {  }
+
+# If argc > 0, then argv[0] represents the program name
+# If argc > 0, then argv[1] represents the program parameters
+# char *argv[] (array of pointers) = char **argv (pointer to a pointer to a character)
+```
+
+### Why do we need Headers (.h)?
+- With headers we avoid dependencies between .cpp files 
+- Example:
+   - a.cpp does not work without b.cpp and vice versa
+   - Consequently neither a nor b get compiled correctly 
+   - Solution:
+   - a.cpp has access to b.h, b.cpp has access to a.h
+   - a.h and b.h indicate which classes/functions/methods they use (but without coding content)
+   - This resolves the dependencies, thus a.cpp and b.cpp get compiled correctly
+
+### Stack vs Heap 
+- C manages the stack automatically 
+- Stack grows from top to bottom
+- Not needed functions/variables get deleted after call 
+- Stack has limited size 
+- Example Array: `int a[3] = {1, 2, 3};`
+
+<br />
+
+- The coder manages the heap manually
+- Heap grows from bottom to top
+- Heap is bigger than stack (good for big and growing data sets)
+- Example:
+```
+#Pointer in stack, but array in heap with Keyword "new"
+#Array is only reserved, but not filled 
+#Array must be closed manually, but only with keyword "new"!
+
+int *a = new int[3]; 
+delete [] a;
+```
+
+### C-String vs C++-String
+- Back then, C had no comfortable data type "string"
+- Instead C used char-Arrays
+- Problem: 
+   - No simple passing of char-array to functions
+   - That's why they used pointers (referring to array-beginning and array-end)
+   - Array-end with special character: `\0`
+   - This made C vulnerable for string-exploits by implementing `\0` maliciously (DoS, Buffer Overflow etc.)
+- With C++ the string functionality (as we know it today) was implemented (std::string)
+- C++ String does not need `\0` 
+
+
+
+### Pointer (C-Relict) vs References (C++)
+- Both hand over data to functions (copy/original data possible) 
+- Both represent an internal memory address 
+```
+void doSomething(int *a){} --> Pointer (*)
+void doSomething(const vector<int> &a) {} --> Referenz (&)
+```
+- Difference:
+   - Pointer only points to array-beginning (out-of-range memory access possible !)
+   - Reference hands over complete object (more comfortable)
+   - Conclusion: Use References whenever possible (less error prone) 
+
+### Vector vs List 
+- Vectors save elements in a row 
+- Vectors can deal with single elements more efficiently 
+- Lists don't save elements in a row but only connected to each other
+- Lists are preferred when other data can be saved in between the list-data 
+```
+it < a.end()     // Vector style
+it != a.end()    // List style, because "<" is less efficient (because elements are far from each other)
+a.at()           // Vector style
+a[]              // Vector style
+```
+
+### Pragma Once (Präprozessordirektive)
+- Ensures that #include-calls only appear once in compiled object (after compilation) 
+- Even if several .cpp files have same call (e.g. #include <iostream>)
+
 
 <br />
 
@@ -492,3 +528,54 @@ public:
 <br />
 
 ## EXAMPLES
+
+### Interactive Input/Output
+```
+#include <iostream>
+cin >> x;
+cout << y;
+
+# newline with "endl"
+cout << "hello" << endl;
+
+# read line by line
+getline (cin, string x);
+```
+
+```
+# WITHOUT "using namespace std"
+std::cout << "hello world";
+
+# WITH "using namespace std"
+cout << "hello world";
+```
+
+```
+# Escape Characters
+"Hello\" \\World"
+
+# Output: Hello" \World
+```
+
+### Interaction with file
+```
+# read from file 
+ofstream file ("path/to/file"); 
+
+# write to file
+ifstream file ("path/to/file"); 
+
+# if file is open then do ...
+if(file.is_open()){} 
+
+# close file
+file.close()
+
+# use file until you reach EOL
+while(!file.eof()){}
+
+# printf (relict from C); can provide more data type info than cout
+printf("Hello World:  %.2f", age);
+printf("Hello World:  %s", name); --> does not work because "name" is C++ string
+printf("Hello World:  %s", name.c_str()); --> works because ".c_str()" implements C++ string functionality 
+```
