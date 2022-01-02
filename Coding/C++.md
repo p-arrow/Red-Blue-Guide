@@ -19,23 +19,23 @@
 
 Header | Meaning
 ------ | -------
-#include <stdio.h> | standard input/output
-#include <iostream> | input/output stream: cin, cout
-#include <fstream> | file stream (read in data)
-#include <string> | C++ String
-#include <cstring> | C String
-#include <algorithm> | functions like max/min/sort 
-#include <iomanip> | input/output manipulaton, e.g. setprecision)
-#include <array> | array functions
-#include <vector> | vector function
-#include <file.cpp> | import other file.cpp into main.cpp
-#include <sstream> | string stream
-#include <list> |
-#include <set> |
-#include <utility> | for data type "Pair"
-#include <map> |
-#include <queue> |
-#include <stdexcept> | for standard exceptions: try/catch
+`#include <stdio.h>` | standard input/output
+`#include <iostream>` | input/output stream: cin, cout
+`#include <fstream>` | file stream (read in data)
+`#include <string>` | C++ String
+`#include <cstring>` | C String
+`#include <algorithm>` | functions like max/min/sort 
+`#include <iomanip>` | input/output manipulaton, e.g. setprecision)
+`#include <array>` | array functions
+`#include <vector>` | vector function
+`#include <file.cpp>` | import other file.cpp into main.cpp
+`#include <sstream>` | string stream
+`#include <list>` |
+`#include <set>` |
+`#include <utility>` | for data type "Pair"
+`#include <map>` |
+`#include <queue>` |
+`#include <stdexcept>` | for standard exceptions: try/catch
 
 
 ### Common Commands
@@ -53,6 +53,7 @@ void doSomething(const &a) {
 # In this example you may get an error message on line 2 
 # The method a.getSomething seems to change the value of a 
 # However, "a" is passed "const" to function doSomething
+
 # Solution:
 a) Declare the method getSomething as const --> int getSomething() const {}
 b) Pass the parameter "a" as non-const to function doSomething --> void doSomething(&a) {}
@@ -84,11 +85,11 @@ int main(){
 ### Arithmetic Operators
 Operator | Meaning
 -------- | -------
-&& | and
-|| | or
-== | equal
-! | Negation (e.g. !a && !b)
-5 % 2 = 1 | Modulo
+`&&` | and
+`\|\|` | or
+`==` | equal
+`!` | Negation (e.g. !a && !b)
+`5 % 2 = 1` | Modulo
 
 <br />
 
