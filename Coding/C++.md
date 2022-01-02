@@ -168,16 +168,36 @@ a.at()           // Vector style
 a[]              // Vector style
 ```
 
-### Pragma Once (Präprozessordirektive)
+### Pragma Once (Preprocessor Directive)
 - Ensures that #include-calls only appear once in compiled object (after compilation) 
 - Even if several .cpp files have same call (e.g. #include <iostream>)
 
 ### ++C vs C++
 ```
 int c = 5;
-cout << c++; --> 5 (output old value, increase by 1)
-cout << ++c; --> 6 (increase by 1, output new value)
+cout << c++;    --> 5 (output old value, increase by 1)
+cout << ++c;    --> 6 (increase by 1, output new value)
 ```
+
+### Preprocessor Directives 
+- Der .cpp Code wird erst bei Ausführung der .exe Datei durchlaufen
+- Wohingegen PPD während des Kompilierungsvorgangs durchlaufen werden
+- Damit lassen sich bestimmte Features on/off stellen
+- Use cases:
+    - Load specific code parts only for Windows/Linux
+    - Add/skip specific parts of functions
+- Starting with C11, this kind of functionality was implemented with "pragma once" more comfortable
+- Examples
+...
+using namespaces std;
+
+#ifndef SOME_VALUE        //if not yet defined "SOME_VALUE"
+#define SOME_VALUE 200    //define "SOME_VALUE" as 200
+#endif                    // end if-loop
+
+int main() {}
+```
+    
 
 <br />
 
