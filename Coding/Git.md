@@ -17,8 +17,8 @@
 
 ## Make Local Repo-Backup
 - `cd /your/desired/dir`: move to your backup folder
-- `git clone https://github.com/user/project.git`: download your repo
-- `cd repoDir` and `git pull`: update your local repo
+- `git clone https://github.com/user/example`: download your repo
+- If you need to update your local backup: `cd your/backup/dir` and `git pull https://github.com/user/example` 
 
 ## Set Up WebService with Heroku
 - Check your server code into a new local Git repository
