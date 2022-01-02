@@ -180,13 +180,13 @@ cout << ++c;    --> 6 (increase by 1, output new value)
 ```
 
 ### Preprocessor Directives 
-- Der .cpp Code wird erst bei Ausführung der .exe Datei durchlaufen
-- Wohingegen PPD während des Kompilierungsvorgangs durchlaufen werden
-- Damit lassen sich bestimmte Features on/off stellen
+- The .cpp code gets executed when starting the .exe file 
+- Contrary, preprocessor directives are running during the compilation process 
+- In this sense, you can turn on/off specific features
 - Use cases:
     - Load specific code parts only for Windows/Linux
-    - Add/skip specific parts of functions
-- Starting with C11, this kind of functionality was implemented with "pragma once" more comfortable
+    - Allow/skip specific parts of functions
+- Starting with C11, this kind of functionality was implemented with "pragma once" in a convenient way
 - Example:
 ```
 using namespaces std;
@@ -198,7 +198,53 @@ using namespaces std;
 int main() {}
 ```
     
+### Create Own Namespace
+- You can create classes with same name but different namespace
+- Neat feature for building logical structures within big code projects 
+- Example:
+```
+namespace factory {
+    class Car;
+}
 
+class factory::Car {
+public:
+    string name;
+    void doSomething();
+};
+    
+int main(){
+    factory::Car c;
+    void factory::Car::doSomething(){};
+}
+```
+
+### Try / Catch / Throw - Exception Handling 
+- Exceptions cost performance and should be treated with care 
+- Thumb of rule: Create your own exception if error possibility is > 5%
+- The keyword for you own exception is **throw** 
+- Example:
+```    
+#include <iostream>
+using namespace std;
+    
+int main() {
+    vector<string> data = {"Maria"};        // some code
+    if (data == "Maria"){
+        throw InvalidParameter();           // We throw an expection an get to the second "catch" down below
+    }
+    try {
+        cout << data.at(2) << endl;
+    }
+    catch(out_of_range &e) {
+        cout << "out_of_range error!" << endl;
+    }
+    catch(InvalidParameter &e){
+        cout << InvalidParameter error!" << endl;
+    return 0;
+}
+```
+    
 <br />
 
 ## DATA TYPES I
