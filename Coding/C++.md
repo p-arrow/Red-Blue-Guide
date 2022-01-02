@@ -187,12 +187,12 @@ cout << ++c;    --> 6 (increase by 1, output new value)
     - Load specific code parts only for Windows/Linux
     - Add/skip specific parts of functions
 - Starting with C11, this kind of functionality was implemented with "pragma once" more comfortable
-- Examples
-...
+- Example:
+```
 using namespaces std;
 
-#ifndef SOME_VALUE        //if not yet defined "SOME_VALUE"
-#define SOME_VALUE 200    //define "SOME_VALUE" as 200
+#ifndef SOME_VALUE        // if not yet defined "SOME_VALUE"
+#define SOME_VALUE 200    // define "SOME_VALUE" as 200
 #endif                    // end if-loop
 
 int main() {}
