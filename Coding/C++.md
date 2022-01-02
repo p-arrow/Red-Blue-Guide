@@ -13,29 +13,30 @@
 ## BASICS
 
 ### Common Headers 
-- A header file is a file with extension .h
+- A header file is a file with extension `.h`
 - It contains C function declarations and macro definitions to be shared between several source files
 - There are two types of header files: the files that the programmer writes and the files that comes with your compiler
 
-```
-#include <stdio.h> --> standard input/output
-#include <iostream> --> input/output stream: cin, cout
-#include <fstream> --> file stream (read in data)
-#include <string> --> C++ String
-#include <cstring> --> C String
-#include <algorithm> --> functions like max/min/sort 
-#include <iomanip> --> input/output manipulaton, e.g. setprecision)
-#include <array> --> array functions
-#include <vector> --> vector function
-#include <file.cpp> --> import other file.cpp into main.cpp
-#include <sstream> --> string stream
-#include <list>
-#include <set>
-#include <utility> --> for data type "Pair"
-#include <map>
-#include <queue>
-#include <stdexcept> --> for standard exceptions: try/catch
-```
+Header | Meaning
+------ | -------
+#include <stdio.h> | standard input/output
+#include <iostream> | input/output stream: cin, cout
+#include <fstream> | file stream (read in data)
+#include <string> | C++ String
+#include <cstring> | C String
+#include <algorithm> | functions like max/min/sort 
+#include <iomanip> | input/output manipulaton, e.g. setprecision)
+#include <array> | array functions
+#include <vector> | vector function
+#include <file.cpp> | import other file.cpp into main.cpp
+#include <sstream> | string stream
+#include <list> |
+#include <set> |
+#include <utility> | for data type "Pair"
+#include <map> |
+#include <queue> |
+#include <stdexcept> | for standard exceptions: try/catch
+
 
 ### Common Commands
 - `sizeof()`: returns size of file in byte
@@ -48,14 +49,13 @@
 void doSomething(const &a) {
     cout << a.getSomething() << endl;
     }
+    
 # In this example you may get an error message on line 2 
 # The method a.getSomething seems to change the value of a 
 # However, "a" is passed "const" to function doSomething
 # Solution:
-a) Declare the method getSomething as const
---> int getSomething() const {}
-b) Pass the parameter "a" as non-const to function doSomething
---> void doSomething(&a) {}
+a) Declare the method getSomething as const --> int getSomething() const {}
+b) Pass the parameter "a" as non-const to function doSomething --> void doSomething(&a) {}
 ```
 - **volatile**:
    - tells the compiler that the value of the variable may change at any time
@@ -82,11 +82,13 @@ int main(){
 ```
 
 ### Arithmetic Operators
-- && : and
-- || : or
-- == :  equal
-- ! : Negation (e.g. !a && !b)
-- 5 % 2 = 1 (Modulo)
+Operator | Meaning
+-------- | -------
+&& | and
+|| | or
+== | equal
+! | Negation (e.g. !a && !b)
+5 % 2 = 1 | Modulo
 
 <br />
 
