@@ -37,7 +37,7 @@
    -  and check them into your Git repository
 - Modify your server to listen on a configurable port
    - Add below code to your server file 
-   - Then add: `git add yourfile.py` and `git commit -m "Use PORT from environment."`
+   - Then enter: `git add yourfile.py` and `git commit -m "Use PORT from environment."`
 ```
 import os
 
@@ -48,4 +48,7 @@ if __name__ == '__main__':
     httpd.serve_forever()
 ```
 - Create your Heroku app: `heroku create yourAppName`
+   - For instance, if you name your app silly-pony, it will appear on the web at https://silly-pony.herokuapp.com/ 
 - Push your code to Heroku with Git: `git push heroku master`
+- If something goes wrong with your server then check out the log file
+   - `https://dashboard.heroku.com/apps/xxx/logs`, but replace "xxx" with your own app's name
