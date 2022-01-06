@@ -235,7 +235,7 @@
 - **cryptsetup**
    - `cryptsetup luksDump /dev/sba1`: LUKS header information
    - `sudo cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 -y /dev/sba`: create encrypted partition. You will be asked for a password
-   - `cryptsetup luksAddKey -key-slot 2 /dev/sba2`: A single encrypted partition can have eight different keys. This command adds one key on slot 2
+   - `cryptsetup luksAddKey --key-slot=2 /dev/sba2`: A single encrypted partition can have eight different keys. This command adds one key on slot 2
 - **lvm**
    - `lvm vgdisplay`: show volume group info 
    - `lvm vgs`: show info of volume groups
