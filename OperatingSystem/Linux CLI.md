@@ -232,6 +232,14 @@
       - `--recipient` = to specify the public key
    - `gpg --keyserver pgp.mit.edu --send-keys [your fingerprint]`: Push your public key to keyserver 
    - `gpg --keyserver pgp.mit.edu --refresh-keys`: To check if your key has been successfully sent
+- **cryptsetup**
+   - `cryptsetup luksDump /dev/sba1`: LUKS header information
+   - `sudo cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 -y /dev/sba`: create encrypted partition. You will be asked for a password
+   - `cryptsetup luksAddKey -key-slot 2 /dev/sba2`: A single encrypted partition can have eight different keys. This command adds one key on slot 2
+- **lvm**
+   - `lvm vgdisplay`: show volume group info 
+   - `lvm vgs`: show info of volume groups
+   - `lvm lvs`: Report information about Logical Volumes
 
 
 <br />
@@ -384,3 +392,5 @@
     - `grub-mkpasswd-pbkdf2`: protect GRUB from anyone who boots your computer
     - `cat /var/log/boot.log`: review boot log
     - `nano /etc/default/grub`: change grub settings (timeout etc.)
+- **lsblk**
+    - `lsblk -o PATH, UUID`: show dev path and UUID  
