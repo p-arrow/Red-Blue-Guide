@@ -30,8 +30,8 @@
    - `export VARIABLE=value` Enter this line inside of bashrc
    - **Permanent Solution #2**
    - `sudo nano /etc/profile` 
-   - export PATH="$PATH:/snap/bin"
-   - source .profile (to activate change for current shell)
+   - `export PATH="$PATH:/snap/bin"`
+   - `source .profile`: to activate change for current shell
 
 #### Arrays
 - `array_name[index]= "value_0 ... value_n"`: Shell Writing Style !
