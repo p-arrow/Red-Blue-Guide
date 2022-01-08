@@ -25,9 +25,13 @@
    - `VARIABLE=value`
    - `echo $VARIABLE` #control purpose
    - `export VARIABLE` 
-   - **Permanent Solution**
+   - **Permanent Solution #1**
    - `nano ~/.bashrc`
    - `export VARIABLE=value` Enter this line inside of bashrc
+   - **Permanent Solution #2**
+   - `sudo nano /etc/profile` 
+   - export PATH="$PATH:/snap/bin"
+   - source .profile (to activate change for current shell)
 
 #### Arrays
 - `array_name[index]= "value_0 ... value_n"`: Shell Writing Style !
