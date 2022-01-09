@@ -1,9 +1,9 @@
 # TABLE OF CONTENTS
-1) [APT PACKAGE TOOL](https://github.com/p-arrow/Red-Blue-Guide/tree/main/OperatingSystem/Linux.md#apt-package-tool)
-2) [BASH PROFILES](https://github.com/p-arrow/Red-Blue-Guide/tree/main/OperatingSystem/Linux.md#bash-profiles)
-3) [CLI](https://github.com/p-arrow/Red-Blue-Guide/tree/main/OperatingSystem/Linux.md#linux-cli)
-4) [ETC/SHADOW](https://github.com/p-arrow/Red-Blue-Guide/tree/main/OperatingSystem/Linux.md#etcshadow)
-5) [TERMINOLOGY](https://github.com/p-arrow/Red-Blue-Guide/tree/main/OperatingSystem/Linux.md#terminology)
+1) [APT PACKAGE TOOL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#apt-package-tool)
+2) [BASH PROFILES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#bash-profiles)
+3) [CLI](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#linux-cli)
+4) [ETC/SHADOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#etcshadow)
+5) [TERMINOLOGY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#terminology)
 
 <br />
 
