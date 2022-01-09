@@ -464,7 +464,19 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `Ctrl+A, Tab`: switch between split windows
     - `Ctrl+A, (|)`: split vertically
     - `Ctrl+A, Q`: Close all regions except the current one.
-    - `Ctrl+A, X`: Close the current region.
+    - `Ctrl+A, X`: Close the current region
+- **tmux**: Terminal Multiplexer
+    -  Change default prefix key (from C-b to Alt-q):
+       - `set-option -g prefix M-q`
+       - `unbind-key C-b`
+       - `bind-key M-q send-prefix`
+    - Common commands:
+       - `set-option -g status-sytle bg=blue`: change background color of status bar
+       - `prefix key + "`: split into top and bottom
+       - `prefix key + %`: split into left and right
+       - `prefix key + $`: rename current session
+       - `prefix key + ,`: rename current window
+       - `prefix key + n`: switch to next window
 - **grub**: boot loader
     - `grub-mkpasswd-pbkdf2`: protect GRUB from anyone who boots your computer
     - `cat /var/log/boot.log`: review boot log
