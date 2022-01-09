@@ -2,7 +2,7 @@
 
 The focus of this guideline are the well known phases of penetration testing:
 1. Reconnaissance
-2. Vulnerability Scanning
+2. Vulnerability Scanning / Enumeration
 3. Exploitation
 4. Post Exploitation
 5. Covering Tracks
@@ -13,6 +13,7 @@ The focus of this guideline are the well known phases of penetration testing:
    - Coding
    - Networks
    - Operating System
+   - Wiki
    
 # Glossary
 
