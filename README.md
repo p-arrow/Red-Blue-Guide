@@ -25,6 +25,8 @@ The focus of this guideline are the well known phases of penetration testing:
 - **IPv4**: IP Address v4
 - **PW**: Password
 - **FW**: Firewall
+- **PS**: PowerShell
+- **CLI**: Commandline Interface
 
 # Support
 
