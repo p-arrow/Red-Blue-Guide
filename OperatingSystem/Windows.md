@@ -284,12 +284,6 @@ gci ($profile.fullname + '\UPM_Profile\AppData\Roaming\Microsoft\Windows\Recent\
 <br />
 
 # WINDOWS SHORTCUTS
-## TABLE OF CONTENTS
-1. [SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#shortcuts)
-2. [WHEN RUN DIALOG BOX IS OPEN](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#when-run-dialog-is-open)
-3. [IMPORTANT DIRECTORIES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#important-directories)
-4. [GOD MODE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#god-mode)
-
 ## SHORTCUTS
 - Windows-key + r: open run dialog box
 - Windows-key + r & `cmd + Ctrl+Shift+Enter`: Open CMD as admin
