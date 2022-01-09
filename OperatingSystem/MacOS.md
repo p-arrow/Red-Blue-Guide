@@ -1,3 +1,4 @@
+# MacOS CLI
 ## Network 
 - `/usr/libexec/ApplicationFirewall/socketfilterfw --listapps`: show FW status
 
