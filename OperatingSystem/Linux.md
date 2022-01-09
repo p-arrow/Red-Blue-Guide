@@ -478,7 +478,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **/etc/passwd --> 644 / rw-r--r--**
 - **/etc/shadow --> 640 / rw-r-----**
 
-### Format /etc/shadow
+## Format /etc/shadow
 1. User
 2. PW-Hash
    -  Hash Algorithm
@@ -493,11 +493,11 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 
 ![grafik](https://user-images.githubusercontent.com/84674087/133145945-6f2abac5-ac9d-41b4-b5a0-a53b14ee0aac.png)
 
-### Format /etc/passwd
+## Format /etc/passwd
 
 ![grafik](https://user-images.githubusercontent.com/84674087/133145975-8aea2c1e-ff8c-4db9-8373-c67905fdbda0.png)
 
-### Hash-Code /etc/shadow
+## Hash-Code /etc/shadow
 - $1: MD5
 - $2a: Blowfish
 - $2y: eksBlowfish
@@ -506,7 +506,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 
 <br />
 
-# LINUX TERMINOLOGY
+# TERMINOLOGY
 ## Abbreviations
 - **ACPI** (Advanced Configuration and Power Interface)
 - **LVM** (Logical Volume Manager): Manage storage in server environments 
@@ -525,7 +525,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **EUID** (Effective User ID): Describes user whose file access permissions are used by the process
 - **Ubuntu ESM** (Extended Security Maintenance): Ongoing patches after end of life of standard security patches
 
-### Directories
+## Directories
 - **bin/sbin** (binary/system binary): Programs
 - **cdrom**: to mount CDs/DVDs
 - **etc**: Configuration
@@ -539,7 +539,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **usr** (unix system resource): Non essential user data
 - **var** (variable): for growing data (log files, crash reports)
 
-### System Paths
+## System Paths
 - `/usr/share/man/man1`: manuals
 - `/etc/apt/sources.list`: Packet sources 
 - `etc/shells`: valid login shells
@@ -548,7 +548,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - `/etc/pam.d/common-password`: check enabled PW hash algorithm
 - `grep -r -i [exploit_name] /usr/share/exploitdb/exploits/`: check available exploits on Kali
 
-### Network Paths
+## Network Paths
 - `/etc/network/interfaces`: Config of eth0, eth1 etc.
 - `/var/www/html/`: Web server path (index.html etc.)
 - `/etc/apache2/mods-available`: Modules for Apache Server
