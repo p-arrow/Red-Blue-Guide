@@ -1,6 +1,9 @@
 # TABLE OF CONTENTS
 1) [WINDOWS CMD](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-cmd)
 2) [WINDOWS POWERSHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-powershell)
+3) [LEGITIMATE PROCESSES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#legitimate-processes)
+4) [MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
+5) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
 
 <br />
 
