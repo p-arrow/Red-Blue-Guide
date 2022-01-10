@@ -235,12 +235,12 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **locate** [string]: Returns all paths that contain [string]
 - **whereis** [data]: Returns all paths
 - **find**:
-    - `find ./dir1/dir2 -name *.txt`
-    - `find . -readable -and -size 1033c`
-    - `find ./dir -perm 664`
+    - `find ./dir1/dir2 -name example.txt`: look for example.txt in dir2
+    - `find . -readable -and -size 1033c`: look for readable file with 1033 bytes
+    - `find ./dir -perm 664`: look for file in /dir with permission 664
     - `find /usr/bin/ -perm 4000` Find files with suid functionality
-    - `find . -empty`
-    - `find -name '*.php' -mtime -1 -ls`
+    - `find . -empty`: find empty files in current dir
+    - `find -name '*.php' -mtime -1 -ls`: find .php with modification time 
 - **file**: display data-type info
 - **zip/unzip**: for packages
 - **tar**: Archive program for files and directories 
