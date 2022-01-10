@@ -5,7 +5,7 @@
 4) [WINDOWS EVENT LOGS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-events-logs)
 5) [WINDOWS MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
 6) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
-7) [WINDOWS SYSMON]
+7) [WINDOWS SYSMON](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-sysmon)
 
 <br />
 
@@ -401,6 +401,8 @@ tpm.msc | TPM Management Console
 
 ## GOD MODE
 - Create new file on Desktop: `file_name.{ED7BA470-8E54-465E-825C-99712043E01C}`
+
+<br />
 
 # WINDOWS SYSMON
 - **More detailed than Windows Event Viewer (!)**
