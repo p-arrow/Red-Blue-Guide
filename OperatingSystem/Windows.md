@@ -2,8 +2,10 @@
 1) [WINDOWS CMD](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-cmd)
 2) [WINDOWS POWERSHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-powershell)
 3) [LEGITIMATE PROCESSES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#legitimate-processes)
-4) [MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
-5) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
+4) [WINDOWS EVENT LOGS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-events-logs)
+5) [WINDOWS MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
+6) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
+7) [WINDOWS SYSMON]
 
 <br />
 
@@ -298,6 +300,48 @@ gci ($profile.fullname + '\UPM_Profile\AppData\Roaming\Microsoft\Windows\Recent\
 
 <br />
 
+# WINDOWS EVENT LOGS
+
+**Hint: sysmon provides more details than WinEventLogs (!)**
+
+## How To Modify
+1) Enter in run dialog: `gpedit.msc`
+2) Win Settings -> Sec Settings -> Local Policies -> Audit Policy
+3) Adjust Settings
+4) gpupdate (!)
+
+## Change Maximum Log Size
+1) Enter in run dialog: `gpedit.msc`
+2) Win Settings -> Sec Settings - Right Click -> Properties
+
+## Severity Level
+- Critical (most severe)
+- Error
+- Warning
+- Informational
+- Verbose (least severe)
+- Audit Success/Failure
+
+## Best Practice
+
+![grafik](https://user-images.githubusercontent.com/84674087/132098709-31cc1a6c-ebfd-47d3-a967-9a99f95c6d35.png)
+
+## Event IDs (typical)
+- 4624: logon event
+- 4625: failed logon event
+- 4688: new process created
+- 4740: account lockout
+- 4648: attempt to logon with explicit credentials
+- 5025: windows firewall service has stopped
+- 1102: log was cleared
+- 4767: user account was unlocked
+- 4657: registry value was changed
+- 4616: system time was changed
+- 4719: system audit policy was changed
+- 4825: denied access via RDP
+
+<br />
+
 # WINDOWS MASTER FILE TABLE
 ## Characteristic
 - Each file on NTFS has record in master file table
@@ -357,3 +401,33 @@ tpm.msc | TPM Management Console
 
 ## GOD MODE
 - Create new file on Desktop: `file_name.{ED7BA470-8E54-465E-825C-99712043E01C}`
+
+# WINDOWS SYSMON
+- **More detailed than Windows Event Viewer (!)**
+- **Eventvwr > App and Service logs > Microsoft > Windows > Sysmon**
+- Check out: [SwiftOnSecurity/sysmon-config](https://github.com/SwiftOnSecurity/sysmon-config)
+
+## Event IDs
+- Event ID 1: Process creation
+- Event ID 2: Process changed file creation time
+- Event ID 3: Network connection (tracking command control!) 
+- Event ID 4: Sysmon service state changed
+- Event ID 5: Process terminated (UTC Time / Process GUID / ID)
+- Event ID 6: Driver loaded
+- Event ID 7: Image Loaded
+- Event ID 8: CreateRemoteThread
+- Event ID 9: RawAccessRead (read from drive using .\ )
+- Event ID 10: Process Access (process opens another process)
+- Event ID 11: FileCreate
+- Event ID 12: RegistryEvent (Object create and delete)
+- Event ID 13: RegistryEvent (Value Set for DWORD and QWORD)
+- Event ID 14: RegistryEvent (Key & Value Rename)
+- Event ID 16: ServiceConfigurationChange
+- Event ID 17: PipeEvent (Pipe Created)
+- Event ID 18: PipeEvent (Pipe Connected)
+- Event ID 19: WmiEvent (WmiEventFiler activity detected)
+- Event ID 20: WmiEvent (WmiEventconsumer activity detected)
+- Event ID 21: WmiEvent (WmiEventConsumerToFiler activity detected)
+- Event ID 22: DNSEvent (DNS query). A process executing a DNS query
+- Event ID 23: FileDelete (A file delete was detected)
+- Event ID 255: Error
