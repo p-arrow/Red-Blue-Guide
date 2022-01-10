@@ -329,7 +329,13 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `lvm vgdisplay`: show volume group info 
    - `lvm vgs`: show info of volume groups
    - `lvm lvs`: Report information about Logical Volumes
-
+- **fail2ban**
+   - rate limiting to mitigate brute force attacks
+   - `git clone https://github.com/fail2ban/fail2ban.git`
+   - `cd fail2ban`
+   - `sudo python setup.py install`
+   - Details: [https://kalilinuxtutorials.com/fail2ban/](https://kalilinuxtutorials.com/fail2ban/)
+ 
 
 <br />
 
