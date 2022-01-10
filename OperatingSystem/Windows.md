@@ -3,10 +3,11 @@
 2) [WINDOWS POWERSHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-powershell)
 3) [WINDOWS LEGITIMATE PROCESSES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#legitimate-processes)
 4) [WINDOWS EVENT LOGS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-events-logs)
-5) [WINDOWS MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
-6) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
-7) [WINDOWS SYSMON](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-sysmon)
-8) [WINDOWS WMIC](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-wmic)
+5) [WINDOWS NETSH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-netsh)
+6) [WINDOWS MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
+7) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
+8) [WINDOWS SYSMON](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-sysmon)
+9) [WINDOWS WMIC](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-wmic)
 
 <br />
 
@@ -340,6 +341,34 @@ gci ($profile.fullname + '\UPM_Profile\AppData\Roaming\Microsoft\Windows\Recent\
 - 4616: system time was changed
 - 4719: system audit policy was changed
 - 4825: denied access via RDP
+
+<br />
+
+# WINDOWS NETSH
+- **Netsh is deprecated! It might be better to user Powershell instead (!)**
+
+## Syntax
+- [-a AliasFile]
+- [-c Context]
+- [-r RemoteComputer]
+- [-u [DomainName\]UserName]
+- [-p Password | *]
+- [command | -f ScriptFile]
+
+## How To
+#### FW deactivate/activate
+- `netsh firewall set opmode enable / disable`
+- `netsh advfirewall set allprofiles state on/off`
+
+#### FW show profile
+- `netsh advfirewall show allprofiles`
+
+#### Reset TCP/IP Stack
+- `netsh int ip reset`: helps to remove defective/incorrectly configured TCP/IP protocols
+
+#### Import/Export NW Config
+- `netsh -c Interface dump > D:\netconfig.txt`
+- `netsh -f D:\netconfig.txt`
 
 <br />
 
