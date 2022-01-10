@@ -82,12 +82,24 @@
 #### Disable SSID Broadcast (Server Set ID)
 - Configures an AP to not broadcast SSID
 
-
 ## Others
-
 #### WIFI Methods 
 - Ad hoc: Peer to peer / directly (Exp: Bluetooth, Printer)
 - Infrastructure: Not directly, but through WAP
 - Channel Bonding: 
    - Used to reduce redundancy or increase throughput
    - Directly affecting the connection speed positively
+
+## Attack Patterns
+1. Rogue Access Point
+2. Evil Twin: Uses same SSID as victim WiFi
+3. War Driving: Drive around, gather info about available WiFi
+4. War Chalking: Map information of War Driving
+5. IV Attack: Observe cipher operations + several security keys
+6. WiFi Disassociation: Force deauthen, capture handshake when reconnect
+
+### Attack Tools
+1. Aircrack-ng: Effective against all WEP based WiFi
+   - Prevention: RADIUS Authen
+2. Reaver: CLI tool for brute force against WPS-enabled APs
+   - Prevention: Rate-limiting of PIN authentication
