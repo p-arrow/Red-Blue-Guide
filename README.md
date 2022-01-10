@@ -3,7 +3,7 @@
 The focus of this guideline are the well known phases of penetration testing:
 1. Reconnaissance
 2. Vulnerability Scanning / Enumeration
-3. Exploitation
+3. Exploitation (General / Linux / Windows / WebApp)
 4. Post Exploitation
 5. Covering Tracks
 
@@ -27,7 +27,7 @@ The focus of this guideline are the well known phases of penetration testing:
 - **PW**: Password
 - **FW**: Firewall
 - **PS**: PowerShell
-- **CLI**: Commandline Interface
+- **CLI**: Command Line Interface
 
 # Support
 
