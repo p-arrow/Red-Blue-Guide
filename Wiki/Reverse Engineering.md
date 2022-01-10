@@ -1,7 +1,6 @@
 # RedTeam
 
 ## Build
-
 - From binary to
     - Machine code (via hexdump)
     - Assembly Code (via Disassembler)
@@ -33,7 +32,6 @@
 - JPEG: FF D8 FF E0 / FF D8 FF EE / FF D8 FF E1
 
 ## Tools
-
 - **ltrace**
     - Analyze library calls of an application
     - `ltrace -p [pid]`: Attach ltrace to running app with known process id
@@ -116,12 +114,10 @@
     - `vimdiff file1.bin file2.bin`
 
 ## Assembler Code
-See here: [O_OperatingSystem/AssemblerCode](https://github.com/p-arrow/Red-Blue-Guide/blob/main/O_OperatingSystem/AssemblerCode.md)
-
+See here: [Coding/Assembler](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Assembler.md)
 
 <br />
 
 # BlueTeam
-
 ## Best Practice
 Attackers need information about information control flow of an application in order to manipulate memory access and registers. Consequently, defenders have to prevent attackers from performing static code analysis
