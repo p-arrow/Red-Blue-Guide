@@ -1,11 +1,12 @@
 # TABLE OF CONTENTS
 1) [WINDOWS CMD](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-cmd)
 2) [WINDOWS POWERSHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-powershell)
-3) [LEGITIMATE PROCESSES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#legitimate-processes)
+3) [WINDOWS LEGITIMATE PROCESSES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#legitimate-processes)
 4) [WINDOWS EVENT LOGS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-events-logs)
 5) [WINDOWS MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
 6) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
 7) [WINDOWS SYSMON](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-sysmon)
+8) [WINDOWS WMIC](
 
 <br />
 
@@ -433,3 +434,25 @@ tpm.msc | TPM Management Console
 - Event ID 22: DNSEvent (DNS query). A process executing a DNS query
 - Event ID 23: FileDelete (A file delete was detected)
 - Event ID 255: Error
+
+<br />
+
+# WINDOWS WMIC
+*Windows Management Instrumentation Command-Line*
+
+## Helpful Commands
+Command | Explanation
+------- | -----------
+`wmic /?`  | Get help menu
+`wmic qfe get` | Show installed Win Updates (qfe = quick fix engineering)
+`wmic process list brief` | Running processes
+`wmic sysdriver get name` | Installed drivers
+`wmic cpu get name` | processor name
+`wmic diskdrive get caption, status` | disk status
+`wmic startup get Caption, Location, Command` | Autostart
+`wmic powercfg -energy -output c:\...\Desktop\report.html` | battery report
+`wmic process where processid=xxx get parentprocessid` | Parent process
+`wmic process where processid=xxx delete` | Delete process
+`wmic process where name="powershell.exe" get processid/commandline` | Search process name
+
+<br />
