@@ -241,6 +241,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `find /usr/bin/ -perm 4000` Find files with suid functionality
     - `find . -empty`: find empty files in current dir
     - `find -name '*.php' -mtime -1 -ls`: find .php with modification time 
+    - `find $HOME -mtime 0`: find all file in home directory with modification within last 24 hours 
+    - `find /home -name .bashrc -exec grep "secret" {} \;`: find all .bashrc files in /home and apply grep with pattern "secret" upon
 - **file**: display data-type info
 - **zip/unzip**: for packages
 - **tar**: Archive program for files and directories 
