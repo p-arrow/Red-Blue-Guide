@@ -6,7 +6,7 @@
 5) [WINDOWS MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
 6) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
 7) [WINDOWS SYSMON](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-sysmon)
-8) [WINDOWS WMIC](
+8) [WINDOWS WMIC](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-wmic)
 
 <br />
 
