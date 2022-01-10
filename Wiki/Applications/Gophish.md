@@ -1,4 +1,4 @@
-*Check out: [3_Exploitation/Social Engineering](https://github.com/p-arrow/Red-Blue-Guide/blob/main/3_Exploitation/Social%20Engineering.md)*
+*Check out: [Wiki/Social Engineering](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Wiki/Social%20Engineering.md)*
 
 ## How To
 1. Download: https://getgophish.com
