@@ -3,7 +3,8 @@
 2) [BASH PROFILES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#bash-profiles)
 3) [CLI](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#linux-cli)
 4) [ETC/SHADOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#etcshadow)
-5) [TERMINOLOGY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#terminology)
+5) [SSH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#ssh)
+6) [TERMINOLOGY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#terminology)
 
 <br />
 
@@ -150,7 +151,6 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 <br />
 
 ## Network
-
 - **ifconfig**: show interface details
 - **ip**:
    - `ip addr show`
@@ -176,11 +176,23 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `traceroute -I example.com` (-I = send ICMP probe)
    - `traceroute -w 10 example.com` (-w = wait for response in seconds)
 - **iperf**: check bandwidth between two \*nix machines
+- **ssh**
+   - `ssh username@host -p port`
+   - `ssh username@host -i privateKey`
+   - `ssh username@host 'bash --noprofile / --norc'`: start ssh session with clean profile
+   - `ssh username@host /bin/bash << command1 ; command2; EOF`
+   - `ssh username@host 'bash -s' < script`
+   - `ssh -t user@host 'bash -l'`: -t = interactive tty ; -l = login shell
+   - `ssh -f -N -L [localPort]:[remoteHost:port] user@remoteHost`: LocalPortForwarding
+   - `ssh -f -N -R [remotePort]:[localHost:port] user@remoteHost`: ReversePortForwarding
+   - `ssh -f -N -D [localPort] user@remoteHost`: DynamicPortForwarding to evade FW for instance
+   - `ssh -Q cipher`: check available ciphers of ssh client
+   - `nmap -p22 -n -sV --script ssh2-enum-algos [IPv4]`: check ciphers of SSH server
+   - `ssh -o KexAlgorithms=diffie-hellman-group1-sha1 user@host`: set specific algorithm option
 
 <br />
 
 ## Data / File
-
 - `./[binary or script]`: execute binary/script
 - **STDIN: 0 / STDOUT: 1 / STDERR: 2**
     - `2>&1`: redirect STDERR to STDOUT (">&" means "redirect file descriptor")
@@ -515,6 +527,37 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - $2y: eksBlowfish
 - $5: SHA256
 - $6: SHA512 
+
+<br />
+
+# SSH
+*nano /etc/ssh/sshd_config*
+
+## Best Practice (Blue Team)
+1. Change to uncommon SSH Port: 22 --> 2323
+2. Add new line for max. Logon Attempts: "MaxAuthTries 3"
+3. PermitRootLogin: No
+4. Disable password-based access (instead key based, openssl)
+5. Whitelist Users
+   - Add new line in sshd_config:
+     - AllowUsers user1 user2
+     - AllowGroups group1 group2
+     - DenyUsers user1 user2
+     - DenyGroups group1 group2
+6. Whitelist IP Addresses***
+   - Add new line in /etc/hosts.allow:
+     - sshd: 10.83.33.77/32
+   - Add new line in /etc/hosts.deny:
+     - sshd: ALL (all denied except whitelisted IP Addresses)
+7. Conditional Login****
+   - Add new line in sshd_config:
+   - Match [User/Group/Host/Address]
+      - Condition 1
+      - Condition 2
+   - Example:
+      - Match Address 192.168.178.0/24
+      - PermitRootLogin yes
+8. MultiFactorAuthen via additional tools / libraries
 
 <br />
 
