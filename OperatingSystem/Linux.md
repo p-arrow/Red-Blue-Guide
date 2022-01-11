@@ -517,7 +517,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **lsblk**
     - `lsblk -o PATH, UUID`: show dev path and UUID  
 
-## System
+## Applications
 - **mysql**
     - `mysql -u root`: get access as root user without password
     - `mysql -u root -p`: you get prompted to enter a password
