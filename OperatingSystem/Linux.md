@@ -85,6 +85,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 5. [Security / Encryption](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#security--encryption)
 6. [User / Groups](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#user--groups)
 7. [System](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#system)
+8. [Applications](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#applications)
 
 <br />
 
@@ -515,6 +516,14 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `nano /etc/default/grub`: change grub settings (timeout etc.)
 - **lsblk**
     - `lsblk -o PATH, UUID`: show dev path and UUID  
+
+## System
+- **mysql**
+    - `mysql -u root`: get access as root user 
+    - `show databases;`
+    - `use [DATABASE];`
+    - `show tables;`
+    - `select * from [TABLE];`
 
 <br />
 
