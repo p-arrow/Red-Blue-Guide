@@ -189,6 +189,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `ssh -Q cipher`: check available ciphers of ssh client
    - `nmap -p22 -n -sV --script ssh2-enum-algos [IPv4]`: check ciphers of SSH server
    - `ssh -o KexAlgorithms=diffie-hellman-group1-sha1 user@host`: set specific algorithm option
+- **iptables**
+   - See here:[Wiki/iptables](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Wiki/Applications/Iptables.md) 
 
 <br />
 
