@@ -519,7 +519,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 
 ## System
 - **mysql**
-    - `mysql -u root`: get access as root user 
+    - `mysql -u root`: get access as root user without password
+    - `mysql -u root -p`: you get prompted to enter a password
     - `show databases;`
     - `use [DATABASE];`
     - `show tables;`
