@@ -227,6 +227,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `-c`: return count of matching strings
     - `-l`: return name of files with matching lines
     - `-o`: print only matched parts (-o "s" ; -o "Word")
+    - `-A NUM`: print NUM lines of trailing context after matching lines (`grep -A 3 passwd /home/.bash_history`)
+    - `-B NUM`: print NUM lines of leading context before matching lines
     - `ls | grep .pdf`
     - `grep 'word1\|word2'`: search two terms 
     - `grep "10\.1\.0\.10\," firewall.log | grep "23$"`
