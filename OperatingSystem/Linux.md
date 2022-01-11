@@ -254,6 +254,12 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
      - `tar -cvf [file] /etc`: create file verbosly 
      - `tar -cf archiv.tar test.txt test2.txt`: create archiv with files "test" and "test2"
      - `tar -xzvf archiv.tar.gz`: extract zipped file verbosly
+- **bzip2**:
+     - `bzip2 -d file.bz2`: decompress bz2 file 
+- **cpio** (copy in and out)
+     - `cpio -t < backup.cpio`: list the files insde the archive with extraction
+     - `cpio -iv < backup.cpio`: extract backup.cpio verbosely in current directory 
+     - `cpio -ocv0  > /tmp/archive.cpio`: create cpio archive verbosely, wherein files are delimited by null character
 - **sleep**: invoke delay (indicate in seconds)
 - **wget**: non-interactive download of files from the Web
 - **dd**: convert and copy a file (dd if=file_in of=file_out bs=1 skip=40)
