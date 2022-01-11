@@ -525,6 +525,16 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `use [DATABASE];`
     - `show tables;`
     - `select * from [TABLE];`
+    - `select load_file('/full/path/to/file.txt');`: Display content of specified file
+- **postgres**
+    - `psql`: start local postgreSQL DB (you need to be postgres-user on your machine)
+    - `\list`: to list the databases
+    - `\c [DATABASE]`: to connect to database
+    - `\d`: to list the tables
+    - `\d+`: to list the tables in detail
+    - `SELECT * FROM [TABLE];`: select desired information
+    - `\q`: exit postgres
+ 
 
 <br />
 
