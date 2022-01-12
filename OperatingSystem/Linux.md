@@ -317,6 +317,16 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     2. `john password.txt`
 - **eog**: GNOME image viewer
     - `eog *` show all photos 
+- **awk/gawk**:
+    -  Predefined variables
+       - `RS`: record separator. Normally one line of the input file
+       - `NR`: Current input record number. Normally current input line nmumber
+       - `NF`: Number of fields in current record. Normally fields separated by FS/OFS (white space) and thus: field = word
+       - `FS/OFS`: Input and Output Field Separator. Default is "white space"   
+    - *awk pattern { action }*: if pattern is evaluated true, action is executed
+    - `awk '1 { print }' file` or `awk 1 file`:  print each line of file
+    - `awk 'NR>1' file`: print all lines except first
+    - `awk 'NF' file`: print all lines with at least one non-whitespace (NF=0 -> line has only white space)
 
 <br />
 
