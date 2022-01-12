@@ -294,12 +294,13 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **nano**:
     - `Ctrl+Shift+6`: Mark block, then move cursor, then Strg+K to delete
     - `nano -l [file]`: show line number
-- **vi**:
+- **vi/vim**:
     - `i`: start insert Mode
     - `ESC`: exit insert Mode
     - In Normal mode: `y/y^/y$` (copy), `d/d$` (delete), `p` (paste)
     - `:wq` (write and quit)
     - `:wq!` (write, quit and override)
+    - [Spawn shell inside vim](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Wiki/Restricted%20Shell%20Escape.md)
 - **tee**: read from standard input and write to standard output and files
 - **sed**: Stream Editor, useful with regex
     - `cat [file] | sed /regex-pattern/action`
@@ -411,6 +412,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **history**: show command history of user
 - **getent**: get entries from Name Service Libs
     - `getent group sudo`
+- **sudo**:
+    - `sudo -l`: list allowed commands
+    - `sudo -u victim /bin/bash`: if allowed you can run commands on behalf of other user e.g. victim
 
 ## System
 - **apt**
@@ -533,8 +537,16 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `\d`: to list the tables
     - `\d+`: to list the tables in detail
     - `SELECT * FROM [TABLE];`: select desired information
+    -  Once you gain access, you can read files from file system:
+       - `CREATE TABLE demo(t text);`
+       - `COPY demo from '[FILENAME]';`
+       - `SELECT * FROM demo;`
+       - `DROP TABLE demo;`
     - `\q`: exit postgres
- 
+- **swlite3**:
+    - `sqlite3 [file]`: connect to databse [file]
+    - `.tables`: get a list of tables
+    - `SELECT * FROM [table]`: extract the content of a table using SQL
 
 <br />
 
