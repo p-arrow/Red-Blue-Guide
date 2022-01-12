@@ -7,14 +7,14 @@
 ## How To
 
 **Console Editors** (ed / ne / nano / pico / vim)
-- :set shell=/bin/sh; shell
-- :!/bin/sh
-- !'/bin/sh'
+- `:set shell=/bin/sh; shell`
+- `:!/bin/sh`
+- `!'/bin/sh'`
 
 **Pager Commands** (more / less)
 - open a file long enough to invoke pager
-- !'sh'
-- v (vim editor)
+- `!'sh'`
+- `v` (vim editor)
 
 **man and pinfo**
 - invoke man page
