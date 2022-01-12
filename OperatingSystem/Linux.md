@@ -385,9 +385,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `chmod g-w [file name]`
     - `chmod 750 [file name]` (-rwx r-x ---)
     - `chmod 777 .` 
-    - `chmod a=r [file name]` (set read-permission for "all")
-    - `chmod 4755/u+s file` (set setuid)
-    - `chmod 2755/g+s file` (set setguid)
+    - `chmod a=r [file name]`: set read-permission for "all"
+    - `chmod 4755 file`: set setuid
+    - `chmod +xs file`: set setuid
+    - `chmod 2755/g+s file`: set setguid
     -  r/w/x | binary | octal
        ----- | ------ | -----
         ---  |  000   |   0
