@@ -332,6 +332,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 
 ## Security / Encryption
 - **md5sum**
+   - `echo -n admin | md5sum`: create md5 hash of "admin" (Don't forget `-n` o skip newline)
 - **sha256sum**
 - **sha384sum**
 - **sha512sum**
