@@ -520,12 +520,17 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
        - `unbind-key C-b`
        - `bind-key M-q send-prefix`
     - Common commands:
-       - `set-option -g status-sytle bg=blue`: change background color of status bar
+       - `tmux set-option -g status-style bg=blue`: change background color of status bar
        - `prefix key + "`: split into top and bottom
        - `prefix key + %`: split into left and right
        - `prefix key + $`: rename current session
        - `prefix key + ,`: rename current window
        - `prefix key + n`: switch to next window
+       - `prefix key + up/down/left/right`: switch to next pane
+       - `prefix key + c`: create new window
+       - `prefix key + x`: kill current pane
+       - `prefix key + w`: choose current window interactively
+       - `prefix key + 0 to 9`: select windows 0 to 9
 - **grub**: boot loader
     - `grub-mkpasswd-pbkdf2`: protect GRUB from anyone who boots your computer
     - `cat /var/log/boot.log`: review boot log
