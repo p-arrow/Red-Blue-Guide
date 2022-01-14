@@ -55,6 +55,7 @@ dpkg --contents [file.deb] (or -c)
 dpkg --info [file.deb] (or -I)
 dpkg --verify (display modified system files)
 dpkg-query -f'${binary:package}\n' -W > applist  #create list of installed apps and save in "applist"
+grep "installed" /var/log/dpkg.log               #get list of recently installed apps
 ```
 
 <br />
