@@ -48,12 +48,13 @@ apt-file search [package] --> APT package searching utility
 
 #### dpkg CLI
 ```
-dpkg --listfiles package (or -L)
-dpkg --search file (or -S)
+dpkg --listfiles [package] (or -L)
+dpkg --search [file] (or -S)
 dpkg --list (or -l)
-dpkg --contents file.deb (or -c)
-dpkg --info file.deb (or -I)
+dpkg --contents [file.deb] (or -c)
+dpkg --info [file.deb] (or -I)
 dpkg --verify (display modified system files)
+dpkg-query -f'${binary:package}\n' -W > applist  #create list of installed apps and save in "applist"
 ```
 
 <br />
