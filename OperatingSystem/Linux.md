@@ -355,9 +355,26 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `sudo cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 -y /dev/sba`: create encrypted partition. You will be asked for a password
    - `cryptsetup luksAddKey --key-slot=2 /dev/sba2`: A single encrypted partition can have eight different keys. This command adds one key on slot 2
 - **lvm**
-   - `lvm vgdisplay`: show volume group info 
-   - `lvm vgs`: show info of volume groups
-   - `lvm lvs`: Report information about Logical Volumes
+   - `sudo vgdisplay`: show volume group info 
+   - `sudo pvs`: show info of physical volumes
+   - `sudo vgs`: show info of volume groups
+   - `sudo lvs`: show info of logical volumes
+   - How to shrink size of encrypted root partition:
+      - Backup your data for safety sake
+      - Boot from Live CD / Live USB
+      - `sudo vgs` or `sudo vgdisplay` or `sudo vgscan`: To identify the existing volume group with /root inside
+      - If your VG is encrypted you need to decrypt it first via GUI (open file system)
+      - /root must be **unmounted** before resizing !
+      - `sudo e2fsck -f /dev/mapper/yourVG/yourLV`: Make sure no errors are reported during file system check
+      - `sudo resize2fs -p /dev/mapper/yourVG/yourLV 100G`: Resize the file system to 100G. Replace 100G with your desired size for /root
+      - `sudo lvreduce -L 100G /dev/mapper/yourVG/yourLV`: Resize the logical volume to same size as file system !
+      - `reboot`: To make your change effective
+      - If you want to allocate the new free space to another (new) logical volume then proceed as below
+      - `sudo lvcreate -L SIZE -n yourNewLV yourVG`: create new logical volume with size SIZE
+      - `sudo mkfs.ext4 /dev/mapper/vgmint-var`: format the file system on your new logical volume e.g. to ext4
+      - `sudo mount /dev/mapper/yourVG/yourNewLV /yourDesiredMountPoint`: this is temporarily
+      - `echo '/dev/mapper/yourVG/yourNewLV /yourDesiredMountPoint ext4 defaults 0 0' | sudo tee -a /etc/fstab`: this is permanent
+   - `sudo lvextend -L 4G /dev/mapper/yourVG/yourLV`: extend your LV to new size 4Gb 
 - **fail2ban**
    - rate limiting to mitigate brute force attacks
    - `git clone https://github.com/fail2ban/fail2ban.git`
