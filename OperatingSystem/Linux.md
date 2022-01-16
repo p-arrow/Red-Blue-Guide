@@ -432,19 +432,24 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 
 ## System
 - **apt**
-    - `apt update`
-    - `apt upgrade`
-    - More details: [BlueTeamOthers/Linux](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Y_BlueTeamOthers/Linux.md#apt-package-tool) 
+    - [See here](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#apt-package-tool) 
 - **shutdown**
     - `shutdown -h now`: Instant shutdown
     - `shutdown -r now`: reboot
 - **reboot**
 - **Read-in CD**
     - `apt-cdrom add /media/cdrom`
-- **service**:
+- **service**: runs  a System V init script located in /etc/init.d/SCRIPT, or the name of a systemd unit
     - `service [program] restart`: restart service (after config change)
     - `service [program] status`: show status 
+    - `service --status-all`: query the status of all services
+- **systemctl**:
     - `systemctl status [program]` 
+    - `systemctl start [program]` 
+    - `systemctl stop [program]` 
+    - `systemctl restart [program]` 
+    - `systemctl --type service`: show all services
+    - `systemctl --version`  
 - **nohup** (no hangup): continue command even user logs out or exit shell
 - **journalctl**: query the systemd journal
     - `journalctl -xe`
