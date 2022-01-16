@@ -380,6 +380,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
       - `sudo mount /dev/mapper/yourVG/yourNewLV /home`
       - `echo '/dev/mapper/yourVG/yourNewLV /home ext4 defaults 0 0' | sudo tee -a /etc/fstab`: make it permanent
    - `sudo lvextend -L 4G /dev/mapper/yourVG/yourLV`: extend your LV to new size 4Gb 
+   - `sudo lvrename oldLVName newLVName`: change LV name. Please mind to update `/etc/fstab` and `sudo update-grub` afterwards
 - **fail2ban**
    - rate limiting to mitigate brute force attacks
    - `git clone https://github.com/fail2ban/fail2ban.git`
@@ -564,8 +565,12 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `grub-mkpasswd-pbkdf2`: protect GRUB from anyone who boots your computer
     - `cat /var/log/boot.log`: review boot log
     - `nano /etc/default/grub`: change grub settings (timeout etc.)
+    - `sudo update-grub`: same as `grub-mkconfig -o /boot/grub/grub.cfg`
 - **lsblk**
     - `lsblk -o PATH, UUID`: show dev path and UUID  
+- **last**
+    - `last -x reboot`: show last reboots
+    - `last -x shutdown`: show last shutdowns 
 
 ## Applications
 - **mysql**
