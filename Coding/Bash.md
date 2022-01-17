@@ -271,3 +271,18 @@ fi
 done
 echo
 ```
+
+#### Create App List from Linux Host
+```
+#!/bin/bash 
+
+#Get Date
+date=$(date +%y.%m.%d) 
+
+#Get List
+echo ""
+echo "[+] create appList on $date"
+dpkg-query --showformat='${binary:package}\n' -W > ${date}_appList
+echo "[+] applist created"
+echo ""
+```
