@@ -63,6 +63,10 @@
     - If you don’t group by any columns, you’ll get a 1-row result—no problem there
     - If you group by column with enough unique values that it exceeds the LIMIT number, the 
      aggregates will be calculated, and then some rows will simply be omitted from the results
+```
+SELECT * FROM Customers
+LIMIT 3;
+```
 - **ORDER BY**
     - allows us to order our table by any row
     - placed always after the SELECT and FROM statements
