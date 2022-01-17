@@ -521,8 +521,16 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **pstree**: Show parent/child relation of processes
 - **fsck**: file system check
 - **cron**:
-    - `* * * * * /usr/bin/echo.sh >> /dev/pts/0`: redirect output from echo.sh
-    - `*/2 * * * * command`: execute command every two minutes
+    - Syntax:
+      - Minute (0-59)
+      - Hours (0-23)
+      - Days (1-31)
+      - Months (1-12)
+      - Weekdays (1-7) 
+    - `cron * * * * * /usr/bin/echo.sh >> /dev/pts/0`: redirect output from echo.sh
+    - `cron */2 * * * * command`: execute command every two minutes
+    - `cron 0 10 * * * command`: execute command every day 10 AM
+    - `cron -L [NUMBER]`: Specify loglevel by [NUMBER]; e.g. 1 will log the start of all cron jobs; 2 will log the end of all cron jobs
 - **crontab**: 
     - `crontab -l`: display cron jobs
     - `crontab -u root -l`: user specific)
