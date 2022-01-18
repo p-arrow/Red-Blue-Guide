@@ -527,14 +527,18 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
       - Days (1-31)
       - Months (1-12)
       - Weekdays (1-7) 
-    - `cron * * * * * /usr/bin/echo.sh >> /dev/pts/0`: redirect output from echo.sh
-    - `cron */2 * * * * command`: execute command every two minutes
-    - `cron 0 10 * * * command`: execute command every day 10 AM
+    - `* * * * * /usr/bin/echo.sh >> /dev/pts/0`: redirect output from echo.sh
+    - `*/2 * * * * command`: execute command every two minutes
+    - `0 10 * * * command`: execute command every day 10 AM
     - `cron -L [NUMBER]`: Specify loglevel by [NUMBER]; e.g. 1 will log the start of all cron jobs; 2 will log the end of all cron jobs
 - **crontab**: 
     - `crontab -l`: display cron jobs
-    - `crontab -u root -l`: user specific)
+    - `crontab -u root -l`: open crontap as root
     - `grep -r [cronjob] /etc/cron.* /etc/crontab`
+    - Add cron job:
+      -  `sudo nano /etc/crontab`
+      -  Add your command: `* * * * * [USER] [COMMAND]`
+      -  Example: `0 10 * * * user ~/dir/script.sh` --> Everyday at 10AM perform script.sh with user privilege
 - **write**: send a message to another user on the host
 - **mesg**: display (or do not display) messages from other users
 - **jobs**: 	Lists all jobs
