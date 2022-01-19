@@ -8,12 +8,12 @@
 <br />
 
 ## BEST PRACTICES
-#### Iterables vs. Iterator vs Generator 
+### Iterables vs. Iterator vs Generator 
 - **iterables** are objects that can return one of their elements at a time (e.g. list)
 - **iterator** is an object that represents a stream of data
 - **Generators** are a simple way to create iterators using functions
 
-#### Docstring
+### Docstring
 ```
 def square_root(n):
 """
@@ -29,13 +29,13 @@ def square_root(n):
 """
 ```
 
-#### AVOID EXECUTABLE RUNNING WHEN IT'S IMPORTED
+### AVOID EXECUTABLE RUNNING WHEN IT'S IMPORTED
 - `if __name__ == "__main__":`
    - Ensure that variables that are created, functions that are called, operations that are done
    - ONLY executed when you directly run the file**, not when you import it into another
    - Example: modules like random, string, math etc.
 
-#### Common Modules
+### Common Modules
 - **csv**: very convenient for reading and writing csv files
 - **collections**: useful extensions of usual data types incl. OrderedDict, defaultdict, namedtuple
 - **random**: generates pseudo-random numbers, shuffles sequences randomly and chooses random items
@@ -47,7 +47,7 @@ def square_root(n):
 - **sys**: work directly with the Python interpreter
 - **json**: good for reading and writing json files (good for web work)
 
-#### Import Techniques
+### Import Techniques
 ```
 1) from "module_name" import "object_name"
 2) from "module_name" import "first_object", "second_object"
@@ -57,7 +57,7 @@ def square_root(n):
 6) from . import "object_name" as "new_name"
 ```
 
-#### Third Party Libraries
+### Third Party Libraries
 - Big projects often depend on dozens of third party packages
 - Dependencies are summarized in requirements.txt:
    - beautifulsoup4==4.5.1
@@ -67,7 +67,7 @@ def square_root(n):
 - `pip install -r requirements.txt`: Get all needed packages indicated in requirements.txt
 
 
-#### Useful Third Party Libraries
+### Useful Third Party Libraries
 - **Python/Jupyter**: A better interactive Python interpreter
 - **Requests**: Provides easy to use methods to make web requests. Useful for accessing web APIs.
 - **Flask**: A lightweight framework for making web applications and APIs.
@@ -87,8 +87,7 @@ def square_root(n):
 <br />
 
 ## BASICS
-
-#### Arithmetic Operators
+### Arithmetic Operators
 ```
  + Addition
  - Subtraction
@@ -103,7 +102,7 @@ def square_root(n):
 print(" ",end=" ") --> without newline
 ```
 
-#### Operation Meaning 
+### Operation Meaning 
 ```
 < 	strictly less than
 <= 	less than or equal
@@ -117,14 +116,14 @@ is not 	negated object identity
 >>	Binary Right Shift operator (Exp: x = 1010>>1 = 101 = 5 (2^2 + 2^0)
 ```
 
-#### Assignment Operators 
+### Assignment Operators 
 ```
 x+=2 --> x=x+2
 x-=2 --> x=x-2
 x*=2 --> x=x*2
 x,y,z = 1,2,3 (simultaneous assignment)
 ```
-#### == vs is (Equality vs Identity)
+### == vs is (Equality vs Identity)
 ```
 a = [1, 2, 3]
 b = a
@@ -140,7 +139,7 @@ print(a is c) --> False
 # But a and c (and b for that matter, again) point to two different objects, i.e., they aren't identical objects.
 ```
 
-#### Everything is a object 
+### Everything is a object 
 ```
 a = 12.5
 a.__add__(5)    --> 17.5
@@ -148,7 +147,7 @@ a.__sub__(7)    --> 5.5
 s = "Hallo Welt"
 s.__len__()     --> 10
 ```
-#### DECLARE ENCODING
+### Declare Encoding 
 - At top of file.py:
     - `#!/usr/bin/env python`
     - `# -*- coding: utf-8 -*-`
@@ -156,7 +155,7 @@ s.__len__()     --> 10
 <br />
 
 ## DATA STRUCTURES
-#### String Methods
+### String Methods
 ```
 a = "meinefiesefresseausderschnauze"
     a.islower() --> True (all letters are small)
@@ -177,7 +176,7 @@ a = "meinefiesefresseausderschnauze"
 - `flower = line.split(": ")[1].strip()`
     - `flower_dict[letter] = flower`
 
-#### Lists
+### Lists
 - `list = [1,2,3,4]`
 - `print(list[1:3])`: [2,3] *lower value included, upper value excluded!
 - `print(list[-2:])`: [3,4] *slicing works also reversely
@@ -197,7 +196,7 @@ a = "meinefiesefresseausderschnauze"
     - `squares = [x**2 for x in range(9) if x % 2 == 0]`
     - `squares = [x**2 if x % 2 == 0 else x + 3 for x in range(9)]`
 
-#### Tuples
+### Tuples
 - `tuple_a = 1,2`: parentheses can be omit
 - `tuple_b = (1,2)`
 - `t = 1,2,3` --> `x,y,z = t`: tiple unpacking --> x=1, y=2, z=3 
@@ -209,7 +208,7 @@ for name,age in students:
     print(age)
 ```
 
-#### Sets
+### Sets
 ```   
 numbers = [1, 2, 6, 3, 1, 1, 6]
 unique_nums = set(numbers)
@@ -218,7 +217,7 @@ unique_nums.add(5)   # the "append" method is called "add" for sets
 unique_nums.pop()    # remove last element
 ```
 
-#### Queue / Priority Queue 
+### Queue / Priority Queue 
 - Create queue filled with "value" and "priority"
 - `pq.get()` returns values in ascending order 
 - Use "priority" with "-" (Minus) for descending order 
@@ -231,7 +230,7 @@ for i in range(0, 50):
     print(pq.get())
 ```
 
-#### Dictionary 
+### Dictionary 
 ```
 elements = {"hydrogen": 1, "helium": 2, "carbon": 6}    # hydrogen = key, 1 = value
 print(elements["helium"])                               # 2 
@@ -274,7 +273,7 @@ elements["oxygen"] = oxygen  #add oxygen to dictionary
 <br />
 
 ## SCRIPTING
-#### ERRORS
+### Errors
 - Syntax errors:
     - Occur when Python can’t interpret our code
     - These are errors you’re likely to get when you make a typo, or starting to learn Python
@@ -294,7 +293,7 @@ elements["oxygen"] = oxygen  #add oxygen to dictionary
     - **ZeroDivisionError**
     - **FileNotFoundError**
 
-#### CREATE INDIVIDUAL EXCEPTION
+### Create Individual Exception 
 ```
 #Extend class Exception with own error message "InvalidEmailError" via Inheritance
 class InvalidEmailError(Exception):
@@ -310,7 +309,7 @@ except InvalidEmailError:
     print("Please enter a valid email address")
 ```
 
-#### TRY STATEMENT
+#### Try Statement
 - use try statements to handle exceptions
 - four clauses can be used:
     - **try**
@@ -343,7 +342,7 @@ while True:
 # Otherwise continous loop possible (!) 
 ```
 
-#### ACCESSING ERROR MESSAGE
+#### acessing Error Message
 ```
 try:
  #some code
@@ -361,7 +360,7 @@ except Exception as y:
 print("Exception occurred: {}".format(y))
 ```
 
-#### YOUR OWN PROJECT
+#### Your Own Project
 ```
 # create project file xyz
 # create virtual environment
@@ -383,14 +382,14 @@ pip install -r requirements.txt
 <br />
 
 ## CODE EXAMPLES
-#### For Loop
+### For Loop
 ```
 # print output in one line (w/o newline)
 
 for list in lists:
     print(list, end="")
 ```
-#### LAMBDA FUNCTION
+### LAMBDA FUNCTION
 - creates quickly anonymous functions (w/o function name)
 - not ideal for complex functions
 
@@ -401,7 +400,7 @@ for list in lists:
 multiply = lambda x, y: x * y
 ```
 
-#### GENERATOR FUNCTION
+### GENERATOR FUNCTION
 - return keyword: **yield**
 - **yield** keyword is difference between generator and typical function
 ```
@@ -417,13 +416,13 @@ def my_range(x):
    - Or when the cost to calculate each list element is high 
    - But generators can only be iterated over once (!)
 
-#### GENERATOR EXPRESSION
+### GENERATOR EXPRESSION
 - combines generators and list comprehensions
 - The only difference: You use square brackets (i/o parentheses)
 - `sq_list = [x**2 for x in range(10)]`:     list of squares
 - `sq_iterator = (x**2 for x in range(10))`: iterator of squares
 
-#### GRAPHICS WITH MATPLOT
+### GRAPHICS WITH MATPLOT
 ```
 import matplotlib.pyplot as plt
 xs = [1, 2, 5]
@@ -431,7 +430,7 @@ ys = [4, 7, 5]
 plt.plot(xs, ys)
 plt.show()
 ```
-#### BUILT-IN FUNCTION: range
+### BUILT-IN FUNCTION: range
 - range(start=0, stop, step=1)
     - `range(4)` returns `0, 1, 2, 3`  #stop
     - `range(2, 6)` returns `2, 3, 4, 5`   #start, stop
@@ -452,7 +451,7 @@ for index in range(len(items)):
 html_str += '</ul>'
 ```
 
-#### BUILT-IN FUNCTION: zip (Matrix transpose)
+### BUILT-IN FUNCTION: zip (Matrix transpose)
 ```
 # Example 1
 letters = ['a', 'b', 'c']
@@ -472,7 +471,7 @@ data = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 11))
 data_transpose = tuple(zip(*data))
 ```
 
-#### BUILT-IN FUNCTION: enumerate
+### BUILT-IN FUNCTION: enumerate
 ```
 # Example 1
 letters = ['a', 'b', 'c', 'd', 'e']
@@ -502,7 +501,7 @@ for i, letter in enumerate(letters):
     letters[i] += ' ' + str(99)
 ```
 
-#### BUILT-IN FUNCTION: map
+### BUILT-IN FUNCTION: map
 - takes function and iterable as inputs
 - returns an iterator that applies the function to each element of the iterable
 ```
@@ -522,7 +521,7 @@ averages = list(map(lambda nl: sum(nl)/len(nl), numbers))
 print(averages)
 ```
 
-#### BUILT-IN FUNCTION: filter
+### BUILT-IN FUNCTION: filter
 - takes a function and iterable as inputs
 - returns an iterator with iterable-elements where function returns "True"
 ```
@@ -533,7 +532,7 @@ short_cities = list(filter(is_short, cities))
 print(short_cities)
 ```
 
-#### BUILT-IN FUNCTION: input
+### BUILT-IN FUNCTION: input
 - utilize raw input from user
 - you can use optional string argument to specify a message
 ```
@@ -545,7 +544,7 @@ print("Hello there, {}!".format(name.title()))
 num = int(input("Enter an integer"))
 ```
 
-#### BUILT-IN FUNCTION: eval
+### BUILT-IN FUNCTION: eval
 - interpret user input as a Python expression
 - this function evaluates a string as a line of Python
 ```
@@ -554,7 +553,7 @@ print(result)
 # Output Example: Enter an expression: 67*45 --> output:3015
 ```
 
-#### READING FILES
+### READING FILES
 ```
 f = open('my_path/my_file.txt', 'r')
   file_data = f.read()
@@ -567,7 +566,7 @@ with open("camelot.txt") as f:
         camelot_lines.append(line.strip())
 ```
 
-#### WRITING FILES
+### WRITING FILES
 - Overwrite existing content with `'w'` (!)
 - Adding content is done in append mode `'a'` (!) 
 ```
@@ -576,7 +575,7 @@ f = open('my_path/my_file.txt', 'w')
   f.close()
 ```
 
-#### OBJECT ORIENTATION AND INHERITANCE
+### OBJECT ORIENTATION AND INHERITANCE
 ```
 #Klasse FileReader besitzt einen Kosntruktor und eine Funktion
 class FileReader():
@@ -600,7 +599,7 @@ class CsvReader(FileReader):
         lines = super().lines()
 ```
 
-#### WEB CRAWLER
+### WEB CRAWLER
 ```
 import requests
 from bs4 import BeautifulSoup
@@ -648,7 +647,7 @@ with open('datei.csv', 'w', newline='') as csvfile:
         articlewriter.writerow([article.emoji, article.title, article.image, article.content])
 ```
 
-#### CALL MODULE FROM OTHER PROJECT FILES
+### CALL MODULE FROM OTHER PROJECT FILES
 ```
 # Option A 
 # No extra configuration necessary
@@ -666,7 +665,7 @@ project_file.file.f()
 # Additionally you have to write: "from . import datei" under "__init__" 
 ```
 
-#### TRANSFER VARIABLE FUNCTION PARAMETER
+### TRANSFER VARIABLE FUNCTION PARAMETER
 ```
 # mithilfe von * werden Parameter in einer Tupel übergeben
 def calculate_max(*params):
@@ -692,7 +691,7 @@ def create_plot(**plot_params):
 create_plot(color="r", linewidth=10, linestyle="dashed")
 ```
 
-#### DATE AND TIME 
+### DATE AND TIME 
 ```
 import datetime
 now = datetime.now()
@@ -707,7 +706,7 @@ print(datetime.strptime(d, "%d.%m.%Y"))
 ```
 
 
-#### DEFAULTDICT MODULE
+### DEFAULTDICT MODULE
 ```
 # Dictionary get initialized automatically with values 
 p = defaultdict(int)
@@ -717,7 +716,7 @@ for word in words:
 ```
 
 
-#### REGEXP
+### REGEXP
 ```
 import re
 sentence = "I have 30 dogs, and all consume 4 liter water and 2 kg food respectively."
@@ -729,7 +728,7 @@ re.search("[0-9]+", sentence)
 ```
 
 
-#### CSV MODULE
+### CSV MODULE
 ```
 import csv    
 with open('../data/names.csv', newline='') as csvfile:
@@ -737,7 +736,7 @@ with open('../data/names.csv', newline='') as csvfile:
 ```
 
 
-#### PROXY SERVER 
+### PROXY SERVER 
 ```
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from socketserver import ThreadingMixIn
@@ -801,7 +800,7 @@ server.serve_forever()                                    #Server laufen lassen
 ```
 
 
-#### XOR OPERATION
+### XOR OPERATION
 ```
 # chr() = convert int to Unicode letter
 # ord() = convert Unicode letter to int
@@ -814,11 +813,11 @@ def xor(str1, str2):
   return ''.join(result)
 ```
 
-#### HTTP SERVER
+### HTTP SERVER
 - py2: `python -m SimpleHTTPServer`
 - py3: `python -m http.server`
 
-#### ESCAPE ALERT (XSS)
+### ESCAPE ALERT (XSS)
 ```
 #!/usr/bin/python3
 
@@ -831,7 +830,7 @@ payload = "<script>eval(String.fromCharCode("+result+"))"+text+"</script>"
 print(payload)
 ```
 
-#### FLASK APP (VULNERABLE TO SSTI)
+### FLASK APP (VULNERABLE TO SSTI)
 ```
 #!/usr/bin/python3
 
@@ -859,7 +858,7 @@ if __name__ == '__main__':
     app.run(debug=False,host='0.0.0.0')
 ```
 
-#### PAYLOAD MONGODB
+### PAYLOAD MONGODB
 ```
 #!/usr/bin/python3
 
