@@ -20,5 +20,3 @@
 - Operates on application level
 
 #### 7) Software Defined Network (SDN)
-
-
