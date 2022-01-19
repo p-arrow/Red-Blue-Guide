@@ -381,13 +381,14 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
       - `echo '/dev/mapper/yourVG/yourNewLV /home ext4 defaults 0 0' | sudo tee -a /etc/fstab`: make it permanent
    - `sudo lvextend -L 4G /dev/mapper/yourVG/yourLV`: extend your LV to new size 4Gb 
    - `sudo lvrename oldLVName newLVName`: change LV name. Please mind to update `/etc/fstab` and `sudo update-grub` afterwards
-- **fail2ban**
+- **fail2ban**:
    - rate limiting to mitigate brute force attacks
    - `git clone https://github.com/fail2ban/fail2ban.git`
    - `cd fail2ban`
    - `sudo python setup.py install`
    - Details: [https://kalilinuxtutorials.com/fail2ban/](https://kalilinuxtutorials.com/fail2ban/)
- 
+ - **uudecode**:
+   - `uudecode [uudecoded_file]`
 
 <br />
 
