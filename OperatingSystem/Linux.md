@@ -351,9 +351,11 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `gpg --keyserver pgp.mit.edu --send-keys [your fingerprint]`: Push your public key to keyserver 
    - `gpg --keyserver pgp.mit.edu --refresh-keys`: To check if your key has been successfully sent
 - **cryptsetup**
-   - `cryptsetup luksDump /dev/sba1`: LUKS header information
    - `sudo cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 -y /dev/sba`: create encrypted partition. You will be asked for a password
-   - `cryptsetup luksAddKey --key-slot=2 /dev/sba2`: A single encrypted partition can have eight different keys. This command adds one key on slot 2
+   - `cryptsetup luksAddKey --key-slot=2 /dev/sdb1`: A single encrypted partition can have eight different keys. This command adds one key on slot 2
+   - `cryptsetup luksChangeKey /dev/sdb1`: change passphrase
+   - `cryptsetup luksDump /dev/sba1`: LUKS header information
+   - `sudo cryptsetup-reencrypt --decrypt /dev/sdb1`
 - **lvm**
    - `sudo vgdisplay`: show volume group info 
    - `sudo pvs`: show info of physical volumes
@@ -584,6 +586,13 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **last**
     - `last -x reboot`: show last reboots
     - `last -x shutdown`: show last shutdowns 
+-**parted**:
+    - `sudo parted -l` or `sudo parted /dev/sdb`
+    - `(parted) mklabel [partition_table_type]`: make partition table (choose between aix, amiga, bsd, dvh, **gpt**, mac, **ms-dos**, pc98, sun, and loop)
+    - `(parted) print`: show info within parted prompt
+    - `mkpart primary ext4 1MB 1000GB`: create new partition with ext4 filesystem and 1000GB size
+    - `(parted) quit`: quit and save
+    
 
 ## Applications
 - **mysql**
