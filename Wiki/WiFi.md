@@ -31,8 +31,19 @@
 ![grafik](https://user-images.githubusercontent.com/84674087/132377632-ccfb4791-db78-464e-b381-c2a7e885998a.png)
 
 
-## WIFI Security
+## Public WIFI (Best Practices)
+- Avoidance (!)
+- If avoidance is not possible:
+   - Use Host-Based Firewall
+   - Use VPN
+      - avoid internet before VPN is established: E-Mail etc. (!)
+   - Use MAC-changer + reconnect hourly to appear as different user
+   - Use privacy screens
+      - put on laptop display
+   - Vary location from where you connect
+      - complicate geo location
 
+## WIFI Security
 #### CSMA/CA (Carrier Sense Multiple Access/Collision Avoidance)
 - Proactive Method (!)
 - WIFI uses CSMA/CA to control access to medium
