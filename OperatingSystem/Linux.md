@@ -256,7 +256,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **zip/unzip**:
     - `zip [file]`
     - `unzip [file]`
-- **gzip/gunzip**
+- **gzip/gunzip** (GNU zip format)
     - `gzip file`
     - `gunzip [file.gz]`
     - `printf "\x1f\x8b\x08\x00\x00\x00\x00\x00"  | cat - [file_with_gzipdata] | gunzip`: if gzip data is deflated (HTTP compression), you need to add Magic Bytes firstly
