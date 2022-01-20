@@ -92,9 +92,6 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 <br />
 
 ## Basics
-- `[command1] && [command2]`: command2 gets executed when command1 finished successfully 
-- `Alt + print-key`: Screenshot
-- `Alt + "+"`: zoom in 
 - **pwd**: print working directory
    - `pwdx [pid]`: print workig directory of process pid  
 - **echo**: print function
@@ -154,6 +151,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 <br />
 
 ## Network
+- `/etc/network/interfaces`: Config of eth0, eth1 etc.
+- `/etc/apache2/mods-available`: Modules for Apache Server
 - **ifconfig**: show interface details
 - **ip**:
    - `ip addr show`
@@ -238,6 +237,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `grep 'word1\|word2'`: search two terms 
     - `grep "10\.1\.0\.10\," firewall.log | grep "23$"`
     - `grep -r -i "voldemort" /tmp/*.sh`
+    - `grep -r -i [exploit_name] /usr/share/exploitdb/exploits/`: check available exploits on Kali
 - **cat**: concatenate/read the file and output content
     - `cat -b dictionary.txt`
 - **which** [data]: Returns path of linux file if existing in PATH
@@ -665,82 +665,27 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 <br />
 
 # SSH
-*nano /etc/ssh/sshd_config*
-
 ## Best Practice (Blue Team)
+- All changes to be made here: **/etc/ssh/sshd_config**
 1. Change to uncommon SSH Port: 22 --> 2323
-2. Add new line for max. Logon Attempts: "MaxAuthTries 3"
-3. PermitRootLogin: No
+2. Add new line for max. Logon Attempts: `MaxAuthTries 3`
+3. PermitRootLogin: `No`
 4. Disable password-based access (instead key based, openssl)
 5. Whitelist Users
    - Add new line in sshd_config:
-     - AllowUsers user1 user2
-     - AllowGroups group1 group2
-     - DenyUsers user1 user2
-     - DenyGroups group1 group2
-6. Whitelist IP Addresses***
-   - Add new line in /etc/hosts.allow:
-     - sshd: 10.83.33.77/32
-   - Add new line in /etc/hosts.deny:
-     - sshd: ALL (all denied except whitelisted IP Addresses)
-7. Conditional Login****
+     - `AllowUsers user1 user2`
+     - `AllowGroups group1 group2`
+     - `DenyUsers user1 user2`
+     - `DenyGroups group1 group2`
+6. Whitelist IP Addresses:
+   - Add new line in /etc/hosts.allow: `sshd: 10.83.33.77/32`
+   - Add new line in /etc/hosts.deny: `sshd: ALL` (all denied except whitelisted IP Addresses)
+7. Conditional Login:
    - Add new line in sshd_config:
-   - Match [User/Group/Host/Address]
-      - Condition 1
-      - Condition 2
+   - `Match [User/Group/Host/Address]`
+      - `Condition 1`
+      - `Condition 2`
    - Example:
-      - Match Address 192.168.178.0/24
-      - PermitRootLogin yes
+      - `Match Address 192.168.178.0/24`
+      - `PermitRootLogin yes`
 8. MultiFactorAuthen via additional tools / libraries
-
-<br />
-
-# TERMINOLOGY
-## Abbreviations
-- **ACPI** (Advanced Configuration and Power Interface)
-- **LVM** (Logical Volume Manager): Manage storage in server environments 
-- **PPA** (Personal Package Archive): Selected beta releases of official main repositories
-- **PAM** (Pluggable Authentication Modules)
-- **TTY** (teletypewriter): Terminal ; Press Ctrl+Alt+F1-6 if GUI is freezed
-- **APT** (Advanced Package Tool)
-- **CGI** (Common Gateway Interface): 
-   - Data exchange between webserver and Third Party SW
-   - Used for first dynamic web site development back in old days
-   - Forwarding of web requests to web server shell (ShellShock!)
-- **YUM** (Yellowdog Updater Modifier): Like apt, but on RPM based Linux (Fedore, CentOS)
-- **RPM** (Red Hat Package Management): Standardized Installation App
-- **PCRE** (Perl Compatible Regular Expression)
-- **RUID** (Real User ID): Describes user who created the process
-- **EUID** (Effective User ID): Describes user whose file access permissions are used by the process
-- **Ubuntu ESM** (Extended Security Maintenance): Ongoing patches after end of life of standard security patches
-
-## Directories
-- **bin/sbin** (binary/system binary): Programs
-- **cdrom**: to mount CDs/DVDs
-- **etc**: Configuration
-- **media** (mount by OS): floppy disk, USB, ext. hard drive etc.
-- **mnt** (mount manually)
-- **opt** (optional): Data from vendors, self created stuff
-- **proc** (process): Sudo proc files + kernel export data to user space
-- **run**: For temporary data run in RAM
-- **srv** (service): Data storage when OS is used as server
-- **tmp** (temporary): Running applications store data here 
-- **usr** (unix system resource): Non essential user data
-- **var** (variable): for growing data (log files, crash reports)
-
-## System Paths
-- `/usr/share/man/man1`: manuals
-- `/etc/apt/sources.list`: Packet sources 
-- `etc/shells`: valid login shells
-- `/usr/share/doc/paketname/copyright`: Licences for each packet installed on machine 
-- `/etc/sudoers`: sudo user policy
-- `/etc/pam.d/common-password`: check enabled PW hash algorithm
-- `grep -r -i [exploit_name] /usr/share/exploitdb/exploits/`: check available exploits on Kali
-
-## Network Paths
-- `/etc/network/interfaces`: Config of eth0, eth1 etc.
-- `/var/www/html/`: Web server path (index.html etc.)
-- `/etc/apache2/mods-available`: Modules for Apache Server
-- `/etc/ssh/sshd_config` 
-
-<br />
