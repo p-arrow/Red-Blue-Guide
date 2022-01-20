@@ -253,8 +253,14 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `find $HOME -mtime 0`: find all file in home directory with modification within last 24 hours 
     - `find /home -name .bashrc -exec grep "secret" {} \;`: find all .bashrc files in /home and apply grep with pattern "secret" upon
 - **file**: display data-type info
-- **zip/unzip**: for packages
-- **tar**: Archive program for files and directories 
+- **zip/unzip**:
+    - `zip [file]`
+    - `unzip [file]`
+- **gzip/gunzip**
+    - `gzip file`
+    - `gunzip [file.gz]`
+    - `printf "\x1f\x8b\x08\x00\x00\x00\x00\x00"  | cat - [file_with_gzipdata] | gunzip`: if gzip data is deflated (HTTP compression), you need to add Magic Bytes firstly
+- **tar**: Archive program for files and directories
      - `tar -xvf [file]`: extract file verbosly
      - `tar -cvf [file] /etc`: create file verbosly 
      - `tar -cf archiv.tar test.txt test2.txt`: create archiv with files "test" and "test2"
