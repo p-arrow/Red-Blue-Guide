@@ -54,14 +54,14 @@
    - Status Code 301 Moved Permanently
    - Status Code 302 Not Found (Moved Temporarily)
    - Status Code 304 Not Modified
-   - **Client Status Codes**
+- **Client Status Codes**
    - Status Code 400 Bad Request
    - Status Code 401 Unauthorized 
    - Status Code 403 Forbidden
    - Status Code 404 Not Found
    - Status Code 410 Gone
    - Status Code 415 Unsupported Media Type
-   - **Server Status Codes**
+- **Server Status Codes**
    - Status Code 500 Internal Server Error
    - Status Code 501 Not Implemented
    - Status Code 502 Bad Gateway
@@ -106,23 +106,23 @@ TRACE | Echoes back what the server received from the client / is often disabled
    - **none**: Both Same Site and Cross Site are possible
 - If Domain Attribute is empty: Host Only Cookie is set automatically
 
-#### Postback
+### Postback
 - Document Initiator type
 - WebApp reloads whole page 
 - NW traffic monitoring can be lost if you don't enable persistent logs
 
-#### AJAX (Asynchronous JavaScript and XML)
+### AJAX (Asynchronous JavaScript and XML)
 - XHR Initiator type
 - Decouples data interchange layer from the presentation layer
 - Changes content dynamically without reload entire page
 - Commonly utilized with JSON (i/o XML)
 
-#### XHR (XMLHttpRequests)
+### XHR (XMLHttpRequests)
 - API in form of an object
 - Requires JS enabled in web browser
 - Can be used with other protocols than HTTP/XML (e.g. JSON, HTML, Plain Text)
 
-#### OAuth V2
+### OAuth V2
 - Often used together with OpenID
 - Delegated authorization framework for RESTful APIs-
 - Enables Apps to obtain access w/o giving away user's password
@@ -132,14 +132,14 @@ TRACE | Echoes back what the server received from the client / is often disabled
    - Resource servers: Provided by service that User wants to use
    - Auth servers: Servers owned by ID provider
 
-#### JWT (JSON Web Tokens)
+### JWT (JSON Web Tokens)
 - Token contains header / payload / signature (JSON object)
 - Normally transmitted via URL and Base64 encoded
 - Created by Server during Authen
 - Handed over to Client (w/o saving @Server)
 - Server maintains Integrity of JWT through digital signature
 
-#### SOAP (Simple Object Access Protocol)
+### SOAP (Simple Object Access Protocol)
 
 *XML-based web service protocol*
 
@@ -157,8 +157,7 @@ TRACE | Echoes back what the server received from the client / is often disabled
     - Malware: Consider input validation!
     - SQL Injection: Avoid transmitting SQL statements over SOAP
 
-#### REST (Representational State Transfer)
-
+### REST (Representational State Transfer)
 1. Stateless Protocol
 2. Simple alternative to SOAP (because less restrictive)
 3. Five principles (i/o defined implementation)
@@ -177,8 +176,7 @@ TRACE | Echoes back what the server received from the client / is often disabled
    - http://foo.com/api/v2.0/customer/1234
    - http://foo.com/api/v2.2/customer/1234
 
-#### Same Origin Policy (SOP)
-
+### Same Origin Policy (SOP)
 > Imagine that you open Website A and Website B in your browser. SOP prevents Website A from reading content of Website B and vice versa.
 
 - SOP is enforced by your browser, and influenced by server
