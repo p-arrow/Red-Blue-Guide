@@ -1,5 +1,6 @@
 
-## URL Encoding
+## Encoding
+### URL Encoding
 - Encodes 8bit characters that have specific meaning for URLs
 - URL contains **reserved characters** `: / ? # @ % $ & ! ' ( ) , ; =`
 - URL contains **unreserved characters** `a-z, A-Z, 0-9`
@@ -29,6 +30,12 @@ space | %20
 @ | %40
 ; | %3B
 = | %3D
+
+### Chunk Encoding
+- The server can send content without waiting for the full response to be ready
+- The server sends the size of a chunk (in hexadecimal) followed by the chunk
+- Therefore no Content-Length header in HTTP traffic
+
 
 <br />
 
