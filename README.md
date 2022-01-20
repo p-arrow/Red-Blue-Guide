@@ -11,7 +11,6 @@ The focus of this guideline are the well known phases of penetration testing:
 - Both RedTeam and BlueTeam information can be found in one article, if any.
 - Topics that are not directly linked to a pentesting phase are covered in:
    - Coding
-   - Networks
    - Operating System
    - Wiki
    
