@@ -257,10 +257,12 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `zip [file]`
     - `unzip [file]`
 - **gzip/gunzip** (GNU zip format)
-    - `gzip file`
+    - `gzip [file]`
     - `gunzip [file.gz]`
-    - `printf "\x1f\x8b\x08\x00\x00\x00\x00\x00"  | cat - [file_with_gzipdata] | gunzip`: if gzip data is deflated (HTTP compression), you need to add Magic Bytes firstly
-      - If you catch HTTP traffic with WireShark and attached data is gzipped/dflated , then apply: 1) Follow TCP Stream 2) Save date in RAW format
+    - `printf "\x1f\x8b\x08\x00\x00\x00\x00\x00"  | cat - [file_with_gzipdata] | gunzip`
+      - If gzip data is deflated (HTTP compression), you need to add Magic Bytes firstly:
+         - 1) Follow TCP Stream
+         - 2) Save date in RAW format
 - **tar**: Archive program for files and directories
      - `tar -xvf [file]`: extract file verbosly
      - `tar -cvf [file] /etc`: create file verbosly 
