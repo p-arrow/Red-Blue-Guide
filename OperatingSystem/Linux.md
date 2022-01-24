@@ -116,6 +116,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **cal**: calendar
 - **background**
    - `[command] &`: perform [command] in background 
+- **kali-undercover**: 
+   - `kali-undercover`: Kali undercover mode to pretend Windows OS
 
 <br />
 
