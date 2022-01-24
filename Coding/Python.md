@@ -182,6 +182,7 @@ a = "meinefiesefresseausderschnauze"
     - `print("Hi {:x}".format(name))`: Will print "name" in hex format
     - `print("Hi %s" % name)`: old style
     - `print("Hi " + name)`: string concatenation
+    - `print("The byte-string is: ", pickle.dumps(bytestring))`
     
 ### Lists
 - `list = [1,2,3,4]`
