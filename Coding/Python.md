@@ -175,7 +175,14 @@ a = "meinefiesefresseausderschnauze"
 - `letter = line.split(": ")[0].lower()`
 - `flower = line.split(": ")[1].strip()`
     - `flower_dict[letter] = flower`
-
+- string format:
+    - `print("Hi {}".format(name))`: new format style
+    - `print("Hi {:d}".format(name))`: Will print "name" in decimal format
+    - `print("Hi {:b}".format(name))`: Will print "name" in binary format
+    - `print("Hi {:x}".format(name))`: Will print "name" in hex format
+    - `print("Hi %s" % name)`: old style
+    - `print("Hi " + name)`: string concatenation
+    
 ### Lists
 - `list = [1,2,3,4]`
 - `print(list[1:3])`: [2,3] *lower value included, upper value excluded!
