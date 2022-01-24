@@ -14,14 +14,14 @@ apt upgrade
 apt full-upgrade --> upgrade + rm obsolete packages + install new dependencies
 apt remove
 apt purge --> remove package, config, user data
-apt cache search [packet] --> check if packet is available
-apt cache showpkg [packet] --> show packet information
-apt cache -v --> show apt version
-apt cache stats --> show statistics
-apt cache unmet --> show unmet dependencies
-apt cache depends [packet] --> show dependencies
-apt cache policy --> show installed repository files
-apt reinstall
+apt-cache search [packet] --> check if packet is available
+apt-cache showpkg [packet] --> show packet information
+apt-cache -v --> show apt version
+apt-cache stats --> show statistics
+apt-cache unmet --> show unmet dependencies
+apt-cache depends [packet] --> show dependencies
+apt-cache policy --> show installed repository files
+apt-reinstall
 apt clean --> empties directory /var/cache/apt/archives/
 apt autoclean --> only removes packages that can no longer be downloaded, i.e. disappeared from mirror
 apt list --upgradable
