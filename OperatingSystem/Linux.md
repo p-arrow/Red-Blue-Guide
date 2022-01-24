@@ -623,7 +623,11 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `(parted) print`: show info within parted prompt
     - `mkpart primary ext4 1MB 1000GB`: create new partition with ext4 filesystem and 1000GB size
     - `(parted) quit`: quit and save
-    
+- **kvm**: Linux-based systems support VM acceleration through the KVM software package
+   - `sudo apt install cpu-checker`: has to be installed firstly
+   - `kvm-ok`: Expected output: INFO: /dev/kvm exists; KVM acceleration can be used
+   - `sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils`: install KVM on Linux
+
 
 ## Applications
 - **mysql**
