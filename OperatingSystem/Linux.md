@@ -424,6 +424,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - Details: [https://kalilinuxtutorials.com/fail2ban/](https://kalilinuxtutorials.com/fail2ban/)
  - **uudecode**:
    - `uudecode [uudecoded_file]`
+- **base64**:
+   - `base64 -d`: decode base64
+   - `base64 -w 0`: avoid newlines while doing encoding 
 
 <br />
 
