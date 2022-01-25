@@ -42,6 +42,10 @@
 - message is divided into blocks, each block is encrypted separately
 - encrypts identical plaintext blocks into identical ciphertext blocks
 - lack of diffusion, does not hide data patterns
+- Consequences:
+  - Blocks from encrypted message can be removed without disturbing the decryption process
+  - Blocks from encrypted message can be moved around without disturbing the decryption process
+
 
 #### b) CFB (Cipher Feedback), from 1981
 
