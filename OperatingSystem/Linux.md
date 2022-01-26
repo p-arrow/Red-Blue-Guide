@@ -171,7 +171,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `openssl enc -aes256 -k secret101 -in /tmp/backup.tgz  -out /tmp/backup.tgz.enc`: create encrypted backup archive non-interactive with -key "secret101"
    - `openssl enc -aes256 -k secret101 -d -in file.txt.enc -out file.txt`: decrypt file non-interactive with supplied key "secret101"
 - **scp** (OpenSSH secure file copy):
-   - `scp option source user@host:/tmp`
+   - Syntax: `scp option source destination`
+   - `scp -v -P 2222 admin@192.168.0.23:/storage/Download/file.pdf /tmp`: copy from remote server to /tmp verbose, port 2222
+   - `scp -v -P 234 /home/Download/text.txt server@192.168.0.20:/home/Documents/`: copy from own machine to remote server
 - **fuser**: find out process that opened specific port
    - `fuser 22/tcp`: SSH pid will be shown
 - **ufw** (uncomplicated FW): managing netfilter FW
