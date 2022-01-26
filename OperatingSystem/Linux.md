@@ -160,7 +160,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `ip -br link show` (br=brief)
 - **netstat**: print network connections
    - `netstat -tulpn`
-- `ping [IPv4]`
+- **ping**:
+   - `ping [IPv4]`
+   - `ping -c [Number] [IPv4]`: specify the amount of package with [Number]
 - **host**: Identify host
    - `host [IPv4]`   
 - **openssl**:
@@ -219,6 +221,18 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
             - `Match Address 192.168.178.0/24`
             - `PermitRootLogin yes`
       8. MultiFactorAuthen via additional tools / libraries
+ - **curl**:
+   - `curl example.com`
+   - `curl --head example.com`
+   - `curl -X GET example.com`
+   - `curl -X DELETE example.com/include/config.db`
+   - `curl -X OPTIONS example.com --head`: show available HTTP Methods
+   - `curl -T file example.com`
+   - `curl -O example.com/file`
+   - `curl -u username:password http://example.com`
+   - `curl -X POST -H "Content-Type: application/json" -d '{"username":"joe","password":"password"}' http://example.com/register`: register on example.com
+   - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9266...2", "filename": "text.txt", "content": "MY DATA..."}' http://example.com/upload`: Upload file
+
 
 <br />
 
