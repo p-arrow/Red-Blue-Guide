@@ -187,6 +187,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **ssh**
    - **Create SSH Key Pair**
    - `ssh-keygen`: Enter directory to store the keys and passphrase
+   - Put your generted public key on the remote server into the file `~/.ssh/authorized_keys`
    - **Establish SSH Connection**
    - `ssh username@host -p port`
    - `ssh username@host -i privateKey`
