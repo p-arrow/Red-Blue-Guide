@@ -347,9 +347,12 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `i`: start insert Mode
     - `ESC`: exit insert Mode
     - In Normal mode: `y/y^/y$` (copy), `d/d$` (delete), `p` (paste)
-    - `:wq` (write and quit)
-    - `:wq!` (write, quit and override)
+    - `:q!`: quit without saving
+    - `:wq`: write and quit
+    - `:wq!`: write, quit and override
+    - `:%s /\\n/\r/g`: search `\n` and replace with newline globally
     - [Spawn shell inside vim](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Wiki/Restricted%20Shell%20Escape.md)
+    - 
 - **tee**: read from standard input and write to standard output and files
 - **sed**: Stream Editor, useful with regex
     - `cat [file] | sed /regex-pattern/action`
