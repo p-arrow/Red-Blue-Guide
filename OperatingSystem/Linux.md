@@ -185,6 +185,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **iptables**
    - See here:[Wiki/iptables](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Wiki/Applications/Iptables.md) 
 - **ssh**
+   - **Create SSH Key Pair**
+   - `ssh-keygen`: Enter directory to store the keys and passphrase
+   - **Establish SSH Connection**
    - `ssh username@host -p port`
    - `ssh username@host -i privateKey`
    - `ssh username@host 'bash --noprofile / --norc'`: start ssh session with clean profile
