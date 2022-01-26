@@ -345,8 +345,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `nano -l [file]`: show line number
 - **vi/vim**:
     - `i`: start insert Mode
-    - `ESC`: exit insert Mode
-    - In Normal mode: `y/y^/y$` (copy), `d/d$` (delete), `p` (paste)
+    - `ESC`: exit insert Mode and return to normal mode
+    - `y/y^/y$`: copy
+    - `d/d$/D`: delete
+    - `p`: paste
     - `:q!`: quit without saving
     - `:wq`: write and quit
     - `:wq!`: write, quit and override
