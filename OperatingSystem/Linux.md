@@ -238,7 +238,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `curl -u username:password http://example.com`
    - `curl -X POST -H "Content-Type: application/json" -d '{"username":"joe","password":"password"}' http://example.com/register`: register on example.com
    - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9266...2", "filename": "text.txt", "content": "MY DATA..."}' http://example.com/upload`: Upload file
-
+- **netcat/nc**
+   - Syntax: `nc host port`
+   - `echo -ne "HEAD / HTTP/1.1\r\nHost: 192.168.0.10\r\nConnection: close\r\n\r\n" | netcat 192.168.0.10 80`: send HTTP Head request via netcat
 
 <br />
 
