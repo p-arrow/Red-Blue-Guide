@@ -410,6 +410,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
       - `--recipient` = to specify the public key
    - `gpg --keyserver pgp.mit.edu --send-keys [your fingerprint]`: Push your public key to keyserver 
    - `gpg --keyserver pgp.mit.edu --refresh-keys`: To check if your key has been successfully sent
+   - **Verify PGP signature of downloaded .apk**:
+   - `keytool -printcert -jarfile file.apk`: This reveals some information about the certificate
+   - `gpg --keyserver pgp.mit.edu --receive-keys [fingerprint or key ID]: Fingerprint/keyID should be revealed with the certificate beforehand
+   - `gpg --verify file.apk.asc`: while being in the same directory where the file.apk resides
 - **cryptsetup**
    - `sudo cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 -y /dev/sba`: create encrypted partition. You will be asked for a password
    - `cryptsetup luksAddKey --key-slot=2 /dev/sdb1`: A single encrypted partition can have eight different keys. This command adds one key on slot 2
