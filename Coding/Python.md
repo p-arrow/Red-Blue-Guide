@@ -822,8 +822,8 @@ def xor(str1, str2):
 ```
 
 ### HTTP SERVER
-- py2: `python -m SimpleHTTPServer`
-- py3: `python -m http.server`
+- `python2 -m SimpleHTTPServer`
+- `python3 -m http.server`
 
 ### ESCAPE ALERT (XSS)
 ```
