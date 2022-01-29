@@ -900,5 +900,22 @@ def createPayload():
 createPayload()
 ```
 
+### Unzip file via ZipFile
+```
+from zipfile import ZipFile
+
+def unzip(filename):
+   with ZipFile(filename, mode="r") as myzip:
+        output = myzip.namelist()[0]
+        myzip.extract(output)
+        return output
+
+path = "/path/to/dir/"
+
+file = unzip(path+"geschenk.zip")
+for i in range(0,2020):
+    file = unzip(path+file)
+print("[+] last file: ", file)
+```
 
 
