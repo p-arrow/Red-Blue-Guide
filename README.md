@@ -3,7 +3,7 @@
 The focus of this guideline are the well known phases of penetration testing:
 1. Reconnaissance
 2. Vulnerability Scanning / Enumeration
-3. Exploitation (General / Linux / Windows / WebApp)
+3. Exploitation (Linux / Windows / Mobile / WebApp)
 4. Post Exploitation
 5. Covering Tracks
 
