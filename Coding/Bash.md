@@ -1,23 +1,11 @@
-## TABLE OF CONTENTS
-1) [BATCH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#batch)
-2) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#basics)
-3) [OPTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#options)
-4) [SCRIPT EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#script-examples)
+# TABLE OF CONTENTS
+1) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#basics)
+2) [SCRIPT EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#script-examples)
 
 <br />
 
-## BATCH
-- `@echo off`
-   - `echo off`:  no print out of command, but result only 
-   - `@`:  no output "echo off"
-- `rem`: comment 
-- `pause`: script stop ("Press any button...")
-
-<br />
-
-## BASICS
-
-#### Variables
+# BASICS
+### Variables
 - `readonly VARIABLE=value`: set variable read-only
 - `unset VARIABLE`: remove assigned value from variable
 - Conversion: "shell variable" -> "environment variable"
@@ -32,8 +20,11 @@
    - `sudo nano /etc/profile` 
    - `export PATH="$PATH:/snap/bin"`
    - `source .profile`: to activate change for current shell
+ - Create Alias:
+   - `nano ~/.bashrc`
+   - `alias s10="ssh -p 2222 admin@192.168.0.23"`: Enter "s10" in your shell to get the alias executed
 
-#### Arrays
+### Arrays
 - `array_name[index]= "value_0 ... value_n"`: Shell Writing Style !
 - `array_name[index]=(value_0...value_n)`: Bash Writing Style !
 - `${array_name[index]}`: Accessing Array Values with { } !
@@ -47,7 +38,7 @@
    - `command1 && command2`
    - `-a`
 
-#### Quotes & Execution
+### Quotes & Execution
 - Single Quote `' '`: All special characters between these quotes lose their special meaning
 - Double Quote `" "`: Most special characters between these quotes lose their special meaning      
 - Back Quote `` ``: Anything in between would be treated as command and would be executed
@@ -56,25 +47,20 @@
 - Create subshell with `( )`
    - Exp: `(cd /tmp; pwd)` --> subshell does not affect current shell
 
-#### Special Characters (During Script Execution)
-Command | Meaning
-------- | -------
-`echo $0` | The filename of the current script
-`echo $#` | The number of arguments supplied to a script
-`echo $$` | The process number of the current shell
-`echo $?` | The exit status of the last command executed
-`echo $!` | The process number of the last background command
-`echo $*` | All the arguments are double quoted
-`echo $@` | All the arguments are individually double quoted
+### Special Characters (During Script Execution)
+- `echo $0`: The filename of the current script
+- `echo $#`: The number of arguments supplied to a script
+- `echo $$`: The process number of the current shell
+- `echo $?`: The exit status of the last command executed
+- `echo $!`: The process number of the last background command
+- `echo $*`: All the arguments are double quoted
+- `echo $@`: All the arguments are individually double quoted
+- Check current shell:
+  - `echo $SHELL`
+  - `ps -p $$`: Current Shell process ID
+  - `grep "^$USER" /etc/passwd`: Check Current User of Shell
 
-#### Special Characters (Without Script Execution)
-Command | Meaning
-------- | -------
-`echo $SHELL` | Check Current Shell
-`ps -p $$` | Check Current Shell process ID
-`grep "^$USER" /etc/passwd` | Check Current User of Shell
-
-#### Brackets
+### Brackets
 - **Curly Bracket {}**:
    - `echo f{oo,ee,a}d` --> food feed fad
    - `mv error.log{,.OLD}` --> error.log.OLD
@@ -86,7 +72,7 @@ Command | Meaning
    - `echo $((a++))` --> a + 1
    - `((variable = 28))`
 
-#### Operators
+### Operators
 ```
 a=10
 b=20
@@ -99,53 +85,10 @@ echo "Equ :"[ $a == $b ]   // False
 echo "Une :"[ $a != $b ]   // True
 ```
 
-#### If-Statement
-```
-# Basic
-if [ condition ]    // pay attention to the spaces around the condition !
-then  
-  command
-fi
-
-# Extended
-if [ condition ]
-then
-  command
-elif [ condition ]
-  command
-else
-  command
-fi
-```
-
-### Loops
-```
-for/while/until [ condition ]
-do
-    command
-done
-```
-
-### Functions 
-```
-function_name () { 
-   list of commands
-   return
-}
-```
-
 <br />
 
-## OPTIONS
-
-- `bash -p`: If supplied at invocation, the effective user id (EUID) is not reset to RUID
-- `bash -xv [script]`: debugging
-
-<br />
-
-## SCRIPT EXAMPLES
-
-#### Clickbait (Windows)(Batch)
+# SCRIPT EXAMPLES
+### Clickbait (Windows Batch)
 ```
 # Open the browser continuously
 # Attention, may lead to DoS !
@@ -158,7 +101,7 @@ start www.google.com
 goto :LoopStart
 ```
 
-#### Get Credentials 
+### Get Credentials 
 ```
 #! /bin/bash
 
@@ -169,7 +112,7 @@ read -sp 'Password: ' passvar
 echo Thank you $uservar we now have your login details
 ```
 
-#### Get MD5 of Name
+### Get MD5 of Name
 ```
 #! /bin/bash
 
@@ -178,7 +121,7 @@ mytarget=$(echo $myname | md5sum | cut -d ' ' -f 1)
 # output for user "root" --> 74cc1c60799e0a786ac7094b532f01b1
 ```
 
-#### Hand over parameter(s) to netcat with while loop
+### Hand over parameter(s) to netcat with while loop
 ```
 i=1
 while [ $i -le 1000 ]
@@ -189,7 +132,7 @@ echo "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ, $i" | nc localhost 30002 >> /tmp/file.tx
 done
 ```
 
-#### Backup Automisation
+### Backup Automisation
 ```
 #! /bin/bash
 
@@ -221,7 +164,7 @@ sleep 60
 done
 ```
 
-#### Check Remote Server Status
+### Check Remote Server Status
 ```
 #!/bin/bash
 
@@ -247,7 +190,7 @@ ssh -T $user@$remote <<'EOL'
 EOL
 ```
 
-#### Check Available Hosts
+### Check Available Hosts
 ```
 #! /bin/bash
 
@@ -272,7 +215,7 @@ done
 echo
 ```
 
-#### Create App List from Linux Host
+### Create App List of Linux Host
 ```
 #!/bin/bash 
 
@@ -285,4 +228,33 @@ echo "[+] create appList on $date"
 dpkg-query --showformat='${binary:package}\n' -W > ${date}_appList
 echo "[+] applist created"
 echo ""
+```
+
+### Create github repo backup on Linux host
+```
+#!/bin/bash
+#Created: 22.01.29
+
+#Set path and date
+path="/to/your/Github/dir"
+date=$(date +%y.%m.%d)
+
+#Write to log
+echo "" >> "${path}pull_log"
+echo "[+] $date: Create new backup" >> "${path}pull_log"
+
+#List directories only
+for i in `ls --ignore=url --ignore=createGHbackup --ignore=pull_log`
+do
+#Create path/to/repo and perform git pull
+newPath="${path}$i"
+cd "${newPath}/"
+git pull "https://github.com/p-arrow/${i}" 2>/dev/null 1>>"${path}pull_log"
+unset newPath
+cd ..
+done
+
+#Write to log
+echo "[+] $date: Git Backup created successfully" >> "${path}pull_log"
+echo "" >> "${path}pull_log"
 ```
