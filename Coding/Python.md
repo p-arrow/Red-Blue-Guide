@@ -918,4 +918,43 @@ for i in range(0,2020):
 print("[+] last file: ", file)
 ```
 
+### Search for words in text & translate Binary2ASCII
+```
+with open('text', 'r') as text:
+    binary = ""
+    pwd = ""
+    for line in text:
+        words = line.split()
+        for word in words:
+            if 'cyber' in word.lower():
+                if '-' in word:
+                    binary += '1'
+                else:
+                    binary += '0'
 
+
+for i in range(0,len(binary),8):
+    pwd += chr(int(binary[i:i+8],2))
+
+print("Binary: ", binary)
+print("PWD: ", pwd)
+```
+
+### Search ford words in text with Regex
+```
+import re
+
+def findCyber(string):
+    if re.match(r'\b([Cc]yber-)', string, flags=re.IGNORECASE):
+        return '1'
+    elif re.match(r'(\b[Cc]yber)', string, flags=re.IGNORECASE):
+        return '0'
+
+with open('text', 'r') as text:
+    binary = ""
+    for line in text:
+        words = line.split()
+        for word in words:
+            if findCyber(word) != None:
+                binary += findCyber(word)
+```
