@@ -241,6 +241,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **netcat/nc**
    - Syntax: `nc host port`
    - `echo -ne "HEAD / HTTP/1.1\r\nHost: 192.168.0.10\r\nConnection: close\r\n\r\n" | netcat 192.168.0.10 80`: send HTTP Head request via netcat
+- **wkhtmltopdf**
+   - [https://wkhtmltopdf.org/](https://wkhtmltopdf.org/)
+   - `sudo apt install wkhtmltopdf`
+   - `wkhtmltopdf http://google.com google.pdf`: create pdf of google website 
 
 <br />
 
