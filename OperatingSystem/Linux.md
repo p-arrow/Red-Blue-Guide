@@ -288,6 +288,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `grep "10\.1\.0\.10\," firewall.log | grep "23$"`
     - `grep -r -i "voldemort" /tmp/*.sh`
     - `grep -r -i [exploit_name] /usr/share/exploitdb/exploits/`: check available exploits on Kali
+    - `cat rockyou.txt | grep -x '.\{8,96\}'`: only show passwords from rockyou.txt between 8 and 96 chars long
 - **cat**: concatenate/read the file and output content
     - `cat -b dictionary.txt`
 - **which** [data]: Returns path of linux file if existing in PATH
