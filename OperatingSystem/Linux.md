@@ -400,6 +400,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `awk '1 { print }' file` or `awk 1 file`:  print each line of file
     - `awk 'NR>1' file`: print all lines except first
     - `awk 'NF' file`: print all lines with at least one non-whitespace (NF=0 -> line has only white space)
+- **seq**
+    - `seq 0 10`: output decimal from 0 to 10
+    - `for i in 'seq 0 100'; do printf "%02x\n" $i; done`: output numbers in hex-format (01 02...0c 0d...4a 4b...) 
+    -  `for i in 'seq 0 100'; do printf "0x%02x.a.example.com\n" $i; done`:
 
 <br />
 
