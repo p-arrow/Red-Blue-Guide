@@ -10,6 +10,30 @@
 - `git commit -m "This is a new file"`
 - `git push "repo_name" master`
 
+## Commands within your Repo
+- `git show [commit]`: show details of commit  (you need to use the commit hash)
+```
+#Example: `git show 58ace0476093d04023f84d7816adacfa7b879c43
+#Output:
+tree 58ace0476093d04023f84d7816adacfa7b879c43
+
+css/
+favicon.ico
+footer.php
+header.php
+index.php
+```
+- `git cat-file -p [commit]`: get list of commit hashes
+```
+#git cat-file -p 58ace0476093d04023f84d7816adacfa7b879c43
+#Output:
+040000 tree b352dde43705f193d2c1d4e6f6a133321186869f    css
+100644 blob f303c6a7797f5e7a0d5bd31d39a7149366bbf873    favicon.ico
+100644 blob 5adab1a1c52dc009d4f26bbce30dacc4c93eea33    footer.php
+100644 blob c3646db7f9c7e6f126c75900fdcce16d50e1da82    header.php
+100644 blob 88beb94b5e1fc48e1625c89f892b04bffb58225c    index.php
+```
+
 ## Change Git Remote URL
 - `git remote -v`: show existing URLs
 - `git remote set-url "remote-name" "remote-url"`
@@ -52,3 +76,9 @@ if __name__ == '__main__':
 - Push your code to Heroku with Git: `git push heroku master`
 - If something goes wrong with your server then check out the log file
    - `https://dashboard.heroku.com/apps/xxx/logs`, but replace "xxx" with your own app's name
+
+## Retrieve Web Site Source Code
+- `wget -r http://example.com/.git`: -r = recursively
+- If you are lucky, directory listing is enabled and you can easily search through the git repository
+- Otherwise you need to download subdirectories via trial&error
+- Example: `wget -r http://example.com/.git/HEAD` or `wget -r http://example.com/.git/objects`
