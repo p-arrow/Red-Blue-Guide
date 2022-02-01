@@ -636,6 +636,11 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
        - `set-option -g prefix M-q`
        - `unbind-key C-b`
        - `bind-key M-q send-prefix`
+    - Setup your config file:
+       - `nano ~/.tmux.conf`
+       - `set-option -g status-style bg=blue`
+       - `set-option -g base-index 1`: Set the base index for windows to 1 instead of 0
+       - `bind r source-file ~/.tmux.conf \; display "Reloaded!"`: Set bind key to reload configuration file
     - Common commands:
        - `tmux set-option -g status-style bg=blue`: change background color of status bar
        - `prefix key + "`: split into top and bottom
