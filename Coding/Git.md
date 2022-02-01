@@ -82,3 +82,5 @@ if __name__ == '__main__':
 - If you are lucky, directory listing is enabled and you can easily search through the git repository
 - Otherwise you need to download subdirectories via trial&error
 - Example: `wget -r http://example.com/.git/HEAD` or `wget -r http://example.com/.git/objects`
+- Once you retrieve a commit you can look for its details at subdirectory "objects"
+  - Example: `commit 58ace0476093d04023f84d7816adacfa7b879c43` may lead to `wget -r http://example.com/.git/objects/58/ace0476093d04023f84d7816adacfa7b879c43`
