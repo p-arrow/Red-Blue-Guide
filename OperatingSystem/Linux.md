@@ -237,7 +237,11 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `curl -O example.com/file`
    - `curl -u username:password http://example.com`
    - `curl -X POST -H "Content-Type: application/json" -d '{"username":"joe","password":"password"}' http://example.com/register`: register on example.com
-   - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9266...2", "filename": "text.txt", "content": "MY DATA..."}' http://example.com/upload`: Upload file
+   - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9..2", "filename": "text.txt", "content": "MYDATA"}' http://example.com/upload`: Upload file
+   - Write interactive script:
+     - `nano detect.sh`: create script
+     - `curl --header [your payload] $1`: predefine the payload an add $1 at the end to execute the first argument given to the script
+     - `./detect.sh [URL]`: start the script and enter your desired URL 
 - **netcat/nc**
    - Syntax: `nc host port`
    - `echo -ne "HEAD / HTTP/1.1\r\nHost: 192.168.0.10\r\nConnection: close\r\n\r\n" | netcat 192.168.0.10 80`: send HTTP Head request via netcat
