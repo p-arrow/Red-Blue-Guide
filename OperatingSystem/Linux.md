@@ -312,13 +312,14 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **zip/unzip**:
     - `zip [file]`
     - `unzip [file]`
-- **gzip/gunzip** (GNU zip format)
+- **gzip/gunzip/zlib** (GNU zip format)
     - `gzip [file]`
     - `gunzip [file.gz]`
     - `printf "\x1f\x8b\x08\x00\x00\x00\x00\x00"  | cat - [file_with_gzipdata] | gunzip`
       - If gzip data is deflated (HTTP compression), you need to add Magic Bytes firstly:
          - 1) Follow TCP Stream
          - 2) Save date in RAW format
+    - `printf "\x1f\x8b\x08\x00\x00\x00\x00\x00" | cat - [zlib_compressed_data] | gunzip`
 - **tar**: Archive program for files and directories
      - `tar -xvf [file]`: extract file verbosly
      - `tar -cvf [file] /etc`: create file verbosly 
