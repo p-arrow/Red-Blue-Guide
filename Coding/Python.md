@@ -176,6 +176,7 @@ a = "meinefiesefresseausderschnauze"
 - `flower = line.split(": ")[1].strip()`
     - `flower_dict[letter] = flower`
 - string format:
+    - **Docs**: [https://docs.python.org/3.8/library/string.html#formatspec](https://docs.python.org/3.8/library/string.html#formatspec) 
     - `print("Hi {}".format(name))`: new format style
     - `print("Hi {:d}".format(name))`: Will print "name" in decimal format
     - `print("Hi {:b}".format(name))`: Will print "name" in binary format
