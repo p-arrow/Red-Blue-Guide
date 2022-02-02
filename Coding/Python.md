@@ -184,6 +184,7 @@ a = "meinefiesefresseausderschnauze"
     - `print("Hi %s" % name)`: old style
     - `print("Hi " + name)`: string concatenation
     - `print("The byte-string is: ", pickle.dumps(bytestring))`
+    - `str(4).zfill(4)`: 0004
     
 ### Lists
 - `list = [1,2,3,4]`
