@@ -33,6 +33,8 @@ index.php
 100644 blob c3646db7f9c7e6f126c75900fdcce16d50e1da82    header.php
 100644 blob 88beb94b5e1fc48e1625c89f892b04bffb58225c    index.php
 ```
+- `git log --diff-filter=D --summary`: get ovewview of deleted commits
+- `git show [deleted_commit]`: Show details of deleted commits
 
 ## Change Git Remote URL
 - `git remote -v`: show existing URLs
