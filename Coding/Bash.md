@@ -101,6 +101,15 @@ start www.google.com
 goto :LoopStart
 ```
 
+### Interactive Shell (Windows Batch)
+```
+@echo off
+echo Hello User! :)
+set /p Name=What's your name?
+echo Hello %Name% !!!
+set /p Input=%Name%, Goodbye!
+```
+
 ### Get Credentials 
 ```
 #! /bin/bash
