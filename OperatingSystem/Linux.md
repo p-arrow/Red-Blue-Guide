@@ -452,16 +452,18 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
       - `reboot`: To make your change effective
       - If you want to allocate the new free space to another (new) logical volume (e.g. home, tmp, var....) then proceed as below
       - `sudo lvcreate -L SIZE -n yourNewLV yourVG`: create new logical volume with size SIZE
-      - `sudo mkfs.ext4 /dev/mapper/vgmint-var`: format the file system on your new logical volume e.g. to ext4
-      - `sudo mount /dev/mapper/yourVG/yourNewLV /mnt`: this is temporarily (the next steps are shown with `/home`)
+      - `sudo mkfs.ext4 /dev/mapper/yourVF/yourLV`: format the file system on your new logical volume e.g. to ext4
+      - `sudo mount /dev/mapper/yourVG/yourNewLV /mnt`: this is temporarily 
+      -  Next steps are shown with `/home`
       - `sudo cp -rp /home/* /mnt`: copy everything from `/home` -recursively and -preserve (ownerships/timestamps) to new LV on `/mnt`
       - `sudo mv /home /home.orig`: make a backup for safety sake
       - `sudo mkdir /home`: create new empty `/home`
       - `sudo umount /mnt`
       - `sudo mount /dev/mapper/yourVG/yourNewLV /home`
       - `echo '/dev/mapper/yourVG/yourNewLV /home ext4 defaults 0 0' | sudo tee -a /etc/fstab`: make it permanent
+      - `sudo update-grub`
    - `sudo lvextend -L 4G /dev/mapper/yourVG/yourLV`: extend your LV to new size 4Gb 
-   - `sudo lvrename oldLVName newLVName`: change LV name. Please mind to update `/etc/fstab` and `sudo update-grub` afterwards
+   - `sudo lvrename VG oldLVName newLVName`: change LV name. Please mind to update `/etc/fstab` and `sudo update-grub` afterwards
 - **fail2ban**:
    - rate limiting to mitigate brute force attacks
    - `git clone https://github.com/fail2ban/fail2ban.git`
