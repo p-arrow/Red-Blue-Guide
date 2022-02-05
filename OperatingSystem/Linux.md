@@ -380,8 +380,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `cat [file] | sed /regex-pattern/action`
     - action: d(elete), s(ubstitute), -n p(rint)
     - `cat /etc/passwd | sed '1,5s/sh/quiet/g'`
-    - `cat /etc/passwd | sed -n '1,3p'`
-    - `cat testing | sed '/^daemon/d'`
+    - `cat /etc/passwd | sed -n '1,3p'`: print line 1 to 3
+    - `cat testing | sed '/^daemon/d'`: matches all the lines starting with daemon and then deletes them 
     - [Tutorialspoint](https://www.tutorialspoint.com/unix/unix-regular-expressions.htm)
 - **cut**: Remove specific part of results
     - `cut -c5-5 syslog.txt`: returns 5th - 10th char. in each line
