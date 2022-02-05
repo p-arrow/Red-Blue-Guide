@@ -229,12 +229,13 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
       8. MultiFactorAuthen via additional tools / libraries
  - **curl**:
    - `curl example.com`
-   - `curl --head example.com`
-   - `curl -X GET example.com`
+   - `curl --head example.com`: Fetch headers only
+   - `curl --header "Content-Type: text/xml" example.com`: Fetch target with specified Header field
+   - `curl -X GET example.com`: Specify HTTP MEthod as GET
    - `curl -X DELETE example.com/include/config.db`
    - `curl -X OPTIONS example.com --head`: show available HTTP Methods
-   - `curl -T file example.com`
-   - `curl -O example.com/file`
+   - `curl -T file example.com`: upload file to target
+   - `curl -O example.com/file`: write output to file named like remote file
    - `curl -u username:password http://example.com`
    - `curl -X POST -H "Content-Type: application/json" -d '{"username":"joe","password":"password"}' http://example.com/register`: register on example.com
    - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9..2", "filename": "text.txt", "content": "MYDATA"}' http://example.com/upload`: Upload file
