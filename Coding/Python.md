@@ -943,7 +943,7 @@ print("Binary: ", binary)
 print("PWD: ", pwd)
 ```
 
-### Search ford words in text with Regex
+### Search for words in text with Regex
 ```
 import re
 
