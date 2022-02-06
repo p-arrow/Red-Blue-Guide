@@ -476,6 +476,7 @@ Command | Explanation
 `wmic qfe get` | Show installed Win Updates (qfe = quick fix engineering)
 `wmic process list brief` | Running processes
 `wmic sysdriver get name` | Installed drivers
+`wmic OS get OSarchitecture` | OS architecture 
 `wmic cpu get name` | processor name
 `wmic diskdrive get caption, status` | disk status
 `wmic startup get Caption, Location, Command` | Autostart
