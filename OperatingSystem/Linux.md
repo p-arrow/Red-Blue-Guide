@@ -100,6 +100,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `man [command]`
    - `/` = search within manual
    - jump through search result: `N` (forward)/`Shift+N` (backward)
+   - `man 7 man`: open man(7)
 - **ls**: show content of directory 
     - `ls -a` ("all")
     - `ls -l` ("long", more detailed)
@@ -122,7 +123,6 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 <br />
 
 ## Configuration
-
 - **bashrc** (bash resource): script file that’s executed when a user logs in
    - `nano ~/.bashrc`: configure bashrc
 - **$PS1**: (Primary) Prompt Shell Variable
@@ -699,7 +699,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `sudo apt install cpu-checker`: has to be installed firstly
    - `kvm-ok`: Expected output: INFO: /dev/kvm exists; KVM acceleration can be used
    - `sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils`: install KVM on Linux
-
+- **unattended-upgrades**
+   - automatic installation of security (and other) upgrades
+   - `dpkg-reconfigure --priority=low unattended-upgrades`: reconfigure "unattended-upgrades" to run not only for security but also stable updates
+ 
 
 ## Applications
 - **mysql**
