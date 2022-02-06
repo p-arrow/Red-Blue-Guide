@@ -172,6 +172,7 @@ a = "meinefiesefresseausderschnauze"
     len(a) --> 30
 ```
 - `string_rev = string[::-1]`:  string[start,stop,step]
+- `string = string.replace(" ", "")`: remove white space
 - `letter = line.split(": ")[0].lower()`
 - `flower = line.split(": ")[1].strip()`
     - `flower_dict[letter] = flower`
