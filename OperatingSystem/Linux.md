@@ -156,6 +156,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **ifconfig**: show interface details
 - **ip**:
    - `ip addr show`
+   - `ip route show`
    - `ip addr sh eth0`
    - `ip -br link show` (br=brief)
 - **netstat**: print network connections
@@ -179,7 +180,12 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **fuser**: find out process that opened specific port
    - `fuser 22/tcp`: SSH pid will be shown
 - **ufw** (uncomplicated FW): managing netfilter FW
-   - `ufw status`: show FW status
+   - `sudo ufw status verbosely`: show FW status
+   - `sudo ufw enable/disable/reload`
+   - `sudo ufw deny 53`
+   - `sudo ufw allow 80/tcp`
+   - `sudo ufw allow proto udp from 1.2.3.5 port 5469 to 1.2.3.4 port 5469`
+   - `sudo nano /etc/ufw/before.rules` -> `-A ufw-before-forward -p icmp --icmp-type echo-request -j DROP`: drop pings from other hosts
 - **ipv6toolkit**:
    - `sudo scan6 -i [interface] -L -P local --print-unique -e`: get IPv6 + MAC
 - **traceroute**: UDP probe by default (often ignored by FW though)
