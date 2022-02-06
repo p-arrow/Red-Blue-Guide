@@ -160,6 +160,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `ip -br link show` (br=brief)
 - **netstat**: print network connections
    - `netstat -tulpn`
+- **ss**: another socket utility 
+   - `sudo ss -tulpn` 
 - **ping**:
    - `ping [IPv4]`
    - `ping -c [Number] [IPv4]`: specify the amount of package with [Number]
@@ -405,6 +407,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `seq 0 10`: output decimal from 0 to 10
     - `for i in 'seq 0 100'; do printf "%02x\n" $i; done`: output numbers in hex-format (01 02...0c 0d...4a 4b...) 
     -  `for i in 'seq 0 100'; do printf "0x%02x.a.example.com\n" $i; done`:
+- **deboprhan**: find unused packages
+    - `deborphan -zP`: show unused packages with -z=size and -P=priority
+    - `sudo orphaner`: remove the unused packages
+
 
 <br />
 
