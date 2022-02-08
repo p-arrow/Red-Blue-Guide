@@ -822,6 +822,20 @@ def xor(str1, str2):
   for i, j in zip(str1, str2):
     result.append(chr(ord(i) ^ ord(j))
   return ''.join(result)
+ 
+ 
+# Short version
+def sxor(s1,s2):    
+    return ''.join(chr(ord(a) ^ ord(b)) for a,b in zip(s1,s2))
+
+key = sxor('string1', 'string2')
+
+
+# XOR Byte-String
+def byte_xor(ba1, ba2):
+    return bytes([_a ^ _b for _a, _b in zip(ba1, ba2)])
+
+key = byte_xor(b'string 1', b'string 2')
 ```
 
 ### HTTP SERVER
