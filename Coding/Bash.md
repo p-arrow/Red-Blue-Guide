@@ -267,3 +267,17 @@ done
 echo "[+] $date: Git Backup created successfully" >> "${path}pull_log"
 echo "" >> "${path}pull_log"
 ```
+
+### Read File Line by Line
+```
+#!/bin/bash
+input="/path/to/txt/file"
+while read -r line
+do
+  echo "$line"
+done < $input
+```
+
+### Create Sequence of Number & Read Line by Line
+- `for i in 'seq 0 255'; do printf "0x.%02x.example.com\n" $i; done > hosts.txt`
+- `while read -r line; do curl ${line}/logo.png --output ${line}; done < hosts.txt`
