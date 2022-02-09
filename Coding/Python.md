@@ -824,17 +824,19 @@ def xor(str1, str2):
   return ''.join(result)
  
  
-# Short version
+# Alternative version
 def sxor(s1,s2):    
     return ''.join(chr(ord(a) ^ ord(b)) for a,b in zip(s1,s2))
-
 key = sxor('string1', 'string2')
+
+
+# Alternative version with string
+''.join(chr(ord(i) ^ 52) for i in "\006\006\005\003U\001UU\031WQ\f\006\031\000PU\f\031\rVU\002\031W\000\rQ\f\004\rVU\003\006\004")
 
 
 # XOR Byte-String
 def byte_xor(ba1, ba2):
     return bytes([_a ^ _b for _a, _b in zip(ba1, ba2)])
-
 key = byte_xor(b'string 1', b'string 2')
 ```
 
