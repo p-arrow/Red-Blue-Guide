@@ -702,7 +702,12 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **unattended-upgrades**
    - automatic installation of security (and other) upgrades
    - `dpkg-reconfigure --priority=low unattended-upgrades`: reconfigure "unattended-upgrades" to run not only for security but also stable updates
- 
+- **umask**
+   - Set default permission for files/directories at creation time
+   - `(full permissions for directory) – (umask value) = permission`: This means `umask 0543` results in -> 777 – 543 = 234 = `-w- r-x r--`
+   - `(full permissions for file) – (umask value) = permission`: This means `umask 0027` results in -> 666 – 027 = 630 =  `rw- r-- ---`
+   - Default: `umask 0002`
+   - Hardening: `umask 0027`
 
 ## Applications
 - **mysql**
