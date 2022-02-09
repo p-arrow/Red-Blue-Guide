@@ -734,7 +734,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **sqlite3**:
     - `sqlite3 [file]`: connect to databse [file]
     - `.tables`: get a list of tables
-    - `SELECT * FROM [table]`: extract the content of a table using SQL
+    - `SELECT * FROM [table];`: extract the content of a table using SQL
+    - `.exit`: exit 
 - **docker**:
     - `docker run -d -p 80:80 docker/getting-started`: -d = detached | -p 80:80 = map host port to container port
     - `docker run -it ubuntu bash`: start ubuntu with -it = pseudo-TTY
