@@ -738,6 +738,11 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **docker**:
     - `docker run -d -p 80:80 docker/getting-started`: -d = detached | -p 80:80 = map host port to container port
     - `docker run -it ubuntu bash`: start ubuntu with -it = pseudo-TTY
+- **aws**:
+    - `aws configure`: setup your aws cli (enter keyID and secret key); data will be stored in `~/.aws`
+    - `aws s3 ls s3://assets.example.com`: show data in s3 bucket of given website 
+    - `aws s3 cp s3://assets.example.com/key.txt key.txt`: cp data from s3 bucket of given website
+
 
 <br />
 
