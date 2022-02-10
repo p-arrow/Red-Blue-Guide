@@ -393,13 +393,35 @@ pip install -r requirements.txt
 <br />
 
 ## CODE EXAMPLES
-### For Loop
-```
-# print output in one line (w/o newline)
+1. [LAMBDA FUNCTION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#lambda-function)
+2. [GENERATOR FUNCTION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#generator-function)
+3. [GENERATOR EXPRESSION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#generator-expresssion)
+4. [MATPLOT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#matplot)
+5. [BUILT-IN FUNCTION: range](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#built-in-function-range)
+6. [BUILT-IN FUNCTION: zip](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#built-in-function-zip)
+7. [BUILT-IN FUNCTION: enumerate](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#built-in-function-enumerate)
+8. [BUILT-IN FUNCTION: map](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#built-in-function-map)
+9. [BUILT-IN FUNCTION: filter](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#built-in-function-filter)
+10. [BUILT-IN FUNCTION: input](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#built-in-function-input)
+11. [BUILT-IN FUNCTION: eval](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#built-in-function-eval)
+12. [READING FILES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#reading files)
+13. [WRITING FILES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#reading files)
+14. [OBJECT ORIENTATION AND INHERITANCE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#object orientation and inheritance)
+15. [WEB CRAWLER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#web-crawler)
+16. [CALL MODULES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#call-modules)
+17. [TRANSFER VARIABLE FUNCTION PARAMETER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#transfer-variable-function-parameter)
+18. [DATE AND TIME](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#date-and-time)
+19. [REGEX](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#regex)
+20. [CSV](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#csv-module)
+21. [PROXY SERVER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#proxy server)
+22. [XOR OPERATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#xor operation)
+23. [ESCAPE ALERT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#escape alert)
+24. [FLASK APP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#flask app)
+25. [MONGODB PAYLOAD](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#mongodb payload)
+26. [ZIPFILE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#zipfile)
+27. [BINARY2ASCII](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#binary2ascii)
+28. [AES-CBC-PKCS55PADDING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#aes-cbc-pkcs5padding)
 
-for list in lists:
-    print(list, end="")
-```
 ### LAMBDA FUNCTION
 - creates quickly anonymous functions (w/o function name)
 - not ideal for complex functions
@@ -433,7 +455,7 @@ def my_range(x):
 - `sq_list = [x**2 for x in range(10)]`:     list of squares
 - `sq_iterator = (x**2 for x in range(10))`: iterator of squares
 
-### GRAPHICS WITH MATPLOT
+### MATPLOT
 ```
 import matplotlib.pyplot as plt
 xs = [1, 2, 5]
@@ -462,7 +484,7 @@ for index in range(len(items)):
 html_str += '</ul>'
 ```
 
-### BUILT-IN FUNCTION: zip (Matrix transpose)
+### BUILT-IN FUNCTION: zip
 ```
 # Example 1
 letters = ['a', 'b', 'c']
@@ -658,7 +680,7 @@ with open('datei.csv', 'w', newline='') as csvfile:
         articlewriter.writerow([article.emoji, article.title, article.image, article.content])
 ```
 
-### CALL MODULE FROM OTHER PROJECT FILES
+### CALL MODULES
 ```
 # Option A 
 # No extra configuration necessary
@@ -716,18 +738,7 @@ d = "18.07.2017"
 print(datetime.strptime(d, "%d.%m.%Y"))
 ```
 
-
-### DEFAULTDICT MODULE
-```
-# Dictionary get initialized automatically with values 
-p = defaultdict(int)
-words = ["Hello", "Hello", "World"]
-for word in words:
-    p[word] = p[word] + 1        //p[word] startet mit 0
-```
-
-
-### REGEXP
+### REGEX
 ```
 import re
 sentence = "I have 30 dogs, and all consume 4 liter water and 2 kg food respectively."
@@ -737,7 +748,23 @@ re.findall("[0-9]+", sentence)
 re.search("[0-9]+", sentence)
 #output: <_sre.SRE_Match object; span=(9, 11), match='30'>
 ```
+```
+import re
 
+def findCyber(string):
+    if re.match(r'\b([Cc]yber-)', string, flags=re.IGNORECASE):
+        return '1'
+    elif re.match(r'(\b[Cc]yber)', string, flags=re.IGNORECASE):
+        return '0'
+
+with open('text', 'r') as text:
+    binary = ""
+    for line in text:
+        words = line.split()
+        for word in words:
+            if findCyber(word) != None:
+                binary += findCyber(word)
+```
 
 ### CSV MODULE
 ```
@@ -745,7 +772,6 @@ import csv
 with open('../data/names.csv', newline='') as csvfile:
     namereader = csv.reader(csvfile, delimiter=',', quotechar='"')
 ```
-
 
 ### PROXY SERVER 
 ```
@@ -810,7 +836,6 @@ server = ThreadingHTTPServer(address, MyRequestHandler)   #Serverinstanz erstell
 server.serve_forever()                                    #Server laufen lassen
 ```
 
-
 ### XOR OPERATION
 ```
 # chr() = convert int to Unicode letter
@@ -840,11 +865,7 @@ def byte_xor(ba1, ba2):
 key = byte_xor(b'string 1', b'string 2')
 ```
 
-### HTTP SERVER
-- `python2 -m SimpleHTTPServer`
-- `python3 -m http.server`
-
-### ESCAPE ALERT (XSS)
+### ESCAPE ALERT
 ```
 #!/usr/bin/python3
 
@@ -857,9 +878,10 @@ payload = "<script>eval(String.fromCharCode("+result+"))"+text+"</script>"
 print(payload)
 ```
 
-### FLASK APP (VULNERABLE TO SSTI)
+### FLASK APP 
 ```
 #!/usr/bin/python3
+#VULNERABLE TO SSTI
 
 from flask import Flask, redirect, render_template_string, render_template, request
 
@@ -885,7 +907,7 @@ if __name__ == '__main__':
     app.run(debug=False,host='0.0.0.0')
 ```
 
-### PAYLOAD MONGODB
+### MONGODB PAYLOAD
 ```
 #!/usr/bin/python3
 
@@ -919,7 +941,7 @@ def createPayload():
 createPayload()
 ```
 
-### Unzip file via ZipFile
+### ZIPFILE
 ```
 from zipfile import ZipFile
 
@@ -937,7 +959,7 @@ for i in range(0,2020):
 print("[+] last file: ", file)
 ```
 
-### Search for words in text & translate Binary2ASCII
+### BINARY2ASCII
 ```
 with open('text', 'r') as text:
     binary = ""
@@ -959,26 +981,7 @@ print("Binary: ", binary)
 print("PWD: ", pwd)
 ```
 
-### Search for words in text with Regex
-```
-import re
-
-def findCyber(string):
-    if re.match(r'\b([Cc]yber-)', string, flags=re.IGNORECASE):
-        return '1'
-    elif re.match(r'(\b[Cc]yber)', string, flags=re.IGNORECASE):
-        return '0'
-
-with open('text', 'r') as text:
-    binary = ""
-    for line in text:
-        words = line.split()
-        for word in words:
-            if findCyber(word) != None:
-                binary += findCyber(word)
-```
-
-### Decrypt with AES-CBC-PKCS5Padding
+### AES-CBC-PKCS5PADDING
 ```
 import base64
 from Crypto.Cipher import AES
