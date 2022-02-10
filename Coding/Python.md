@@ -977,3 +977,23 @@ with open('text', 'r') as text:
             if findCyber(word) != None:
                 binary += findCyber(word)
 ```
+
+### Decrypt with AES-CBC-PKCS5Padding
+```
+import base64
+from Crypto.Cipher import AES
+
+enc = base64.b64decode("ygiG2VpgnW6z2ocCPEVaYhDwBs3UxZENbgh1iQJ6NhpBqHsczQsDh1rD3WjejQ7JH1o+lvBdtxhG64qyLQyHSg==".encode())
+secretKey = "__xxxxxxxxxxxx__"
+iv = enc[:16]
+input = enc[16:]
+
+def decrypt(secretKey, iv):
+    cipher = AES.new(secretKey, AES.MODE_CBC, iv)
+    return cipher.decrypt(input)
+
+print("Key: ", decrypt(secretKey, iv))
+#output: Key:  b'dfffb3d4-e1a6-49b0-a667-4533a1b3fbcb\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c'
+# ord("\x0c") = 12 --> 48 - len(Key) = 12 (...,thus padding of 12 needed)
+# The padding mechanism fills the final string by n-times the value n , i.e. 12 x "\x0c"
+```
