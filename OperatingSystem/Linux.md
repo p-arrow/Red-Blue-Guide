@@ -3,6 +3,7 @@
 2) [BASH PROFILES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#bash-profiles)
 3) [COMMAND LINE INTERFACE (CLI)](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#linux-cli)
 4) [ETC/SHADOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#etcshadow)
+5) [TROUBLESHOOTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#troubleshooting)
 
 <br />
 
@@ -776,3 +777,13 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - $2y: eksBlowfish
 - $5: SHA256
 - $6: SHA512 
+
+<br />
+
+# TROUBLESHOOTING
+### FROZEN XFCE4 WINDOW MANAGER
+- Open Terminal `Ctrl+Alt+T`
+- `pidof xfce4-panel`
+- `kill [pid]` or `killall xfce4-panel`
+- `xfce4-panel &`
+- `disown`: move xfce4 process out of terminal
