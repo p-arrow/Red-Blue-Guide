@@ -11,7 +11,13 @@
 6. **Interpretation**: Teil des Codes während Laufzeit v. Interpreter verarbeiten lassen (Performance Einbuße!)
 7. **Compression**: UPX (Ultimate Packer for Executables), FOSS @ Sourceforge
 
-**>> Check out** [Msfvenom](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Wiki/Applications/Msfvenom%20(Payload%20Generator).md)
+## tools
+- **ProGuard**
+  - [https://github.com/Guardsquare/proguard](https://github.com/Guardsquare/proguard)
+  - [https://en.wikipedia.org/wiki/ProGuard](https://en.wikipedia.org/wiki/ProGuard)
+- **Msfvenom**
+  - [Own Notes about Msfvenom](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Wiki/Applications/Msfvenom%20(Payload%20Generator).md)
+  - [https://github.com/g0tmi1k/msfpc](https://github.com/g0tmi1k/msfpc)
 
 <br />
 
