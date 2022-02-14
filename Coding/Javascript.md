@@ -15,3 +15,25 @@ function downloadURI(uri, name)
 }
 downloadURI("https://example.com/file.png", "captcha1")
 ```
+
+## Create Class in Web Console
+```
+class Animals {
+  constructor(name, age) {
+    this.name = name;
+    this.specie = age;
+  }
+  
+  sing(){
+    return `${this.name} can sing.`;
+  }
+  
+  dance(){
+    return `${this.name} can dance.`;
+  }
+}  
+
+let bingo = new Animals("bingo", "10");
+console.log(bingo);
+console.log(bingo.sing());
+```
