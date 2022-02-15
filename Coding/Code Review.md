@@ -11,21 +11,33 @@
 4. Look for specific function(e.g. Create User Account): Look at how it is implement connected with other functions (**Recommended**)
 
 ### What to ask yourself?
-- Improper usage of malicious code identified?
-- Code relying on user-controlled data?
-- Control over arguments?
+- Where are Input/Output boundaries within the code? 
+  - data feeds
+  - files
+  - events
+  - data responses from other systems
+  - cookies
+  - environment variables
+- How are authentication controls implemented?
+  - 2MFA?
+  - OAuth?
+  - JWT? 
+- How are authorization controls implemented?
+- How is sensitive data encrypted?
+- How are encryption keys handled?
+- How do error messages display sensitive information to the user?
+- What protections are implemented against SQL Injection?
+- What protections are implemented against XXS?
 - What if code is executed from two different users at exact same time (w/o logging)?
-- Filtering in place?
-- Sufficient filtering in place?
-- Functions flags corretly set? (look at DOCs to study available flags)
-- Implementation of Cryptography Libs acc. to best practices or developer-custom-solution?
-- Selection and implementation of hash functions correct?
+- What kind of filtering is in place? Is it sufficient?
+- Are function flags corretly set? (look at framework/code DOCs to study available flags)
+- Are Cryptography Libraries implemented acc. to best practices or developer-custom-solution?
+- What type of hash functions are used and how are they implemented?
 
 ## Node.js/Javascript
-- `routes/index.js`: Learn the structure of the code
-- `package.json`: Get an overview about used packages
-  - `npm audit`: run this command in VS Code Terminal to get an overview about vulnerabilities
-  - Check manually to recognize false positives 
+- `/routes/index.js`: Learn the structure of the code
+- `/package.json`: Get an overview about used packages
+- `npm audit --no-color > audit.txt`: get an overview about vulnerabilities, but check manually for false positives 
 - Important Keywords:
   - `open` 
   - `req.body`
