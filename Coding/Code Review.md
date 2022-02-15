@@ -4,6 +4,8 @@
 3. Bottom Up: Look at functions without other function calls and got to top
 4. Look for specific function(e.g. Create User Account): Look at how it is implement connected with other functions (**Recommended**)
 
+<br />
+
 ## WHAT TO ASK YOURSELF #1 (grepping for vulnerabilities)
 - Are there hardcoded credentials? 
   - Open your favorite code editor and hit the search functionality
@@ -21,15 +23,17 @@
     - `npm audit --no-color > audit.txt`: get an overview about vulnerabilities, but check manually for false positives  
 - Where are input streams (sources)? 
   - Follow the data flow from your findings mentioned above
-  - data feeds | files | events | data responses from other systems | cookies | environment variables
+  - `data feeds` | `files` | `events` | `data responses from other systems` | `cookies` | `environment variables`
   - **Node.js/JS/HTML**
     - `req.body` | `innerhHTML`
 - Where are output streams (sinks)? 
   - Follow the data flow from your findings mentioned above
   - **PHP**
-    - `exec()` | `system()
+    - `exec()` | `system()`
   - **Ruby**
     - `open()`
+
+<br />
 
 ## WHAT TO ASK YOURSELF #2 (comprehensive review of high-risk components)
 - How are authentication controls implemented?
