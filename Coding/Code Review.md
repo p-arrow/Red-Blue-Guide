@@ -1,8 +1,8 @@
 ## General
-### What to look at besides the Code?
-- Framework Docs !
+### What to look at (except code itself)?
+- Framework Docs
 - Respective code security best practices
-- Respective (malicious) keywords known in code
+- Malicious keywords known in respective code base
 
 ### How to progress?
 1. Look at all classes/functions (**Best coverage but time consuming!**)
@@ -11,11 +11,15 @@
 4. Look for specific function(e.g. Create User Account): Look at how it is implement connected with other functions (**Recommended**)
 
 ### What to ask yourself?
-1. Dangerous Code identified?
-2. Control over arguments?
-3. Filtering in place?
-4. Sufficient filtering in place?
-5. Code is reachable?
+- Improper usage of malicious code identified?
+- Code relying on user-controlled data?
+- Control over arguments?
+- What if code is executed from two different users at exact same time (w/o logging)?
+- Filtering in place?
+- Sufficient filtering in place?
+- Functions flags corretly set? (look at DOCs to study available flags)
+- Implementation of Cryptography Libs acc. to best practices or developer-custom-solution?
+- Selection and implementation of hash functions correct?
 
 ## Node.js/Javascript
 - `routes/index.js`: Learn the structure of the code
