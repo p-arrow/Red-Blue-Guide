@@ -15,7 +15,7 @@
   - Check out the respective framework docs
   - Check out the respective known security best practices, if any ([Example Angular](https://angular.io/guide/security))
   - After gathering malicious keywords start grepping them from the source code
-  - `exec()` | `system()` | `open()` | `eval()` | `<script src` | `bypassSecurity` | `trust` | `safe` ...
+  - `exec()` | `system()` | `open()` | `eval()` | `<script src` | `bypassSecurity` | `trust` | `safe` | `unsafe` ...
 - Is the application subject to outdated dependencies (direct / transitive)? 
   - **Node.js**
     - `/routes/index.js`: Learn the structure of the code
@@ -25,7 +25,7 @@
   - Follow the data flow from your findings mentioned above
   - `data feeds` | `files` | `events` | `data responses from other systems` | `cookies` | `environment variables`
   - **Node.js/JS/HTML**
-    - `req.body` | `innerhHTML`
+    - `req.body.` | `innerHTML`
 - Where are output streams (sinks)? 
   - Follow the data flow from your findings mentioned above
   - **PHP**
