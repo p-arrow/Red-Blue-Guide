@@ -15,7 +15,7 @@
   - Check out the respective framework docs
   - Check out the respective known security best practices, if any ([Example Angular](https://angular.io/guide/security))
   - After gathering malicious keywords start grepping them from the source code
-  - `exec()` | `system()` | `open()` | `eval()` ...
+  - `exec()` | `system()` | `open()` | `eval()` | `<script src` | `bypassSecurity` | `trust` | `safe` ...
 - Is the application subject to outdated dependencies (direct / transitive)? 
   - **Node.js**
     - `/routes/index.js`: Learn the structure of the code
