@@ -253,14 +253,14 @@ echo "" >> "${path}pull_log"
 echo "[+] $date: Create new backup" >> "${path}pull_log"
 
 #List directories only
+cd "${path}"
 for i in `ls --ignore=url --ignore=createGHbackup --ignore=pull_log`
 do
 #Create path/to/repo and perform git pull
 newPath="${path}$i"
-cd "${newPath}/"
-git pull "https://github.com/p-arrow/${i}" 2>/dev/null 1>>"${path}pull_log"
+cd "${newPath}"
+/usr/bin/git pull -v "https://github.com/p-arrow/${i}" >> "${path}pull_log"
 unset newPath
-cd ..
 done
 
 #Write to log
