@@ -738,19 +738,30 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `SELECT * FROM [table];`: extract the content of a table using SQL
     - `.exit`: exit 
 - **docker**:
-    - `docker run -d -p 80:80 docker/getting-started`: -d = detached | -p 80:80 = map host port to container port
-    - `docker run -it ubuntu bash`: start ubuntu with -it = pseudo-TTY
+    - `docker run -d -p 80:80 docker/getting-started`: 
+      - `-d` = detached
+      - `-p 80:80` = map host port to container port
+    - `docker run -it ubuntu bash`: start ubuntu
+      -  `-it` = interactive pseudo-TTY with colored output`
     - `docker container ls`: list containers (running instance of an image)
     - `docker images`: show images
     - `docker stats`: show stats
+    - `docker rm containerID`
+    - `docker rmi imageID`
     - `docker build -t mycontainer .`: Build Dockerfile which is located at `.`
       - `-t`= provide name:tag to your container
+    - `docker-compose build`: build multi-container app while being inside the repo
+    - `docker-compose up --detach`
     - **Troubleshooting**
     - `docker build ERROR: unable to select packages:   python (no such package)`
-      - Open dockerfile and change from `python` to `python3-dev`
+      - Open dockerfile and change from `python` to `python3` or `python3-dev`
       - If any other packages is causing errors, then look at alpine's package index yourself
       - [https://pkgs.alpinelinux.org/packages](https://pkgs.alpinelinux.org/packages)
       - [https://dl-cdn.alpinelinux.org/alpine/](https://dl-cdn.alpinelinux.org/alpine/)
+    - `docker-compose build ERROR: Named volume is used in service but no declaration was found in the volumes section`
+      - In docker-compose.yml look at `Services:` and `Volumes:`
+      - The listed values have to match
+      - If you are mapping then consider the right syntax with `./` in the beginning: `"./server:/home/node/app/server"`
 - **aws**:
     - `aws configure`: setup your aws cli (enter keyID and secret key); data will be stored in `~/.aws`
     - `aws s3 ls s3://assets.example.com`: show data in s3 bucket of given website 
