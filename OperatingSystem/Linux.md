@@ -255,10 +255,13 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `curl -X POST -H "Content-Type: application/json" -d '{"username":"joe","password":"password"}' http://example.com/register`: register on example.com
    - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9..2", "filename": "text.txt", "content": "MYDATA"}' http://example.com/upload`: Upload file
    - `curl http://example.com/foo -X POST -H "Content-Type: application/xml" --data @payload.xml`: Send payload via POST
-   - Write interactive script:
+   - **Write interactive script**:
      - `nano detect.sh`: create script
      - `curl --header [your payload] $1`: predefine the payload an add $1 at the end to execute the first argument given to the script
      - `./detect.sh [URL]`: start the script and enter your desired URL
+   - **Use curl for OpenSourceVulnerability DB (OSV)**:
+   - `curl -X POST -d '{"version": "2.4.1", "package": {"name": "jinja2", "ecosystem": "PyPI"}}' "https://api.osv.dev/v1/query"`: Linux
+   - `curl -X POST -d "{\"package\": {\"name\": \"mruby\"}, \"version\": \"2.1.2rc\"}" "https://api.osv.dev/v1/query"`: Windows (avoid single quotes)
 - **netcat/nc**
    - Syntax: `nc host port`
    - `echo -ne "HEAD / HTTP/1.1\r\nHost: 192.168.0.10\r\nConnection: close\r\n\r\n" | netcat 192.168.0.10 80`: send HTTP Head request via netcat
@@ -266,6 +269,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - [https://wkhtmltopdf.org/](https://wkhtmltopdf.org/)
    - `sudo apt install wkhtmltopdf`
    - `wkhtmltopdf http://google.com google.pdf`: create pdf of google website 
+- **ifdown**: bring a network interface down
+   - `sudo ifdown -a`: bring down interfaces according to `/etc/network/interfaces`
+- **ifup**: bring a network interface up
+   - `sudo ifdown -a`: bring up interfaces according to `/etc/network/interfaces`
 
 <br />
 
@@ -620,6 +627,15 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **dmidecode**: displays the S(ystem)M(anagement)BIOS/DMI in a human-readable way
 - **export**: show environment variables 
     - `export PS1='$ '` set PS1 to '$ '
+    - **Add file remporarily to PATH**:
+    - `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`
+    - `echo $JAVA_HOME`: verify
+    - `export PATH=$PATH:$JAVA_HOME/bin`
+    - `echo $PATH`: verify
+    - **Add file permanently**:
+    - `nano ~/.profile` or `nano ~/.bashrc`
+    - `export PATH="$PATH:/snap/bin"`: add this line at the end of bashrc (replace /snap/bin with your app)
+    - `source ~/.profile` or `source ~/.bashrc`: activate the change for current shell
 - **modprobe**: remove/add modules
 - **dmesg**: show Kernel-Ringpuffer
     - `dmesg -H` 
@@ -789,7 +805,12 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `aws configure`: setup your aws cli (enter keyID and secret key); data will be stored in `~/.aws`
     - `aws s3 ls s3://assets.example.com`: show data in s3 bucket of given website 
     - `aws s3 cp s3://assets.example.com/key.txt key.txt`: cp data from s3 bucket of given website
-
+- **bandit**:
+    - `virtualenv venv`, then `python3 -m venv venv`
+    - `source venv/bin/activate`
+    - `pip install wheel; pip install bandit`
+    - `bandit PATH-TO-FILE -o RESULT-FILE-NAME.txt -f file`: usage pattern
+ 
 
 <br />
 
@@ -832,3 +853,48 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - `kill [pid]` or `killall xfce4-panel`
 - `xfce4-panel &`
 - `disown`: move xfce4 process out of terminal
+
+### DESKTOP ICONS DISAPPEARED (KALI)
+- Open Terminal `Crtl+Shift+T` and enter `xfwm4`: it restarts your window manager
+- `xfsettingsd --replace`: make it persistent by replacing the xfce4 deamon
+
+### DEBIAN DOESN'T LOAD VIRTUALBOX DRIVERS 
+- [https://wiki.debian.org/SecureBoot#MOK_-_Machine_Owner_Key](https://wiki.debian.org/SecureBoot#MOK_-_Machine_Owner_Key)
+- `sudo mokutil --sb-state`: check SecureBoot enabled
+- `ls /var/lib/shim-signed/mok/`: check if key exists
+- `sudo mkdir -p /var/lib/shim-signed/mok/`
+- `cd /var/lib/shim-signed/mok/`
+- `sudo openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -days 36500 -subj "/CN=YOURNAME/" -nodes`
+- `sudo openssl x509 -inform der -in MOK.der -out MOK.pem`
+- `sudo mokutil --import MOK.der`: prompts for one-time password
+- `sudo mokutil --list-new`: recheck your key will be prompted on next boot
+- reboot your machine
+- Enter MOK manager: enroll MOK, continue, confirm, enter password, reboot
+- `sudo dmesg | grep cert` verify your key is loaded
+- `MODULE_DIR=/lib/modules/$(uname -r)/misc`: location of Oracle's module packages
+- `cd $MODULE_DIR`
+- `for i in *.ko ; do /usr/lib/linux-kbuild-5.10/scripts/sign-file sha256 /var/lib/shim-signed/mok/MOK.priv /var/lib/shim-signed/mok/MOK.der "$i" ; done`
+- `modinfo vboxdrv`
+- reboot
+
+### HOW TO ENABLE AltGr (KALI)
+- `cd ~` 
+- `xev`: Then press `AltGr` and check the output (keycode + designation)
+   - Example: `keycode 113 + Alt_R` (correct should be "Mode_switch")
+- `nano .Xmodmap`
+- Enter `"keycode 113 = Mode_switch"` and save
+- `xmodmap ~/.Xmodmap`: Gnome will update the environment automatically
+
+
+### FAILED TO ACTIVATE SERVICE ‘org.freedesktop.PolicyKit1’: timed out 
+- Check existency of polkitd user:
+   - `getent passwd polkitd`
+   - `getent group polkitd`
+- If not available:
+   - `groupadd -r polkitd`: -r = system account
+   - `useradd -r -g polkitd -d / -s /sbin/nologin -c "User for polkitd" polkitd`
+- Reset permissions and user/group ownership for all files provided by polkit and polkit-pkla-compat
+   - `rpm -Va polkit\*`: -Va = verify all
+   - `rpm --setugids polkit polkit-pkla-compat; rpm --setperms polkit polkit-pkla-compat`
+- Reboot: `shutdown -h now`
+
