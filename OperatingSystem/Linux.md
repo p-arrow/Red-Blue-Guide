@@ -885,6 +885,18 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - Enter `"keycode 113 = Mode_switch"` and save
 - `xmodmap ~/.Xmodmap`: Gnome will update the environment automatically
 
+### BUNDLER ERROR (METASPLOITFRAMEWORK/MSF)
+- Error Message: `cannot load such file -- bundler/setup`
+- `cd /usr/share/metasploit-framework`
+- Check current versions
+   - `ruby -v`
+   - `bundler -v`
+   - `gem list bundler`
+   - `cat /usr/share/metasploit-framework/gemfile.lock`: Look at line with "BUNDLED WITH" mentioned
+- Remove non-matching bundler and install matching bundler
+   - `gem install bundler -v [...]`
+   - `bundle install`
+   - `gem update --system`: cross check with `gem environment`
 
 ### FAILED TO ACTIVATE SERVICE ‘org.freedesktop.PolicyKit1’: timed out 
 - Check existency of polkitd user:
