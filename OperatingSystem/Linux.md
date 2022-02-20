@@ -419,7 +419,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **deboprhan**: find unused packages
     - `deborphan -zP`: show unused packages with -z=size and -P=priority
     - `sudo orphaner`: remove the unused packages
-
+- **fdisk**:
+   - `sudo fdisk -l`: list all devices
+   - `mkfs.fat /dev/sdb1`: format sdb1 (e.g. USB stick)
 
 <br />
 
@@ -600,6 +602,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `df -ah`
 - **du**: show disk usage of files in a directory
     - `du -ah /etc`
+- **dd** (disk duplicate):
+    - `sudo dd bs=4M if=/Downloads/file.iso of=/dev/sdb1 status=progress && sync`: make ISO on sdb1 (e.g. USB stick)
 - **ps**: display information of active processes
     - VSZ (Virtual MemSize) / RSS (Physical MemSize) / TTY (?=none) / STAT (S=sleeping,R=running)
     - `ps -fp [pid]`: show corresponding CLI command 
