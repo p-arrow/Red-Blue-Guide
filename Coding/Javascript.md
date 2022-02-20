@@ -37,3 +37,7 @@ let bingo = new Animals("bingo", "10");
 console.log(bingo);
 console.log(bingo.sing());
 ```
+
+## Control Window Sidebar
+- Open WebDev Tool
+- `window.scrollby(x, y);`
