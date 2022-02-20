@@ -214,6 +214,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `ssh -Q cipher`: check available ciphers of ssh client
    - `nmap -p22 -n -sV --script ssh2-enum-algos [IPv4]`: check ciphers of SSH server
    - `ssh -o KexAlgorithms=diffie-hellman-group1-sha1 user@host`: set specific algorithm option
+   - **Install SSH Service on Linux Server**
+   - `sudo apt install openssh-server
+   - `service ssh start`
+   - `service --status-all`: for verification
    -  **Best Practice (Blue Team)**
       -  All changes to be made here: **/etc/ssh/sshd_config**
       1. Change to uncommon SSH Port: 22 --> 2323
@@ -517,10 +521,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **chgrp**: change group
 - **chmod**: user (u), group (g) and others (o)
     - `chmod u=rw,g=rw,o=r [file name]`
-    - `chmod o+w [file name]`
-    - `chmod g-w [file name]`
-    - `chmod 750 [file name]` (-rwx r-x ---)
-    - `chmod 777 .` 
+    - `chmod o+w [file name]`: allow others to write
+    - `chmod g-w [file name]`: disallow group to write
+    - `chmod 750 [file name]`: -rwx r-x ---
+    - `chmod 777 .`: allow all to everyone in current directory
     - `chmod a=r [file name]`: set read-permission for "all"
     - `chmod 4755 file`: set setuid
     - `chmod +xs file`: set setuid
@@ -535,6 +539,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
         r-x  |  101   |   5
         rw-  |  110   |   6
         rwx  |  111   |   7
+    - **Restrict [command] for any non-root Linux user**:
+    - `which [command]`: verify the command path, e.g. /bin/su
+    - `sudo chmod o-x [command]`: disallow execution for others
+    - Alternatively: `rbash`
 - **useradd**: Adds accounts to the system
     - `useradd -d homedir -g groupname -m -s shell -u userid accountname`
     - `-m` = Creates the home directory if it doesn't exist
