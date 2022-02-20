@@ -144,7 +144,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `DEBIAN_FRONTEND=noninteractive apt-get -y upgrade`
    - `DEBIAN_FRONTEND=dialog` (default frontend for apt/apt-get )
    - `DEBIAN_FRONTEND=readline` (most traditional; for slow remote connections; entirely CLI)
-- **tasksel**: a user interface for installing tasks
+- **tasksel**:
+   - a user interface for installing tasks
+   - or installing desktop environments, fonts etc.
 - **update-alternatives**: creates, removes, maintains and displays information about the symbolic links comprising the Debian alternatives system
    - `update-alternatives --query editor` to check the installed editors on the system
    - `update-alternatives --config x-session-manager` to choose a particular implementation of x-session-manager (e.g. GNOME, XFCE, Cinnamon etc.)
@@ -440,9 +442,14 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `gpg --keyserver pgp.mit.edu --send-keys [your fingerprint]`: Push your public key to keyserver 
    - `gpg --keyserver pgp.mit.edu --refresh-keys`: To check if your key has been successfully sent
    - **Verify PGP signature of downloaded .apk**:
-   - `keytool -printcert -jarfile file.apk`: This reveals some information about the certificate
-   - `gpg --keyserver pgp.mit.edu --receive-keys [fingerprint or key ID]`: Fingerprint/keyID should be revealed with the certificate beforehand
+   - `keytool -printcert -jarfile file.apk`: Reveal some information about the certificate
+   - `gpg --keyserver pgp.mit.edu --receive-keys [fingerprint or key ID]`: Use previously retrieved fingerprint/keyID
    - `gpg --verify file.apk.asc`: while being in the same directory where the file.apk resides
+   - **Verify PGP signature of downloaded .asc** (example veracrypt):
+   - `wget https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc`
+   - `gpg --show-keys VeraCrypt_PGP_public_key.asc`: compare retrieved fingerprint with the public one from download page
+   - `gpg --import VeraCrypt_PGP_public_key.asc`: If erverything seems OK, import the public key
+   - `gpg --verify xxx.deb.sig xxx.deb`: check the signature
 - **cryptsetup**
    - `sudo cryptsetup luksFormat -c aes-xts-plain64 -s 512 -h sha512 -y /dev/sba`: create encrypted partition. You will be asked for a password
    - `cryptsetup luksAddKey --key-slot=2 /dev/sdb1`: A single encrypted partition can have eight different keys. This command adds one key on slot 2
