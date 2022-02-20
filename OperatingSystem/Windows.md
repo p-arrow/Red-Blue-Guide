@@ -8,6 +8,7 @@
 7) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
 8) [WINDOWS SYSMON](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-sysmon)
 9) [WINDOWS WMIC](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-wmic)
+10) [WINDOWS TROUBLESHOOTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-troubleshooting)
 
 <br />
 
@@ -486,3 +487,14 @@ Command | Explanation
 `wmic process where name="powershell.exe" get processid/commandline` | Search process name
 
 <br />
+
+# WINDOWS TROUBLESHOOTING
+### Shutdown Uer Account Control
+- Open CMD as admin
+- `reg ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f`
+
+### No print function in Outlook
+- Open explorer; enter %appdata% ; go to Microsoft/Outlook
+- Close Outlook
+- Delete "outlprnt" if it exists
+- Open Outlook
