@@ -783,14 +783,16 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `docker stats`: show stats
     - `docker rm containerID`
     - `docker rmi imageID`
-    - `docker build -t mycontainer .`: Build Dockerfile which is located at `.`
+    - `docker build -t mycontainer:tag .`: Build Dockerfile which is located at `.`
+    - `docker inspect [networkName]: show IP address network details of container's network
+    - `docker network prune`: remove existing container network
       - `-t`= provide name:tag to your container
     - `docker-compose build`: build multi-container app while being inside the repo
     - `docker-compose up -d`: start all containers in background
-      - if you change the ocker-compose.yml` file you need to run `docker-compose up` to make any change effective 
+    - `docker-compose up`: After every change of **docker-compose.yml**
     - `docker-compose ps`: show running process
     - `docker-compose run [servicename] env`: show environment variables of service
-    - `docker-compose start/stop`: start/stop the containers
+    - `docker-compose start/stop`: start/stop container
     - **Troubleshooting**
     - `docker build ERROR: unable to select packages:   python (no such package)`
       - Open dockerfile and change from `python` to `python3` or `python3-dev`
