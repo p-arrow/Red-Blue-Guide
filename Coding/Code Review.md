@@ -45,4 +45,5 @@
   - What if code is executed from two different users at exact same time?
 - Are **function flags** corretly set?
   - Look at framework/code DOCs to study available flags
-
+- Are **user interactions uniquely linked** to that user?
+  - User may have an ambiguous name, email oder other parameter that can lead to vague DB lookups etc. 
