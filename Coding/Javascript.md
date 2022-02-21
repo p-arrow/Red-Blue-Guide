@@ -22,6 +22,7 @@ function downloadURI(uri, name)
 }
 downloadURI("https://example.com/file.png", "captcha1")
 ```
+<br />
 
 ## Create Class (WebConsole)
 ```
@@ -44,11 +45,13 @@ let bingo = new Animals("bingo", "10");
 console.log(bingo);
 console.log(bingo.sing());
 ```
+<br />
 
 ## Control Window Sidebar (WebConsole)
 - Open WebDev Tool
 - `window.scrollby(x, y);`
 
+<br />
 
 ## CSRF
 ```
@@ -61,3 +64,5 @@ console.log(bingo.sing());
   f.submit();
   return false;">To the harmless survey</a>
 ```
+
+<br />
