@@ -85,6 +85,13 @@ echo "Equ :"[ $a == $b ]   // False
 echo "Une :"[ $a != $b ]   // True
 ```
 
+### Exit Codes
+- [https://tldp.org/LDP/abs/html/exitcodes.html](https://tldp.org/LDP/abs/html/exitcodes.html)
+- `Exit Code 0`: Success (no errors)
+- `Exit Code 1`: Catchall for general errors
+- `Exit Code 127`: Command not found 
+
+
 <br />
 
 # SCRIPT EXAMPLES
