@@ -147,9 +147,11 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **tasksel**:
    - a user interface for installing tasks
    - or installing desktop environments, fonts etc.
-- **update-alternatives**: creates, removes, maintains and displays information about the symbolic links comprising the Debian alternatives system
-   - `update-alternatives --query editor` to check the installed editors on the system
-   - `update-alternatives --config x-session-manager` to choose a particular implementation of x-session-manager (e.g. GNOME, XFCE, Cinnamon etc.)
+- **update-alternatives**: 
+   - creates, removes, maintains and displays information about the symbolic links comprising the Debian alternatives system
+   - `update-alternatives --query editor`: to check the installed editors on the system
+   - `update-alternatives --config x-session-manager`: to choose a particular implementation of x-session-manager (e.g. GNOME, XFCE, Cinnamon etc.)
+   - `update-alternatives --config java`: config default java version
 
 <br />
 
