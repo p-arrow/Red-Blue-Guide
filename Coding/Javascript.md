@@ -69,6 +69,7 @@ console.log(bingo.sing());
 <br />
 
 ## Normalize String
+- Details: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize)
 ```
 x = "ã" 
 
