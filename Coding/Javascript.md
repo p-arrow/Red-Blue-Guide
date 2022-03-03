@@ -4,6 +4,7 @@
 2. [CREATE CLASS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#create-class-webconsole)
 3. [CONTROL WINDOW SIDEBAR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#control-window-sidebar-webconsole)
 4. [CSRF](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#csrf)
+5. [NORMALIZE STRING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#normalize-string)
 
 <br />
 
@@ -66,3 +67,18 @@ console.log(bingo.sing());
 ```
 
 <br />
+
+## Normalize String
+```
+x = "ã" 
+
+console.log('Unicode codepoint:', 
+  x.charCodeAt(0).toString(16),
+  x.charCodeAt(1).toString(16))
+// → Unicode codepoint: 61 303
+
+console.log('Normalize:', x.normalize('NFC'))
+console.log('Normalize:', x.normalize('NFD'))
+console.log('Normalize:', x.normalize('NFKC'))
+console.log('Normalize:', x.normalize('NFKD'))
+```
