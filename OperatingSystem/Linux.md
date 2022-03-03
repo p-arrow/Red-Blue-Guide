@@ -781,6 +781,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
       - `-p 80:80` = map host port to container port
     - `docker run -it ubuntu bash`: start ubuntu
       -  `-it` = interactive pseudo-TTY with colored output`
+    - `docker run -it -v $(pwd):/app ruby /bin/bash` 
     - `docker container ls`: list containers (running instance of an image)
     - `docker images`: show images
     - `docker stats`: show stats
