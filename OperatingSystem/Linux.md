@@ -338,6 +338,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **zip/unzip**:
     - `zip [file]`
     - `unzip [file]`
+    - `zip -r foo.zip foo`: zip recursively with output file named foo.zip
+    - **Malicious Zip Symlink**
+    - `ln -s /etc/passwd symlink.jpg`: create soft link that points to `/etc/passwd`
+    - `zip --symlinks pictures.zip symlink.jpg`: create zip file that contains malicious symlink
 - **gzip/gunzip/zlib** (GNU zip format)
     - `gzip [file]`
     - `gunzip [file.gz]`
