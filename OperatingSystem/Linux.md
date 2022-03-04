@@ -440,6 +440,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **fdisk**:
    - `sudo fdisk -l`: list all devices
    - `mkfs.fat /dev/sdb1`: format sdb1 (e.g. USB stick)
+- **javac**
+   - `javac myClass.java`: compile Java file; output is `myClass.class`
+   - `java myClass.class`: run the Java bytecode
+
 
 <br />
 
