@@ -258,6 +258,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9..2", "filename": "text.txt", "content": "MYDATA"}' http://example.com/upload`: Upload file
    - `curl http://example.com/foo -X POST -H "Content-Type: application/xml" --data @payload.xml`: Send payload via POST
    - `curl -X HEAD 'example.com' -F "file=@webshell.jsp" -vv`: upload file
+   - `curl -X GET https://example.com/extras/ --cookie "PHPSESSID=ovv...ekc3"`: send Cookie
    - **Write interactive script**:
      - `nano detect.sh`: create script
      - `curl --header [your payload] $1`: predefine the payload an add $1 at the end to execute the first argument given to the script
