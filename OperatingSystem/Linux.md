@@ -176,8 +176,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **openssl**:
    - `openssl [command] -help`
    - `openssl s_client -connect host:port`
-   - `openssl enc -aes256 -k secret101 -in /tmp/backup.tgz  -out /tmp/backup.tgz.enc`: create encrypted backup archive non-interactive with -key "secret101"
-   - `openssl enc -aes256 -k secret101 -d -in file.txt.enc -out file.txt`: decrypt file non-interactive with supplied key "secret101"
+   - `openssl enc -aes256 -k secret101 -in /tmp/backup.tgz  -out /tmp/backup.tgz.enc`: create encrypted backup non-interactively with -key "secret101"
+   - `openssl enc -aes256 -k secret101 -d -in file.txt.enc -out file.txt`: decrypt non-interactively with supplied key "secret101"
+   - `openssl req -newkey rsa:2048 -nodes -keyout priv.pem -x509 -days 365 -out ./myCert.crt -subj "/CN=myName"`: Create cert and private key
 - **scp** (OpenSSH secure file copy):
    - Syntax: `scp option source destination`
    - `scp -v -P 2222 admin@192.168.0.23:/storage/Download/file.pdf /tmp`: copy from remote server to /tmp verbose, port 2222
