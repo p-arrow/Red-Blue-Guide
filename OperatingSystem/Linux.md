@@ -179,6 +179,10 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `openssl enc -aes256 -k secret101 -in /tmp/backup.tgz  -out /tmp/backup.tgz.enc`: create encrypted backup non-interactively with -key "secret101"
    - `openssl enc -aes256 -k secret101 -d -in file.txt.enc -out file.txt`: decrypt non-interactively with supplied key "secret101"
    - `openssl req -newkey rsa:2048 -nodes -keyout priv.pem -x509 -days 365 -out ./myCert.crt -subj "/CN=myName"`: Create cert and private key
+   - **Three Step Procedure**:
+   - `openssl genrsa -out private.key 1024`: Generate private key
+   - `openssl req -new -x509 -key private.key -out publickey.cer -days 365`: Generate certificate
+   - `openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publickey.cer`: Export your x509 certificate and private key to pfx file
 - **scp** (OpenSSH secure file copy):
    - Syntax: `scp option source destination`
    - `scp -v -P 2222 admin@192.168.0.23:/storage/Download/file.pdf /tmp`: copy from remote server to /tmp verbose, port 2222
