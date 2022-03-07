@@ -801,8 +801,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `docker stats`: show stats
     - `docker rm containerID`
     - `docker rmi imageID`
-    - `docker build -t mycontainer:tag .`: Build Dockerfile which is located at `.`
-    - `docker inspect [networkName]: show IP address network details of container's network
+    - `docker build -t mycontainer:tag .`: Build **Dockerfile** which is located at `.`
+    - `docker inspect [networkName]`: show IP address network details of container's network
     - `docker network prune`: remove existing container network
       - `-t`= provide name:tag to your container
     - `docker-compose build`: build multi-container app while being inside the repo
