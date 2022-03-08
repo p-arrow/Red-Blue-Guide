@@ -375,7 +375,10 @@ print("Exception occurred: {}".format(y))
 ```
 # create project file xyz
 # create virtual environment
-python -m venv [source/repos/projects/xyz]
+python -m venv /path/to/new/virtual/environment
+
+#activate virtual environment <venv>
+source <venv>/bin/activate
 
 # choose corresponding Interpreter in VS Code
 xyz/scripts/python.exe
