@@ -352,11 +352,14 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **gzip/gunzip/zlib** (GNU zip format)
     - `gzip [file]`
     - `gunzip [file.gz]`
-    - `printf "\x1f\x8b\x08\x00\x00\x00\x00\x00"  | cat - [file_with_gzipdata] | gunzip`
-      - If gzip data is deflated (HTTP compression), you need to add Magic Bytes firstly:
+    - `printf "\x1f\x8b\x08\x00\x00\x00\x00\x00"  | cat - [file_with_gzipdata] | gunzip`: If gzip data is deflated (HTTP compression), you need to add Magic Bytes
+         - If you capture deflated data via Wireshark: 
          - 1) Follow TCP Stream
          - 2) Save date in RAW format
     - `printf "\x1f\x8b\x08\x00\x00\x00\x00\x00" | cat - [zlib_compressed_data] | gunzip`
+    - **Error**: zlib.error: Error -3 while decompressing data: incorrect header check
+    - **Solution**: `result = zlib.decompress(base64.b64decode(unquote(DATA).encode()), -zlib.MAX_WBITS)`
+    - **Details**: [https://newbedev.com/zlib-error](https://newbedev.com/zlib-error-error-3-while-decompressing-incorrect-header-check)
 - **tar**: Archive program for files and directories
      - `tar -xvf [file]`: extract file verbosly
      - `tar -cvf [file] /etc`: create file verbosly 
