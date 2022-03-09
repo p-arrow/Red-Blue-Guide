@@ -12,8 +12,14 @@
   - `password` | `secret` | `credentials` | `token` | `hash`  
 - Are **dangerous functions** used?
   - The keywords depend on the underlying codebase
-  - Check out the respective framework docs
-  - Check out the respective known security best practices, if any ([Example Angular](https://angular.io/guide/security))
+  - Check out the respective **Framework Docs**
+  - Check out the respective known **Security Best Practices**
+    - [https://angular.io/guide/security](https://angular.io/guide/security)
+    - [https://guides.rubyonrails.org/security.html](https://guides.rubyonrails.org/security.html)
+  - Source Code Signatures: [https://github.com/wireghoul/graudit/tree/master/signatures](https://github.com/wireghoul/graudit/tree/master/signatures)
+  - RegEx Pattern Search: [https://github.com/wireghoul/graudit/tree/master/signatures](https://github.com/wireghoul/graudit/tree/master/signatures)
+    - Search for code language (`php`) or keyword (`exec`)
+    - Copy the semgrep command , for instance: `semgrep --config "p/phpcs-security-audit"`
   - After gathering malicious keywords start grepping them from the source code
   - `exec()` | `system()` | `open()` | `eval()` | `<script src` | `bypassSecurity` | `trust` | `safe` | `unsafe` ...
 - Is the application subject to **outdated dependencies** (direct / transitive)? 
