@@ -948,5 +948,6 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 	Soft blocked: no
 	Hard blocked: no
 ```
-- `sudo rfkill unblock INTERFACE`: soft-unblock your device
+- `sudo rfkill unblock INTERFACE` or `sudo rfkill unblock all`: soft-unblock your device
 - `sudo /etc/init.d/networking restart`
+- **Solution**: Unplug the LAN cable, if any
