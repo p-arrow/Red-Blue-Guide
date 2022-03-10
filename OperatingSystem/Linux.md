@@ -934,3 +934,19 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `rpm --setugids polkit polkit-pkla-compat; rpm --setperms polkit polkit-pkla-compat`
 - Reboot: `shutdown -h now`
 
+### WI-FI IS DISABLED BY HARDWARE SWITCH
+- `rfkill list`: check which interfaces are blocked
+- example:
+```
+0: tpacpi_bluetooth_sw: Bluetooth
+	Soft blocked: no
+	Hard blocked: no
+2: phy0: Wireless LAN
+	Soft blocked: yes
+	Hard blocked: yes
+3: hci0: Bluetooth
+	Soft blocked: no
+	Hard blocked: no
+```
+- `sudo rfkill unblock INTERFACE`: soft-unblock your device
+- `sudo /etc/init.d/networking restart`
