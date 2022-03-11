@@ -453,7 +453,9 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **javac**
    - `javac myClass.java`: compile Java file; output is `myClass.class`
    - `java myClass.class`: run the Java bytecode
-
+- **jar**:
+   - `jar --create --file classes.jar Foo.class Bar.class`
+   - `jar --create --file my.jar @classes.list` 
 
 <br />
 
