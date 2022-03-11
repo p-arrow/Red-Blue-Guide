@@ -32,8 +32,9 @@
       - [http://findbugs.sourceforge.net/index.html](http://findbugs.sourceforge.net/index.html)
       - Download: [http://prdownloads.sourceforge.net/findbugs/findbugs-3.0.1.tar.gz?download](http://prdownloads.sourceforge.net/findbugs/findbugs-3.0.1.tar.gz?download)
       - `gunzip -c findbugs-3.0.1.tar.gz | tar xvf -`
-      - `java [JVM arguments] -jar $FINDBUGS_HOME/lib/findbugs.jar options FILE`
+      - `java [JVM arguments] -jar $FINDBUGS_HOME/lib/findbugs.jar options FILE.jar`
       - Details about Options: [http://findbugs.sourceforge.net/manual/running.html](http://findbugs.sourceforge.net/manual/running.html)
+      - Additional Security Plugin: [https://find-sec-bugs.github.io/](https://find-sec-bugs.github.io/)
     - **PYTHON** --> **Bandit**
 - Where are **input streams** (sources)? 
   - Follow the data flow from your findings mentioned above
