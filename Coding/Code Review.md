@@ -27,6 +27,14 @@
     - `/routes/index.js`: Learn the structure of the code
     - `/package.json` / `/package-lock.json`: Get an overview about required packages
     - `npm audit --no-color > audit.txt`: get an overview about vulnerabilities, but check manually for false positives  
+- Let's take a shortcut with **Static Code Analyzers**
+    - **JAVA** --> **FindBugs**
+      - [http://findbugs.sourceforge.net/index.html](http://findbugs.sourceforge.net/index.html)
+      - Download: [http://prdownloads.sourceforge.net/findbugs/findbugs-3.0.1.tar.gz?download](http://prdownloads.sourceforge.net/findbugs/findbugs-3.0.1.tar.gz?download)
+      - `gunzip -c findbugs-3.0.1.tar.gz | tar xvf -`
+      - `java [JVM arguments] -jar $FINDBUGS_HOME/lib/findbugs.jar options FILE`
+      - Details about Options: [http://findbugs.sourceforge.net/manual/running.html](http://findbugs.sourceforge.net/manual/running.html)
+    - **PYTHON** --> **Bandit**
 - Where are **input streams** (sources)? 
   - Follow the data flow from your findings mentioned above
   - `data feeds` | `files` | `events` | `data responses from other systems` | `cookies` | `environment variables`
