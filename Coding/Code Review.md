@@ -17,6 +17,10 @@
     - [https://angular.io/guide/security](https://angular.io/guide/security)
     - [https://guides.rubyonrails.org/security.html](https://guides.rubyonrails.org/security.html)
   - Source Code Signatures **Graudit**: [https://github.com/wireghoul/graudit/tree/master/signatures](https://github.com/wireghoul/graudit/tree/master/signatures)
+    - `git clone https://github.com/wireghoul/graudit`
+    - Add graudit to your PATH or use an alias: `export PATH=/opt/graudit:$PATH`
+    - `graudit -l`: list databases
+    - `graudit -d /opt/graudit/signatures/sql.db .`: run graudit in current directory
   - RegEx Pattern Search **Semgrep**: [https://semgrep.dev/r](https://semgrep.dev/r)
     - Install CLI locally: `python3 -m pip install semgrep`
     - Pick one specific rule: Search for code language (`php`) or keyword (`exec`)
