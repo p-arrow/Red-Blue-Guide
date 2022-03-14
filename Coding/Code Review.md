@@ -16,8 +16,8 @@
   - Check out the respective known **Security Best Practices**
     - [https://angular.io/guide/security](https://angular.io/guide/security)
     - [https://guides.rubyonrails.org/security.html](https://guides.rubyonrails.org/security.html)
-  - Source Code Signatures: [https://github.com/wireghoul/graudit/tree/master/signatures](https://github.com/wireghoul/graudit/tree/master/signatures)
-  - RegEx Pattern Search: [https://semgrep.dev/r](https://semgrep.dev/r)
+  - Source Code Signatures **Graudit**: [https://github.com/wireghoul/graudit/tree/master/signatures](https://github.com/wireghoul/graudit/tree/master/signatures)
+  - RegEx Pattern Search **Semgrep**: [https://semgrep.dev/r](https://semgrep.dev/r)
     - Install CLI locally: `python3 -m pip install semgrep`
     - Pick one specific rule: Search for code language (`php`) or keyword (`exec`)
     - Pick a comprehensive rule-set
