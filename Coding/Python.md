@@ -804,6 +804,27 @@ with open('../data/names.csv', newline='') as csvfile:
 ```
 
 ### PROXY SERVER 
+- Details: [https://www.proxiesapi.com/blog/how-to](https://www.proxiesapi.com/blog/how-to-build-a-super-simple-http-proxy-in-python-i.php)
+- Usage: `curl http://localhost:9097/http://example.com`
+```
+import socketserver
+import http.server
+import urllib.request
+
+PORT = 9097
+
+class MyProxy(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        url=self.path[1:]
+        self.send_response(200)
+        self.end_headers()
+        self.copyfile(urllib.request.urlopen(url),self.wfile)
+
+httpd = socketserver.ForkingTCPServer(('', PORT), MyProxy)
+print ("Now serving at ", str(PORT))
+httpd.serve_forever()
+```
+
 ```
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from socketserver import ThreadingMixIn
