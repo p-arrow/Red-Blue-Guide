@@ -425,6 +425,7 @@ pip install -r requirements.txt
 27. [BINARY2ASCII](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#binary2ascii)
 28. [AES-CBC-PKCS55PADDING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#aes-cbc-pkcs5padding)
 29. [CBC-MAC XOR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#cbc-mac-xor)
+30. [PIL IMAGE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#pil-image)
 
 <br />
 
@@ -1079,4 +1080,59 @@ signature2 = str(base64.b64decode(cookie2)).split("--")[1].strip("'")
 cookie3 = 'administrator--' + signature2
 cookie3 = base64.b64encode(cookie3.encode()).decode().strip("=")
 print(cookie3)
+```
+
+### PIL IMAGE
+```
+from PIL import Image
+from PIL import ImageChops
+
+
+#Read in image object(S)
+path1 = "/path/to/image/1.png"
+path2 = "/path/to/image/2.png"
+#Option 1
+images = [Image.open(i) for i in [path1, path2]]
+#Option2
+with Image.open(path1) as img:
+    img = img.convert("1")
+
+with Image.open(path2) as bg:
+    bg = bg.convert("1")
+
+###################################
+## Merge two images horizontally ##
+###################################
+
+#Create new image
+Width = images[0].size[0]
+Height = images[0].size[1]
+newImage = Image.new('RGB', (2*Width, Height))
+
+#Write content to new image and save it
+newImage.paste(images[0],(0,0))
+newImage.paste(images[1],(Width,0))
+newImage.save('mergedHZ.png')
+
+#########################
+## Overlay two images  ##
+#########################
+
+#Overlay images
+images[1].paste(images[0], (0,0), mask=images[0])
+images[1].save('overlayedImg.png')
+
+#########################
+## Subtract two images ##
+#########################
+
+newImage = ImageChops.subtract(bg,img)
+newImage.save('subtractedImage.png')
+
+######################
+## XOR two images   ##
+######################
+
+xored = ImageChops.logical_xor(img,bg)
+xored.save('xoredImg.png')
 ```
