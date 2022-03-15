@@ -28,16 +28,11 @@
 - External IV may be feed into S2V as additional data field
 - Bsp: AES-GCM-SIV
 
-### Modes of Operation
-
-*Cipher Suite encrypts/decrypts only one code block*
-
-*Modes repeatedly apply this on several blocks!*
-
-*For Confidentiality! Not Integrity*
+## Modes of Operation
+- **Cipher Suite encrypts/decrypts only one code block**
+- **Modes repeatedly apply this on several blocks!**
 
 #### a) ECB (Electronic Code Book), from 1981
-
 - simpelst mode (!)
 - message is divided into blocks, each block is encrypted separately
 - encrypts identical plaintext blocks into identical ciphertext blocks
@@ -46,14 +41,11 @@
   - Blocks from encrypted message can be removed without disturbing the decryption process
   - Blocks from encrypted message can be moved around without disturbing the decryption process
 
-
 #### b) CFB (Cipher Feedback), from 1981
-
 - encryption is sequential (no parallelization) (!)
 - decryption can be parallelized
 
 #### c) CBC (Cipher Block Chaining), from 1981
-
 - each block of plaintext is XORed with previous ciphertext block before being encrypted
 - each ciphertext block depends on all plaintext blocks processed up to that point (chaining)
 - most commonly used mode of operation
@@ -69,24 +61,26 @@
 #### g) CTS (Ciphertext Stealing): not officially approved by NIST
 
 
-### For Integrity
-
+## For Integrity
 - HMAC (2002)
 - CMAC (2005)
 - GMAC (2007): Galois/Counter MAC
 - Poly1305
 
-### Authenticated Encryption
-
-*Confidentiality and Integrity combined*
-
+## Authenticated Encryption
+- **Confidentiality and Integrity combined**
 - CCM (Counter with CBC-MAC)
 - GCM (Galois Counter Mode)
+  - Needs two parameter: **Initialization Vector (IV)** and **length (in bits) of authentication tag T (tLen)**
+  - tLen may only have the values {128, 120, 112, 104, 96}, or {64, 32} for certain applications
+  - IV is 12 bytes in size (the default for GCM)
+  - In GCM mode, the block encryption is transformed into stream encryption --> No padding needed
+  - Each block with AES GCM can be encrypted independently, hence the performance is significantly higher than AES CBC
+  - **Example**: [Secure Implementation of AES-256-GCM in Java](https://www.javainterviewpoint.com/java-aes-256-gcm-encryption-and-decryption/)
 - CWC
 - OAB 
 
 ## Symmetric Cryptography Algorithms
-
 #### DES (Data Encryption Standard)
 - Block Cypher 64 Bit (56 Bit)
 - Published in 1977
