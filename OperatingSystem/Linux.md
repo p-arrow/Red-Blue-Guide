@@ -175,13 +175,17 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `host [IPv4]`   
 - **openssl**:
    - `openssl [command] -help`
+   - `openssl list -help`
    - `openssl s_client -connect host:port`
    - `openssl enc -aes256 -k secret101 -in /tmp/backup.tgz  -out /tmp/backup.tgz.enc`: create encrypted backup non-interactively with -key "secret101"
    - `openssl enc -aes256 -k secret101 -d -in file.txt.enc -out file.txt`: decrypt non-interactively with supplied key "secret101"
+   - **Generate Fingeprint from x509.pem**:
+   - `openssl x509 -in x509.pem -noout -fingerprint`: Result may look like `SHA1 Fingerprint=9E:65:2E:03:...:97:0A:4D:F4:4D`
+   - **Generate Private Key & Certificate (Short)**:
    - `openssl req -newkey rsa:2048 -nodes -keyout priv.pem -x509 -days 365 -out ./myCert.crt -subj "/CN=myName"`: Create cert and private key
-   - **Three Step Procedure**:
+   - **Generate Private Key & Certificate (Long)**:
    - `openssl genrsa -out private.key 1024`: Generate private key
-   - `openssl req -new -x509 -key private.key -out publickey.cer -days 365`: Generate certificate
+   - `openssl req -new -x509 -key private.key -out publickey.cer -days 365`: Generate certificate 
    - `openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publickey.cer`: Export your x509 certificate and private key to pfx file
 - **scp** (OpenSSH secure file copy):
    - Syntax: `scp option source destination`
@@ -412,6 +416,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `:wq`: write and quit
     - `:wq!`: write, quit and override
     - `:%s /\\n/\r/g`: search `\n` and replace with newline globally
+    - `:%s /.\{64}/&\r/g`: replace globally each 64th char with `\r` (carriage return), e.g. to get correct PEM format
     - [Spawn shell inside vim](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Wiki/Restricted%20Shell%20Escape.md)
     - 
 - **tee**: read from standard input and write to standard output and files
