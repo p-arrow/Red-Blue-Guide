@@ -214,7 +214,8 @@ int main() {}
    - Useful if you temporarily want to bundle data inside a function
 
 
-### Array (C-relict)
+### Array
+- **C-relict**
 ```
 array.size()                  --> arraygröße anzeigen
 array[i]                      --> show element i; without error warning if "out of range" memory access happens 
@@ -257,7 +258,8 @@ array<array<int, 2>, 3> a = {{ }}
 - Arrays have fixed size (no automatic adjustment like vectors)
 
 
-### Vector (C++ Feature)
+### Vector
+- **C++ Feature**
 ```
 vector<int/string> names = { };        --> Vector resides in heap! Deletes itself after call 
 vector.push_back()                     --> add element
