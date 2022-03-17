@@ -8,7 +8,7 @@
 - `git init`
 - `git add "file"`
 - `git commit -m "This is a new file"`
-- `git push "repo_name" master`
+- `git puhs` or `git push "repo_name" master`
 
 ## Commands within your Repo
 - `git show [commit]`: show details of commit  (you need to use the commit hash)
