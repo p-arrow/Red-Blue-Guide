@@ -461,6 +461,26 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **jar**:
    - `jar --create --file classes.jar Foo.class Bar.class`
    - `jar --create --file my.jar @classes.list` 
+- **gcc**: GNU Compiler Collection
+   - example.c --> program code in C
+   - example.s --> interim data with assembler code
+   - example.o --> object File
+   - example --> compiled binary
+   - Options (extract):
+      - `-Wall` = Warning all (Syntax/Logikfehler)
+      - `-o` = output
+      - `-g` = generate debug info
+      - `-g0` = no debug info
+      - `-g1` = minimal debug info
+      - `-g` = default debug info
+      - `-g3` = maximal debug info
+      - `-01` to `-03` = Code optimization (the more, the more compact)
+      - `-save-temps` = no deletion of temporary data while compilation
+      - `-m32` = compile 32bit binary on 64bit machine
+   - `gcc -Wall example.c -o example`
+   - `gcc -shared -o attack.so -fPIC attack.c`:
+      - create **shared object / .so** file
+      - For predictable results, you must also specify `-fPIC` when you specify this linker option
 
 <br />
 
