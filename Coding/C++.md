@@ -701,7 +701,8 @@ cout << pq.top().first << ":" << pq.top().second    --> 555 : Hallo
 #include<stdio.h>
 #include<stdlib.h>
 
-#This particular GCC syntax, when used with a function, executes the same function at the startup of the program, i.e before main() function
+# This particular GCC syntax executes the function at the startup of the program, i.e before main() function
+# __attribute__((constructor)) runs when a shared library is loaded, typically during program startup
 static void malicious() __attribute__((constructor));
 
 void malicious() {
