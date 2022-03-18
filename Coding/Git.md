@@ -1,11 +1,11 @@
 **Git Book**: [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
 
-## Git CVEs
-- [https://staaldraad.github.io/post/2018-06-03-cve-2018-11235-git-rce/](https://staaldraad.github.io/post/2018-06-03-cve-2018-11235-git-rce/)
-
 ## Prerequisites
 - `git config --global user.email "you@example.com"`
 - `git config --global user.name "Your Name"`
+
+## Git CVEs
+- [https://staaldraad.github.io/post/2018-06-03-cve-2018-11235-git-rce/](https://staaldraad.github.io/post/2018-06-03-cve-2018-11235-git-rce/)
 
 ## Create Git Repo
 - `mkdir newDir`
