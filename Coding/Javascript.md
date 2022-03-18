@@ -83,3 +83,16 @@ console.log('Normalize:', x.normalize('NFD'))
 console.log('Normalize:', x.normalize('NFKC'))
 console.log('Normalize:', x.normalize('NFKD'))
 ```
+
+## MEASURE PERFORMANCE
+- Could be used for **Sidechannel Attacks**
+```
+<script>
+  const t0 = performance.now();
+  for (let i = 0; i < 10; i++) {
+    console.log(i);
+  }
+  const t1 = performance.now();
+  console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
+</script>
+```
