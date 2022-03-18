@@ -1,5 +1,8 @@
 **Git Book**: [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
 
+## Git CVEs
+- [https://staaldraad.github.io/post/2018-06-03-cve-2018-11235-git-rce/](https://staaldraad.github.io/post/2018-06-03-cve-2018-11235-git-rce/)
+
 ## Prerequisites
 - `git config --global user.email "you@example.com"`
 - `git config --global user.name "Your Name"`
@@ -102,10 +105,29 @@ sudo make install install-doc install-html install-info
 ```
 - You may run into errors, especially if you install it within a thin docker image
 - **Solution**: `apt install autoconf zlib1g-dev asciidoc docbook2x gettext`
-- If you need to rebuild git after adding packages to your container:
+- If you need to rebuild git after adding packages (e.g. `curl`) to your container:
 ```
 cd path/to/git/dir
-./configure
+./configure --prefix=/user --with-curl
 make
 make install
 ```
+
+## Setup Bare Git Repo for Collaboration
+- First creating a git repository on your local machine
+   - `mkdir example.git`
+   - `cd example.git`
+   - `git init . --bare`: bare repo means there is no working directory inside. Only data
+- Then cloning it locally
+   - `cd ..`
+   - `git clone example.git`
+   - `cd example` 
+- Work in your repo
+- Push changes
+   - `git add .`
+   - `git -m commit "example"`
+   - `git push`: This will push changes to example.git (your bare repo)
+   - Alternative: `git clone --bare example example.git`: create your local repo `example` first, work, then clone it into bare repo `example.git`
+- Make your bare repo available
+   - `scp -r example.git user@webserver:/srv/git`: copy your bare repo to a webserver of your choice
+   - `git clone user@ẁebserver:/srv/git/example.git`: Users with SSH-read-access can clone your bare repo from the webserver
