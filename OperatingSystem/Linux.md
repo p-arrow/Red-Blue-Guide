@@ -333,6 +333,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `cat rockyou.txt | grep -x '.\{8,96\}'`: only show passwords from rockyou.txt between 8 and 96 chars long
 - **cat**: concatenate/read the file and output content
     - `cat -b dictionary.txt`
+    - `cat > file.txt << EOF`: enter content of `file` dynamically. To finish your input enter `EOF`
 - **which** [data]: Returns path of linux file if existing in PATH
 - **locate** [string]: Returns all paths that contain [string]
 - **whereis** [data]: Returns all paths
