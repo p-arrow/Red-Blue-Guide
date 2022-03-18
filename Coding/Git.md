@@ -88,3 +88,24 @@ if __name__ == '__main__':
 - Example: `wget -r http://example.com/.git/HEAD` or `wget -r http://example.com/.git/objects`
 - Once you retrieve a commit you can look for its details at subdirectory "objects"
   - Example: `commit 58ace0476093d04023f84d7816adacfa7b879c43` may lead to `wget -r http://example.com/.git/objects/58/ace0476093d04023f84d7816adacfa7b879c43`
+
+## Install specific version of Git
+- Choose sourcefile: [https://mirrors.edge.kernel.org/pub/software/scm/git/](https://mirrors.edge.kernel.org/pub/software/scm/git/)
+- If you intend to install git within Docker you'll need: `apt install wget curl make libcurl4-openssl-dev`
+```
+tar -zxf git-xxx.tar.gz
+cd git-xxx
+make configure
+./configure --prefix=/usr
+make all doc info
+sudo make install install-doc install-html install-info
+```
+- You may run into errors, especially if you install it within a thin docker image
+- **Solution**: `apt install autoconf zlib1g-dev asciidoc docbook2x gettext`
+- If you need to rebuild git after adding packages to your container:
+```
+cd path/to/git/dir
+./configure
+make
+make install
+```
