@@ -426,6 +426,7 @@ pip install -r requirements.txt
 28. [AES-CBC-PKCS55PADDING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#aes-cbc-pkcs5padding)
 29. [CBC-MAC XOR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#cbc-mac-xor)
 30. [PIL IMAGE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#pil-image)
+31. [PADDING ERROR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#padding-error)
 
 <br />
 
