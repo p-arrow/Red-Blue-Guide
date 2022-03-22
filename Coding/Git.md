@@ -45,6 +45,7 @@ index.php
 - `git remote -v`: show existing URLs
 - `git remote set-url "remote-name" "remote-url"`
    - `git remote set-url heroku https://git.heroku.com/example.git`
+   - `git remote set-url origin https://git.heroku.com/example.git`
 
 ## Make Local Repo-Backup
 - `cd /your/backup/dir`: move to your backup folder
