@@ -1136,3 +1136,6 @@ newImage.save('subtractedImage.png')
 xored = ImageChops.logical_xor(img,bg)
 xored.save('xoredImg.png')
 ```
+
+### PADDING ERROR
+- Identify the necessary padding length: `padding = '=' * (4 - len(STRING) % 4)`
