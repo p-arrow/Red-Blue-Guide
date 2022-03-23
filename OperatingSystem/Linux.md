@@ -325,23 +325,23 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `nc -n`: Skip DNS lookups / numerical
    - `nc -v`: verbose output 
    - **Create Channel**
-	- Kali: `nc -lvnp [Port]` (Check your listening status in another terminal by using command `netstat`)
-	- Windows: `nc [IPv4] [Port]` ; `get`
+     - Kali: `nc -lvnp [Port]` (Check your listening status in another terminal by using command `netstat`)
+     - Windows: `nc [IPv4] [Port]` ; `get`
    - **Transfer text** (*while connection is already established*)
-	- Windows: `nc -lvnp [port] > example.txt`
-	- Kali: enter your text
+     - Windows: `nc -lvnp [port] > example.txt`
+     - Kali: enter your text
    - **Transfer files** (*while connection is already established*)
-	- Windows: `nc -lnvp [port] > wget.exe`
-	- Kali: `nc [IPv4] [port] < /usr/share/windows-binaries/wget.exe`
+     - Windows: `nc -lnvp [port] > wget.exe`
+     - Kali: `nc [IPv4] [port] < /usr/share/windows-binaries/wget.exe`
    - **Portscan**
-	- `nc -v -w 2 -z [IPv4] [port range]`
-  	- Exp: `nc -v -w 2 -z 3.45.21.19 10-1000`
-  	- w = set timeout in [s]
-  	- z = no transmission, only check listening services 
+     - `nc -v -w 2 -z [IPv4] [port range]`
+     - Exp: `nc -v -w 2 -z 3.45.21.19 10-1000`
+     - w = set timeout in [s]
+     - z = no transmission, only check listening services 
    - **Communicate with Web Server**
-	- `nc [host] [port]`
-  	- `GET / HTTP/1.0`
-  	- Press 2x Enter
+     - `nc [host] [port]`
+     - `GET / HTTP/1.0`
+     - Press 2x Enter
 
 <br />
 
