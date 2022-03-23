@@ -1050,17 +1050,17 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 ### SYSTEMD-RESOLVED VS DNSMASQ
 - **dnsmasq: failed to create listening socket for port 53: Address already in use**
 - `systemd-resolve --status`: check the current DNS Server and Link
-![image](https://user-images.githubusercontent.com/84674087/159803127-d0a1205f-65e5-4e7e-9ad1-5ecbb260d957.png)
+- ![image](https://user-images.githubusercontent.com/84674087/159803127-d0a1205f-65e5-4e7e-9ad1-5ecbb260d957.png)
 - `nano /etc/dnsmasq.conf`: Add the line `server=DNS SERVER`, whereby DNS SERVER is the one indicated from `systemd-resolve --status`
 - `sudo systemd-resolve --set-dns=127.0.0.1 --interface=eth0`: Add dnsmasq as DNS Server to systemd-resolve
 - `sudo systemctl restart systemd-resolved`
 - `sudo dnsmasq -C dnsmasq.conf --no-daemon`: start dnsmasq in foreground (`--no-daemon`)
 - Verify: `dig google.com` (systemd-resolver) and `dig @localhost google.com` (dnsmasq) should yield the same result
 - **Hints**
-- `/etc/systemd/resolved.conf`: Changes to this file should not be made directly
-- `/etc/systemd/resolved.conf.d`: Instead use “drop in” configuration file (if it doesn' exist you can create it)
-- `service systemd-resolved restart`: restart after your change
+  - `/etc/systemd/resolved.conf`: Changes to this file should not be made directly
+  - `/etc/systemd/resolved.conf.d`: Instead use “drop in” configuration file (if it doesn' exist you can create it)
+  - `service systemd-resolved restart`: restart after your change
 - **AWS**
-- `sudo nano /etc/dhcp/dhclient.conf`
-- `supersede domain-name-servers xxx.xxx.xxx.xxx, xxx.xxx.xxx.xxx;`: Add this line and reboot the EC2 instance
-- [Details](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-static-dns-ubuntu-debian/)
+  - `sudo nano /etc/dhcp/dhclient.conf`
+  - `supersede domain-name-servers xxx.xxx.xxx.xxx, xxx.xxx.xxx.xxx;`: Add this line and reboot the EC2 instance
+  - [Details](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-static-dns-ubuntu-debian/)
