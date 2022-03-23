@@ -954,6 +954,16 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 <br />
 
 # TROUBLESHOOTING
+1. [FROZEN XFCE4 WINDOW MANAGER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#frozen-xfce4-window-manager)
+2. [DESKTOP ICONS DISAPPEARED (KALI)](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#frozen-xfce4-window-manager)
+3. [DEBIAN VIRTUALBOX DRIVER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#debian-virtualbox-driver)
+4. [HOW TO ENABLE AltGr (KALI](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#frozen-xfce4-window-manager)
+5. [BUNDLER ERROR)](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#bundler-error)
+6. [SERVICE org.freedesktop.PolicyKit1 TIMED OUT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#service-org.freedesktop.PolicyKit1-timed-out)
+7. [WI-FI HARDWARE SWITCH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#wi-fi-hardware-switch)
+8. [SYSTEMD-RESOLVED DNS SERVICE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#systemd-resolved-dns-service)
+
+
 ### FROZEN XFCE4 WINDOW MANAGER
 - Open Terminal `Ctrl+Alt+T`
 - `pidof xfce4-panel`
@@ -965,7 +975,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - Open Terminal `Crtl+Shift+T` and enter `xfwm4`: it restarts your window manager
 - `xfsettingsd --replace`: make it persistent by replacing the xfce4 deamon
 
-### DEBIAN DOESN'T LOAD VIRTUALBOX DRIVERS 
+### DEBIAN VIRTUALBOX DRIVERS
 - [https://wiki.debian.org/SecureBoot#MOK_-_Machine_Owner_Key](https://wiki.debian.org/SecureBoot#MOK_-_Machine_Owner_Key)
 - `sudo mokutil --sb-state`: check SecureBoot enabled
 - `ls /var/lib/shim-signed/mok/`: check if key exists
@@ -992,7 +1002,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - Enter `"keycode 113 = Mode_switch"` and save
 - `xmodmap ~/.Xmodmap`: Gnome will update the environment automatically
 
-### BUNDLER ERROR (METASPLOITFRAMEWORK/MSF)
+### BUNDLER ERROR
+- **METASPLOITFRAMEWORK/MSF**
 - Error Message: `cannot load such file -- bundler/setup`
 - `cd /usr/share/metasploit-framework`
 - Check current versions
@@ -1005,7 +1016,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `bundle install`
    - `gem update --system`: cross check with `gem environment`
 
-### FAILED TO ACTIVATE SERVICE ‘org.freedesktop.PolicyKit1’: timed out 
+### SERVICE ‘org.freedesktop.PolicyKit1’ TIMED OUT 
 - Check existency of polkitd user:
    - `getent passwd polkitd`
    - `getent group polkitd`
@@ -1017,7 +1028,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `rpm --setugids polkit polkit-pkla-compat; rpm --setperms polkit polkit-pkla-compat`
 - Reboot: `shutdown -h now`
 
-### WI-FI IS DISABLED BY HARDWARE SWITCH
+### WI-FI HARDWARE SWITCH
+- **Wifi is disabled by hardware switch**
 - `rfkill list`: check which interfaces are blocked
 - example:
 ```
@@ -1034,3 +1046,15 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - `sudo rfkill unblock INTERFACE` or `sudo rfkill unblock all`: soft-unblock your device
 - `sudo /etc/init.d/networking restart`
 - **Solution**: Unplug the LAN cable, if any
+
+### SYSTEMD-RESOLVED DNS SERVICE
+- **dnsmasq: failed to create listening socket for port 53: Address already in use**
+- `sudo systemctl disable systemd-resolved`
+- `sudo systemctl stop systemd-resolved`
+- Maybe `sudo systemctl restart NetworkManager` too
+- **Hints**
+- `/etc/systemd/resolved.conf`: Changes to this file should not be made directly
+- `/etc/systemd/resolved.conf.d`: Instead use “drop in” configuration file (if it doesn' exist you can create it)
+- `service systemd-resolved restart`: restart after your change
+- `systemd-resolve --status`: Verfiy the change
+- `sudo systemd-resolve --interface=eth0 --set-dns=192.168.88.22`: Verify after your change
