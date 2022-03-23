@@ -961,7 +961,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 5. [BUNDLER ERROR)](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#bundler-error)
 6. [SERVICE org.freedesktop.PolicyKit1 TIMED OUT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#service-org.freedesktop.PolicyKit1-timed-out)
 7. [WI-FI HARDWARE SWITCH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#wi-fi-hardware-switch)
-8. [SYSTEMD-RESOLVED DNS SERVICE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#systemd-resolved-dns-service)
+8. [SYSTEMD-RESOLVED VS DNSMASQ](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#systemd-resolved-vs-dnsmasq)
 
 
 ### FROZEN XFCE4 WINDOW MANAGER
@@ -1047,17 +1047,19 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - `sudo /etc/init.d/networking restart`
 - **Solution**: Unplug the LAN cable, if any
 
-### SYSTEMD-RESOLVED DNS SERVICE
+### SYSTEMD-RESOLVED VS DNSMASQ
 - **dnsmasq: failed to create listening socket for port 53: Address already in use**
-- `sudo systemctl disable systemd-resolved`
-- `sudo systemctl stop systemd-resolved`
-- Maybe `sudo systemctl restart NetworkManager` too
+- `systemd-resolve --status`: check the current DNS Server and Link
+![image](https://user-images.githubusercontent.com/84674087/159803127-d0a1205f-65e5-4e7e-9ad1-5ecbb260d957.png)
+- `nano /etc/dnsmasq.conf`: Add the line `server=DNS SERVER`, whereby DNS SERVER is the one indicated from `systemd-resolve --status`
+- `sudo systemd-resolve --set-dns=127.0.0.1 --interface=eth0`: Add dnsmasq as DNS Server to systemd-resolve
+- `sudo systemctl restart systemd-resolved`
+- `sudo dnsmasq -C dnsmasq.conf --no-daemon`: start dnsmasq in foreground (`--no-daemon`)
+- Verify: `dig google.com` (systemd-resolver) and `dig @localhost google.com` (dnsmasq) should yield the same result
 - **Hints**
 - `/etc/systemd/resolved.conf`: Changes to this file should not be made directly
 - `/etc/systemd/resolved.conf.d`: Instead use “drop in” configuration file (if it doesn' exist you can create it)
 - `service systemd-resolved restart`: restart after your change
-- `systemd-resolve --status`: Verfiy the change
-- `sudo systemd-resolve --interface=eth0 --set-dns=192.168.88.22`: Verify after your change
 - **AWS**
 - `sudo nano /etc/dhcp/dhclient.conf`
 - `supersede domain-name-servers xxx.xxx.xxx.xxx, xxx.xxx.xxx.xxx;`: Add this line and reboot the EC2 instance
