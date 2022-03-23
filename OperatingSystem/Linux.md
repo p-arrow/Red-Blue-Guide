@@ -1058,3 +1058,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - `service systemd-resolved restart`: restart after your change
 - `systemd-resolve --status`: Verfiy the change
 - `sudo systemd-resolve --interface=eth0 --set-dns=192.168.88.22`: Verify after your change
+- **AWS**
+- `sudo nano /etc/dhcp/dhclient.conf`
+- `supersede domain-name-servers xxx.xxx.xxx.xxx, xxx.xxx.xxx.xxx;`: Add this line and reboot the EC2 instance
+- [Details](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-static-dns-ubuntu-debian/)
