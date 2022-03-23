@@ -287,6 +287,34 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `sudo ifdown -a`: bring down interfaces according to `/etc/network/interfaces`
 - **ifup**: bring a network interface up
    - `sudo ifdown -a`: bring up interfaces according to `/etc/network/interfaces`
+- **tcpdump**
+   - `sudo tcpdump -ni eth0 -s0 -A icmp`
+   - `sudo tcpdump -i enp0s3 port telnet -w telnetloginattempts.pcap`
+   - `sudo tcpdump host [IPv4] -s0 -A` (listen to raw packets on IPv4)
+   - **Options**
+     - `-w test.pcap`: write .pcap
+     - `-r test.pcap | read .pcap
+     - `-D`: show all interfaces
+     - `-A`: print each packet in ASCII; good for capturing web pages
+     - `-i eth0 -vv`: select specific interface eth0 verbosely
+     - `-n`: numeric, don't resolve names
+     - `-s0`: snaplen to default = 262144 bytes = data from each packet
+     - `host`: indicate host
+- **tshark** (Wireshark CLI Tool)
+   - `tshark.exe -d tcp.port==21,ftp -w ftp.pcap`
+   - **Options**
+     - `-i`: interface
+     - `-f`: acket filter
+     - `-D`: pint interfaces
+     - `-L`: pint link layer types
+     - `-O [protocol]`: only show specific packets of this protocol
+     - `-F`: output file type
+     - `-c [packet count]`: stop after n packets
+     - `-n`: disable name resolution
+     - `-d [layer type]==[selector]`
+     - `-r [file]`: read from file.pcap
+     - `-w [file]`: write result to file
+
 
 <br />
 
