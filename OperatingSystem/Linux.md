@@ -314,15 +314,42 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
      - `-d [layer type]==[selector]`
      - `-r [file]`: read from file.pcap
      - `-w [file]`: write result to file
-
+- **ncat/nc**
+   - [https://nmap.org/ncat/guide/index.html](https://nmap.org/ncat/guide/index.html)
+   - `nc [options] [host] [port]`: Execute a port scan
+   - `nc -l [host] [port]`: Initiate a listener on the given port
+   - `nc -4`:  Use IPv4 only
+   - `nc -6`: Use IPv6
+   - `nc -u`: Use UDP instead of TCP
+   - `nc -k -l`: Continue listening after disconnection
+   - `nc -n`: Skip DNS lookups / numerical
+   - `nc -v`: verbose output 
+   - **Create Channel**
+	- Kali: `nc -lvnp [Port]` (Check your listening status in another terminal by using command `netstat`)
+	- Windows: `nc [IPv4] [Port]` ; `get`
+   - **Transfer text** (*while connection is already established*)
+	- Windows: `nc -lvnp [port] > example.txt`
+	- Kali: enter your text
+   - **Transfer files** (*while connection is already established*)
+	- Windows: `nc -lnvp [port] > wget.exe`
+	- Kali: `nc [IPv4] [port] < /usr/share/windows-binaries/wget.exe`
+   - **Portscan**
+	- `nc -v -w 2 -z [IPv4] [port range]`
+  	- Exp: `nc -v -w 2 -z 3.45.21.19 10-1000`
+  	- w = set timeout in [s]
+  	- z = no transmission, only check listening services 
+   - **Communicate with Web Server**
+	- `nc [host] [port]`
+  	- `GET / HTTP/1.0`
+  	- Press 2x Enter
 
 <br />
 
 ## Data / File
 - `./[binary or script]`: execute binary/script
 - **STDIN: 0 / STDOUT: 1 / STDERR: 2**
-    - `2>&1`: redirect STDERR to STDOUT (">&" means "redirect file descriptor")
-    - `&>/dev/null`: redirects all output to /dev/null
+   - `2>&1`: redirect STDERR to STDOUT (">&" means "redirect file descriptor")
+   - `&>/dev/null`: redirects all output to /dev/null
 - **cp**: copy from to
     - `cp example.txt /var/www/html/`
 - **less**: display data page by page
