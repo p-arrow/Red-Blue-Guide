@@ -1,10 +1,10 @@
 # TABLE OF CONTENTS
 1) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#basics)
-2) [SCRIPT EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#script-examples)
+2) [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#script-examples)
 
 <br />
 
-# BASICS
+## BASICS
 ### Variables
 - `readonly VARIABLE=value`: set variable read-only
 - `unset VARIABLE`: remove assigned value from variable
@@ -94,8 +94,18 @@ echo "Une :"[ $a != $b ]   // True
 
 <br />
 
-# SCRIPT EXAMPLES
-### Clickbait (Windows Batch)
+## CODE EXAMPLES
+1. [CLICKBAIT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#clickbait)
+2. [INTERACTIVE SHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#interactive-shell)
+3. [GET CREDENTIALS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#get-credentials)
+4. [GET MD5](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#get-md5)
+5. [NETCAT PARAMETERS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#netcat-parameters)
+6. [BACKUP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#backup)
+7. [CREATE CERTIFICATE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-certificate)
+
+
+### Clickbait
+- **Windows Batch file**
 ```
 # Open the browser continuously
 # Attention, may lead to DoS !
@@ -108,7 +118,8 @@ start www.google.com
 goto :LoopStart
 ```
 
-### Interactive Shell (Windows Batch)
+### Interactive Shell
+- **Windows Batch file**
 ```
 @echo off
 echo Hello User! :)
@@ -128,7 +139,7 @@ read -sp 'Password: ' passvar
 echo Thank you $uservar we now have your login details
 ```
 
-### Get MD5 of Name
+### Get MD5
 ```
 #! /bin/bash
 
@@ -137,7 +148,7 @@ mytarget=$(echo $myname | md5sum | cut -d ' ' -f 1)
 # output for user "root" --> 74cc1c60799e0a786ac7094b532f01b1
 ```
 
-### Hand over parameter(s) to netcat with while loop
+### Netcat Parameters
 ```
 i=1
 while [ $i -le 1000 ]
@@ -148,7 +159,7 @@ echo "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ, $i" | nc localhost 30002 >> /tmp/file.tx
 done
 ```
 
-### Backup Automisation
+### Backup
 ```
 #! /bin/bash
 
@@ -288,3 +299,16 @@ done < $input
 ### Create Sequence of Number & Read Line by Line
 - `for i in 'seq 0 255'; do printf "0x.%02x.example.com\n" $i; done > hosts.txt`
 - `while read -r line; do curl ${line}/logo.png --output ${line}; done < hosts.txt`
+
+### Create Certificate
+```
+#!/bin/bash
+
+FILENAME=server
+# Generate a public/private key pair:
+openssl genrsa -out $FILENAME.key 1024
+# Generate a self signed certificate:
+openssl req -new -key $FILENAME.key -x509 -sha256 -days 3653 -out $FILENAME.crt
+# Generate the PEM file by just appending the key and certificate files:
+cat $FILENAME.key $FILENAME.crt >$FILENAME.pem
+```
