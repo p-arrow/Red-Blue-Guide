@@ -344,14 +344,14 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
      - Press 2x Enter
 - **dnsmasq**
    - **Setup MITM DNS Service** 
-   - `nano dnsmasq.conf` -> add `addn-hosts=dnsmasq.hosts`: create configuration file
-   - `nano dnsmasq.hosts` -> add `IPv4  mitm.example.com`: add (malicious) hosts
-   - `sudo dnsmasq -C dnsmasq.conf --no-daemon`: start dnsmasq in foreground with specified configuration
-     - You may face probelms if systemd-resolve occupies port 53 --> [Look here](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#systemd-resolved-vs-dnsmasq)
-   - `dig mitm.example.com` and `dig @localhost mitm.example.com`: Verify if dnsmasq works as expected
-   - Get your victim to send its DNS query to your server, where dnsmasq is running
+     - `nano dnsmasq.conf` -> add `addn-hosts=dnsmasq.hosts`: create configuration file
+     - `nano dnsmasq.hosts` -> add `IPv4  mitm.example.com`: add (malicious) hosts
+     - `sudo dnsmasq -C dnsmasq.conf --no-daemon`: start dnsmasq in foreground with specified configuration
+       - You may face probelms if systemd-resolve occupies port 53 --> [Look here](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#systemd-resolved-vs-dnsmasq)
+     - `dig mitm.example.com` and `dig @localhost mitm.example.com`: Verify if dnsmasq works as expected
+     - Get your victim to send its DNS query to your server, where dnsmasq is running
    - **Setup MITM TCP Server**
-   - `sudo nc -lvnp 80`
+     - `sudo nc -lvnp 80`
 
 <br />
 
