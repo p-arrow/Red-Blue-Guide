@@ -2,8 +2,6 @@
 1) [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#basics)
 2) [CODE EXAMPLES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#script-examples)
 
-<br />
-
 ## BASICS
 ### Variables
 - `readonly VARIABLE=value`: set variable read-only
@@ -101,7 +99,13 @@ echo "Une :"[ $a != $b ]   // True
 4. [GET MD5](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#get-md5)
 5. [NETCAT PARAMETERS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#netcat-parameters)
 6. [BACKUP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#backup)
-7. [CREATE CERTIFICATE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-certificate)
+7. [CHECK REMOTE SERVER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#check-remote-server-status)
+8. [CHECK AVAILABLE HOSTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#check-available-hosts)
+9. [APP LIST](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-app-list-of-linux-host)
+10. [GITHUB REPO BACKUP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-github-repo-backup-on-linux-host)
+11. [READ LINE BY LINE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#read-file-line-by-line)
+12. [CREATE SEQUENCE OF NUMBER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-sequence-of-number--read-line-by-line)
+13. [CREATE CERTIFICATE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-certificate)
 
 
 ### Clickbait
