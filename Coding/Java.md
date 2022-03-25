@@ -40,3 +40,43 @@ DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         DocumentBuilder builder = factory.newDocumentBuilder();
 ```
+
+### AES-CBC-DECRYPTION BRUTEFORCE
+```
+import java.util.Base64;
+import java.security.MessageDigest;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
+
+public class android07
+{
+  public static void main(String[] args){
+    String s = "ED1nf3uLW4Hkwr1aGw+NpN5sgcRMPCFuk0XgtW181m4o6d0Ml3D/j6h1NSyOh4dbcGsbK6rcZOUyzHxWVb4QkA==";
+    for (int i=0; i<9999; i++){
+      try {
+        byte[] enc = Base64.getDecoder().decode(s);
+        String pin = String.format("%04d",i);
+        byte[] iv = new byte[16];
+        System.arraycopy(enc, 0, iv, 0, 16);
+        IvParameterSpec ivp = new IvParameterSpec(iv);
+        int z = enc.length - 16;
+        byte[] data = new byte[z];
+        System.arraycopy(enc, 16, data, 0, z);
+        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+        messageDigest.update(pin.getBytes("UTF-8"));
+        byte[] key = new byte[16];
+        System.arraycopy(messageDigest.digest(), 0, key, 0, 16);
+        SecretKeySpec keys = new SecretKeySpec(key, "AES");
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        cipher.init(2, keys, ivp);
+        String result = new String(cipher.doFinal(data));
+        System.out.println(result);
+      }
+      catch (Exception exception) {
+      }
+    }
+  }
+}
+```
