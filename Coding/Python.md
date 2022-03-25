@@ -425,9 +425,10 @@ pip install -r requirements.txt
 26. [ZIPFILE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#zipfile)
 27. [BINARY2ASCII](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#binary2ascii)
 28. [AES-CBC-PKCS55PADDING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#aes-cbc-pkcs5padding)
-29. [CBC-MAC XOR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#cbc-mac-xor)
-30. [PIL IMAGE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#pil-image)
-31. [PADDING ERROR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#padding-error)
+29. [AES-CBC-PKCS5PADDING BRUTEFORCE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#aes-cbc-pkcs5padding-bruteforce)
+30. [CBC-MAC XOR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#cbc-mac-xor)
+31. [PIL IMAGE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#pil-image)
+32. [PADDING ERROR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#padding-error)
 
 <br />
 
@@ -798,6 +799,38 @@ def saml(data):
 
 saml(sys.argv[1])
 ```
+<br />
+
+```
+# REQ: pip install pyCrypto
+
+import base64
+from Crypto.Cipher import AES
+import hashlib
+import re
+
+enc = base64.b64decode("ED1nf3uLW4Hkwr1aGw+NpN5sgcRMPCFuk0XgtW181m4o6d0Ml3D/j6h1NSyOh4dbcGsbK6rcZOUyzHxWVb4QkA==".encode())
+iv = enc[:16]
+input = enc[16:]
+uuid = re.compile(r'.*-.*-.*-.*')
+
+def decrypt(pin, iv):
+    cipher = AES.new(pin, AES.MODE_CBC, iv)
+    return cipher.decrypt(input)
+
+pin = 0
+while pin < 10000:
+    key = decrypt(hashlib.md5(str(pin).zfill(4).encode()).digest()[:16], iv)
+    if uuid.match(str(key)):
+        print(key)
+    pin += 1
+
+# output: str(pin).zfill(4) --> 0000, 0001, 0002 etc.
+# output: hashlib.md5(str(pin).zfill(4).encode()).digest()[:16] --> b'J}\x1e\xd4\x14GN@3\xac)\xcc\xb8e=\x9b'
+# output: Key:  b'dde5b3d4-e1a6-49b0-a667-4533a1b3fbcb\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c'
+# ord("\x0c") = 12 --> 48 - len(Key) = 12 (...,thus padding of 12 needed)
+# The padding mechanism fills the final string by n-times the value n , i.e. 12 x "\x0c"
+```
 
 ### CSV MODULE
 ```
@@ -1051,6 +1084,38 @@ def decrypt(secretKey, iv):
 
 print("Key: ", decrypt(secretKey, iv))
 #output: Key:  b'dfffb3d4-e1a6-49b0-a667-4533a1b3fbcb\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c'
+# ord("\x0c") = 12 --> 48 - len(Key) = 12 (...,thus padding of 12 needed)
+# The padding mechanism fills the final string by n-times the value n , i.e. 12 x "\x0c"
+```
+
+### AES-CBC-PKCS5PADDING BRUTEFORCE
+```
+# REQ: pip install pyCrypto
+
+import base64
+from Crypto.Cipher import AES
+import hashlib
+import re
+
+enc = base64.b64decode("ED1nf3uLW4Hkwr1aGw+NpN5sgcRMPCFuk0XgtW181m4o6d0Ml3D/j6h1NSyOh4dbcGsbK6rcZOUyzHxWVb4QkA==".encode())
+iv = enc[:16]
+input = enc[16:]
+uuid = re.compile(r'.*-.*-.*-.*')
+
+def decrypt(pin, iv):
+    cipher = AES.new(pin, AES.MODE_CBC, iv)
+    return cipher.decrypt(input)
+
+pin = 0
+while pin < 10000:
+    key = decrypt(hashlib.md5(str(pin).zfill(4).encode()).digest()[:16], iv)
+    if uuid.match(str(key)):
+        print(key)
+    pin += 1
+
+# output: str(pin).zfill(4) --> 0000, 0001, 0002 etc.
+# output: hashlib.md5(str(pin).zfill(4).encode()).digest()[:16] --> b'J}\x1e\xd4\x14GN@3\xac)\xcc\xb8e=\x9b'
+# output: Key:  b'dde5b3d4-e1a6-49b0-a667-4533a1b3fbcb\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c'
 # ord("\x0c") = 12 --> 48 - len(Key) = 12 (...,thus padding of 12 needed)
 # The padding mechanism fills the final string by n-times the value n , i.e. 12 x "\x0c"
 ```
