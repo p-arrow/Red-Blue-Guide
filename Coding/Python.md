@@ -1089,6 +1089,7 @@ print("Key: ", decrypt(secretKey, iv))
 ```
 
 ### AES-CBC-PKCS5PADDING BRUTEFORCE
+- SecretKey derived from pin only
 ```
 # REQ: pip install pyCrypto
 
@@ -1111,6 +1112,42 @@ while pin < 10000:
     key = decrypt(hashlib.md5(str(pin).zfill(4).encode()).digest()[:16], iv)
     if uuid.match(str(key)):
         print(key)
+    pin += 1
+
+# output: str(pin).zfill(4) --> 0000, 0001, 0002 etc.
+# output: hashlib.md5(str(pin).zfill(4).encode()).digest()[:16] --> b'J}\x1e\xd4\x14GN@3\xac)\xcc\xb8e=\x9b'
+# output: Key:  b'dde5b3d4-e1a6-49b0-a667-4533a1b3fbcb\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c'
+# ord("\x0c") = 12 --> 48 - len(Key) = 12 (...,thus padding of 12 needed)
+# The padding mechanism fills the final string by n-times the value n , i.e. 12 x "\x0c"
+```
+
+- SecretKey derived from pin and string
+```
+# REQ: pip install pyCrypto
+
+import base64
+from Crypto.Cipher import AES
+import hashlib
+import re
+
+enc = base64.b64decode("G38zckAufW4B9A6sywz28kzgW8CCx1UWugLUTjKlo/kwV1CVesmr0tPX/JZOW0aik0TlkrcAIZZ/G0BigUtmeg==".encode())
+iv = enc[:16]
+data = enc[16:]
+ptl = "<=== P3nt3st3rL4b ===>"
+uuid = re.compile(r'.*-.*-.*-.*')
+
+def decrypt(secretKey, iv):
+    cipher = AES.new(secretKey, AES.MODE_CBC, iv)
+    return cipher.decrypt(data)
+
+pin = 0
+while pin < 10000:
+    h = hashlib.md5()
+    h.update(ptl.encode())
+    h.update(str(pin).zfill(4).encode())
+    result = decrypt(h.digest()[:16], iv)
+    if uuid.match(str(result)):
+        print("pin:", pin, "output:", result)
     pin += 1
 
 # output: str(pin).zfill(4) --> 0000, 0001, 0002 etc.
