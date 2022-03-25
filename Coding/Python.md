@@ -186,6 +186,7 @@ a = "meinefiesefresseausderschnauze"
     - `print("Hi " + name)`: string concatenation
     - `print("The byte-string is: ", pickle.dumps(bytestring))`
     - `str(4).zfill(4)`: 0004
+    - Alternative to zfill: `pin = "%04d" % i` when running within for loop: `for i in range(0,9999)`
     
 ### Lists
 - `list = [1,2,3,4]`
