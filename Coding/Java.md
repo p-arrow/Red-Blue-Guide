@@ -41,7 +41,8 @@ DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 ```
 
-### AES-CBC-DECRYPTION BRUTEFORCE
+### AES-CBC DECRYPTION BRUTEFORCE
+- SecretKey derived from pin only
 ```
 import java.util.Base64;
 import java.security.MessageDigest;
@@ -75,6 +76,48 @@ public class android07
         System.out.println(result);
       }
       catch (Exception exception) {
+      }
+    }
+  }
+}
+```
+- SecretKey derived from pin and string
+
+```
+import java.util.Base64;
+import java.security.MessageDigest;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
+
+public class android08
+{
+  public static void main(String[] args){
+    String s = "G38zckAufW4B9A6sywz28kzgW8CCx1UWugLUTjKlo/kwV1CVesmr0tPX/JZOW0aik0TlkrcAIZZ/G0BigUtmeg==";
+    String ptl = "<=== P3nt3st3rL4b ===>";
+    for (int i=0; i<9999; i++){
+      try {
+        byte[] enc = Base64.getDecoder().decode(s);
+        String pin = String.format("%04d",i);
+        byte[] iv = new byte[16];
+        System.arraycopy(enc, 0, iv, 0, 16);
+        IvParameterSpec ivp = new IvParameterSpec(iv);
+        int z = enc.length - 16;
+        byte[] data = new byte[z];
+        System.arraycopy(enc, 16, data, 0, z);
+        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+        messageDigest.update(ptl.getBytes("UTF-8"));
+        messageDigest.update(pin.getBytes("UTF-8"));
+        byte[] key = new byte[16];
+        System.arraycopy(messageDigest.digest(), 0, key, 0, 16);
+        SecretKeySpec keys = new SecretKeySpec(key, "AES");
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        cipher.init(2, keys, ivp);
+        String result = new String(cipher.doFinal(data));
+        System.out.println(result);
+      } catch (Exception exception) {
+
       }
     }
   }
