@@ -258,20 +258,20 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
       8. MultiFactorAuthen via additional tools / libraries
  - **curl**:
    - `curl example.com`
-   - `curl --head example.com`: Fetch headers only
+   - `curl --head example.com`: Fetch **headers only**
    - `curl example.com --dump-header -`: dump header
-   - `curl --header "Content-Type: text/xml" example.com`: Fetch target with specified Header field
-   - `curl -X GET example.com`: Specify HTTP MEthod as GET
-   - `curl -X DELETE example.com/include/config.db`: delete data
+   - `curl -H "Content-Type: text/xml" example.com`: Fetch target with specified Header field
+   - `curl -X DELETE example.com/include/config.db`: **delete** data
    - `curl -X OPTIONS example.com --head`: show available HTTP Methods
-   - `curl -T file example.com`: upload file to target
-   - `curl -O example.com/file`: write output to file named like remote file
+   - `curl -T file example.com`: **upload file** to target
+   - `curl -O example.com/file`: **write output** to file named like remote file
    - `curl -u username:password http://example.com`
-   - `curl -X POST -H "Content-Type: application/json" -d '{"username":"joe","password":"5"}' http://[...]/register`: register yourself
-   - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9..2", "filename": "t.txt", "content": "DATA"}' http://[..]/upload`: Upload file
-   - `curl -X POST -H "Content-Type: application/xml" --data @payload.xml http://example.com/foo`: Send payload via POST
+   - `curl -X POST -d key=please http://example.so/`: **sned single POST data**
+   - `curl -X POST -H "Content-Type: application/json" -d '{"username":"joe","password":"5"}' http://[...]/register`: **send multiple POST data**
+   - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9..2", "filename": "t.txt", "content": "DATA"}' http://[..]/upload`: **Upload file**
+   - `curl -X POST -H "Content-Type: application/xml" --data @payload.xml http://example.com/foo`: **Send payload** via POST
    - `curl -X HEAD 'example.com' -F "file=@webshell.jsp" -vv`: upload file
-   - `curl -X GET https://example.com/extras/ --cookie "PHPSESSID=ovv...ekc3"`: send Cookie
+   - `curl -X GET https://example.com/extras/ --cookie "PHPSESSID=ovv...ekc3"`: **send Cookie**
    - **Write interactive script**:
      - `nano detect.sh`: create script
      - `curl --header [your payload] $1`: predefine the payload an add $1 at the end to execute the first argument given to the script
