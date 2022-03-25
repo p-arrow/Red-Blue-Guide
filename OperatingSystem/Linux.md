@@ -771,6 +771,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
     - `df -ah`
 - **du**: show disk usage of files in a directory
     - `du -ah /etc`
+    - `du -hd 1`: human readable and depth = 1 (only current directory)
 - **dd** (disk duplicate):
     - `sudo dd bs=4M if=/Downloads/file.iso of=/dev/sdb1 status=progress && sync`: make ISO on sdb1 (e.g. USB stick)
 - **ps**: display information of active processes
