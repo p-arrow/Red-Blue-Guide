@@ -1,4 +1,11 @@
 ## CODE EXAMPLES
+1. [DECODING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#decoding)
+2. [OAUTH2 TOKEN](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#oauth2-token)
+3. [PROXY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#proxy)
+4. [RUBY ON RAILS: AES-GCM SIGNED SESSION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#ruby-on-rails-aes--gcm-signed-session)
+5. [WEBSOCKET](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#websocket)
+
+<br />
 
 ### DECODING
 - URL-Decode in Ruby: `require 'uri'; URI.decode("http%3A%2F%2Fexample.com%2F%3Fa%3Druby%20uri%20decode")`
@@ -93,3 +100,19 @@ puts CGI.escape(encrypt(string))
 # Example string = {"session_id":"7ee48973...952f595","_csrf_token":"+UV6rbAMo6QW...6lAGP8=","user_id":1}
 # Output: 6k5xPNUYdUbZX9eH...BGZ%2BfyPvi9CU%2BZOD5qKVc%3D--61raV%2BxHyFVR4Rv3--KiSR%2F9hZqMfntNewcCm9kQ%3D%3D
 ```
+
+## WEBSOCKET
+```
+#REQ gem install websocket-eventmachine-client
+
+require 'websocket-eventmachine-client'
+
+EM.run
+  ws = WebSocket::EventMachine::Client.connect(uri: 'ws://example.com')
+  ws.onopen do
+    send.("key")
+  end
+  ws.onmessage do |msg, type|
+    puts msg
+  end
+end
