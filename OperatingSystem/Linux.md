@@ -260,21 +260,25 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
    - `curl example.com`
    - `curl --head example.com`: Fetch **headers only**
    - `curl example.com --dump-header -`: dump header
-   - `curl -H "Content-Type: text/xml" example.com`: Fetch target with specified Header field
    - `curl -X DELETE example.com/include/config.db`: **delete** data
-   - `curl -X OPTIONS example.com --head`: show available HTTP Methods
-   - `curl -T file example.com`: **upload file** to target
-   - `curl -O example.com/file`: **write output** to file named like remote file
+   - `curl -X OPTIONS example.com --head`: show **available HTTP Methods**
+   - `curl -T file example.com`: **Upload file** to target
+   - `curl -O example.com/file`: **Write output** to file named like remote file
    - `curl -u username:password http://example.com`
-   - `curl -X POST -d key=please http://example.so/`: **send single POST data**
-   - `curl -X GET "http://example.com/extra?name[0]=value1&name[1]=value2"`: send GET parameter **as array**
-   - `curl -X GET "http://example.com/extra?name[key]=value"`: send GET parameter **as hash/dictionary**
-   - `curl --path-as-is http://example/test/../test`: testing application with **multiple layers of reverse proxie**
-   - `curl -X POST -H "Content-Type: application/json" -d '{"username":"joe","password":"5"}' http://[...]/register`: **send multiple POST data**
-   - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9..2", "filename": "t.txt", "content": "DATA"}' http://[..]/upload`: **Upload file**
-   - `curl -X POST -H "Content-Type: application/xml" --data @payload.xml http://example.com/foo`: **Send payload** via POST
-   - `curl -X HEAD 'example.com' -F "file=@webshell.jsp" -vv`: upload file
+   - `curl -basic -u username http://example.com`: **Basic Authentication**; you get password prompt when sending this request
+   - `curl -X POST -d key=please http://example.so/`: **Send single POST data**
+   - `curl -X POST -d key=please -d key=please http://example.so/`: **Send double POST data** like `key=please&key=please`
+   - `curl -X GET "http://example.com/extra?name[0]=value1&name[1]=value2"`: GET parameter **as array**
+   - `curl -X GET "http://example.com/extra?name[key]=value"`: GET parameter **as hash/dictionary**
+   - `curl --path-as-is http://example/test/../test`: Send request with `.` or `..` (**testing webapp with multiple layers of reverse proxie**)
+   - `curl -X POST -H "Content-Type: application/json" -d '{"user":"joe","pass":"5"}' http://exp.com`: **send JSON data**
+   - `curl -X POST -H "Content-Type: application/json" -d '{ "token": "9..2", "filename": "x", "content": "DATA"}' http://[..]/upload`: **Upload file**
+   - `curl -X POST -H "Content-Type: application/xml" --data @payload.xml http://example.com/foo`: **Upload File** via POST
+   - `curl -X HEAD 'example.com' -F "file=@webshell.jsp"`: **Upload file** in multipart format
    - `curl -X GET https://example.com/extras/ --cookie "PHPSESSID=ovv...ekc3"`: **send Cookie**
+   - `curl -X POST http://victim.com -H "Content-Type: application/yaml" --data-binary @test.yml`: **Send YAML file** as is
+   - `curl http://victim.com --form "filename=@test.txt;filename=../../test.txt" --trace-ascii -`: Send file **with Directory Traversal**
+   - `curl "http://victim.com" --request-target "/test#test"`: Send file including `#`
    - **Write interactive script**:
      - `nano detect.sh`: create script
      - `curl --header [your payload] $1`: predefine the payload an add $1 at the end to execute the first argument given to the script
