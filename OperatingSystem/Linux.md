@@ -372,10 +372,11 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
        - The client does not check if certificate is signed by a valid certificate authority (CA)
        - The client does not check if parent certificate is a certificate authority
        - *Normally these checks are performed for all certificates in the certificate chain to establish a chain of trust*
+     - You can choose between option **A** and **B**
      - **A) Generate openssl key pair and x509 certificate yourself  (self-signed)**
        - `sudo socat -v -v openssl-listen:443,reuseaddr,fork,cert=$FILENAME.pem,cafile=$FILENAME.crt,verify=0 -`
      - **B) Use a valid certificate trusted by the client**
-       - `sudo socat -v -v openssl-listen:443,reuseaddr,fork,cert=myCert.crt,key=private.key,cafile=CA.pem,verify=0 -`: 
+       - `sudo socat -v -v openssl-listen:443,reuseaddr,fork,cert=myCert.crt,key=priv.key,cafile=CA.pem,verify=0 -`: 
        - The `-` at the end will provide the content of the request in our terminal
        - `verify=0`: disable X.509 Certificate Verification of client
        - If you want to simply listen and forward the request to a local/remote host:
