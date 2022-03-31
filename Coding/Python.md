@@ -428,6 +428,7 @@ pip install -r requirements.txt
 30. [CBC-MAC XOR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#cbc-mac-xor)
 31. [PIL IMAGE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#pil-image)
 32. [PADDING ERROR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#padding-error)
+33. [ARGUMENT PARSER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#argument-parser)
 
 <br />
 
