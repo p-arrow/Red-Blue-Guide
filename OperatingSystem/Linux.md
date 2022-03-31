@@ -1036,6 +1036,7 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 6. [SERVICE org.freedesktop.PolicyKit1 TIMED OUT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#service-org.freedesktop.PolicyKit1-timed-out)
 7. [WI-FI HARDWARE SWITCH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#wi-fi-hardware-switch)
 8. [SYSTEMD-RESOLVED VS DNSMASQ](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#systemd-resolved-vs-dnsmasq)
+9. [LIBREOFFICE CALC: PRINT PDF ON ONE PAGE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#libreoffice-calc-print-pdf-on-one-page)
 
 
 ### FROZEN XFCE4 WINDOW MANAGER
@@ -1133,3 +1134,6 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - `sudo dnsmasq -C dnsmasq.conf --no-daemon`: start dnsmasq in foreground (`--no-daemon`)
 - Verify: `dig google.com` (systemd-resolver) and `dig @localhost google.com` (dnsmasq) should yield the same result
 - Credits: [Here](https://blog.down-time.io/linux/2020/02/06/systemd-resolve-dnsmasq) and [Here](https://unix.stackexchange.com/questions/304050/how-to-avoid-conflicts-between-dnsmasq-and-systemd-resolved)
+
+### LIBREOFFICE CALC: PRINT PDF ON ONE PAGE
+- `Menu/Format/Page [Sheet] Scale - Scaling mode - Fit print range(s) on number of pages`
