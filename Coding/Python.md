@@ -31,9 +31,8 @@ def square_root(n):
 
 ### AVOID EXECUTABLE RUNNING WHEN IT'S IMPORTED
 - `if __name__ == "__main__":`
-   - Ensure that variables that are created, functions that are called, operations that are done
-   - ONLY executed when you directly run the file**, not when you import it into another
-   - Example: modules like random, string, math etc.
+- This construction ensures that a file example.py can run independently (e.g. called within terminal) but also allows the import into another file
+
 
 ### Common Modules
 - **csv**: very convenient for reading and writing csv files
@@ -1243,3 +1242,45 @@ xored.save('xoredImg.png')
 
 ### PADDING ERROR
 - Identify the necessary padding length: `padding = '=' * (4 - len(STRING) % 4)`
+
+
+### ARGUMENT PARSER
+```
+#!/usr/bin/python3
+#-*- coding: utf-8 -*-
+
+import argparse
+
+# Pretty printing variables
+_RED  = '\x1b[1;31m'
+_ENDC = '\033[0m'
+
+def spawn_shell(uri):
+    while True:
+        prompt = "(" + _RED + "cmd" + _ENDC + ")> "
+        cmd = input(prompt)
+        if cmd in ("exit", "quit"):
+            break
+
+
+if __name__ == '__main__':
+
+    print("")
+    print("---------------------------------------------------------------------------")
+    print("Funny Application")
+    print("\nReference: XYZ")
+    print("Description: Just for Fun")
+    print("\nAuthor: P (@p-arrow)")
+    print("---------------------------------------------------------------------------")
+    print("")
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-t', '--target', type=str, help='Target URI', required=True)
+    args = parser.parse_args()
+    uri = args.target
+
+    print("[+] Target set to {}".format(uri))
+    print("[+] Probing whatsoever ...")
+    print("[+] Spawning shell ... (type \"exit\" or \"quit\" to exit)")
+    spawn_shell(uri)
+```
