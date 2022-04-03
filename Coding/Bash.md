@@ -93,44 +93,18 @@ echo "Une :"[ $a != $b ]   // True
 <br />
 
 ## CODE EXAMPLES
-1. [CLICKBAIT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#clickbait)
-2. [INTERACTIVE SHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#interactive-shell)
-3. [GET CREDENTIALS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#get-credentials)
-4. [GET MD5](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#get-md5)
-5. [NETCAT PARAMETERS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#netcat-parameters)
-6. [BACKUP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#backup)
-7. [CHECK REMOTE SERVER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#check-remote-server-status)
-8. [CHECK AVAILABLE HOSTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#check-available-hosts)
-9. [APP LIST](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-app-list-of-linux-host)
-10. [GITHUB REPO BACKUP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-github-repo-backup-on-linux-host)
-11. [READ LINE BY LINE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#read-file-line-by-line)
-12. [CREATE SEQUENCE OF NUMBER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-sequence-of-number--read-line-by-line)
-13. [CREATE CERTIFICATE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-certificate)
+1. [GET CREDENTIALS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#get-credentials)
+2. [GET MD5](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#get-md5)
+3. [NETCAT PARAMETERS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#netcat-parameters)
+4. [BACKUP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#backup)
+5. [CHECK REMOTE SERVER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#check-remote-server-status)
+6. [CHECK AVAILABLE HOSTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#check-available-hosts)
+7. [APP LIST](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-app-list-of-linux-host)
+8. [GITHUB REPO BACKUP](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-github-repo-backup-on-linux-host)
+9. [READ LINE BY LINE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#read-file-line-by-line)
+10. [CREATE SEQUENCE OF NUMBER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-sequence-of-number--read-line-by-line)
+11. [CREATE CERTIFICATE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Bash.md#create-certificate)
 
-
-### Clickbait
-- **Windows Batch file**
-```
-# Open the browser continuously
-# Attention, may lead to DoS !
-#save as "clickme.txt.bat"
-
-echo off
-:LoopStart
-start
-start www.google.com
-goto :LoopStart
-```
-
-### Interactive Shell
-- **Windows Batch file**
-```
-@echo off
-echo Hello User! :)
-set /p Name=What's your name?
-echo Hello %Name% !!!
-set /p Input=%Name%, Goodbye!
-```
 
 ### Get Credentials 
 ```
