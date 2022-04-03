@@ -4,6 +4,7 @@
 3. [PROXY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#proxy)
 4. [RUBY ON RAILS: AES-GCM SIGNED SESSION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#ruby-on-rails-aes--gcm-signed-session)
 5. [WEBSOCKET](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#websocket)
+6. [ZLIB](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#zlib)
 
 <br />
 
@@ -116,3 +117,14 @@ EM.run
     puts msg
   end
 end
+```
+
+## ZLIB
+- Decompress data
+```
+require 'zlib'
+
+z = Zlib::Inflate.new
+data = z.inflate File.read("yourfile")
+puts data
+```
