@@ -1,6 +1,6 @@
 ## CODE EXAMPLES
-1. [CLICKBAIT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding#clickbait)
-2. [INTERACTIVE SHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding#interactive-shell)
+1. [CLICKBAIT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Batch.md#clickbait)
+2. [INTERACTIVE SHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Batch.md#interactive-shell)
 
 ### Clickbait
 - Open the browser continuously
