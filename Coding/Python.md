@@ -429,6 +429,7 @@ pip install -r requirements.txt
 31. [PIL IMAGE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#pil-image)
 32. [PADDING ERROR](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#padding-error)
 33. [ARGUMENT PARSER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#argument-parser)
+34. [ZLIB](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Python.md#zlib)
 
 <br />
 
@@ -1284,4 +1285,27 @@ if __name__ == '__main__':
     print("[+] Probing whatsoever ...")
     print("[+] Spawning shell ... (type \"exit\" or \"quit\" to exit)")
     spawn_shell(uri)
+```
+
+### ZLIB
+- Decompress, Modify and Compress Zlib-Data
+```
+#!/usr/bin/python3
+
+import sys
+import base64
+import zlib
+from urllib.parse import unquote, quote_from_bytes
+
+def saml(data):
+    data = base64.b64decode(unquote(data).encode())
+    data = zlib.decompress(data, -zlib.MAX_WBITS).decode()
+    data = data.replace("ServiceURL='http://SP#1","ServiceURL='SP#2")
+    print("\nSAMLreq: \n", data)
+    deflate_compress = zlib.compressobj(9, zlib.DEFLATED, -zlib.MAX_WBITS)
+    data = deflate_compress.compress(data.encode()) + deflate_compress.flush()
+    data = quote_from_bytes(base64.b64encode(data))
+    print("\nResult: \n", data)
+
+saml(sys.argv[1])
 ```
