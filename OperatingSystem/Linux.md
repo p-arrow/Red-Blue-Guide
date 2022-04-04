@@ -1076,7 +1076,7 @@ Group: %sudo ALL=(ALL:ALL) ALL
 7. [WI-FI HARDWARE SWITCH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#wi-fi-hardware-switch)
 8. [SYSTEMD-RESOLVED VS DNSMASQ](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#systemd-resolved-vs-dnsmasq)
 9. [LIBREOFFICE CALC: PRINT PDF ON ONE PAGE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#libreoffice-calc-print-pdf-on-one-page)
-
+10. [CITRIX RECEIVER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#citrix-receiver)
 
 ### FROZEN XFCE4 WINDOW MANAGER
 - Open Terminal `Ctrl+Alt+T`
@@ -1176,3 +1176,11 @@ Group: %sudo ALL=(ALL:ALL) ALL
 
 ### LIBREOFFICE CALC: PRINT PDF ON ONE PAGE
 - `Menu/Format/Page [Sheet] Scale - Scaling mode - Fit print range(s) on number of pages`
+
+### CITRIX RECEIVER
+- [Download here](https://www.citrix.com/de-de/downloads/citrix-receiver/linux/)
+- `sudo dpkg -i <file>`: I got error message about unmet dependencies referring to `libwebkitgtk-1.0-0` and `libwebkit-1.0-2`
+- For the forme package you need to add below line to `/etc/apt/sources.list`
+- `deb http://cz.archive.ubuntu.com/ubuntu bionic main universe`
+- `sudo apt update && sudo apt install libwebkitgtk-1.0-0`
+- This was already enough to proceed with: `sudo dpkg -i icaclient_13.10.0.20_amd64.deb`
