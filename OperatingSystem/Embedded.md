@@ -60,6 +60,27 @@
   - CAN concept originates from 80s/90s
   - No security included back these days (!)
   - No source addressing / message authen in CAN (!)
+- **ICS** (Industrial Control Systems)
+  - A NW that manages embedded devices
+  - Uses Fieldbus to link PLCs within an OT network
+  - HMI (Human Machine Interface) on a PLC
+  - Data Historian: Software that aggregates/catalogs data within ICS
+  - **Operational Technology prioritize availability and integrity over confidentiality (!)**
+- **SCADA** (Supervisory Control and Data Acquisition)
+  - Type of ICS that manages large-scale multiple-site devices
+- **Modbus**
+  - Communication protocol used in OT network (proprietary)
+  - It's alike TCP, but for OT
+  - Provides ability to query and change configs of each PLC
+- **NIST-82**: Guide to Industrial Control Systems
+   - Establish administrative control over OT
+   - Implement minimum network links (disable services/protocols )
+   - Develop/Test patch management for OT networks
+   - Perform regular audits
+   - Vuln scanners can cause problems to OT NWs (!)
+   - Better: Passive Analysis
+
+
 
 <br />
 
@@ -189,3 +210,7 @@
    - Authenticate all code and data 
    - Limit functionality in ROM code
    - Disable memories when not required
+- Measured Boot: Gathers secure metrics to validate and attest it in a report
+- eFuse:
+   - Permanently alter the state of a transistor on a computer chip
+   - Emergency solution in case of compromise 
