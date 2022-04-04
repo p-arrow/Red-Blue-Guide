@@ -1,14 +1,15 @@
 # TABLE OF CONTENTS
-1) [WINDOWS CMD](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-cmd)
-2) [WINDOWS POWERSHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-powershell)
-3) [WINDOWS LEGITIMATE PROCESSES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#legitimate-processes)
-4) [WINDOWS EVENT LOGS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-events-logs)
-5) [WINDOWS NETSH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-netsh)
-6) [WINDOWS MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
-7) [WINDOWS SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
-8) [WINDOWS SYSMON](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-sysmon)
-9) [WINDOWS WMIC](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-wmic)
-10) [WINDOWS TROUBLESHOOTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-troubleshooting)
+1) [CMD](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-cmd)
+2) [POWERSHELL](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-powershell)
+3) [LEGITIMATE PROCESSES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#legitimate-processes)
+4) [EVENT LOGS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-events-logs)
+5) [NETSH](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-netsh)
+6) [MASTER FILE TABLE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-master-file-table)
+7) [SHORTCUTS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-shortcuts)
+8) [SYSMON](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-sysmon)
+9) [WMIC](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-wmic)
+10) [HARDENING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#hardening)
+11) [TROUBLESHOOTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#windows-troubleshooting)
 
 <br />
 
@@ -63,8 +64,25 @@
    - `netstat -nabp tcp`
    - `netstat -tunlp`
 - **netsh**: 
+   - Netsh is deprecated! It might be better to user Powershell instead (!)
+   - **Syntax**
+      - [-a AliasFile]
+      - [-c Context]
+      - [-r RemoteComputer]
+      - [-u [DomainName\]UserName]
+      - [-p Password | *]
+      - [command | -f ScriptFile]
    - `netsh interface ipv6 show neighbors`
-   - `netsh advfirewall set allprofiles state off`
+   - **FW deactivate/activate**
+      - `netsh firewall set opmode enable / disable`
+      - `netsh advfirewall set allprofiles state on/off`
+   - **FW show profile**
+      - `netsh advfirewall show allprofiles`
+   - **Reset TCP/IP Stack**
+      - `netsh int ip reset`: helps to remove defective/incorrectly configured TCP/IP protocols
+   - **Import/Export NW Config**
+      - `netsh -c Interface dump > D:\netconfig.txt`
+      - `netsh -f D:\netconfig.txt`
 - **arp**: request ARP-Cache
    - `arp -a`
 - **tracert/pathping**: 
@@ -331,8 +349,7 @@ gci ($profile.fullname + '\UPM_Profile\AppData\Roaming\Microsoft\Windows\Recent\
 <br />
 
 # WINDOWS EVENT LOGS
-
-**Hint: sysmon provides more details than WinEventLogs (!)**
+- **Hint: sysmon provides more details than WinEventLogs (!)**
 
 ## How To Modify
 1) Enter in run dialog: `gpedit.msc`
@@ -369,34 +386,6 @@ gci ($profile.fullname + '\UPM_Profile\AppData\Roaming\Microsoft\Windows\Recent\
 - 4616: system time was changed
 - 4719: system audit policy was changed
 - 4825: denied access via RDP
-
-<br />
-
-# WINDOWS NETSH
-- **Netsh is deprecated! It might be better to user Powershell instead (!)**
-
-## Syntax
-- [-a AliasFile]
-- [-c Context]
-- [-r RemoteComputer]
-- [-u [DomainName\]UserName]
-- [-p Password | *]
-- [command | -f ScriptFile]
-
-## How To
-#### FW deactivate/activate
-- `netsh firewall set opmode enable / disable`
-- `netsh advfirewall set allprofiles state on/off`
-
-#### FW show profile
-- `netsh advfirewall show allprofiles`
-
-#### Reset TCP/IP Stack
-- `netsh int ip reset`: helps to remove defective/incorrectly configured TCP/IP protocols
-
-#### Import/Export NW Config
-- `netsh -c Interface dump > D:\netconfig.txt`
-- `netsh -f D:\netconfig.txt`
 
 <br />
 
@@ -512,6 +501,30 @@ Command | Explanation
 `wmic process where processid=xxx get parentprocessid` | Parent process
 `wmic process where processid=xxx delete` | Delete process
 `wmic process where name="powershell.exe" get processid/commandline` | Search process name
+
+<br />
+
+# HARDENING
+## USB
+### Disable/Enable Autorun (Group Policy)
+1. Open gpedit.msc 
+2. `Computer Configuration\Administrative Templates\Windows Components\Autoplay Policies`
+3. In the Details pane, double-click Turn off Autoplay
+4. Click Enabled, and then select All drives in the Turn off Autoplay box to disable Autorun on all drives
+5. gpupdate.msc
+### Disable/Enable Autorun (Registry)
+- *Windows 7, Windows Server 2008, Windows Vista, Windows Server 2003, or Windows XP*
+1. Open regedit
+2. Locate following entry in the registry: `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer\NoDriveTypeAutorun`
+3. Right-click NoDriveTypeAutoRun, and then click Modify (Alternatively, Create a new dword 32 bit value `NoDriveTypeAutoRun`)
+4. In the Value data box, type `0xFF` to disable all types of drives
+5. Restart explorer.exe
+### Change USB Permission
+1. Open Explorer, choose your flash drive and right click on it, choose properties from there
+2. Under Format tab, choose NTFS
+4. After successful formatting, choose again properties
+5. Under security tab, choose Everyone from group or user names
+6. Click on the Edit button to change permissions of the flash drive to **read only** rights
 
 <br />
 
