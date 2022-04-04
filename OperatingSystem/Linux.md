@@ -1031,38 +1031,86 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 
 # HARDENING
 ## Accounts
-- Check inactive Users: `grep -E ^[^:]+:[^\!*] /etc/shadow | cut -d: -f1,7`
+### Best Practices
+- Check inactive users: `grep -E ^[^:]+:[^\!*] /etc/shadow | cut -d: -f1,7`
+- Regular monitoring for User Accounts and Access Levels
+- Eliminate Shared Account Usage
+- Manage and Record Privileged Activity
 
 ### LightDM
 - LightDM is a display manager running in Ubuntu up to version 16.04 LTS
 - It has been replaced by GDM in later Ubuntu releases
 - However, LightDM is still used by several Ubuntu flavors
-- **LightDM starts the X servers, user sessions and greeter (login screen)**
-- [Further Reading](https://wiki.ubuntu.com/LightDM)
-- Configuration:
+- **LightDM starts the X servers, user sessions and greeter (login screen)**: [Further Reading](https://wiki.ubuntu.com/LightDM)
+- Configuration is done here:
   - `/usr/share/lightdm/lightdm.conf.d/*.conf`
   - `/etc/lightdm/lightdm.conf.d/*.conf`
   - `/etc/lightdm/lightdm.conf`
 - Proposed Modifications:
-  - `nano /etc/lightdm/lightdm.conf.d/*.conf`: open config
   - `allow-guest=false`: Add this line to disable session login as a temporary user
-  - `greeter-hide-users=true`: hide the list of possible user accounts
+  - `greeter-hide-users=true`: Add this line to hide the list of possible user accounts
 
-
-## /etc/sudoers
+### /etc/sudoers
+- Typical structure:
 ```
 User: root ALL=(ALL:ALL) ALL
 Group: %admin ALL=(ALL) ALL
 Group: %sudo ALL=(ALL:ALL) ALL
 ```
 - **Meaning**: all hosts involved = (all users: all group members) all commands allowed
-- `%admin ALL=(ALL) ALL; !/sbin/reboot`
-   - allows admin user all except reboot operation 
+- **Enforce Restrictions**:
+  - `%admin ALL=(ALL) ALL; !/sbin/reboot`: allow all for admin user except reboot operation 
 
-#### Best Practice
-1. Regularly Monitoring for User Accounts and Access Levels
-2. Eliminating Shared Account Usage
-3. Manage and Record Privileged Activity
+<br />
+
+## IAM
+- *NIST 800-63B: Digital Identity Guidelines*
+
+### Access Control
+**1. DAC (Discretionary AC)**
+  - Policy determined by the owner (often used)
+  - Each object needs an owner
+  - Owner has to determine the access rights
+      - chown, chmod, chroot
+
+**2. MAC (Mandatory AC)**
+  - Policy determined by the computer system
+  - Security labels assigned to every user (subject)/data (object)
+  - MAC uses "need-to-know" method prior accessing a file
+  - Labels: Top Secret, Secret, Confidential, Classified etc.
+  - Usually used in FreeBSD / SELinux / High-Sec Systems
+  - Complex configuration!
+
+**3. RBAC (Role-Based AC)**
+  - Policy determined by computer system
+  - Uses a set of permissions i/o single data label (MAC)
+  - Different groups have specific permissions
+  - Recommended for enterprises with >500 employees
+
+**4. ABAC (Attribute-Based AC)**
+  - Dynamic and context-aware using IF-THEN statements
+  - Exp: If Jason is in HR, then give access to \\fileserver\HR
+  - Most complex to implement but also most flexible !
+
+### Propagation of Permissions
+- Permissions are passed to subfolder from parent by inheritance
+- Propagation is default setting in Windows
+- Propagation can be disabled under folder settings
+- *--> copy: permissions are inherited from parent folder it is copied into*
+- *--> move: permissions are retained from its original parent folder*
+
+### Best Practices
+1. Implicit deny: only ressource-permission when explicitly stated
+2. Disable Administrator account
+3. Create new Admin account with discreet name
+4. Least Privilege
+   - Privilege creep violates principle of Least Privilege (!)
+   - Rotating through diff. depts but keeping each depts permissions(!)
+   - User Access Recertification: Revalidate Permissions (annually) (!)
+5. Separation of Duties: e.g. sign/counter sign
+6. Job rotation: reduce boredom, enhance skills, increase security
+7. Mandatory vacation: Someone has to take over while you are away (fraud can be detected)
+
 
 <br />
 
