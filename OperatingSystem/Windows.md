@@ -14,7 +14,6 @@
 <br />
 
 # WINDOWS CMD
-## TABLE OF CONTENTS
 1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#basics)
 2. [DISPLAY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#display)
 3. [NETWORK](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#network)
@@ -189,19 +188,18 @@
 <br />
 
 # WINDOWS POWERSHELL
-## TABLE OF CONTENTS
-1. [PS BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#ps-basics)
-2. [PS CONFIGURATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#ps-configuration)
-3. [PS NETWORK](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#ps-network)
-4. [PS DATA / FILE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#data--file)
-5. [PS SECURITY / ENCRYPTION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#security--encryption)
-6. [PS USER / GROUPS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#user--groups)
-7. [PS SYSTEM](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#system)
+1. [BASICS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#basics)
+2. [CONFIGURATION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#configuration)
+3. [NETWORK](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#network)
+4. [DATA / FILE](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#data--file)
+5. [SECURITY / ENCRYPTION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#security--encryption)
+6. [USER / GROUPS](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#user--groups)
+7. [SYSTEM](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#system)
 8. [CODE EXAMPLES (CMDLETS)](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Windows.md#code-examples-cmdlets)
 
 <br />
 
-## PS BASICS
+## BASICS
 - **get-help**
    - `get-help [command] OPTION`
    - `get-help [command] -examples`
@@ -233,7 +231,7 @@
 
 <br />
 
-## PS NETWORK
+## NETWORK
 - `Get-NetIPAddress | Format-Table`
 - `Get-NetAdapter`
 - `Get-NetIPConfiguration -All`
@@ -247,7 +245,7 @@
 
 <br />
 
-## PS DATA / FILE
+## DATA / FILE
 - **Remove User Jumplists**
    - `gci` / `get-ChildItem`: Show files in one or more specified locations
 ```
@@ -268,12 +266,12 @@ gci ($profile.fullname + '\UPM_Profile\AppData\Roaming\Microsoft\Windows\Recent\
 
 <br />
 
-## PS USER / GROUPS
+## USER / GROUPS
 - `Search-ADAccount –AccountInactive –UsersOnly`: Find unused accounts in Active Directory
 
 <br />
 
-## PS SYSTEM
+## SYSTEM
 - **Disable/Remove Features**
 - `Disable-WindowsOptionalFeature -FeatureName "feature" -Online -NoRestart`
    - `-Online` = the currently running Windows
