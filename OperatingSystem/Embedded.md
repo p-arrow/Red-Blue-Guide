@@ -1,16 +1,11 @@
 # TABLE OF CONTENTS
-1) [???](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Embedded.md#)
+1) [GLOSSARY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Embedded.md#glossary)
 2) [INTERFACES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Embedded.md#interfaces)
 3) [SECURE BOOT](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Embedded.md#secure-boot)
 
 <br />
 
-# INTERFACES
-
-<br />
-
-# SECURE BOOT
-## GLOSSARY
+# GLOSSARY
 - **PSCI**: Power State Control Interface
 - **BL**: Boot Loader	
 - **SMC**: Secure Monitor Call
@@ -24,6 +19,7 @@
   - Contain RAM, ROM, and similar peripherals, which allow them to perform (simple) tasks independently
 - **SoC**: System-on-a-Chip
   - Refers to MCUs with a greater number of onboard peripherals and functionality
+  - Integrates funcionality of multiple logical controller
 - **SPI**: Serial Peripheral Interface
   - For short-distance communication between microcontroller and peripheral IC, primarily in embedded systems
 - **I2C**: Inter-Integrated Circuit
@@ -35,9 +31,10 @@
    - Therefore, it is often used as the primary cache or secondary cache of the CPU
 - **DRAM** (Dynamic RAM): 
    - It uses capacitors to store information (charge), but any capacitor has leakage (charge loss), so the stored information will be lost
-   - To solve this problem, DRAM needs to read and rewrite (so-called refresh) the DRAM at regular intervals (2ms).
-   - It requires about one transistor and one capacitor for a memory cell, which makes it low-cost and large-capacity, but it needs to be refreshed and the speed is slower than SRAM.
-   - Therefore, it is often used as the main memory of the computer.
+   - To solve this problem, DRAM needs to read and rewrite (so-called refresh) the DRAM at regular intervals (2ms)
+   - It requires about one transistor and one capacitor for a memory cell
+   - Low-cost and large-capacity, but it needs to be refreshed and the speed is slower than SRAM
+   - Therefore, it is often used as the main memory of the computer
 - **ADRAM** (Asynchronous DRAM):
    - In ADRAMs, the system clock doesn't coordinate or synchronize memory access
    - Therefore, there is delay in the response of the memory
@@ -49,8 +46,28 @@
    - DDR SDRAM is based on SDRAM
    - SDRAM transmits data only once in a clock cycle and it usually transmits data in the rising period of the clock
    - As for DDR SDRAM, it transmits data twice in a clock cycle and it can transmit data once in the rising and falling periods of the clock, respectively
+- **PLC** (Programmable Logic Controller) 
+  - A computer designed for industrial area
+  - Can automate and monitor mechanical systems
+  - PLC firmware can be patched to fix vulns
+  - Patch maybe once a year (not frequently!)
+- **RTOS** (Real-Time Operating System)
+  - OS that prioritizes deterministic execution of operations for time-critical tasks
+- **FPGA** (Field Programmable Gate Array)
+  - Processor can be programmed for specific function by customer (i/o manufacturer)
+- **CAN** (Controller Area Network)
+  - To connect subsystems
+  - CAN concept originates from 80s/90s
+  - No security included back these days (!)
+  - No source addressing / message authen in CAN (!)
 
+<br />
 
+# INTERFACES
+
+<br />
+
+# SECURE BOOT
 ## BOOT LOADER
 - [https://github.com/mcu-tools/mcuboot/blob/master/docs/design.md](https://github.com/mcu-tools/mcuboot/blob/master/docs/design.md)
 - [https://github.com/mcu-tools/mcuboot/blob/master/docs/encrypted_images.md](https://github.com/mcu-tools/mcuboot/blob/master/docs/encrypted_images.md)
