@@ -3,7 +3,8 @@
 2) [BASH PROFILES](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#bash-profiles)
 3) [COMMAND LINE INTERFACE (CLI)](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#linux-cli)
 4) [ETC/SHADOW](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#etcshadow)
-5) [TROUBLESHOOTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#troubleshooting)
+5) [HARDENING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#hardening)
+6) [TROUBLESHOOTING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/OperatingSystem/Linux.md#troubleshooting)
 
 <br />
 
@@ -1024,6 +1025,43 @@ To note: `/etc/profile` is executed for **interactive shells** while `/etc/bashr
 - $2y: eksBlowfish
 - $5: SHA256
 - $6: SHA512 
+
+<br />
+
+# HARDENING
+## Accounts
+- Check inactive Users: `grep -E ^[^:]+:[^\!*] /etc/shadow | cut -d: -f1,7`
+
+### LightDM
+- LightDM is a display manager running in Ubuntu up to version 16.04 LTS
+- It has been replaced by GDM in later Ubuntu releases
+- However, LightDM is still used by several Ubuntu flavors
+- **LightDM starts the X servers, user sessions and greeter (login screen)**
+- [Further Reading](https://wiki.ubuntu.com/LightDM)
+- Configuration:
+  - `/usr/share/lightdm/lightdm.conf.d/*.conf`
+  - `/etc/lightdm/lightdm.conf.d/*.conf`
+  - `/etc/lightdm/lightdm.conf`
+- Proposed Modifications:
+  - `nano /etc/lightdm/lightdm.conf.d/*.conf`: open config
+  - `allow-guest=false`: Add this line to disable session login as a temporary user
+  - `greeter-hide-users=true`: hide the list of possible user accounts
+
+
+## /etc/sudoers
+```
+User: root ALL=(ALL:ALL) ALL
+Group: %admin ALL=(ALL) ALL
+Group: %sudo ALL=(ALL:ALL) ALL
+```
+- **Meaning**: all hosts involved = (all users: all group members) all commands allowed
+- `%admin ALL=(ALL) ALL; !/sbin/reboot`
+   - allows admin user all except reboot operation 
+
+#### Best Practice
+1. Regularly Monitoring for User Accounts and Access Levels
+2. Eliminating Shared Account Usage
+3. Manage and Record Privileged Activity
 
 <br />
 
