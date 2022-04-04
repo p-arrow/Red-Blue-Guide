@@ -30,6 +30,7 @@ apt list --upgradable
 apt list --installed --> show all installed packages
 apt policy --> show installed version
 apt-file search [package] --> APT package searching utility
+apt --fix-broken install --> Resolve unmet dependencies
 ```
 
 ## dpkg (Debian Package) vs APT (Advanced Package Tool)
