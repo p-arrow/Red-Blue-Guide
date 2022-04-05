@@ -8,7 +8,9 @@
 # GLOSSARY
 - **PSCI**: Power State Control Interface
 - **BL**: Boot Loader	
-- **SMC**: Secure Monitor Call
+- **Flash**:
+  - Code flash : The ROM area where program code is written
+  - Data flash : The ROM area where data is written 
 - **PCB**: Printed Circuit Board
 - **HAB**: High Assurance Boot
 - **DMA**: Direct Memory Access
