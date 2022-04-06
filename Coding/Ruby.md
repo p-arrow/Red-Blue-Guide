@@ -1,10 +1,11 @@
 ## CODE EXAMPLES
 1. [DECODING](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#decoding)
-2. [OAUTH2 TOKEN](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#oauth2-token)
-3. [PROXY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#proxy)
-4. [RUBY ON RAILS: AES-GCM SIGNED SESSION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#ruby-on-rails-aes--gcm-signed-session)
-5. [WEBSOCKET](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#websocket)
-6. [ZLIB](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#zlib)
+2. [WEBSERVER](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#webserver)
+3. [OAUTH2 TOKEN](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#oauth2-token)
+4. [PROXY](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#proxy)
+5. [RUBY ON RAILS: AES-GCM SIGNED SESSION](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#ruby-on-rails-aes--gcm-signed-session)
+6. [WEBSOCKET](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#websocket)
+7. [ZLIB](https://github.com/p-arrow/Red-Blue-Guide/blob/main/Coding/Ruby.md#zlib)
 
 <br />
 
@@ -12,6 +13,9 @@
 - URL-Decode in Ruby: `require 'uri'; URI.decode("http%3A%2F%2Fexample.com%2F%3Fa%3Druby%20uri%20decode")`
 
 <br />
+
+### WEBSERVER
+- `ruby -run -ehttpd . -p3000`: on port 3000
 
 ### OAUTH2 TOKEN 
 - Firstly, `gem install oauth2`
